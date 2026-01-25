@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.github.m-m-m</groupId>
     <artifactId>mmm</artifactId>
-    <version>29</version>
+    <version>31</version>
     <relativePath>../parent/pom.xml</relativePath>
   </parent>
   <artifactId>mmm-orm-parent</artifactId>
@@ -16,7 +16,6 @@
 
   <properties>
     <mmm.repository>orm</mmm.repository>
-    <java.version>25</java.version>
     <r2dbc.version>1.0.0.RELEASE</r2dbc.version>
     <r2dbc.pool.version>1.0.1.RELEASE</r2dbc.pool.version>
     <r2dbc.postgresql.version>1.0.2.RELEASE</r2dbc.postgresql.version>
