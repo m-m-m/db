@@ -8,30 +8,26 @@
     <version>31</version>
     <relativePath>../parent/pom.xml</relativePath>
   </parent>
-  <artifactId>mmm-orm-parent</artifactId>
+  <artifactId>mmm-db-parent</artifactId>
   <version>${revision}</version>
   <packaging>pom</packaging>
   <name>${project.artifactId}</name>
-  <description>Provides object/relational mapping (ORM) from mmm-entity-bean to various database technologies.</description>
+  <description>Provides database support and integration with mmm-entity-bean.</description>
 
   <properties>
     <mmm.repository>orm</mmm.repository>
-    <r2dbc.version>1.0.0.RELEASE</r2dbc.version>
-    <r2dbc.pool.version>1.0.1.RELEASE</r2dbc.pool.version>
-    <r2dbc.postgresql.version>1.0.2.RELEASE</r2dbc.postgresql.version>
-    <r2dbc.mariadb.version>1.1.4</r2dbc.mariadb.version>
-    <r2dbc.mssql.version>1.0.2.RELEASE</r2dbc.mssql.version>
-    <r2dbc.h2.version>1.0.0.RELEASE</r2dbc.h2.version>
-    <r2dbc.oracle.version>1.2.0</r2dbc.oracle.version>
   </properties>
 
   <modules>
     <module>core</module>
-    <module>spi</module>
+    <module>mapping</module>
+    <module>schema</module>
+    <module>schematest</module> <!-- TODO -->
+    <module>pool</module>
+    <module>orm</module>
     <module>test</module>
     <module>memory</module>
-    <module>jdbc</module>
-    <module>db</module>
+    <module>type</module>
   </modules>
 
   <dependencyManagement>
@@ -58,11 +54,6 @@
         <artifactId>h2</artifactId>
         <version>2.2.224</version>
       </dependency>
-      <dependency>
-        <groupId>com.oracle.database.r2dbc</groupId>
-        <artifactId>oracle-r2dbc</artifactId>
-        <version>${r2dbc.oracle.version}</version>
-      </dependency>
       <!-- Pools -->
       <dependency>
         <groupId>com.mchange</groupId>
@@ -82,137 +73,142 @@
       <!-- own modules -->
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm</artifactId>
+        <artifactId>mmm-db</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-spi</artifactId>
+        <artifactId>mmm-db-mapping</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-memory</artifactId>
+        <artifactId>mmm-db-schema</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-r2dbc</artifactId>
+        <artifactId>mmm-db-orm</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-jdbc</artifactId>
+        <artifactId>mmm-db-memory</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-jdbc-pool-c3po</artifactId>
+        <artifactId>mmm-db-jdbc</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-jdbc-pool-dbcp</artifactId>
+        <artifactId>mmm-db-pool-c3po</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-jdbc-pool-hikari</artifactId>
+        <artifactId>mmm-db-pool-dbcp</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-derby-dialect</artifactId>
+        <artifactId>mmm-db-pool-hikari</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-derby-jdbc</artifactId>
+        <artifactId>mmm-db-type-derby-dialect</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-h2-dialect</artifactId>
+        <artifactId>mmm-db-type-derby-jdbc</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-h2-jdbc</artifactId>
+        <artifactId>mmm-db-type-h2-dialect</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-hana-dialect</artifactId>
+        <artifactId>mmm-db-type-h2-jdbc</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-hana-jdbc</artifactId>
+        <artifactId>mmm-db-type-hana-dialect</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-mariadb-dialect</artifactId>
+        <artifactId>mmm-db-type-hana-jdbc</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-mariadb-jdbc</artifactId>
+        <artifactId>mmm-db-type-mariadb-dialect</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-mysql-dialect</artifactId>
+        <artifactId>mmm-db-type-mariadb-jdbc</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-mysql-jdbc</artifactId>
+        <artifactId>mmm-db-type-mysql-dialect</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-oracle-dialect</artifactId>
+        <artifactId>mmm-db-type-mysql-jdbc</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-oracle-jdbc</artifactId>
+        <artifactId>mmm-db-type-oracle-dialect</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-postgresql-dialect</artifactId>
+        <artifactId>mmm-db-type-oracle-jdbc</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-postgresql-jdbc</artifactId>
+        <artifactId>mmm-db-type-postgresql-dialect</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-sqlite-dialect</artifactId>
+        <artifactId>mmm-db-type-postgresql-jdbc</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-sqlite-jdbc</artifactId>
+        <artifactId>mmm-db-type-sqlite-dialect</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-sqlserver-dialect</artifactId>
+        <artifactId>mmm-db-type-sqlite-jdbc</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-db-sqlserver-jdbc</artifactId>
+        <artifactId>mmm-db-type-sqlserver-dialect</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-orm-test</artifactId>
+        <artifactId>mmm-db-type-sqlserver-jdbc</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>mmm-db-test</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>

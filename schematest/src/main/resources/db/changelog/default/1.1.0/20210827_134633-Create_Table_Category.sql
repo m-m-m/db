@@ -1,0 +1,5 @@
+CREATE TABLE Category(
+  Id INTEGER PRIMARY KEY,
+  Name TEXT NOT
+);
+CREATE UNIQUE INDEX UQ_Category ON Category(Name); 

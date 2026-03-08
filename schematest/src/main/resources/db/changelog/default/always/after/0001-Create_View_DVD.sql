@@ -1,0 +1,2 @@
+CREATE OR REPLACE VIEW DVD AS
+  SELECT * FROM Product WHERE Category = 2;

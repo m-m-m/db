@@ -4,13 +4,13 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.github.m-m-m</groupId>
-    <artifactId>mmm-orm-parent</artifactId>
+    <artifactId>mmm-db-parent</artifactId>
     <version>${revision}</version>
   </parent>
-  <artifactId>mmm-orm</artifactId>
+  <artifactId>mmm-db</artifactId>
   <packaging>jar</packaging>
   <name>${project.artifactId}</name>
-  <description>Object/relational mapping (ORM) support for mmm-entity-bean (database statements, dialects, repository, etc.).</description>
+  <description>Core database support.</description>
 
   <dependencies>
     <dependency>

@@ -6,13 +6,14 @@ import java.time.LocalDate;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import io.github.mmm.db.tx.DbTransaction;
+import io.github.mmm.db.tx.DbTransactionExecutor;
 import io.github.mmm.entity.id.Id;
 import io.github.mmm.entity.link.Link;
-import io.github.mmm.orm.tx.DbTransaction;
-import io.github.mmm.orm.tx.DbTransactionExecutor;
 
 /**
- * Test of H2 database support.
+ * Abstract test for JDBC database support. Database specific modules extend this class to test that basic features of
+ * the database are working properly.
  */
 public abstract class JdbcTest extends Assertions {
 
@@ -33,7 +34,7 @@ public abstract class JdbcTest extends Assertions {
 
   private DbTransaction doInTxInsertAndUpdatePerson(DbTransactionExecutor executor) throws SQLException {
 
-    DbTransaction tx = executor.getTransaction();
+    DbTransaction tx = DbTransaction.get();
     assertThat(tx.isOpen()).isTrue();
     Person person = Person.of();
     PersonRepository repository = new PersonRepository();
@@ -74,7 +75,7 @@ public abstract class JdbcTest extends Assertions {
 
   private DbTransaction doInTxInsertEntityWithRelation(DbTransactionExecutor executor) throws SQLException {
 
-    DbTransaction tx = executor.getTransaction();
+    DbTransaction tx = DbTransaction.get();
     assertThat(tx.isOpen()).isTrue();
     TaskListRepository listRepository = new TaskListRepository();
     listRepository.createTable();

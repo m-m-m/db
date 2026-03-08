@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.github.m-m-m</groupId>
+    <artifactId>mmm-db-parent</artifactId>
+    <version>${revision}</version>
+  </parent>
+  <artifactId>mmm-db-schematest</artifactId>
+  <packaging>jar</packaging>
+  <!-- Fix version to prevent deploying test module to maven central -->
+  <version>0.0-SNAPSHOT</version>
+  <name>${project.artifactId}</name>
+  <description>Test project of mmm-db-schema.</description>
+
+  <properties>
+    <maven.javadoc.skip>true</maven.javadoc.skip>
+    <maven.deploy.skip>true</maven.deploy.skip>
+    <maven.central.exclude.artifacts>${project.artifactId}</maven.central.exclude.artifacts>
+  </properties>
+
+  <dependencies> 
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>mmm-db-schema</artifactId>
+    </dependency>
+  </dependencies>
+</project>
