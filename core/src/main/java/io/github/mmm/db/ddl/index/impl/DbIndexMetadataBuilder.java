@@ -3,7 +3,6 @@
 package io.github.mmm.db.ddl.index.impl;
 
 import io.github.mmm.base.collection.ListBuilder;
-import io.github.mmm.base.container.ContainerMapBuilder;
 import io.github.mmm.base.lang.Builder;
 import io.github.mmm.db.ddl.column.DbColumnReferenceWithSortOrder;
 import io.github.mmm.db.ddl.index.DbIndexKindType;
@@ -62,7 +61,7 @@ public class DbIndexMetadataBuilder implements Builder<DbIndexMetadata> {
   }
 
   /**
-   * @return the {@link ContainerMapBuilder} for {@link DbIndexMetadata#getColumns()}.
+   * @return the {@link ListBuilder} for {@link DbIndexMetadata#getColumns()}.
    */
   public ListBuilder<DbColumnReferenceWithSortOrder> getColumnsBuilder() {
 

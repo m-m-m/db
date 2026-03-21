@@ -4,7 +4,6 @@ package io.github.mmm.db.ddl.table;
 
 import java.util.List;
 
-import io.github.mmm.base.container.ContainerMap;
 import io.github.mmm.db.ddl.column.DbColumn;
 import io.github.mmm.db.ddl.constraint.DbForeignKeyConstraint;
 import io.github.mmm.db.ddl.constraint.DbPrimaryKeyConstraint;
@@ -25,17 +24,17 @@ public interface DbTable extends DbTableData {
   DbPrimaryKeyConstraint getPrimaryKey();
 
   /**
-   * @return the {@link ContainerMap} with the {@link DbColumn columns} of this table.
+   * @return the {@link List} of {@link DbColumn columns} of this table.
    */
   List<DbColumn> getColumns();
 
   /**
-   * @return the {@link ContainerMap} with the {@link DbForeignKeyConstraint}s of this table.
+   * @return the {@link List} of {@link DbForeignKeyConstraint}s of this table.
    */
   List<DbForeignKeyConstraint> getForeignKeys();
 
   /**
-   * @return the {@link ContainerMap} with the {@link DbIndexMetadata indexes} of this table.
+   * @return the {@link List} of {@link DbIndexMetadata indexes} of this table.
    */
   List<DbIndexMetadata> getIndexes();
 

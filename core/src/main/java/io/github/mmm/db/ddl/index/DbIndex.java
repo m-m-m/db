@@ -4,7 +4,6 @@ package io.github.mmm.db.ddl.index;
 
 import java.util.List;
 
-import io.github.mmm.base.container.ContainerMap;
 import io.github.mmm.base.io.UncheckedAppendable;
 import io.github.mmm.db.ddl.column.DbColumnReferenceWithSortOrder;
 import io.github.mmm.db.ddl.table.DbTable;
@@ -24,8 +23,8 @@ public interface DbIndex extends DbIndexKind, DbObject {
   DbTableReference<EntityBean> getTable();
 
   /**
-   * @return the {@link ContainerMap} with the indexed {@link DbColumnReferenceWithSortOrder columns}. A simple index is
-   *         only indexing a single column. A composite index that indexes multiple columns.
+   * @return the {@link List} of indexed {@link DbColumnReferenceWithSortOrder columns}. A simple index is only indexing
+   *         a single column. A composite index that indexes multiple columns.
    */
   List<DbColumnReferenceWithSortOrder> getColumns();
 

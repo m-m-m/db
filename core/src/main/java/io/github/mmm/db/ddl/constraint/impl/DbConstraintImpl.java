@@ -5,7 +5,6 @@ package io.github.mmm.db.ddl.constraint.impl;
 import java.util.List;
 import java.util.Objects;
 
-import io.github.mmm.base.container.ContainerMap;
 import io.github.mmm.base.io.UncheckedAppendable;
 import io.github.mmm.base.lang.AbstractToString;
 import io.github.mmm.db.ddl.column.DbColumnReference;
@@ -96,9 +95,9 @@ public abstract class DbConstraintImpl extends AbstractToString implements DbCon
   }
 
   /**
-   * @return the {@link ContainerMap} with the {@link DbColumnReference}s to the target columns in the
-   *         {@link #getTargetTable() target table}. Typically the same as {@link #getSourceColumns()} but will differ
-   *         e.g. for {@link DbForeignKeyConstraint}.
+   * @return the {@link List} of {@link DbColumnReference}s to the target columns in the {@link #getTargetTable() target
+   *         table}. Typically the same as {@link #getSourceColumns()} but will differ e.g. for
+   *         {@link DbForeignKeyConstraint}.
    */
   @Override
   public List<DbColumnReference> getTargetColumns() {

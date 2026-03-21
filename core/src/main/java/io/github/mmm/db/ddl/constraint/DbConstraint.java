@@ -4,7 +4,6 @@ package io.github.mmm.db.ddl.constraint;
 
 import java.util.List;
 
-import io.github.mmm.base.container.ContainerMap;
 import io.github.mmm.base.io.UncheckedAppendable;
 import io.github.mmm.db.ddl.column.DbColumnReference;
 import io.github.mmm.db.ddl.constraint.state.DbConstraintState;
@@ -35,8 +34,7 @@ public interface DbConstraint extends DbObject {
   DbTableReference<?> getSourceTable();
 
   /**
-   * @return the {@link ContainerMap} with the {@link DbColumnReference}s to the source columns this constraint is
-   *         defined on.
+   * @return the {@link List} of {@link DbColumnReference}s to the source columns this constraint is defined on.
    */
   List<DbColumnReference> getSourceColumns();
 
@@ -48,9 +46,9 @@ public interface DbConstraint extends DbObject {
   DbTableReference<?> getTargetTable();
 
   /**
-   * @return the {@link ContainerMap} with the {@link DbColumnReference}s to the target columns in the
-   *         {@link #getTargetTable() target table}. Typically the same as {@link #getSourceColumns()} but will differ
-   *         e.g. for {@link DbForeignKeyConstraint}.
+   * @return the {@link List} of {@link DbColumnReference}s to the target columns in the {@link #getTargetTable() target
+   *         table}. Typically the same as {@link #getSourceColumns()} but will differ e.g. for
+   *         {@link DbForeignKeyConstraint}.
    */
   List<DbColumnReference> getTargetColumns();
 
