@@ -5,14 +5,14 @@
 /**
  * Provides in-memory implementation of entity repository.
  *
- * @see io.github.mmm.orm.memory.SequenceMemoryRepository
+ * @see io.github.mmm.db.memory.SequenceMemoryRepository
  */
-module io.github.mmm.orm.memory {
+module io.github.mmm.db.memory {
 
-  requires transitive io.github.mmm.orm;
+  requires transitive io.github.mmm.db.orm;
 
-  exports io.github.mmm.orm.memory;
+  exports io.github.mmm.db.memory.repository;
 
-  exports io.github.mmm.orm.memory.index;
+  exports io.github.mmm.db.memory.index;
 
 }

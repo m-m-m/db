@@ -8,7 +8,7 @@
  * @provides io.github.mmm.orm.tx.DbTransactionExecutorProvider
  * @provides io.github.mmm.orm.spi.access.DbAccessProvider
  */
-module io.github.mmm.orm.jdbc {
+module io.github.mmm.db.jdbc {
 
   requires transitive io.github.mmm.orm.spi;
 
@@ -16,14 +16,11 @@ module io.github.mmm.orm.jdbc {
 
   requires transitive java.naming;
 
-  provides io.github.mmm.orm.tx.DbTransactionExecutorProvider //
-      with io.github.mmm.orm.jdbc.tx.JdbcTransactionExecutorProvider;
-
   provides io.github.mmm.orm.spi.access.DbAccessProvider //
-      with io.github.mmm.orm.jdbc.access.JdbcAccessProvider;
+      with io.github.mmm.db.jdbc.access.JdbcAccessProvider;
 
-  exports io.github.mmm.orm.jdbc.access;
+  exports io.github.mmm.db.jdbc.access;
 
-  exports io.github.mmm.orm.jdbc.connection;
+  exports io.github.mmm.db.jdbc.connection;
 
 }

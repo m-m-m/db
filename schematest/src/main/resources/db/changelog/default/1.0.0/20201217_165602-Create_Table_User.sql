@@ -1,0 +1,9 @@
+CREATE TABLE User(
+  Id INTEGER PRIMARY KEY,
+  Login TEXT NOT NULL,
+  FirstName TEXT NOT NULL,
+  LastName TEXT NOT NULL,
+  Email TEXT  
+);
+
+CREATE UNIQUE INDEX UQ_User_Login ON User(Login); 

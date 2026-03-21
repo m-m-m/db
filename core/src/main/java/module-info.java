@@ -4,14 +4,16 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 /**
- * Provides database support for {@code mmm-entity-bean}.
+ * Provides core database support.
  *
- * @uses io.github.mmm.orm.dialect.DbDialect
- * @uses io.github.mmm.orm.repository.EntityRepository
- * @uses io.github.mmm.orm.tx.DbTransactionExecutorProvider
+ * @uses io.github.mmm.db.source.spi.DbSourceConfigurer
+ * @provides io.github.mmm.db.source.spi.DbSourceConfigurer
+ * @uses io.github.mmm.db.pool.DbConnectionPoolProvider
+ * @uses io.github.mmm.db.tx.spi.DbTransactionExecutorProvider
+ * @provides io.github.mmm.db.tx.spi.DbTransactionExecutorProvider
  */
 @SuppressWarnings("rawtypes") //
-module io.github.mmm.orm {
+module io.github.mmm.db {
 
   requires transitive io.github.mmm.entity.bean;
 
@@ -19,62 +21,48 @@ module io.github.mmm.orm {
 
   requires java.sql;
 
-  uses io.github.mmm.orm.dialect.DbDialect;
+  uses io.github.mmm.db.pool.DbConnectionPoolProvider;
 
-  uses io.github.mmm.orm.repository.EntityRepository;
+  uses io.github.mmm.db.tx.spi.DbTransactionExecutorProvider;
 
-  uses io.github.mmm.orm.tx.DbTransactionExecutorProvider;
+  provides io.github.mmm.db.tx.spi.DbTransactionExecutorProvider //
+      with io.github.mmm.db.tx.impl.JdbcTransactionExecutorProvider;
 
-  exports io.github.mmm.orm.criteria;
+  uses io.github.mmm.db.source.spi.DbSourceConfigurer;
 
-  exports io.github.mmm.orm.ddl;
+  provides io.github.mmm.db.source.spi.DbSourceConfigurer //
+      with io.github.mmm.db.source.impl.DbSourceConfigurerFallback;
 
-  exports io.github.mmm.orm.ddl.constraint;
+  exports io.github.mmm.db.pool;
 
-  exports io.github.mmm.orm.ddl.operation;
+  exports io.github.mmm.db.pool.spi;
 
-  exports io.github.mmm.orm.dialect;
+  exports io.github.mmm.db.ddl;
 
-  exports io.github.mmm.orm.listener;
+  exports io.github.mmm.db.ddl.column;
 
-  exports io.github.mmm.orm.mapping;
+  exports io.github.mmm.db.ddl.constraint;
 
-  exports io.github.mmm.orm.metadata;
+  exports io.github.mmm.db.ddl.constraint.state;
 
-  exports io.github.mmm.orm.metadata.impl to io.github.mmm.orm.jdbc;
+  exports io.github.mmm.db.ddl.index;
 
-  exports io.github.mmm.orm.naming;
+  exports io.github.mmm.db.ddl.table.operation;
 
-  exports io.github.mmm.orm.param;
+  exports io.github.mmm.db.ddl.table;
 
-  exports io.github.mmm.orm.repository;
+  exports io.github.mmm.db.name;
 
-  exports io.github.mmm.orm.repository.operation;
+  exports io.github.mmm.db.sequence;
 
-  exports io.github.mmm.orm.result;
+  exports io.github.mmm.db.source;
 
-  exports io.github.mmm.orm.source;
+  exports io.github.mmm.db.source.spi;
 
-  exports io.github.mmm.orm.statement;
+  exports io.github.mmm.db.tx;
 
-  exports io.github.mmm.orm.statement.create;
+  exports io.github.mmm.db.tx.spi;
 
-  exports io.github.mmm.orm.statement.delete;
-
-  exports io.github.mmm.orm.statement.insert;
-
-  exports io.github.mmm.orm.statement.merge;
-
-  exports io.github.mmm.orm.statement.select;
-
-  exports io.github.mmm.orm.statement.update;
-
-  exports io.github.mmm.orm.statement.upsert;
-
-  exports io.github.mmm.orm.tx;
-
-  exports io.github.mmm.orm.type;
-
-  exports io.github.mmm.orm.typemapping;
+  exports io.github.mmm.db.type;
 
 }

@@ -1,0 +1,1 @@
+ALTER TABLE Review ADD CONSTRAINT CK_Review_Stars CHECK (Stars >= 1 AND Stars <= 5);

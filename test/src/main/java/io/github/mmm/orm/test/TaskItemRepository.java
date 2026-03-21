@@ -2,10 +2,10 @@ package io.github.mmm.orm.test;
 
 import java.util.Objects;
 
+import io.github.mmm.db.spi.repository.AbstractDbRepository;
+import io.github.mmm.db.statement.DbStatement;
+import io.github.mmm.db.statement.select.SelectStatement;
 import io.github.mmm.entity.id.Id;
-import io.github.mmm.orm.spi.repository.AbstractDbRepository;
-import io.github.mmm.orm.statement.DbStatement;
-import io.github.mmm.orm.statement.select.SelectStatement;
 
 /**
  * {@link AbstractDbRepository Repository} for {@link TaskItem}.

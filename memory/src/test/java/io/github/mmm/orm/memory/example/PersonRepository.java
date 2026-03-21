@@ -2,7 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.orm.memory.example;
 
-import io.github.mmm.orm.repository.EntityRepository;
+import io.github.mmm.db.repository.EntityRepository;
 
 /**
  * {@link EntityRepository} for {@link Person}.

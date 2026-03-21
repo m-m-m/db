@@ -1,6 +1,6 @@
 package io.github.mmm.orm.test;
 
-import io.github.mmm.orm.spi.repository.AbstractDbRepository;
+import io.github.mmm.db.spi.repository.AbstractDbRepository;
 
 /**
  * {@link AbstractDbRepository Repository} for {@link Person}.

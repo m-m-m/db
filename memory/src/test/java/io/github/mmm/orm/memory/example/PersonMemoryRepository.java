@@ -5,10 +5,10 @@ package io.github.mmm.orm.memory.example;
 import java.util.Collection;
 import java.util.List;
 
-import io.github.mmm.orm.memory.SequenceMemoryRepository;
-import io.github.mmm.orm.memory.index.MemoryIndex;
-import io.github.mmm.orm.memory.index.MemoryNonUniqueIndex;
-import io.github.mmm.orm.memory.index.MemoryUniqueIndex;
+import io.github.mmm.db.memory.index.MemoryIndex;
+import io.github.mmm.db.memory.index.MemoryNonUniqueIndex;
+import io.github.mmm.db.memory.index.MemoryUniqueIndex;
+import io.github.mmm.db.memory.repository.SequenceMemoryRepository;
 
 /**
  * Implementation of {@link PersonRepository} using {@link SequenceMemoryRepository}.

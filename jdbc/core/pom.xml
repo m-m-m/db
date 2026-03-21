@@ -4,18 +4,18 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.github.m-m-m</groupId>
-    <artifactId>mmm-orm-jdbc-parent</artifactId>
+    <artifactId>mmm-db-jdbc-parent</artifactId>
     <version>${revision}</version>
   </parent>
-  <artifactId>mmm-orm-jdbc</artifactId>
+  <artifactId>mmm-db-jdbc</artifactId>
   <packaging>jar</packaging>
   <name>${project.artifactId}</name>
-  <description>JDBC support for mmm-orm.</description>
+  <description>JDBC support.</description>
 
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>mmm-orm-spi</artifactId>
+      <artifactId>mmm-db-spi</artifactId>
     </dependency>
   </dependencies>
 </project>

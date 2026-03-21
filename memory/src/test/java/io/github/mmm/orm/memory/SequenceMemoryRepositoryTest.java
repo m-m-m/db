@@ -6,6 +6,7 @@ import java.util.Locale;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import io.github.mmm.db.memory.repository.SequenceMemoryRepository;
 import io.github.mmm.entity.id.PkId;
 import io.github.mmm.orm.memory.example.Person;
 import io.github.mmm.orm.memory.example.PersonMemoryRepository;

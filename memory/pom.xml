@@ -4,10 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.github.m-m-m</groupId>
-    <artifactId>mmm-orm-parent</artifactId>
+    <artifactId>mmm-db-parent</artifactId>
     <version>${revision}</version>
   </parent>
-  <artifactId>mmm-orm-memory</artifactId>
+  <artifactId>mmm-db-memory</artifactId>
   <packaging>jar</packaging>
   <name>${project.artifactId}</name>
   <description>Repository support for entity beans.</description>
@@ -15,7 +15,7 @@
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>mmm-orm</artifactId>
+      <artifactId>mmm-db-orm</artifactId>
     </dependency>
   </dependencies>
 </project>

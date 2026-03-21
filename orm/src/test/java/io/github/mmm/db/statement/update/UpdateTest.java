@@ -1,0 +1,56 @@
+/* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0 */
+package io.github.mmm.db.statement.update;
+
+import org.junit.jupiter.api.Test;
+
+import io.github.mmm.db.statement.DbStatementTest;
+import io.github.mmm.db.statement.Person;
+import io.github.mmm.db.statement.Song;
+import io.github.mmm.entity.id.PkId;
+
+/**
+ * Test of {@link UpdateClause} and {@link UpdateStatement}.
+ */
+class UpdateTest extends DbStatementTest {
+
+  /** Test of {@link UpdateClause} for entire table. */
+  @Test
+  void testUpdateAll() {
+
+    // arrange
+    Person p = Person.of();
+    // act
+    UpdateStatement<Person> updateStatement = new UpdateClause<>(p).as("p").set(p.Single(), Boolean.TRUE).get();
+    // assert
+    check(updateStatement, "UPDATE Person p SET p.Single = TRUE", true);
+  }
+
+  /** Test of {@link UpdateClause} for with {@link UpdateWhere} clause. */
+  @Test
+  void testUpdateWhere() {
+
+    // arrange
+    Person p = Person.of();
+    // act
+    UpdateStatement<Person> updateStatement = new UpdateClause<>(p).as("p").set(p.Single(), Boolean.FALSE)
+        .where(p.Id().eq(PkId.of(Person.class, 4711L))).get();
+    // assert
+    check(updateStatement, "UPDATE Person p SET p.Single = FALSE WHERE p.Id = 4711", true);
+  }
+
+  /** Test of {@link UpdateClause} for with data from other entity. */
+  @Test
+  void testUpdateFromJoinTable() {
+
+    // arrange
+    Song s = Song.of();
+    Person p = Person.of();
+    // act
+    UpdateStatement<Song> updateStatement = new UpdateClause<>(s).as("s").and(p).as("p").set(s.Title(), p.Name())
+        .where(s.Composer().eq(p.Id())).get();
+    // assert
+    check(updateStatement, "UPDATE Song s, Person p SET s.Title = p.Name WHERE s.Composer = p.Id", true);
+  }
+
+}

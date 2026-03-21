@@ -1,0 +1,8 @@
+CREATE TABLE Review(
+  Id INTEGER PRIMARY KEY,
+  Product INTEGER NOT NULL,
+  Stars INTEGER(1) NOT NULL,
+  Comment TEXT,
+  CONSTRAINT FK_Review_Product FOREIGN KEY (Product) REFERENCES Product(Id),
+  CONSTRAINT FK_Review_User FOREIGN KEY (User) REFERENCES User(Id)
+);

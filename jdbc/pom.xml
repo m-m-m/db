@@ -4,16 +4,15 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.github.m-m-m</groupId>
-    <artifactId>mmm-orm-parent</artifactId>
+    <artifactId>mmm-db-parent</artifactId>
     <version>${revision}</version>
   </parent>
-  <artifactId>mmm-orm-jdbc-parent</artifactId>
+  <artifactId>mmm-db-jdbc-parent</artifactId>
   <packaging>pom</packaging>
   <name>${project.artifactId}</name>
-  <description>JDBC based ORM.</description>
+  <description>JDBC support.</description>
 
   <modules>
     <module>core</module>
-    <module>pool</module>
   </modules>
 </project>

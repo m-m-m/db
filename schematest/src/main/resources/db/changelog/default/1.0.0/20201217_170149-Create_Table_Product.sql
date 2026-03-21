@@ -1,0 +1,7 @@
+CREATE TABLE Product(
+  Id INTEGER PRIMARY KEY,
+  Title TEXT NOT NULL,
+  Details TEXT NOT NULL,
+  Price DECIMAL(10,2) NOT NULL,
+  Available BOOLEAN NOT NULL
+);

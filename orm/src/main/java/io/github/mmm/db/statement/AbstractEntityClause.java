@@ -1,0 +1,172 @@
+/* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0 */
+package io.github.mmm.db.statement;
+
+import java.util.Map;
+import java.util.Objects;
+
+import io.github.mmm.db.ddl.table.DbTableReference;
+import io.github.mmm.db.name.DbEntityNameMapper;
+import io.github.mmm.db.name.DbNamingStrategy;
+import io.github.mmm.db.name.DbQualifiedName;
+import io.github.mmm.entity.bean.EntityBean;
+
+/**
+ * A {@link AbstractEntityClause} is a {@link DbClause} of an SQL {@link DbStatement} that specifies the
+ * {@link #getEntity() entity} and/or {@link #getName() entity name} (table) to operate on.
+ *
+ * @param <R> type of the result. Only different from {@literal <E>} for complex selects.
+ * @param <E> type of the {@link #getEntity() entity}.
+ * @param <SELF> type of this class itself.
+ * @since 1.0.0
+ */
+public abstract class AbstractEntityClause<R, E extends EntityBean, SELF extends AbstractEntityClause<R, E, SELF>>
+    extends AbstractTypedClause<R, SELF> implements DbTableReference<E> {
+
+  /** Name of property {@link #getName()} for marshalling. */
+  public static final String NAME_ENTITY = "entity";
+
+  /** Name of property {@link #getAlias() alias} for marshaling. */
+  public static final String NAME_ALIAS = "as";
+
+  private final AliasMap aliasMap;
+
+  /** @see #getName() */
+  protected transient E entity;
+
+  private DbQualifiedName qualifiedName;
+
+  private String alias;
+
+  /**
+   * The constructor.
+   *
+   * @param aliasMap the {@link AliasMap}.
+   * @param entity the {@link #getEntity() entity} to operate on.
+   * @param entityName the {@link #getName() entity name}.
+   */
+  protected AbstractEntityClause(AliasMap aliasMap, E entity, String entityName) {
+
+    super();
+    Objects.requireNonNull(aliasMap);
+    this.aliasMap = aliasMap;
+    setEntityPlain(entity, entityName);
+  }
+
+  /**
+   * @return the {@link Map} to {@link Map#get(Object) map} from {@link #getAlias() alias} to {@link #getEntity()
+   *         entity}. A single {@link Map} instance is used per {@link DbStatement} to ensure unique {@link #getAlias()
+   *         aliases}.
+   */
+  protected AliasMap getAliasMap() {
+
+    return this.aliasMap;
+  }
+
+  @Override
+  public E getEntity() {
+
+    return this.entity;
+  }
+
+  void setEntity(E entity) {
+
+    setEntity(entity, null);
+  }
+
+  void setEntityPlain(E entity, String entityName) {
+
+    DbQualifiedName qName = null;
+    if (entityName != null) {
+      qName = new DbQualifiedName(entityName);
+    }
+    setEntity(entity, qName);
+  }
+
+  void setEntity(E entity, DbQualifiedName entityName) {
+
+    if (entityName != null) {
+      this.qualifiedName = entityName;
+    } else if ((entityName == null) && (entity != null)) {
+      this.qualifiedName = DbEntityNameMapper.get().getTable(entity).getQualifiedName();
+    }
+    this.entity = entity;
+  }
+
+  /**
+   * @param entityName new value of {@link #getName()}.
+   */
+  void setName(String entityName) {
+
+    setEntityPlain(null, entityName);
+  }
+
+  /**
+   * @return alias the alias (variable name) for the {@link EntityBean} to query. Will be created lazily if not
+   *         {@link #hasAlias() already created}.
+   * @see #as(String)
+   */
+  public String getAlias() {
+
+    if (this.alias == null) {
+      setAlias(this.aliasMap.createAlias(this));
+    }
+    return this.alias;
+  }
+
+  /**
+   * @return {@code true} if an {@link #getAlias() alias} has already been assigned or created, {@code false} otherwise.
+   */
+  public boolean hasAlias() {
+
+    return (this.alias != null);
+  }
+
+  @Override
+  public DbQualifiedName getQualifiedName(DbNamingStrategy namingStrategy) {
+
+    if (namingStrategy == null) {
+      return this.qualifiedName;
+    }
+    return namingStrategy.getTableName(this);
+  }
+
+  /**
+   * @param tableName new value of {@link #getQualifiedName()}.
+   */
+  public void setTableName(DbQualifiedName tableName) {
+
+    this.qualifiedName = tableName;
+  }
+
+  /**
+   * <b>ATTENTION:</b> Only define an explicit alias when explicitly required for uniqueness (e.g. joining the same
+   * table). E.g. sqlite database does not support aliases in UPDATE statements. Your statement may therefore not be
+   * portable if you add pointless aliases in such situations.
+   *
+   * @param entityAlias the alias (variable name) for the {@link EntityBean} to query.
+   * @return this {@link DbClause} itself for fluent API calls.
+   * @see #getAlias()
+   */
+  public SELF as(String entityAlias) {
+
+    setAlias(entityAlias);
+    return self();
+  }
+
+  private void setAlias(String entityAlias) {
+
+    if (this.alias != null) {
+      EntityBean old = this.aliasMap.remove(this.alias);
+      assert (old == this.entity);
+    }
+    this.alias = entityAlias;
+    if (entityAlias != null) {
+      this.aliasMap.put(entityAlias, this.entity);
+    }
+    if (this.entity != null) {
+      this.entity.pathSegment(entityAlias);
+    }
+  }
+
+}

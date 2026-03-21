@@ -4,10 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.github.m-m-m</groupId>
-    <artifactId>mmm-orm-parent</artifactId>
+    <artifactId>mmm-db-parent</artifactId>
     <version>${revision}</version>
   </parent>
-  <artifactId>mmm-orm-test</artifactId>
+  <artifactId>mmm-db-test</artifactId>
   <packaging>jar</packaging>
   <name>${project.artifactId}</name>
   <description>Reusable test-code for mmm-orm.</description>
@@ -15,7 +15,7 @@
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>mmm-orm-spi</artifactId>
+      <artifactId>mmm-db-orm</artifactId>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>

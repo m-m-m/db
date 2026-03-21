@@ -1,0 +1,1 @@
+DELETE FROM "schema_version" WHERE hash = '79054025255fb1a26e4bc422aef54eb4'; --remove broken script from history
