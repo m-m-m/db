@@ -5,8 +5,10 @@
 /**
  * Provides in-memory implementation of entity repository.
  *
- * @see io.github.mmm.db.memory.SequenceMemoryRepository
+ * @see io.github.mmm.db.memory.repository.SequenceMemoryRepository
+ * @provides io.github.mmm.db.repository.spi.EntityRepositoryFactory
  */
+@SuppressWarnings("rawtypes") //
 module io.github.mmm.db.memory {
 
   requires transitive io.github.mmm.db.orm;
@@ -14,5 +16,8 @@ module io.github.mmm.db.memory {
   exports io.github.mmm.db.memory.repository;
 
   exports io.github.mmm.db.memory.index;
+
+  provides io.github.mmm.db.repository.spi.EntityRepositoryFactory
+      with io.github.mmm.db.memory.repository.impl.MemoryRepositoryFactory;
 
 }

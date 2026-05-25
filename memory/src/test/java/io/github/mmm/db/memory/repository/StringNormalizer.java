@@ -1,4 +1,4 @@
-package io.github.mmm.orm.memory.example;
+package io.github.mmm.db.memory.repository;
 
 import java.util.HashMap;
 import java.util.Locale;

@@ -17,9 +17,11 @@ public interface DbUpdateAccess {
   long update(UpdateStatement<?> statement);
 
   /**
+   * @param <E> type of the {@link EntityBean}.
    * @param entity the {@link EntityBean} to update.
+   * @return the {@link EntityBean} that has been updated.
    */
-  void update(EntityBean entity);
+  <E extends EntityBean> E update(E entity);
 
   /**
    * @param entities the {@link EntityBean}s to update as batch operation.

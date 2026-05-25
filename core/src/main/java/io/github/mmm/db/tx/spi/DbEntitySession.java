@@ -15,7 +15,7 @@ import io.github.mmm.entity.id.Id;
  *
  * @since 1.0.0
  */
-public interface DbEntitySession<E extends EntityBean> {
+public interface DbEntitySession<E extends EntityBean> extends Iterable<DbEntityHolder<E>> {
 
   /**
    * @return the {@link Class} reflecting the managed {@link EntityBean}.
@@ -58,5 +58,12 @@ public interface DbEntitySession<E extends EntityBean> {
    * @return the {@link DbEntityHolder} created for the given {@link EntityBean}.
    */
   DbEntityHolder<E> put(E managedEntity, Id<E> id);
+
+  /**
+   * @param id the {@link Id} of the {@link EntityBean} to remove.
+   * @return the {@link DbEntityHolder} that has just been removed or {@code null} if no entity available for the given
+   *         {@link Id}.
+   */
+  DbEntityHolder<E> remove(Id<E> id);
 
 }

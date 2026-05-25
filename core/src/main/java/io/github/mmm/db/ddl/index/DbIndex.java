@@ -20,7 +20,7 @@ public interface DbIndex extends DbIndexKind, DbObject {
   /**
    * @return the {@link DbTableReference table reference}.
    */
-  DbTableReference<EntityBean> getTable();
+  DbTableReference<? extends EntityBean> getTable();
 
   /**
    * @return the {@link List} of indexed {@link DbColumnReferenceWithSortOrder columns}. A simple index is only indexing

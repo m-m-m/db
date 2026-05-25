@@ -4,7 +4,6 @@ package io.github.mmm.db.repository.operation;
 
 import io.github.mmm.db.repository.EntityRepository;
 import io.github.mmm.entity.bean.EntityBean;
-import io.github.mmm.entity.id.Id;
 
 /**
  * Interface for the save operations of an {@link EntityRepository}.
@@ -16,9 +15,10 @@ public interface EntitySaveOperations<E extends EntityBean> {
 
   /**
    * @param entity the {@link EntityBean} to save. If transient, it will be inserted, otherwise it will be updated.
-   * @return the new or updated {@link Id} of the saved {@link EntityBean}.
+   * @return the saved {@link EntityBean} that has been inserted or updated. This will be a different instance than the
+   *         one provided as argument.
    */
-  Id<E> save(E entity);
+  E save(E entity);
 
   /**
    * @param entities the array of {@link EntityBean entities} to {@link #save(EntityBean) save}.

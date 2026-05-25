@@ -63,7 +63,7 @@ public class DbIndexImpl extends AbstractToString implements DbIndex {
   }
 
   @Override
-  public DbTableReference<EntityBean> getTable() {
+  public DbTableReference<? extends EntityBean> getTable() {
 
     return this.table;
   }

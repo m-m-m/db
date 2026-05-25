@@ -12,6 +12,7 @@ import java.util.function.Function;
 import io.github.mmm.db.memory.repository.MemoryRepository;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.entity.id.Id;
+import io.github.mmm.property.ReadableProperty;
 
 /**
  * Simple in-memory unique index for {@link MemoryRepository}. Will store {@link EntityBean}s using a unique key (e.g. a
@@ -27,25 +28,34 @@ public class MemoryNonUniqueIndex<K, E extends EntityBean> extends MemoryIndex<K
   /**
    * The constructor.
    *
+   * @param name the {@link #getName() name} of this index.
    * @param repository the owning {@link MemoryRepository}.
-   * @param properties the {@link #getProperty(int) property names} to index.
+   * @param properties the {@link ReadableProperty properties} to index also known as {@link #getColumns() columns}.
    */
-  public MemoryNonUniqueIndex(MemoryRepository<E> repository, String... properties) {
+  public MemoryNonUniqueIndex(String name, MemoryRepository<E> repository, ReadableProperty<?>... properties) {
 
-    this(repository, Function.identity(), properties);
+    this(name, repository, Function.identity(), properties);
   }
 
   /**
    * The constructor.
    *
+   * @param name the {@link #getName() name} of this index.
    * @param repository the owning {@link MemoryRepository}.
    * @param normalizer the {@link #getNormalizer() normalizer}.
-   * @param properties the {@link #getProperty(int) property names} to index.
+   * @param properties the {@link ReadableProperty properties} to index also known as {@link #getColumns() columns}.
    */
-  public MemoryNonUniqueIndex(MemoryRepository<E> repository, Function<K, K> normalizer, String... properties) {
+  public MemoryNonUniqueIndex(String name, MemoryRepository<E> repository, Function<K, K> normalizer,
+      ReadableProperty<?>... properties) {
 
-    super(repository, normalizer, properties);
+    super(name, repository, normalizer, properties);
     this.map = new HashMap<>(256);
+  }
+
+  @Override
+  public boolean isUnique() {
+
+    return false;
   }
 
   @Override
@@ -54,7 +64,7 @@ public class MemoryNonUniqueIndex<K, E extends EntityBean> extends MemoryIndex<K
     if (key == null) {
       return;
     }
-    Set<Id<E>> set = this.map.computeIfAbsent(key, k -> new HashSet<>());
+    Set<Id<E>> set = this.map.computeIfAbsent(key, _ -> new HashSet<>());
     set.add(Id.from(entity).withoutRevision());
   }
 

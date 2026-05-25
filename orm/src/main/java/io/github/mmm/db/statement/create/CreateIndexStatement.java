@@ -15,8 +15,8 @@ import io.github.mmm.db.statement.AbstractDbClause;
 import io.github.mmm.db.statement.AbstractEntityClause;
 import io.github.mmm.db.statement.AliasMap;
 import io.github.mmm.db.statement.DbClause;
-import io.github.mmm.db.statement.DbStatementType;
 import io.github.mmm.db.statement.DbStartClause;
+import io.github.mmm.db.statement.DbStatementType;
 import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
 import io.github.mmm.entity.bean.EntityBean;
 
@@ -147,11 +147,10 @@ public class CreateIndexStatement<E extends EntityBean> extends CreateStatement<
       return namingStrategy.getIndexName(this);
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
-    public DbTableReference<EntityBean> getTable() {
+    public DbTableReference<? extends EntityBean> getTable() {
 
-      return (DbTableReference) CreateIndexStatement.this.on;
+      return CreateIndexStatement.this.on;
     }
 
     @Override

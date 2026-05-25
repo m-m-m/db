@@ -4,6 +4,7 @@ package io.github.mmm.db.type.sqlite.dialect;
 
 import io.github.mmm.db.dialect.DbContext;
 import io.github.mmm.db.dialect.DbDialectStatementFormatter;
+import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.db.param.CriteriaParametersFactory;
 import io.github.mmm.db.statement.AbstractEntityClause;
 import io.github.mmm.db.statement.SetClause;
@@ -17,6 +18,14 @@ import io.github.mmm.db.statement.update.UpdateClause;
  * @since 1.0.0
  */
 public class SqliteFormatter extends DbDialectStatementFormatter {
+
+  private static final String TABLE_SEQUENCE = "SEQUENCE_TABLE";
+
+  private static final String COLUMN_NAME = "NAME";
+
+  private static final String COLUMN_NEXT_VALUE = "NEXT_VALUE";
+
+  private static final String COLUMN_INCREMENT_VALUE = "INCREMENT_VALUE";
 
   /**
    * The constructor.
@@ -67,41 +76,90 @@ public class SqliteFormatter extends DbDialectStatementFormatter {
   protected void formatCreateSequenceClause(CreateSequenceClause seq, DbContext context) {
 
     writeIndent();
-    write("INSERT INTO ");
-    formatQualifiedName(seq.getSequenceName());
-    write(" (ID, NEXT_VALUE, INCREMENT_VALUE) VALUES (1, ");
+    write(DbKeyword.INSERT_INTO);
+    write(" ");
+    write(TABLE_SEQUENCE);
+    write(" (");
+    write(COLUMN_NAME);
+    write(", ");
+    write(COLUMN_NEXT_VALUE);
+    write(", ");
+    write(COLUMN_INCREMENT_VALUE);
+    write(") ");
+    write(DbKeyword.VALUES);
+    write(" ('");
+    write(seq.getSequenceName());
+    write("', ");
     write(seq.getStartWith().toString());
     write(", ");
     write(seq.getIncrementBy().toString());
     write(")");
+    write("\n  ");
+    write(DbKeyword.ON_CONFLICT_DO_NOTHING);
 
     newStatement();
 
     writeIndent();
-    write("CREATE TABLE ");
-    formatQualifiedName(seq.getSequenceName());
-    write("""
-        (
-          ID INTEGER PRIMARY KEY,
-          NEXT_VALUE INTEGER NOT NULL,
-          INCREMENT_VALUE INTEGER NOT NULL
-        )""");
+    write(DbKeyword.CREATE_TABLE);
+    write(" ");
+    write(DbKeyword.IF_NOT_EXISTS);
+    write(" ");
+    write(TABLE_SEQUENCE);
+    write(" (\n  ");
+    write(COLUMN_NAME);
+    write(" TEXT ");
+    write(DbKeyword.PRIMARY_KEY);
+    write(",\n  ");
+    write(COLUMN_NEXT_VALUE);
+    write(" INTEGER ");
+    write(DbKeyword.NOT_NULL);
+    write(",\n  ");
+    write(COLUMN_INCREMENT_VALUE);
+    write(" INTEGER ");
+    write(DbKeyword.NOT_NULL);
+    write("\n)");
   }
 
   @Override
   protected void formatSelectSeqNextVal(SelectSequenceNextValueClause seq) {
 
     writeIndent();
-    write("UPDATE ");
-    formatQualifiedName(seq.getSequenceName());
-    write(" SET NEXT_VALUE = NEXT_VALUE + INCREMENT_VALUE WHERE ID = 1");
+    write(DbKeyword.UPDATE);
+    write(" ");
+    write(TABLE_SEQUENCE);
+    write(" ");
+    write(DbKeyword.SET);
+    write(" ");
+    write(COLUMN_NEXT_VALUE);
+    write(" = ");
+    write(COLUMN_NEXT_VALUE);
+    write(" + ");
+    write(COLUMN_INCREMENT_VALUE);
+    write(" ");
+    write(DbKeyword.WHERE);
+    write(" ");
+    write(COLUMN_NAME);
+    write(" = '");
+    write(seq.getSequenceName().getName());
+    write("'");
 
     newStatement();
 
     writeIndent();
-    write("SELECT NEXT_VALUE FROM ");
-    formatQualifiedName(seq.getSequenceName());
-    write(" WHERE ID = 1");
+    write(DbKeyword.SELECT);
+    write(" ");
+    write(COLUMN_NEXT_VALUE);
+    write(" ");
+    write(DbKeyword.FROM);
+    write(" ");
+    write(TABLE_SEQUENCE);
+    write(" ");
+    write(DbKeyword.WHERE);
+    write(" ");
+    write(COLUMN_NAME);
+    write(" = '");
+    write(seq.getSequenceName());
+    write("'");
   }
 
 }

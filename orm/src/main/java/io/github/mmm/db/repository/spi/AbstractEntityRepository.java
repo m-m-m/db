@@ -1,8 +1,9 @@
 /* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0 */
-package io.github.mmm.db.repository;
+package io.github.mmm.db.repository.spi;
 
 import io.github.mmm.bean.ReadableBean;
+import io.github.mmm.db.repository.EntityRepository;
 import io.github.mmm.entity.Entity;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.entity.bean.listener.EntityListener;
@@ -40,6 +41,13 @@ public abstract class AbstractEntityRepository<E extends EntityBean> implements 
   }
 
   /**
+   * Initialises this repository.
+   */
+  public void init() {
+
+  }
+
+  /**
    * @return the {@link IdGenerator} to use.
    */
   protected abstract IdGenerator getIdGenerator();
@@ -49,6 +57,7 @@ public abstract class AbstractEntityRepository<E extends EntityBean> implements 
    *         internal method of the implementation that should only be used by framework code. Mutations on the
    *         prototype by callers of this method are strictly forbidden and will lead to severe bugs.
    */
+  @Override
   public E getPrototype() {
 
     return this.prototype;
@@ -93,35 +102,35 @@ public abstract class AbstractEntityRepository<E extends EntityBean> implements 
   protected abstract E doFindById(Id<E> id);
 
   @Override
-  public final Id<E> save(E entity) {
+  public final E save(E entity) {
 
     Id<E> id = Id.from(entity);
     if (id.isTransient()) {
       id = getIdGenerator().generate(id);
       entity.setId(id);
       this.listenerAdapter.preInsert(entity);
-      doInsert(entity);
+      return doInsert(entity);
     } else {
       this.listenerAdapter.preUpdate(entity);
-      doUpdate(entity);
-      id = Id.from(entity);
+      return doUpdate(entity);
     }
-    return id;
   }
 
   /**
    * Internal method for the raw insert of an {@link EntityBean} to the underlying store.
    *
    * @param entity the {@link EntityBean} to insert.
+   * @return the saved {@link EntityBean} that has been inserted.
    */
-  protected abstract void doInsert(E entity);
+  protected abstract E doInsert(E entity);
 
   /**
    * Internal method for the raw update of an {@link EntityBean} in the underlying store.
    *
    * @param entity the {@link EntityBean} to update.
+   * @return the saved {@link EntityBean} that has been updated.
    */
-  protected abstract void doUpdate(E entity);
+  protected abstract E doUpdate(E entity);
 
   @Override
   public final boolean deleteById(Id<E> id) {

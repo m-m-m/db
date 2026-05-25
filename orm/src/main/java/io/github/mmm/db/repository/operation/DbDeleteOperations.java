@@ -7,7 +7,7 @@ import io.github.mmm.db.statement.select.SelectStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
 /**
- * Extends {@link EntityFindOperations} with operations for {@link SelectStatement}s.
+ * Extends {@link EntityDeleteOperations} with operations for {@link SelectStatement}s.
  *
  * @param <E> type of the managed {@link EntityBean}.
  * @since 1.0.0

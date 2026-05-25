@@ -4,21 +4,36 @@ package io.github.mmm.db.memory.index;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
 
+import io.github.mmm.base.lang.AbstractToString;
+import io.github.mmm.bean.ReadableBean;
+import io.github.mmm.db.ddl.column.DbColumnReference;
+import io.github.mmm.db.ddl.column.DbColumnReferenceWithSortOrder;
+import io.github.mmm.db.ddl.index.DbIndex;
+import io.github.mmm.db.ddl.index.DbIndexType;
+import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.db.memory.repository.MemoryRepository;
+import io.github.mmm.db.memory.repository.impl.MemoryRepositoryImpl;
+import io.github.mmm.db.name.DbNamingStrategy;
 import io.github.mmm.entity.bean.EntityBean;
+import io.github.mmm.property.ReadableProperty;
 
 /**
- * Simple in-memory index for {@link MemoryRepository}. Will store {@link EntityBean}s using a key (e.g. a "title" or
- * "name" column if unique). Will ignore {@code null} values as keys.
+ * Simple in-memory index for {@link MemoryRepositoryImpl}. Will store {@link EntityBean}s using a key (e.g. a "title"
+ * or "name" column if unique). Will ignore {@code null} values as keys.
  *
  * @param <K> type of the index key (e.g. {@link String}).
  * @param <E> type of the {@link EntityBean}.
  */
-public abstract class MemoryIndex<K, E extends EntityBean> {
+public abstract class MemoryIndex<K, E extends EntityBean> extends AbstractToString implements DbIndex {
+
+  private final String name;
+
+  private final DbTableReference<E> table;
 
   /** The {@link MemoryRepository}. */
   protected final MemoryRepository<E> repository;
@@ -26,33 +41,69 @@ public abstract class MemoryIndex<K, E extends EntityBean> {
   /** @see #getNormalizer() */
   protected final Function<K, K> normalizer;
 
-  private final String[] properties;
+  private final List<DbColumnReferenceWithSortOrder> columns;
 
   /**
    * The constructor.
    *
-   * @param repository the owning {@link MemoryRepository}.
-   */
-  public MemoryIndex(MemoryRepository<E> repository) {
-
-    this(repository, Function.identity());
-  }
-
-  /**
-   * The constructor.
-   *
-   * @param repository the owning {@link MemoryRepository}.
+   * @param name the {@link #getName() name} of this index.
+   * @param repository the owning {@link MemoryRepositoryImpl}.
    * @param normalizer the {@link #getNormalizer() normalizer}.
-   * @param properties the {@link #getProperty(int) property names} to index.
+   * @param properties the {@link ReadableProperty properties} to index also known as {@link #getColumns() columns}.
    */
-  public MemoryIndex(MemoryRepository<E> repository, Function<K, K> normalizer, String... properties) {
+  public MemoryIndex(String name, MemoryRepository<E> repository, Function<K, K> normalizer,
+      ReadableProperty<?>... properties) {
 
     super();
-    this.repository = repository;
-    this.normalizer = normalizer;
-    this.properties = properties;
     assert (properties != null);
     assert (properties.length > 0);
+    this.repository = repository;
+    this.normalizer = normalizer;
+
+    DbColumnReferenceWithSortOrder[] cols = new DbColumnReferenceWithSortOrder[properties.length];
+    for (int i = 0; i < properties.length; i++) {
+      DbColumnReference columnRef = DbColumnReference.of(properties[i]);
+      cols[i] = DbColumnReferenceWithSortOrder.of(columnRef);
+    }
+    this.columns = List.of(cols);
+
+    this.name = name;
+    E entity = ReadableBean.from(properties[0]);
+    assert (entity != null);
+    this.table = DbTableReference.of(entity);
+  }
+
+  @Override
+  public String getName(DbNamingStrategy namingStrategy) {
+
+    if (namingStrategy == null) {
+      return this.name;
+    }
+    return namingStrategy.getIndexName(this);
+  }
+
+  @Override
+  public DbTableReference<E> getTable() {
+
+    return this.table;
+  }
+
+  @Override
+  public DbIndexType getType() {
+
+    return DbIndexType.HASH;
+  }
+
+  @Override
+  public boolean isClustered() {
+
+    return false;
+  }
+
+  @Override
+  public List<DbColumnReferenceWithSortOrder> getColumns() {
+
+    return this.columns;
   }
 
   /**
@@ -66,26 +117,27 @@ public abstract class MemoryIndex<K, E extends EntityBean> {
     return this.normalizer;
   }
 
-  /**
-   * @return the number of properties to index.
-   */
-  public int getPropertyCount() {
-
-    return this.properties.length;
-  }
-
-  /**
-   * @param i the index of the property in the range from {@code 0} to <code>{@link #getPropertyCount()}-1</code>.
-   * @return the {@link io.github.mmm.property.WritableProperty#getName() property name} of the property to index or
-   *         {@code null} if the given index is out of range.
-   */
-  public String getProperty(int i) {
-
-    if ((i < 0) || (i >= this.properties.length)) {
-      return null;
-    }
-    return this.properties[i];
-  }
+  //
+  // /**
+  // * @return the number of properties to index.
+  // */
+  // public int getPropertyCount() {
+  //
+  // return this.properties.length;
+  // }
+  //
+  // /**
+  // * @param i the index of the property in the range from {@code 0} to <code>{@link #getPropertyCount()}-1</code>.
+  // * @return the {@link io.github.mmm.property.WritableProperty#getName() property name} of the property to index or
+  // * {@code null} if the given index is out of range.
+  // */
+  // public String getProperty(int i) {
+  //
+  // if ((i < 0) || (i >= this.properties.length)) {
+  // return null;
+  // }
+  // return this.properties[i];
+  // }
 
   /**
    * @param key the key to add to this index.

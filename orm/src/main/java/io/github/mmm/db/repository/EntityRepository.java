@@ -17,4 +17,11 @@ import io.github.mmm.entity.bean.EntityBean;
 public interface EntityRepository<E extends EntityBean>
     extends EntityFindOperations<E>, EntitySaveOperations<E>, EntityDeleteOperations<E> {
 
+  /**
+   * @return an instance of the managed {@link EntityBean entity} to be used as template. Please note that this is an
+   *         internal method of the implementation that should only be used by default methods within the repository
+   *         interface or by framework code.
+   */
+  E getPrototype();
+
 }

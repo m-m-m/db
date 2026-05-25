@@ -6,29 +6,39 @@
  * Provides database support for {@code mmm-entity-bean}.
  *
  * @uses io.github.mmm.db.dialect.DbDialect
- * @uses io.github.mmm.db.repository.EntityRepository
+ * @uses io.github.mmm.db.repository.spi.EntityRepositoryFactory
  * @uses io.github.mmm.db.spi.access.DbAccessProvider
  * @provides io.github.mmm.db.source.spi.DbSourceConfigurer
  * @provides io.github.mmm.db.spi.access.DbAccessProvider
+ * @provides io.github.mmm.base.resource.ResourceScannerService
+ * @provides io.github.mmm.db.repository.spi.EntityRepositoryFactory
  */
 @SuppressWarnings("rawtypes") //
 module io.github.mmm.db.orm {
 
   requires transitive io.github.mmm.db.mapping;
 
+  requires io.github.mmm.base.resource;
+
   requires java.sql;
 
   uses io.github.mmm.db.dialect.DbDialect;
 
-  uses io.github.mmm.db.repository.EntityRepository;
-
   uses io.github.mmm.db.spi.access.DbAccessProvider;
+
+  uses io.github.mmm.db.repository.spi.EntityRepositoryFactory;
 
   provides io.github.mmm.db.source.spi.DbSourceConfigurer //
       with io.github.mmm.db.orm.impl.OrmDbSourceConfigurer;
 
   provides io.github.mmm.db.spi.access.DbAccessProvider //
       with io.github.mmm.db.spi.access.impl.JdbcAccessProvider;
+
+  provides io.github.mmm.base.resource.ResourceScannerService //
+      with io.github.mmm.db.repository.impl.EntityRepositoryScanner;
+
+  provides io.github.mmm.db.repository.spi.EntityRepositoryFactory
+      with io.github.mmm.db.repository.impl.DbRepositoryFactory;
 
   exports io.github.mmm.db.dialect;
 
@@ -38,9 +48,9 @@ module io.github.mmm.db.orm {
 
   exports io.github.mmm.db.repository.operation;
 
-  exports io.github.mmm.db.spi.access;
+  exports io.github.mmm.db.repository.spi;
 
-  exports io.github.mmm.db.spi.repository;
+  exports io.github.mmm.db.spi.access;
 
   exports io.github.mmm.db.statement;
 

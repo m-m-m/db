@@ -19,9 +19,11 @@ public interface DbInsertAccess {
   long insert(InsertStatement<?> statement);
 
   /**
+   * @param <E> type of the {@link EntityBean}.
    * @param entity the {@link EntityBean} to insert.
+   * @return the {@link EntityBean} that has been inserted.
    */
-  void insert(EntityBean entity);
+  <E extends EntityBean> E insert(E entity);
 
   /**
    * @param entities the {@link EntityBean}s to insert as batch operation.

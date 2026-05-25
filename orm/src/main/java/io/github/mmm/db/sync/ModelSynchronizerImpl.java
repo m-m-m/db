@@ -8,11 +8,11 @@ import io.github.mmm.db.ddl.table.DbTable;
 import io.github.mmm.db.dialect.DbDialect;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.db.repository.EntityRepository;
+import io.github.mmm.db.repository.EntityRepositoryManager;
+import io.github.mmm.db.repository.impl.DbRepositoryImpl;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.DbSourceConfig;
 import io.github.mmm.db.spi.access.DbAccess;
-import io.github.mmm.db.spi.repository.AbstractDbRepository;
-import io.github.mmm.db.spi.repository.EntityRepositoryManager;
 import io.github.mmm.db.tx.DbTransaction;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.WritableProperty;
@@ -33,9 +33,9 @@ public class ModelSynchronizerImpl implements ModelSynchronizer {
 
     EntityRepositoryManager erm = EntityRepositoryManager.get();
     for (EntityRepository<?> repository : erm) {
-      if (repository instanceof AbstractDbRepository<?> aer) {
-        DbSource source = aer.getSource();
-        EntityBean entity = aer.getPrototype();
+      if (repository instanceof DbRepositoryImpl<?> dbRepository) {
+        DbSource source = dbRepository.getSource();
+        EntityBean entity = dbRepository.getPrototype();
         sync(entity);
       }
     }

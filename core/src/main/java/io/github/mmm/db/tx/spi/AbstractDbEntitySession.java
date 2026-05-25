@@ -2,6 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.tx.spi;
 
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
@@ -63,27 +64,39 @@ public abstract class AbstractDbEntitySession<E extends EntityBean> implements D
   }
 
   @Override
-  public DbEntityHolder<E> put(E managedEntity, Id<E> id) {
+  public DbEntityHolder<E> put(E internal, Id<E> id) {
 
-    Objects.requireNonNull(managedEntity);
+    Objects.requireNonNull(internal);
     Objects.requireNonNull(id);
     Object pk = id.getPk();
     if (pk == null) {
       throw new IllegalArgumentException("Missing primary key for given ID " + id);
     }
-    DbEntityHolder<E> holder = createHolder(managedEntity);
+    DbEntityHolder<E> holder = createHolder(internal);
     DbEntityHolder<E> duplicate = this.entityMap.putIfAbsent(pk, holder);
     if (duplicate != null) {
-      throw new DuplicateObjectException(managedEntity, id, duplicate); // should never happen
+      throw new DuplicateObjectException(internal, id, duplicate); // should never happen
     }
     return holder;
   }
 
+  @Override
+  public DbEntityHolder<E> remove(Id<E> id) {
+
+    return this.entityMap.remove(id);
+  }
+
+  @Override
+  public Iterator<DbEntityHolder<E>> iterator() {
+
+    return this.entityMap.values().iterator();
+  }
+
   /**
-   * @param managed the {@link DbEntityHolder#getInternal() managed entity}.
+   * @param internal the {@link DbEntityHolder#getInternal() managed entity}.
    * @return the new {@link DbEntityHolder} instance.
    */
-  protected abstract DbEntityHolder<E> createHolder(E managed);
+  protected abstract DbEntityHolder<E> createHolder(E internal);
 
   /**
    * Closes this session and releases allocated resources.

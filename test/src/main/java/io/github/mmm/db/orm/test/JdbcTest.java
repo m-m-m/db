@@ -1,4 +1,4 @@
-package io.github.mmm.orm.test;
+package io.github.mmm.db.orm.test;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import io.github.mmm.db.repository.EntityRepositoryManager;
 import io.github.mmm.db.tx.DbTransaction;
 import io.github.mmm.db.tx.DbTransactionExecutor;
 import io.github.mmm.entity.id.Id;
@@ -37,7 +38,7 @@ public abstract class JdbcTest extends Assertions {
     DbTransaction tx = DbTransaction.get();
     assertThat(tx.isOpen()).isTrue();
     Person person = Person.of();
-    PersonRepository repository = new PersonRepository();
+    PersonRepository repository = EntityRepositoryManager.get().get(PersonRepository.class);
     repository.createTable();
     repository.createSequence();
     person.Name().set("John Doe");
@@ -77,11 +78,12 @@ public abstract class JdbcTest extends Assertions {
 
     DbTransaction tx = DbTransaction.get();
     assertThat(tx.isOpen()).isTrue();
-    TaskListRepository listRepository = new TaskListRepository();
+    TaskListRepository listRepository = EntityRepositoryManager.get().get(TaskListRepository.class);
     listRepository.createTable();
     listRepository.createSequence();
-    TaskItemRepository itemRepository = new TaskItemRepository();
+    TaskItemRepository itemRepository = EntityRepositoryManager.get().get(TaskItemRepository.class);
     itemRepository.createTable();
+    itemRepository.createSequence();
     TaskList taskList = TaskList.of();
     taskList.Name().set("Shopping");
     listRepository.save(taskList);

@@ -1,4 +1,4 @@
-package io.github.mmm.orm.memory;
+package io.github.mmm.db.memory.repository;
 
 import java.nio.file.Path;
 import java.util.Locale;
@@ -6,14 +6,12 @@ import java.util.Locale;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import io.github.mmm.db.memory.repository.SequenceMemoryRepository;
+import io.github.mmm.db.memory.repository.MemoryRepository;
+import io.github.mmm.db.repository.EntityRepositoryManager;
 import io.github.mmm.entity.id.PkId;
-import io.github.mmm.orm.memory.example.Person;
-import io.github.mmm.orm.memory.example.PersonMemoryRepository;
 
 /**
- * Test of {@link SequenceMemoryRepository} with all its features using {@link PersonMemoryRepository} as example
- * implementation.
+ * Test of {@link MemoryRepository} with all its features using {@link PersonMemoryRepository} as example.
  */
 class SequenceMemoryRepositoryTest extends Assertions {
 
@@ -22,7 +20,7 @@ class SequenceMemoryRepositoryTest extends Assertions {
   @Test
   void testAll() {
 
-    this.repo = new PersonMemoryRepository();
+    this.repo = EntityRepositoryManager.get().get(PersonMemoryRepository.class);
     this.repo.read(Path.of("src/test/resources/persons.json"));
     Person peter = verifyPeterPan(null);
     Person tinker = verifyTinkerBell(null);

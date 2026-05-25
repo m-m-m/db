@@ -62,19 +62,20 @@ public class JdbcAccessImpl extends AbstractDbAccess {
   }
 
   @Override
-  public void insert(EntityBean entity) {
+  public <E extends EntityBean> E insert(E entity) {
 
-    doInsert(entity);
+    return doInsert(entity);
   }
 
-  private <E extends EntityBean> void doInsert(E entity) {
+  private <E extends EntityBean> E doInsert(E entity) {
 
     InsertStatement<E> insert = new InsertClause().into(entity).valuesAll().get();
     long rowCount = insert(insert);
     assert (rowCount == 1);
     E managed = ReadableBean.copy(entity);
     DbEntitySession<E> entitySession = getEntitySession(entity);
-    entitySession.put(managed);
+    DbEntityHolder<E> entityHolder = entitySession.put(managed);
+    return entityHolder.getExternal();
   }
 
   @Override
@@ -93,12 +94,12 @@ public class JdbcAccessImpl extends AbstractDbAccess {
   }
 
   @Override
-  public void update(EntityBean entity) {
+  public <E extends EntityBean> E update(E entity) {
 
-    doUpdate(entity);
+    return doUpdate(entity);
   }
 
-  private <E extends EntityBean> void doUpdate(E entity) {
+  private <E extends EntityBean> E doUpdate(E entity) {
 
     PkProperty pk = entity.Id();
     Id<E> id = Id.from(entity);
@@ -143,7 +144,7 @@ public class JdbcAccessImpl extends AbstractDbAccess {
     }
     if (set == null) {
       LOG.debug("Omitting update of {} with ID {} because nothing has changed.", entity.getType().getStableName(), id);
-      return;
+      return holder.getExternal();
     }
     UpdateStatement<EntityBean> update = set.where(pk.eq(id))
         .and(CriteriaPredicate.of(rev, PredicateOperator.EQ, id.getRevision())).get();
@@ -154,6 +155,7 @@ public class JdbcAccessImpl extends AbstractDbAccess {
     assert (updateCount == 1);
     pk.set(newId);
     holder.update(entity);
+    return holder.getExternal();
   }
 
   @Override

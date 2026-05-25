@@ -6,8 +6,8 @@ import java.nio.file.Path;
 
 import org.junit.jupiter.api.BeforeAll;
 
+import io.github.mmm.db.orm.test.JdbcTest;
 import io.github.mmm.db.type.sqlite.dialect.SqliteDialect;
-import io.github.mmm.orm.test.JdbcTest;
 
 /**
  * Test of Sqlite database support.

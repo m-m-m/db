@@ -1,11 +1,13 @@
 /* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0 */
-package io.github.mmm.db.spi.repository;
+package io.github.mmm.db.repository.impl;
 
 import io.github.mmm.db.dialect.AbstractDbDialect;
 import io.github.mmm.db.name.DbQualifiedName;
-import io.github.mmm.db.repository.AbstractEntityRepository;
 import io.github.mmm.db.repository.DbRepository;
+import io.github.mmm.db.repository.operation.DbDdlOperations;
+import io.github.mmm.db.repository.operation.EntityFindAllOperation;
+import io.github.mmm.db.repository.spi.AbstractEntityRepository;
 import io.github.mmm.db.sequence.IdSequencePooled;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.DbSourceConfig;
@@ -34,72 +36,50 @@ import io.github.mmm.property.WritableProperty;
  * @param <E> type of the managed {@link EntityBean}.
  * @since 1.0.0
  */
-public abstract class AbstractDbRepository<E extends EntityBean> extends AbstractEntityRepository<E>
-    implements DbRepository<E> {
-
-  /** The default {@link #getSequenceName() sequence name}. */
-  public static final String DEFAULT_SEQUENCE = "ENTITY_SEQUENCE";
+public class DbRepositoryImpl<E extends EntityBean> extends AbstractEntityRepository<E>
+    implements DbRepository<E>, EntityFindAllOperation<E>, DbDdlOperations<E> {
 
   private final AbstractDbAccess dbAccess;
+
+  private final DbSource source;
 
   private final DbSourceConfig sourceConfig;
 
   /** {@link IdGenerator} used to {@link IdGenerator#generate(Id) generate} new unique {@link Id}s. */
   private final IdGenerator idGenerator;
 
-  /**
-   * The constructor.
-   *
-   * @param prototype the {@link #getPrototype() prototype}.
-   */
-  public AbstractDbRepository(E prototype) {
-
-    this(prototype, null);
-  }
+  private final String sequenceName;
 
   /**
    * The constructor.
    *
    * @param prototype the {@link #getPrototype() prototype}.
-   * @param idGenerator the {@link IdGenerator} used to {@link IdGenerator#generate(Id) generate} new unique
-   *        {@link Id}s.
+   * @param proxy the dynamic proxy instance of the {@link DbRepository} acting as wrapper of this internal instance.
    */
-  public AbstractDbRepository(E prototype, IdGenerator idGenerator) {
+  public DbRepositoryImpl(E prototype, DbRepository<E> proxy) {
 
     super(prototype);
-    DbSource source = getSource();
-    this.sourceConfig = DbSourceConfig.of(source);
+    this.source = proxy.getSource();
+    this.sourceConfig = DbSourceConfig.of(this.source);
     this.dbAccess = (AbstractDbAccess) DbAccess.get(this.sourceConfig);
-    if (idGenerator == null) {
-      AbstractDbDialect<?> dialect = this.dbAccess.getDialect();
-      if (dialect.isSupportingSequence()) {
-        DbQualifiedName sequenceName = getQualifiedSequenceName();
-        if (sequenceName == null) {
-          idGenerator = new UuidIdGenerator();
-        } else {
-          IdSequence idSequence = this.dbAccess.createIdSequence(sequenceName);
-          int sequenceIncrement = this.sourceConfig.getSequenceIncrement();
-          if (sequenceIncrement > 1) {
-            idSequence = new IdSequencePooled(idSequence, sequenceIncrement);
-          }
-          idGenerator = new SequenceIdGenerator(idSequence);
-        }
+    AbstractDbDialect<?> dialect = this.dbAccess.getDialect();
+    this.sequenceName = proxy.getSequenceName();
+    if (dialect.isSupportingSequence()) {
+      if (this.sequenceName == null) {
+        this.idGenerator = new UuidIdGenerator();
       } else {
-        IdSequence idSequence = this.dbAccess.createIdSequence(new DbQualifiedName("none"));
-        idGenerator = new SequenceIdGenerator(idSequence);
+        IdSequence idSequence = this.dbAccess
+            .createIdSequence(this.sourceConfig.getQualifiedNameTemplate().withName(this.sequenceName));
+        int sequenceIncrement = this.sourceConfig.getSequenceIncrement();
+        if (sequenceIncrement > 1) {
+          idSequence = new IdSequencePooled(idSequence, sequenceIncrement);
+        }
+        this.idGenerator = new SequenceIdGenerator(idSequence);
       }
+    } else {
+      IdSequence idSequence = this.dbAccess.createIdSequence(new DbQualifiedName("none"));
+      this.idGenerator = new SequenceIdGenerator(idSequence);
     }
-    this.idGenerator = idGenerator;
-  }
-
-  /**
-   * @return the {@link DbSource} of this repository. Typically this is the {@link DbSource#get() default}
-   *         {@link DbSource}. May be overridden to connect your repository to a different {@link DbSource database
-   *         source}.
-   */
-  public DbSource getSource() {
-
-    return DbSource.get();
   }
 
   /**
@@ -111,31 +91,15 @@ public abstract class AbstractDbRepository<E extends EntityBean> extends Abstrac
   }
 
   @Override
+  public String getSequenceName() {
+
+    return this.sequenceName;
+  }
+
+  @Override
   protected IdGenerator getIdGenerator() {
 
     return this.idGenerator;
-  }
-
-  /**
-   * @return the (unqualified) name of the database sequence for the managed entity. May be {@code null} for non
-   *         sequence based IDs (e.g. UUID).
-   */
-  protected String getSequenceName() {
-
-    return DEFAULT_SEQUENCE;
-  }
-
-  /**
-   * @return the {@link DbQualifiedName} of the database sequence for the managed entity.
-   * @see #getSequenceName()
-   */
-  protected DbQualifiedName getQualifiedSequenceName() {
-
-    String sequenceName = getSequenceName();
-    if (sequenceName == null) {
-      return null;
-    }
-    return this.sourceConfig.getQualifiedNameTemplate().withName(sequenceName);
   }
 
   @Override
@@ -159,6 +123,13 @@ public abstract class AbstractDbRepository<E extends EntityBean> extends Abstrac
   }
 
   @Override
+  public Iterable<E> findAll() {
+
+    SelectStatement<E> statement = DbStatement.select(this.prototype).get();
+    return this.dbAccess.select(statement);
+  }
+
+  @Override
   public long delete(DeleteStatement<E> statement) {
 
     return this.dbAccess.delete(statement);
@@ -177,15 +148,15 @@ public abstract class AbstractDbRepository<E extends EntityBean> extends Abstrac
   }
 
   @Override
-  protected void doInsert(E entity) {
+  protected E doInsert(E entity) {
 
-    this.dbAccess.insert(entity);
+    return (E) this.dbAccess.insert(entity);
   }
 
   @Override
-  protected void doUpdate(E entity) {
+  protected E doUpdate(E entity) {
 
-    this.dbAccess.update(entity);
+    return (E) this.dbAccess.update(entity);
   }
 
   @Override
@@ -197,18 +168,14 @@ public abstract class AbstractDbRepository<E extends EntityBean> extends Abstrac
   /**
    * Create the table for the managed entity.
    */
+  @Override
   public void createTable() {
 
     this.dbAccess.createTable(this.prototype);
-    createIndexes();
   }
 
-  /**
-   * This method is called from {@link #createTable()} in order to create the indexes for the table. By default, for
-   * each foreign key an index will be created. You can override this entire method or XXX in order to replace, extend
-   * or adapt the default behaviour.
-   */
-  protected void createIndexes() {
+  @Override
+  public void createIndexes() {
 
     for (WritableProperty<?> property : this.prototype.getProperties()) {
       CreateIndexStatement<E> createIndexStatement = createIndex(property);
@@ -218,11 +185,8 @@ public abstract class AbstractDbRepository<E extends EntityBean> extends Abstrac
     }
   }
 
-  /**
-   * @param property the {@link WritableProperty} to potentially generate an automatic index for.
-   * @return the {@link CreateIndexStatement} or {@code null} for no index.
-   */
-  protected CreateIndexStatement<E> createIndex(WritableProperty<?> property) {
+  @Override
+  public CreateIndexStatement<E> createIndex(WritableProperty<?> property) {
 
     Class<?> targetEntity = null;
     if (property instanceof FkProperty<?> fkProperty) {
@@ -236,22 +200,17 @@ public abstract class AbstractDbRepository<E extends EntityBean> extends Abstrac
     return null;
   }
 
-  /**
-   * Create the ID sequence for the managed entity.
-   */
+  @Override
   public void createSequence() {
 
     AbstractDbDialect<?> dialect = this.dbAccess.getDialect();
-    getSource();
     if (!dialect.isSupportingSequence()) {
       return;
     }
-    String sequenceName = getSequenceName();
-    // if ((sequenceName == null) || (DEFAULT_SEQUENCE.equals(sequenceName))) {
-    if (sequenceName == null) {
+    if (this.sequenceName == null) {
       return;
     }
-    CreateSequenceStatement createSequenceStatement = new CreateSequenceClause(sequenceName)
+    CreateSequenceStatement createSequenceStatement = new CreateSequenceClause(this.sequenceName)
         .incrementBy(this.sourceConfig.getSequenceIncrement()).startWith(1000000000000L).minValue(1000000000000L - 1)
         .maxValue(9123456789123456789L).nocycle().get();
     this.dbAccess.createSequence(createSequenceStatement);
