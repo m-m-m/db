@@ -52,7 +52,7 @@ public abstract class AbstractDbResultTest extends Assertions {
     ObjectNotFoundException error = assertThrows(ObjectNotFoundException.class, () -> {
       result.indexOfRequired("id");
     });
-    assertThat(error.getLocalizedMessage()).isEqualTo("Could not find DB-column for key 'id' in foo, bar, some");
+    assertThat(error.getLocalizedMessage()).isEqualTo("Could not find DB-column for key 'id' in foo, bar, some.");
   }
 
   /**
