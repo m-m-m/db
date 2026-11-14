@@ -7,7 +7,7 @@
  *
  * @provides io.github.mmm.db.pool.DbConnectionPoolProvider
  */
-@SuppressWarnings("rawtypes") //
+@SuppressWarnings("all") //
 module io.github.mmm.db.pool.c3p0 {
 
   requires transitive io.github.mmm.db;
