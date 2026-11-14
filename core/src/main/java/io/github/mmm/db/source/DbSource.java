@@ -5,6 +5,7 @@ package io.github.mmm.db.source;
 import java.time.Duration;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import io.github.mmm.base.variable.VariableDefinition;
 import io.github.mmm.db.name.DbQualifiedName;
@@ -167,6 +168,10 @@ public final class DbSource implements Comparable<DbSource> {
   public static final Set<VariableDefinition<?>> VARIABLES = Set.of(KEY_URL, KEY_USER, KEY_PASSWORD, KEY_DIALECT,
       KEY_TYPE, KEY_KIND, KEY_SCHEMA, KEY_HOST, KEY_PORT, KEY_DATABASE, KEY_DRIVER_CLASS_NAME, KEY_SEQUENCE_INCREMENT,
       KEY_POOL_ID, KEY_POOL_SIZE_MIN, KEY_POOL_SIZE_MAX, KEY_POOL_CONNECTION_TIMEOUT);
+
+  /** The names of {@link #VARIABLES}. */
+  public static final Set<String> VARIABLE_NAMES = Set
+      .copyOf(VARIABLES.stream().map(VariableDefinition::getName).collect(Collectors.toSet()));
 
   private DbSource(String id) {
 

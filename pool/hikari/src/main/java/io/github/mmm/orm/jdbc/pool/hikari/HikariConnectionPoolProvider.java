@@ -44,7 +44,7 @@ public final class HikariConnectionPoolProvider extends JdbcConnectionPoolProvid
     }
     MetaInfo metaInfo = config.getMetaInfo();
     for (String key : metaInfo) {
-      if (!DbSource.VARIABLES.contains(key)) {
+      if (!DbSource.VARIABLE_NAMES.contains(key)) {
         hikariConfig.addDataSourceProperty(key, metaInfo.get(key));
       }
     }
