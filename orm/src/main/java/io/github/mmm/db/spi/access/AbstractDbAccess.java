@@ -17,7 +17,7 @@ import io.github.mmm.db.result.DbResult;
 import io.github.mmm.db.source.DbSourceConfig;
 import io.github.mmm.db.spi.access.impl.DbMapperRetrievalAdapter;
 import io.github.mmm.db.statement.BasicDbStatementFormatter;
-import io.github.mmm.db.statement.DbPlainStatement;
+import io.github.mmm.db.statement.DbNativeStatement;
 import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.db.statement.create.CreateIndexStatement;
 import io.github.mmm.db.statement.create.CreateSequenceStatement;
@@ -126,19 +126,19 @@ public abstract class AbstractDbAccess implements DbAccess {
    *        received.
    * @return the number of rows that have been updated or selected.
    * @see #executeStatement(DbStatement)
-   * @see #executeSql(DbPlainStatement, Consumer, boolean)
+   * @see #executeSql(DbNativeStatement, Consumer, boolean)
    */
   protected long executeStatement(DbStatement<?> statement, Consumer<DbResult> receiver, boolean unique) {
 
     BasicDbStatementFormatter formatter = getDialect().createFormatter();
-    DbPlainStatement plainStatement = formatter.formatStatement(statement);
+    DbNativeStatement plainStatement = formatter.formatStatement(statement);
     return executeSql(plainStatement, receiver, unique);
   }
 
   /**
    * Low-level and DB/orm specific method method to execute a query.
    *
-   * @param statement the {@link DbPlainStatement}.
+   * @param statement the {@link DbNativeStatement}.
    * @param receiver the {@link Consumer} of a potential {@link DbResult} (e.g. for SELECT) or {@code null} if no result
    *        is expected (e.g. for INSERT or DELETE).
    * @param unique {@code true} if a unique {@link DbResult} is expected and an
@@ -146,7 +146,7 @@ public abstract class AbstractDbAccess implements DbAccess {
    *        received.
    * @return the number of rows that have been updated or selected.
    */
-  protected abstract long executeSql(DbPlainStatement statement, Consumer<DbResult> receiver, boolean unique);
+  public abstract long executeSql(DbNativeStatement statement, Consumer<DbResult> receiver, boolean unique);
 
   @Override
   public void createTable(CreateTableStatement<?> statement) {

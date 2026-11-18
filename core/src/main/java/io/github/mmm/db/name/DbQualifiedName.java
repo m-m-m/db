@@ -26,12 +26,7 @@ public final class DbQualifiedName {
 
   private final String qName;
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() name}.
-   */
-  public DbQualifiedName(String name) {
+  private DbQualifiedName(String name) {
 
     this(name, null, null);
   }
@@ -231,10 +226,22 @@ public final class DbQualifiedName {
   }
 
   /**
+   * @param string the {@link #getName() unqualified name}. May be {@code null}.
+   * @return the new {@link DbQualifiedName}. Will be {@code null} if {@code string} was {@code null}.
+   */
+  public static DbQualifiedName ofName(String string) {
+
+    if (string == null) {
+      return null;
+    }
+    return new DbQualifiedName(string);
+  }
+
+  /**
    * @param string the {@link #toString() string representation} of the {@link DbQualifiedName}.
    * @return the parsed {@link DbQualifiedName}. Will be {@code null} if {@code string} was {@code null}.
    */
-  public static DbQualifiedName of(String string) {
+  public static DbQualifiedName ofParsed(String string) {
 
     if (string == null) {
       return null;

@@ -232,7 +232,7 @@ public class JdbcMetaData implements DbMetaData {
   @Override
   public DbTable getTable(DbTableData tableData) {
 
-    DbQualifiedName tableName = tableData.getQualifiedName();
+    DbQualifiedName tableName = tableData.getName();
     LOG.trace("Retrieving columns table {}.", tableName);
     try {
       Objects.requireNonNull(tableData);
@@ -318,7 +318,7 @@ public class JdbcMetaData implements DbMetaData {
 
   static DbPrimaryKeyConstraint extractPrimaryKey(DbTable table, DatabaseMetaData metaData) {
 
-    DbQualifiedName qualifiedName = table.getQualifiedName();
+    DbQualifiedName qualifiedName = table.getName();
     String catalog = qualifiedName.getCatalog();
     String schema = qualifiedName.getSchema();
     String name = qualifiedName.getName();
@@ -357,7 +357,7 @@ public class JdbcMetaData implements DbMetaData {
    */
   static List<DbForeignKeyConstraint> extractForeignKeys(DbTable table, DatabaseMetaData metaData) {
 
-    DbQualifiedName tableName = table.getQualifiedName();
+    DbQualifiedName tableName = table.getName();
     String catalog = tableName.getCatalog();
     String schema = tableName.getSchema();
     String name = tableName.getName();
@@ -396,7 +396,7 @@ public class JdbcMetaData implements DbMetaData {
 
     try {
       ListBuilder<DbIndexMetadata> builder = new ListBuilder<>();
-      DbQualifiedName tableName = table.getQualifiedName();
+      DbQualifiedName tableName = table.getName();
       String catalog = tableName.getCatalog();
       String schema = tableName.getSchema();
       String name = tableName.getName();

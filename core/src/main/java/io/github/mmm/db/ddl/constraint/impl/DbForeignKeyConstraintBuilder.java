@@ -70,7 +70,7 @@ public class DbForeignKeyConstraintBuilder implements Builder<DbForeignKeyConstr
   public void setTargetTable(DbQualifiedName targetTable) {
 
     if (this.targetTable != null) {
-      assert (this.targetTable.getQualifiedName().equals(targetTable));
+      assert (this.targetTable.getName().equals(targetTable));
       return;
     }
     this.targetTable = new DbTableReferenceImpl<>(targetTable);

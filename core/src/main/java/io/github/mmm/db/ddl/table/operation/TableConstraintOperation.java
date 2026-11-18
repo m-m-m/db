@@ -37,7 +37,9 @@ public abstract class TableConstraintOperation extends TableOperation {
   public TableConstraintOperation(DbConstraint constraint) {
 
     super();
-    this.name = constraint.getName();
+    // extend TableOperation from AbstractDbObject?
+    // Use only getRawName() here and keep nulls?
+    this.name = constraint.getName().getName();
     this.constraint = constraint;
   }
 

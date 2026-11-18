@@ -5,19 +5,17 @@ package io.github.mmm.db.statement.create;
 import java.util.List;
 import java.util.function.Consumer;
 
-import io.github.mmm.base.lang.AbstractToString;
 import io.github.mmm.db.ddl.column.DbColumnReferenceWithSortOrder;
 import io.github.mmm.db.ddl.index.DbIndex;
 import io.github.mmm.db.ddl.index.DbIndexType;
 import io.github.mmm.db.ddl.table.DbTableReference;
-import io.github.mmm.db.name.DbNamingStrategy;
+import io.github.mmm.db.name.AbstractDbObject;
+import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.db.statement.AbstractDbClause;
 import io.github.mmm.db.statement.AbstractEntityClause;
 import io.github.mmm.db.statement.AliasMap;
 import io.github.mmm.db.statement.DbClause;
 import io.github.mmm.db.statement.DbStartClause;
-import io.github.mmm.db.statement.DbStatementType;
-import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
 import io.github.mmm.entity.bean.EntityBean;
 
 /**
@@ -94,12 +92,6 @@ public class CreateIndexStatement<E extends EntityBean> extends CreateStatement<
   }
 
   @Override
-  public DbStatementType getType() {
-
-    return DbStatementTypeImpl.CREATE_INDEX;
-  }
-
-  @Override
   protected AliasMap getAliasMap() {
 
     return this.on.getAliasMap();
@@ -113,11 +105,11 @@ public class CreateIndexStatement<E extends EntityBean> extends CreateStatement<
     return this.index;
   }
 
-  private class DbIndexAdapter extends AbstractToString implements DbIndex {
+  private class DbIndexAdapter extends AbstractDbObject implements DbIndex {
 
     private DbIndexAdapter() {
 
-      super();
+      super((DbQualifiedName) null);
     }
 
     @Override
@@ -139,12 +131,9 @@ public class CreateIndexStatement<E extends EntityBean> extends CreateStatement<
     }
 
     @Override
-    public String getName(DbNamingStrategy namingStrategy) {
+    public DbQualifiedName getRawName() {
 
-      if (namingStrategy == null) {
-        return CreateIndexStatement.this.createIndex.getName();
-      }
-      return namingStrategy.getIndexName(this);
+      return CreateIndexStatement.this.createIndex.getName();
     }
 
     @Override

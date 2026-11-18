@@ -2,8 +2,10 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.statement.create;
 
+import java.util.Objects;
+
 import io.github.mmm.db.ddl.index.DbIndexKindType;
-import io.github.mmm.db.name.DbKeyword;
+import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.db.statement.AbstractDbClause;
 import io.github.mmm.db.statement.DbIncompleteStartClause;
 import io.github.mmm.db.statement.DbStartClause;
@@ -17,14 +19,11 @@ import io.github.mmm.entity.bean.EntityBean;
  */
 public class CreateIndexClause extends AbstractDbClause implements DbIncompleteStartClause {
 
-  /** Name of {@link CreateIndexClause} for marshaling. */
-  public static final String NAME_CREATE_INDEX = DbKeyword.CREATE_INDEX;
-
   private final DbIndexKindType kind;
 
-  private CreateIndexStatement<?> statement;
+  private final DbQualifiedName name;
 
-  private String name;
+  private CreateIndexStatement<?> statement;
 
   /**
    * The constructor.
@@ -34,7 +33,20 @@ public class CreateIndexClause extends AbstractDbClause implements DbIncompleteS
    */
   public CreateIndexClause(DbIndexKindType kind, String name) {
 
+    this(kind, new DbQualifiedName(name, null, null));
+  }
+
+  /**
+   * The constructor.
+   *
+   * @param kind the {@link DbIndexKindType}.
+   * @param name the {@link #getName() name of the index}.
+   */
+  public CreateIndexClause(DbIndexKindType kind, DbQualifiedName name) {
+
     super();
+    Objects.requireNonNull(kind);
+    Objects.requireNonNull(name);
     this.kind = kind;
     this.name = name;
   }
@@ -42,17 +54,9 @@ public class CreateIndexClause extends AbstractDbClause implements DbIncompleteS
   /**
    * @return the name of the index. Will be empty if it should be auto-generated.
    */
-  public String getName() {
+  public DbQualifiedName getName() {
 
     return this.name;
-  }
-
-  /**
-   * @param name new value of {@link #getName()}.
-   */
-  public void setName(String name) {
-
-    this.name = name;
   }
 
   /**

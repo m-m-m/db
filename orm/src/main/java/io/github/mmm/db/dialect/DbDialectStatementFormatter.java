@@ -59,7 +59,7 @@ public class DbDialectStatementFormatter extends BasicDbStatementFormatter {
   @Override
   protected void formatEntityName(AbstractEntityClause<?, ?, ?> entityClause) {
 
-    DbQualifiedName table = this.dialect.getNamingStrategy().getTableName(entityClause);
+    DbQualifiedName table = this.dialect.getNamingStrategy().getName(entityClause);
     write(table.toString());
   }
 

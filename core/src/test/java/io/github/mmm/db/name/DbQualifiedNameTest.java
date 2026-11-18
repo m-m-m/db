@@ -93,7 +93,7 @@ class DbQualifiedNameTest extends Assertions {
     String qualifiedName = "\"CATALOG.NAME\".\"SCHEMA$NAME\".\"TABLE NAME\"";
 
     // act
-    DbQualifiedName qName = DbQualifiedName.of(qualifiedName);
+    DbQualifiedName qName = DbQualifiedName.ofParsed(qualifiedName);
 
     // assert
     assertThat(qName.getName()).isEqualTo(name);
@@ -107,7 +107,7 @@ class DbQualifiedNameTest extends Assertions {
   "\"FOO\"._TABLE", "FOO.", "FOO.\"\"", "FOO.BAR.\"Table.Name§\"" })
   void testInvalidQNames(String name) {
 
-    assertThrows(IllegalArgumentException.class, () -> DbQualifiedName.of(name));
+    assertThrows(IllegalArgumentException.class, () -> DbQualifiedName.ofParsed(name));
   }
 
   @ParameterizedTest
@@ -115,7 +115,7 @@ class DbQualifiedNameTest extends Assertions {
   "\"TABLE.NAME\"", "\"TABLE NAME\"" })
   void testInvalidSegments(String segment) {
 
-    assertThrows(IllegalArgumentException.class, () -> new DbQualifiedName(segment));
+    assertThrows(IllegalArgumentException.class, () -> DbQualifiedName.ofName(segment));
   }
 
   @ParameterizedTest
@@ -123,13 +123,13 @@ class DbQualifiedNameTest extends Assertions {
   "FOO.BAR", "FOO.\"N\"", "FOO.BAR.\"Table.Name\"" })
   void testValidQNames(String name) {
 
-    assertThat(DbQualifiedName.of(name)).hasToString(name);
+    assertThat(DbQualifiedName.ofParsed(name)).hasToString(name);
   }
 
   @ParameterizedTest
   @ValueSource(strings = { "\"validQuote\"", "\"SPACES_NOT_ALLOWED\"", "TRAILING_", "V$SQLAREA" })
   void testValidSegments(String segment) {
 
-    assertThat(new DbQualifiedName(segment).getName()).isEqualTo(segment);
+    assertThat(DbQualifiedName.ofName(segment).getName()).isEqualTo(segment);
   }
 }

@@ -2,6 +2,10 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.statement;
 
+import java.util.Locale;
+
+import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
+
 /**
  * Interface for the type of a {@link DbStatement}.
  *
@@ -33,5 +37,25 @@ public interface DbStatementType {
    * @return {@code true} for a {@link io.github.mmm.db.statement.select.SelectStatement}, {@code false} otherwise.
    */
   boolean isQuery();
+
+  /**
+   * @return the statement keyword (e.g. "SELECT" or "CREATE TABLE").
+   */
+  String getKeyword();
+
+  /**
+   * @param keyword the {@link #getKeyword() keyword}.
+   * @return the {@link DbStatementType} or {@code null} if not found.
+   */
+  public static DbStatementType of(String keyword) {
+
+    keyword = keyword.toUpperCase(Locale.ROOT);
+    for (DbStatementTypeImpl type : DbStatementTypeImpl.values()) {
+      if (type.getKeyword().equals(keyword)) {
+        return type;
+      }
+    }
+    return null;
+  }
 
 }

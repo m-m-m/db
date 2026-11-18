@@ -7,7 +7,6 @@ import java.util.Objects;
 
 import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.db.name.DbEntityNameMapper;
-import io.github.mmm.db.name.DbNamingStrategy;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 
@@ -78,7 +77,7 @@ public abstract class AbstractEntityClause<R, E extends EntityBean, SELF extends
 
     DbQualifiedName qName = null;
     if (entityName != null) {
-      qName = new DbQualifiedName(entityName);
+      qName = DbQualifiedName.ofName(entityName);
     }
     setEntity(entity, qName);
   }
@@ -88,7 +87,7 @@ public abstract class AbstractEntityClause<R, E extends EntityBean, SELF extends
     if (entityName != null) {
       this.qualifiedName = entityName;
     } else if ((entityName == null) && (entity != null)) {
-      this.qualifiedName = DbEntityNameMapper.get().getTable(entity).getQualifiedName();
+      this.qualifiedName = DbEntityNameMapper.get().getTable(entity).getName();
     }
     this.entity = entity;
   }
@@ -123,16 +122,13 @@ public abstract class AbstractEntityClause<R, E extends EntityBean, SELF extends
   }
 
   @Override
-  public DbQualifiedName getQualifiedName(DbNamingStrategy namingStrategy) {
+  public DbQualifiedName getRawName() {
 
-    if (namingStrategy == null) {
-      return this.qualifiedName;
-    }
-    return namingStrategy.getTableName(this);
+    return this.qualifiedName;
   }
 
   /**
-   * @param tableName new value of {@link #getQualifiedName()}.
+   * @param tableName new value of {@link #getRawName()}.
    */
   public void setTableName(DbQualifiedName tableName) {
 

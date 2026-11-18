@@ -5,14 +5,10 @@ package io.github.mmm.db.statement.drop;
 import java.util.function.Consumer;
 
 import io.github.mmm.db.statement.AbstractDbClause;
-import io.github.mmm.db.statement.AbstractDbStatement;
 import io.github.mmm.db.statement.AbstractEntityClause;
 import io.github.mmm.db.statement.AliasMap;
-import io.github.mmm.db.statement.DbClause;
-import io.github.mmm.db.statement.DbStatement;
-import io.github.mmm.db.statement.DbStatementType;
 import io.github.mmm.db.statement.DbStartClause;
-import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
+import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
 /**
@@ -21,7 +17,7 @@ import io.github.mmm.entity.bean.EntityBean;
  * @param <E> type of the {@link AbstractEntityClause#getEntity() entity}.
  * @since 1.0.0
  */
-public class DropTableStatement<E extends EntityBean> extends AbstractDbStatement<E> {
+public class DropTableStatement<E extends EntityBean> extends DropStatement<E> {
 
   private final DropTableClause<E> dropTable;
 
@@ -47,7 +43,7 @@ public class DropTableStatement<E extends EntityBean> extends AbstractDbStatemen
   }
 
   /**
-   * @return the opening {@link DropTableClause}-{@link DbClause}.
+   * @return the opening {@link DropTableClause}.
    */
   public DropTableClause<E> getDropTable() {
 
@@ -58,12 +54,6 @@ public class DropTableStatement<E extends EntityBean> extends AbstractDbStatemen
   protected void addClauses(Consumer<AbstractDbClause> consumer) {
 
     consumer.accept(this.dropTable);
-  }
-
-  @Override
-  public DbStatementType getType() {
-
-    return DbStatementTypeImpl.DROP_TABLE;
   }
 
   @Override

@@ -6,10 +6,8 @@ import java.util.function.Consumer;
 
 import io.github.mmm.db.statement.AbstractDbClause;
 import io.github.mmm.db.statement.AliasMap;
-import io.github.mmm.db.statement.DbStatement;
-import io.github.mmm.db.statement.DbStatementType;
 import io.github.mmm.db.statement.DbStartClause;
-import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
+import io.github.mmm.db.statement.DbStatement;
 
 /**
  * {@link DbStatement} to {@link CreateSequenceClause create a sequence}.
@@ -53,12 +51,6 @@ public class CreateSequenceStatement extends CreateStatement<Void> {
   protected void addClauses(Consumer<AbstractDbClause> consumer) {
 
     consumer.accept(this.createSequence);
-  }
-
-  @Override
-  public DbStatementType getType() {
-
-    return DbStatementTypeImpl.CREATE_SEQUENCE;
   }
 
   @Override

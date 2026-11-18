@@ -53,9 +53,8 @@ public abstract class AbstractEntityRepository<E extends EntityBean> implements 
   protected abstract IdGenerator getIdGenerator();
 
   /**
-   * @return an instance of the managed {@link EntityBean entity} to be used as template. Please note that this is an
-   *         internal method of the implementation that should only be used by framework code. Mutations on the
-   *         prototype by callers of this method are strictly forbidden and will lead to severe bugs.
+   * @return an instance of the managed {@link EntityBean entity} to be used as template. Please note that this is an internal method of the implementation that
+   *         should only be used by framework code. Mutations on the prototype by callers of this method are strictly forbidden and will lead to severe bugs.
    */
   @Override
   public E getPrototype() {
@@ -105,9 +104,21 @@ public abstract class AbstractEntityRepository<E extends EntityBean> implements 
   public final E save(E entity) {
 
     Id<E> id = Id.from(entity);
-    if (id.isTransient()) {
+    boolean insert;
+    Object pk = id.getPk();
+    if (pk == null) {
       id = getIdGenerator().generate(id);
       entity.setId(id);
+      insert = true;
+    } else {
+      Comparable<?> revision = id.getRevision();
+      if (revision == null) {
+        insert = true;
+      } else {
+        insert = false;
+      }
+    }
+    if (insert) {
       this.listenerAdapter.preInsert(entity);
       return doInsert(entity);
     } else {
@@ -162,8 +173,7 @@ public abstract class AbstractEntityRepository<E extends EntityBean> implements 
   protected abstract int doDeleteAllById(Iterable<Id<E>> ids);
 
   /**
-   * @return {@code true} to verify and update the {@link io.github.mmm.entity.id.Id#getRevision() revision} on
-   *         {@link #save(EntityBean) save}.
+   * @return {@code true} to verify and update the {@link io.github.mmm.entity.id.Id#getRevision() revision} on {@link #save(EntityBean) save}.
    */
   protected boolean isUseRevision() {
 
@@ -180,8 +190,7 @@ public abstract class AbstractEntityRepository<E extends EntityBean> implements 
 
   /**
    * @param listener the {@link EntityListener} to remove.
-   * @return {@code true} if successfully removed, {@code false} otherwise (was not {@link #addListener(EntityListener)
-   *         added} before).
+   * @return {@code true} if successfully removed, {@code false} otherwise (was not {@link #addListener(EntityListener) added} before).
    */
   protected boolean removeListener(EntityListener<? super E> listener) {
 

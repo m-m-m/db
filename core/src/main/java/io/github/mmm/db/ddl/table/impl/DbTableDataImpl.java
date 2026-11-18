@@ -22,9 +22,9 @@ public class DbTableDataImpl extends DbTableReferenceImpl<EntityBean> implements
   /**
    * The constructor.
    *
-   * @param name the {@link DbTableImpl#getQualifiedName() qualified name}.
-   * @param comment the {@link DbTableImpl#getComment() comment}
-   * @param type the {@link DbTableImpl#getType() table type}.
+   * @param name the {@link #getName() qualified name}.
+   * @param comment the {@link #getComment() comment}
+   * @param type the {@link #getType() table type}.
    */
   public DbTableDataImpl(DbQualifiedName name, String comment, DbTableType type) {
 

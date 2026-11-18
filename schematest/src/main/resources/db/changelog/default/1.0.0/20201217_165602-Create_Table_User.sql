@@ -1,9 +1,9 @@
-CREATE TABLE User(
-  Id INTEGER PRIMARY KEY,
+CREATE TABLE Users(
+  Id BIGINT PRIMARY KEY,
   Login TEXT NOT NULL,
   FirstName TEXT NOT NULL,
   LastName TEXT NOT NULL,
-  Email TEXT  
+  Email TEXT
 );
 
-CREATE UNIQUE INDEX UQ_User_Login ON User(Login); 
+CREATE UNIQUE INDEX UQ_User_Login ON Users(Login);

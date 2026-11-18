@@ -2,6 +2,8 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.repository.impl;
 
+import java.util.UUID;
+
 import io.github.mmm.db.dialect.AbstractDbDialect;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.db.repository.DbRepository;
@@ -23,8 +25,10 @@ import io.github.mmm.db.statement.update.UpdateStatement;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.entity.id.Id;
 import io.github.mmm.entity.id.generator.IdGenerator;
-import io.github.mmm.entity.id.generator.SequenceIdGenerator;
-import io.github.mmm.entity.id.generator.UuidIdGenerator;
+import io.github.mmm.entity.id.generator.IdGeneratorNone;
+import io.github.mmm.entity.id.generator.IdGeneratorSequence;
+import io.github.mmm.entity.id.generator.IdGeneratorString;
+import io.github.mmm.entity.id.generator.IdGeneratorUuid;
 import io.github.mmm.entity.id.sequence.IdSequence;
 import io.github.mmm.entity.property.id.FkProperty;
 import io.github.mmm.entity.property.link.LinkProperty;
@@ -62,23 +66,33 @@ public class DbRepositoryImpl<E extends EntityBean> extends AbstractEntityReposi
     this.source = proxy.getSource();
     this.sourceConfig = DbSourceConfig.of(this.source);
     this.dbAccess = (AbstractDbAccess) DbAccess.get(this.sourceConfig);
-    AbstractDbDialect<?> dialect = this.dbAccess.getDialect();
     this.sequenceName = proxy.getSequenceName();
+    this.idGenerator = createIdGenerator();
+  }
+
+  private IdGenerator createIdGenerator() {
+
+    Id<?> id = this.prototype.getId();
+    Class<?> pkClass = id.getPkClass();
+    if (pkClass == UUID.class) {
+      return new IdGeneratorUuid();
+    } else if (pkClass == String.class) {
+      return new IdGeneratorString();
+    }
+    if (this.sequenceName == null) {
+      return IdGeneratorNone.get();
+    }
+    AbstractDbDialect<?> dialect = this.dbAccess.getDialect();
     if (dialect.isSupportingSequence()) {
-      if (this.sequenceName == null) {
-        this.idGenerator = new UuidIdGenerator();
-      } else {
-        IdSequence idSequence = this.dbAccess
-            .createIdSequence(this.sourceConfig.getQualifiedNameTemplate().withName(this.sequenceName));
-        int sequenceIncrement = this.sourceConfig.getSequenceIncrement();
-        if (sequenceIncrement > 1) {
-          idSequence = new IdSequencePooled(idSequence, sequenceIncrement);
-        }
-        this.idGenerator = new SequenceIdGenerator(idSequence);
+      IdSequence idSequence = this.dbAccess.createIdSequence(this.sourceConfig.getQualifiedNameTemplate().withName(this.sequenceName));
+      int sequenceIncrement = this.sourceConfig.getSequenceIncrement();
+      if (sequenceIncrement > 1) {
+        idSequence = new IdSequencePooled(idSequence, sequenceIncrement);
       }
+      return new IdGeneratorSequence(idSequence);
     } else {
-      IdSequence idSequence = this.dbAccess.createIdSequence(new DbQualifiedName("none"));
-      this.idGenerator = new SequenceIdGenerator(idSequence);
+      IdSequence idSequence = this.dbAccess.createIdSequence(DbQualifiedName.ofName("none"));
+      return new IdGeneratorSequence(idSequence);
     }
   }
 
@@ -210,9 +224,8 @@ public class DbRepositoryImpl<E extends EntityBean> extends AbstractEntityReposi
     if (this.sequenceName == null) {
       return;
     }
-    CreateSequenceStatement createSequenceStatement = new CreateSequenceClause(this.sequenceName)
-        .incrementBy(this.sourceConfig.getSequenceIncrement()).startWith(1000000000000L).minValue(1000000000000L - 1)
-        .maxValue(9123456789123456789L).nocycle().get();
+    CreateSequenceStatement createSequenceStatement = new CreateSequenceClause(this.sequenceName).incrementBy(this.sourceConfig.getSequenceIncrement())
+        .startWith(1000000000000L).minValue(1000000000000L - 1).maxValue(9123456789123456789L).nocycle().get();
     this.dbAccess.createSequence(createSequenceStatement);
   }
 

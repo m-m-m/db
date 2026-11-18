@@ -4,6 +4,8 @@ package io.github.mmm.db.statement.create;
 
 import io.github.mmm.db.statement.AbstractDbStatement;
 import io.github.mmm.db.statement.AbstractEntityClause;
+import io.github.mmm.db.statement.DbStatementType;
+import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
 
 /**
  * {@link AbstractDbStatement} to create some object (table, index, sequence, etc.).
@@ -12,4 +14,11 @@ import io.github.mmm.db.statement.AbstractEntityClause;
  * @since 1.0.0
  */
 public abstract class CreateStatement<E> extends AbstractDbStatement<E> {
+
+  @Override
+  public DbStatementType getType() {
+
+    return DbStatementTypeImpl.CREATE;
+  }
+
 }

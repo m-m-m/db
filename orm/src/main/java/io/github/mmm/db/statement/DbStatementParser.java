@@ -36,6 +36,7 @@ import io.github.mmm.db.ddl.table.operation.TableOperationKind;
 import io.github.mmm.db.ddl.table.operation.TableOperationType;
 import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.db.name.DbQualifiedName;
+import io.github.mmm.db.statement.alter.AlterStatement;
 import io.github.mmm.db.statement.alter.AlterTableClause;
 import io.github.mmm.db.statement.alter.AlterTableOperationsClause;
 import io.github.mmm.db.statement.alter.AlterTableStatement;
@@ -52,6 +53,11 @@ import io.github.mmm.db.statement.create.CreateTableStatement;
 import io.github.mmm.db.statement.delete.DeleteClause;
 import io.github.mmm.db.statement.delete.DeleteFromClause;
 import io.github.mmm.db.statement.delete.DeleteStatement;
+import io.github.mmm.db.statement.drop.DropIndexStatement;
+import io.github.mmm.db.statement.drop.DropSequenceStatement;
+import io.github.mmm.db.statement.drop.DropStatement;
+import io.github.mmm.db.statement.drop.DropTableClause;
+import io.github.mmm.db.statement.drop.DropTableStatement;
 import io.github.mmm.db.statement.insert.InsertClause;
 import io.github.mmm.db.statement.insert.InsertIntoClause;
 import io.github.mmm.db.statement.insert.InsertStatement;
@@ -102,12 +108,13 @@ import io.github.mmm.value.SimplePath;
 /**
  * {@link CharScannerParser} for {@link DbStatement}s.<br>
  * <b>ATTENTION:</b> This is NOT a generic SQL parser. It will only support the exact syntax produced by
- * {@link BasicDbStatementFormatter} with the defaults (as used by {@link DbStatement#toString()}).
+ * {@link BasicDbStatementFormatter} with the defaults (as used by {@link DbStatement#toString()}). For native SQL use
+ * {@link DbNativeStatementParser}.
  *
  * @since 1.0.0
  */
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class DbStatementParser implements CharScannerParser<DbStatement<?>>, DbKeyword {
+public final class DbStatementParser extends AbstractDbStatementParser<DbStatement<?>> {
 
   private static final DbStatementParser INSTANCE = new DbStatementParser();
 
@@ -129,47 +136,70 @@ public class DbStatementParser implements CharScannerParser<DbStatement<?>>, DbK
   }
 
   @Override
-  public DbStatement<?> parse(CharStreamScanner scanner) {
+  protected DbStatement<?> doParse(CharStreamScanner scanner) {
 
-    try {
-      DbStatement<?> statement;
-      scanner.skipWhile(NEWLINE_OR_SPACE);
-      String keyword = readKeyword(scanner);
-      if (SELECT.equals(keyword)) {
-        statement = parseSelectStatement(scanner);
-      } else if (UPDATE.equals(keyword)) {
-        statement = parseUpdateStatement(scanner);
-      } else if (INSERT.equals(keyword)) {
-        statement = parseInsertStatement(scanner);
-      } else if (DELETE.equals(keyword)) {
-        statement = parseDeleteStatement(scanner);
-      } else if (CREATE.equals(keyword)) {
-        statement = parseCreateStatement(scanner);
-      } else if (UPSERT.equals(keyword)) {
-        statement = parseUsertStatement(scanner);
-      } else if (MERGE.equals(keyword)) {
-        statement = parseMergeStatement(scanner);
-      } else if (matchesKeyword(ALTER_TABLE, keyword, scanner)) {
-        statement = parseAlterTableStatement(scanner);
-      } else {
-        throw new IllegalStateException("Unknown statement: " + keyword);
-      }
-      scanner.skipWhile(NEWLINE_OR_SPACE);
-      if (scanner.hasNext()) {
-        throw new IllegalStateException("Internal error: Statement not parsed to the end.");
-      }
-      return statement;
-    } catch (Exception e) {
-      throw new IllegalArgumentException("Failed to parse DB statement after \n" + scanner.getBufferParsed()
-          + "\n and before \n" + scanner.getBufferToParse() + "\nwith error: " + e.getMessage(), e);
+    scanner.skipWhile(NEWLINE_OR_SPACE);
+    String keyword = readKeyword(scanner);
+    DbStatement<?> statement = switch (keyword) {
+      case SELECT -> parseSelectStatement(scanner);
+      case UPDATE -> parseUpdateStatement(scanner);
+      case INSERT -> parseInsertStatement(scanner);
+      case DELETE -> parseDeleteStatement(scanner);
+      case CREATE -> parseCreateStatement(scanner);
+      case UPSERT -> parseUsertStatement(scanner);
+      case MERGE -> parseMergeStatement(scanner);
+      case DROP -> parseDropStatement(scanner);
+      case ALTER -> parseAlterStatement(scanner);
+      default -> throw new IllegalStateException("Unknown statement: " + keyword);
+    };
+    scanner.skipWhile(NEWLINE_OR_SPACE);
+    if (scanner.hasNext()) {
+      throw new IllegalStateException("Internal error: Statement not parsed to the end.");
     }
+    return statement;
   }
 
-  /**
-   * @param scanner the {@link CharStreamScanner} pointing after the "CREATE " keyword.
-   * @return the parsed {@link CreateStatement}.
-   */
-  protected CreateStatement<?> parseCreateStatement(CharStreamScanner scanner) {
+  private AlterStatement<?> parseAlterStatement(CharStreamScanner scanner) {
+
+    String keyword = readKeyword(scanner);
+    return switch (keyword) {
+      case TABLE -> parseAlterTableStatement(scanner);
+      default -> throw new IllegalStateException("Unknown statement: ALTER " + keyword);
+    };
+  }
+
+  private DropStatement<?> parseDropStatement(CharStreamScanner scanner) {
+
+    String keyword = readKeyword(scanner);
+    return switch (keyword) {
+      case INDEX -> parseDropIndexStatement(scanner);
+      case SEQUENCE -> parseDropSeqeunceStatement(scanner);
+      case TABLE -> parseDropTableStatement(scanner);
+      default -> throw new IllegalStateException("Unknown statement: DROP " + keyword);
+    };
+  }
+
+  private DropSequenceStatement parseDropSeqeunceStatement(CharStreamScanner scanner) {
+
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  private DropIndexStatement parseDropIndexStatement(CharStreamScanner scanner) {
+
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  private DropTableStatement<?> parseDropTableStatement(CharStreamScanner scanner) {
+
+    DropTableClause<?> dropTable = new DropTableClause<>(null);
+    parseEntityClause(scanner, dropTable, false);
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  private CreateStatement<?> parseCreateStatement(CharStreamScanner scanner) {
 
     String keyword = readKeyword(scanner);
     boolean unique = false;
@@ -1065,18 +1095,6 @@ public class DbStatementParser implements CharScannerParser<DbStatement<?>>, DbK
       name = segment;
     }
     return new DbQualifiedName(name, schema, catalog);
-  }
-
-  private String parseSegment(CharStreamScanner scanner) {
-
-    return scanner.readWhile(CharFilter.SEGMENT, 1, 128);
-  }
-
-  private String readKeyword(CharStreamScanner scanner) {
-
-    String keyword = scanner.readWhile(CharFilter.LATIN_LETTER, 1, 128).toUpperCase(Locale.ROOT);
-    scanner.requireOneOrMore(NEWLINE_OR_SPACE);
-    return keyword;
   }
 
   private void parseHaving(CharStreamScanner scanner, HavingClause having) {

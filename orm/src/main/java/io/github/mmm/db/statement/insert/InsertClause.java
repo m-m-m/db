@@ -13,9 +13,6 @@ import io.github.mmm.entity.bean.EntityBean;
  */
 public final class InsertClause extends AbstractDbClause implements DbIncompleteStartClause {
 
-  /** Name of {@link InsertClause} for marshaling. */
-  public static final String NAME_INSERT = "INSERT";
-
   private InsertStatement<?> statement;
 
   /**

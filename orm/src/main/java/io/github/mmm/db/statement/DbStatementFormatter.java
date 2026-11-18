@@ -17,7 +17,7 @@ public interface DbStatementFormatter {
    * @param context the {@link DbContext}.
    * @return this {@link DbStatementFormatter} for fluent API calls.
    */
-  default DbPlainStatement formatStatement(DbStatement<?> statement) {
+  default DbNativeStatement formatStatement(DbStatement<?> statement) {
 
     return formatStatement(statement, DbContextNone.INSTANCE);
   }
@@ -27,7 +27,7 @@ public interface DbStatementFormatter {
    * @param context the {@link DbContext}.
    * @return this {@link DbStatementFormatter} for fluent API calls.
    */
-  DbPlainStatement formatStatement(DbStatement<?> statement, DbContext context);
+  DbNativeStatement formatStatement(DbStatement<?> statement, DbContext context);
 
   /**
    * @return the {@link #formatStatement(DbStatement, DbContext) formatted statement} as {@link String} (e.g. SQL).

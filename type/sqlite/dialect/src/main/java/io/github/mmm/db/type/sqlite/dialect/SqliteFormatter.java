@@ -88,7 +88,7 @@ public class SqliteFormatter extends DbDialectStatementFormatter {
     write(") ");
     write(DbKeyword.VALUES);
     write(" ('");
-    write(seq.getSequenceName());
+    write(seq.getName());
     write("', ");
     write(seq.getStartWith().toString());
     write(", ");

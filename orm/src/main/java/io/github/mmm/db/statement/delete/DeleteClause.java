@@ -3,9 +3,9 @@
 package io.github.mmm.db.statement.delete;
 
 import io.github.mmm.db.statement.AbstractDbClause;
-import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.db.statement.DbIncompleteStartClause;
 import io.github.mmm.db.statement.DbStartClause;
+import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
 /**
@@ -14,9 +14,6 @@ import io.github.mmm.entity.bean.EntityBean;
  * @since 1.0.0
  */
 public final class DeleteClause extends AbstractDbClause implements DbIncompleteStartClause {
-
-  /** Name of {@link DeleteClause} for marshaling. */
-  public static final String NAME_DELETE = "DELETE";
 
   private DeleteStatement<?> statement;
 

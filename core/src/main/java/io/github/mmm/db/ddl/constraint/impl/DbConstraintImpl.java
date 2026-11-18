@@ -6,25 +6,22 @@ import java.util.List;
 import java.util.Objects;
 
 import io.github.mmm.base.io.UncheckedAppendable;
-import io.github.mmm.base.lang.AbstractToString;
 import io.github.mmm.db.ddl.column.DbColumnReference;
 import io.github.mmm.db.ddl.constraint.DbConstraint;
 import io.github.mmm.db.ddl.constraint.DbForeignKeyConstraint;
 import io.github.mmm.db.ddl.constraint.state.DbConstraintState;
 import io.github.mmm.db.ddl.table.DbTableReference;
+import io.github.mmm.db.name.AbstractDbObject;
 import io.github.mmm.db.name.DbKeyword;
-import io.github.mmm.db.name.DbNamingStrategy;
 import io.github.mmm.db.name.DbObject;
+import io.github.mmm.db.name.DbQualifiedName;
 
 /**
  * Implementation of {@link DbConstraint}.
  *
  * @since 1.0.0
  */
-public abstract class DbConstraintImpl extends AbstractToString implements DbConstraint {
-
-  /** @see #getName() */
-  protected final String name;
+public abstract class DbConstraintImpl extends AbstractDbObject implements DbConstraint {
 
   /** @see #getSourceColumns() */
   protected final List<DbColumnReference> sourceColumns;
@@ -38,34 +35,39 @@ public abstract class DbConstraintImpl extends AbstractToString implements DbCon
   /**
    * The constructor.
    *
-   * @param constraintName the {@link #getName() constraint name}.
+   * @param name the {@link #getName() constraint name}.
    * @param sourceTable the {@link #getSourceTable() source table}.
    * @param sourceColumns the {@link #getSourceColumns() source columns}.
    * @param state the {@link #getState state}.
    */
-  public DbConstraintImpl(String constraintName, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
+  public DbConstraintImpl(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       DbConstraintState state) {
 
-    super();
+    // constraint names are strictly tied to their parent table and can never be qualified
+    this(DbQualifiedName.ofName(name), sourceTable, sourceColumns, state);
+  }
+
+  /**
+   * The constructor.
+   *
+   * @param name the {@link #getName() constraint name}.
+   * @param sourceTable the {@link #getSourceTable() source table}.
+   * @param sourceColumns the {@link #getSourceColumns() source columns}.
+   * @param state the {@link #getState state}.
+   */
+  public DbConstraintImpl(DbQualifiedName name, DbTableReference<?> sourceTable,
+      List<DbColumnReference> sourceColumns, DbConstraintState state) {
+
+    super(name);
     Objects.requireNonNull(state);
     Objects.requireNonNull(sourceColumns);
     Objects.requireNonNull(sourceTable);
-    this.name = constraintName;
     if (sourceColumns.isEmpty()) {
       throw new IllegalStateException("Need at least one column for constraint");
     }
     this.sourceTable = sourceTable;
     this.state = state;
     this.sourceColumns = sourceColumns;
-  }
-
-  @Override
-  public String getName(DbNamingStrategy namingStrategy) {
-
-    if (namingStrategy == null) {
-      return this.name;
-    }
-    return namingStrategy.getConstraintName(this);
   }
 
   /**

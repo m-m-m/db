@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.function.Function;
 
 import io.github.mmm.db.memory.repository.MemoryRepository;
+import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.entity.id.Id;
 import io.github.mmm.property.ReadableProperty;
@@ -32,7 +33,7 @@ public class MemoryNonUniqueIndex<K, E extends EntityBean> extends MemoryIndex<K
    * @param repository the owning {@link MemoryRepository}.
    * @param properties the {@link ReadableProperty properties} to index also known as {@link #getColumns() columns}.
    */
-  public MemoryNonUniqueIndex(String name, MemoryRepository<E> repository, ReadableProperty<?>... properties) {
+  public MemoryNonUniqueIndex(DbQualifiedName name, MemoryRepository<E> repository, ReadableProperty<?>... properties) {
 
     this(name, repository, Function.identity(), properties);
   }
@@ -45,7 +46,7 @@ public class MemoryNonUniqueIndex<K, E extends EntityBean> extends MemoryIndex<K
    * @param normalizer the {@link #getNormalizer() normalizer}.
    * @param properties the {@link ReadableProperty properties} to index also known as {@link #getColumns() columns}.
    */
-  public MemoryNonUniqueIndex(String name, MemoryRepository<E> repository, Function<K, K> normalizer,
+  public MemoryNonUniqueIndex(DbQualifiedName name, MemoryRepository<E> repository, Function<K, K> normalizer,
       ReadableProperty<?>... properties) {
 
     super(name, repository, normalizer, properties);

@@ -8,6 +8,7 @@ import io.github.mmm.db.ddl.column.DbColumnReference;
 import io.github.mmm.db.ddl.constraint.DbNotNullConstraint;
 import io.github.mmm.db.ddl.constraint.state.DbConstraintState;
 import io.github.mmm.db.ddl.table.DbTableReference;
+import io.github.mmm.db.name.DbQualifiedName;
 
 /**
  * Implementation of {@link DbNotNullConstraint}.
@@ -27,6 +28,12 @@ public final class DbNotNullConstraintImpl extends DbConstraintImpl implements D
   public DbNotNullConstraintImpl(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       DbConstraintState state) {
 
+    this(DbQualifiedName.ofName(name), sourceTable, sourceColumns, state);
+  }
+
+  DbNotNullConstraintImpl(DbQualifiedName name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
+      DbConstraintState state) {
+
     super(name, sourceTable, sourceColumns, state);
   }
 
@@ -36,7 +43,7 @@ public final class DbNotNullConstraintImpl extends DbConstraintImpl implements D
     if (this.state == newState) {
       return this;
     }
-    return new DbNotNullConstraintImpl(this.name, this.sourceTable, this.sourceColumns, newState);
+    return new DbNotNullConstraintImpl(this.rawName, this.sourceTable, this.sourceColumns, newState);
   }
 
 }

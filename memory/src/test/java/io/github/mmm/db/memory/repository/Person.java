@@ -8,9 +8,8 @@ import io.github.mmm.property.number.integers.IntegerProperty;
 import io.github.mmm.property.string.StringProperty;
 import io.github.mmm.property.string.StringSetProperty;
 
-/**
- * Example {@link EntityBean} for testing.
- */
+/// Example [EntityBean] for testing.
+@SuppressWarnings("javadoc")
 public interface Person extends EntityBean {
 
   StringProperty Name();
@@ -19,9 +18,7 @@ public interface Person extends EntityBean {
 
   IntegerProperty Age();
 
-  /**
-   * @return a new instance of {@link Person}.
-   */
+  /// @return a new instance of [Person].
   public static Person of() {
 
     return BeanFactory.get().create(Person.class);

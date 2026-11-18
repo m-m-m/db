@@ -7,14 +7,12 @@ import io.github.mmm.db.statement.DbStartClause;
 import io.github.mmm.entity.bean.EntityBean;
 
 /**
- * {@link DbStartClause} to insert or if already present update data in the database. Only supported by modern databases.
+ * {@link DbStartClause} to insert or if already present update data in the database. Only supported by modern
+ * databases.
  *
  * @since 1.0.0
  */
 public final class UpsertClause extends AbstractDbClause implements DbStartClause {
-
-  /** Name of {@link UpsertClause} for marshaling. */
-  public static final String NAME_UPSERT = "UPSERT";
 
   /**
    * The constructor.

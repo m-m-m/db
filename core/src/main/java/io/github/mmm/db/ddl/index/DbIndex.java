@@ -10,6 +10,7 @@ import io.github.mmm.db.ddl.table.DbTable;
 import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.db.name.DbObject;
+import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 
 /**
@@ -37,7 +38,7 @@ public interface DbIndex extends DbIndexKind, DbObject {
     } else {
       sb.append(DbKeyword.INDEX);
     }
-    String indexName = getName();
+    DbQualifiedName indexName = getRawName();
     if (indexName != null) {
       sb.append(' ');
       sb.append(indexName);

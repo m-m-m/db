@@ -4,23 +4,19 @@ package io.github.mmm.db.statement.drop;
 
 import io.github.mmm.db.statement.AbstractEntityClause;
 import io.github.mmm.db.statement.AliasMap;
-import io.github.mmm.db.statement.DbClause;
-import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.db.statement.DbMainClause;
 import io.github.mmm.db.statement.DbStartClause;
+import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
 /**
- * A {@link DropTableClause}-{@link DbClause} of an SQL {@link DropTableStatement}.
+ * A {@link DbStartClause} of a {@link DropTableStatement}.
  *
  * @param <E> type of the {@link #getEntity() entity}.
  * @since 1.0.0
  */
 public class DropTableClause<E extends EntityBean> extends AbstractEntityClause<E, E, DropTableClause<E>>
     implements DbStartClause, DbMainClause<E> {
-
-  /** Name of {@link DropTableClause} for marshaling. */
-  public static final String NAME_DROP_TABLE = "DROP TABLE";
 
   private final DropTableStatement<E> statement;
 

@@ -8,16 +8,13 @@ import io.github.mmm.db.statement.DbMainClause;
 import io.github.mmm.db.statement.DbStartClause;
 
 /**
- * A {@link CreateSequenceClause} of an SQL {@link CreateSequenceStatement}.
+ * A {@link CreateSequenceClause} of a {@link CreateSequenceStatement}.
  *
  * @since 1.0.0
  */
 public class CreateSequenceClause extends AbstractDbClause implements DbStartClause, DbMainClause<Void> {
 
-  /** Name of {@link CreateSequenceClause} for marshaling. */
-  public static final String NAME_CREATE_TABLE = "CREATE SEQUENCE";
-
-  private final DbQualifiedName sequenceName;
+  private final DbQualifiedName name;
 
   private final CreateSequenceStatement statement;
 
@@ -34,7 +31,7 @@ public class CreateSequenceClause extends AbstractDbClause implements DbStartCla
   /**
    * The constructor.
    *
-   * @param sequenceName the {@link #getSequenceName()}.
+   * @param sequenceName the {@link #getName()}.
    */
   public CreateSequenceClause(String sequenceName) {
 
@@ -44,21 +41,21 @@ public class CreateSequenceClause extends AbstractDbClause implements DbStartCla
   /**
    * The constructor.
    *
-   * @param sequenceName the {@link #getSequenceName()}.
+   * @param sequenceName the {@link #getName()}.
    */
   public CreateSequenceClause(DbQualifiedName sequenceName) {
 
     super();
-    this.sequenceName = sequenceName;
+    this.name = sequenceName;
     this.statement = new CreateSequenceStatement(this);
   }
 
   /**
    * @return the {@link DbQualifiedName} of the sequence to create.
    */
-  public DbQualifiedName getSequenceName() {
+  public DbQualifiedName getName() {
 
-    return this.sequenceName;
+    return this.name;
   }
 
   /**

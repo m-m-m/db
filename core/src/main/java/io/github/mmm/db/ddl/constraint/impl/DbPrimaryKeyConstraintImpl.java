@@ -8,6 +8,7 @@ import io.github.mmm.db.ddl.column.DbColumnReference;
 import io.github.mmm.db.ddl.constraint.DbPrimaryKeyConstraint;
 import io.github.mmm.db.ddl.constraint.state.DbConstraintState;
 import io.github.mmm.db.ddl.table.DbTableReference;
+import io.github.mmm.db.name.DbQualifiedName;
 
 /**
  * Implementation of {@link DbPrimaryKeyConstraint}.
@@ -27,6 +28,12 @@ public final class DbPrimaryKeyConstraintImpl extends DbConstraintImpl implement
   public DbPrimaryKeyConstraintImpl(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       DbConstraintState state) {
 
+    this(DbQualifiedName.ofName(name), sourceTable, sourceColumns, state);
+  }
+
+  DbPrimaryKeyConstraintImpl(DbQualifiedName name, DbTableReference<?> sourceTable,
+      List<DbColumnReference> sourceColumns, DbConstraintState state) {
+
     super(name, sourceTable, sourceColumns, state);
   }
 
@@ -36,7 +43,7 @@ public final class DbPrimaryKeyConstraintImpl extends DbConstraintImpl implement
     if (this.state == newState) {
       return this;
     }
-    return new DbPrimaryKeyConstraintImpl(this.name, this.sourceTable, this.sourceColumns, newState);
+    return new DbPrimaryKeyConstraintImpl(this.rawName, this.sourceTable, this.sourceColumns, newState);
   }
 
 }

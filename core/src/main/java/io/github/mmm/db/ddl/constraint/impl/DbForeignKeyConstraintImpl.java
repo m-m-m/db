@@ -10,6 +10,7 @@ import io.github.mmm.db.ddl.constraint.DbForeignKeyConstraint;
 import io.github.mmm.db.ddl.constraint.state.DbConstraintOnDelete;
 import io.github.mmm.db.ddl.constraint.state.DbConstraintState;
 import io.github.mmm.db.ddl.table.DbTableReference;
+import io.github.mmm.db.name.DbQualifiedName;
 
 /**
  * Implementation of {@link DbForeignKeyConstraint}.
@@ -39,6 +40,13 @@ public final class DbForeignKeyConstraintImpl extends DbConstraintImpl implement
   public DbForeignKeyConstraintImpl(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       DbTableReference<?> targetTable, List<DbColumnReference> targetColumns, DbConstraintState state,
       DbConstraintOnDelete onDelete) {
+
+    this(DbQualifiedName.ofName(name), sourceTable, sourceColumns, targetTable, targetColumns, state, onDelete);
+  }
+
+  DbForeignKeyConstraintImpl(DbQualifiedName name, DbTableReference<?> sourceTable,
+      List<DbColumnReference> sourceColumns, DbTableReference<?> targetTable, List<DbColumnReference> targetColumns,
+      DbConstraintState state, DbConstraintOnDelete onDelete) {
 
     super(name, sourceTable, sourceColumns, state);
     Objects.requireNonNull(onDelete);
@@ -79,7 +87,7 @@ public final class DbForeignKeyConstraintImpl extends DbConstraintImpl implement
     if (this.state == newState) {
       return this;
     }
-    return new DbForeignKeyConstraintImpl(this.name, this.sourceTable, this.sourceColumns, this.targetTable,
+    return new DbForeignKeyConstraintImpl(this.rawName, this.sourceTable, this.sourceColumns, this.targetTable,
         this.targetColumns, newState, this.onDelete);
   }
 

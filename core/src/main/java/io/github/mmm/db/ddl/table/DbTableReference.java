@@ -7,7 +7,6 @@ import java.util.Objects;
 import io.github.mmm.base.io.UncheckedAppendable;
 import io.github.mmm.bean.ReadableBean;
 import io.github.mmm.db.ddl.table.impl.DbTableReferenceImpl;
-import io.github.mmm.db.name.DbNamingStrategy;
 import io.github.mmm.db.name.DbObject;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
@@ -27,31 +26,9 @@ public interface DbTableReference<E extends EntityBean> extends DbObject {
   E getEntity();
 
   @Override
-  default String getName(DbNamingStrategy namingStrategy) {
-
-    return getQualifiedName(namingStrategy).getName();
-  }
-
-  /**
-   * @return the {@link DbQualifiedName} referencing the owning {@link DbTable}.
-   */
-  default DbQualifiedName getQualifiedName() {
-
-    return getQualifiedName(DbNamingStrategy.of());
-  }
-
-  /**
-   * @param namingStrategy the {@link DbNamingStrategy} to use. May be {@code null} to get the raw
-   *        {@link DbQualifiedName}.
-   * @return the {@link DbQualifiedName} referencing the owning {@link DbTable} formatted using the given
-   *         {@link DbNamingStrategy}.
-   */
-  DbQualifiedName getQualifiedName(DbNamingStrategy namingStrategy);
-
-  @Override
   default void toString(UncheckedAppendable sb, int mode) {
 
-    sb.append(getQualifiedName());
+    sb.append(getName());
   }
 
   /**
@@ -81,18 +58,18 @@ public interface DbTableReference<E extends EntityBean> extends DbObject {
 
   /**
    * @param <E> type of the {@link #getEntity() entity}.
-   * @param name the {@link #getQualifiedName() qualified name}.
+   * @param name the unqualified {@link #getName() name}.
    * @param entity the {@link #getEntity() entity}.
    * @return the new {@link DbTableReference}.
    */
   static <E extends EntityBean> DbTableReference<E> of(String name, E entity) {
 
-    return of(DbQualifiedName.of(name), entity);
+    return of(DbQualifiedName.ofParsed(name), entity);
   }
 
   /**
    * @param <E> type of the {@link #getEntity() entity}.
-   * @param name the {@link #getQualifiedName() qualified name}.
+   * @param name the {@link #getName() qualified name}.
    * @param entity the {@link #getEntity() entity}.
    * @return the new {@link DbTableReference}.
    */

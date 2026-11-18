@@ -5,7 +5,6 @@ package io.github.mmm.db.statement.create;
 import io.github.mmm.db.ddl.column.DbColumnReference;
 import io.github.mmm.db.ddl.constraint.DbConstraint;
 import io.github.mmm.db.ddl.table.DbTableReference;
-import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.db.statement.AbstractEntityClause;
 import io.github.mmm.db.statement.AliasMap;
 import io.github.mmm.db.statement.DbIncompleteStartClause;
@@ -20,9 +19,6 @@ import io.github.mmm.property.ReadableProperty;
  */
 public class CreateTableClause<E extends EntityBean> extends AbstractEntityClause<E, E, CreateTableClause<E>>
     implements DbIncompleteStartClause, DbCreateTableClause<E> {
-
-  /** Name of {@link CreateTableClause} for marshaling. */
-  public static final String NAME_CREATE_TABLE = DbKeyword.CREATE_TABLE;
 
   private final CreateTableStatement<E> statement;
 

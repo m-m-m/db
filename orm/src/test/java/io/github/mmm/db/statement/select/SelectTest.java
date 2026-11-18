@@ -8,7 +8,7 @@ import io.github.mmm.db.param.CriteriaParametersNamed;
 import io.github.mmm.db.statement.BasicDbStatementFormatter;
 import io.github.mmm.db.statement.BasicDbStatementFormatterUseAsBeforeAlias;
 import io.github.mmm.db.statement.City;
-import io.github.mmm.db.statement.DbPlainStatement;
+import io.github.mmm.db.statement.DbNativeStatement;
 import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.db.statement.DbStatementTest;
 import io.github.mmm.db.statement.Person;
@@ -39,7 +39,7 @@ class SelectTest extends DbStatementTest {
     BasicDbStatementFormatter sqlFormatter = new BasicDbStatementFormatterUseAsBeforeAlias(new TestDialect(),
         CriteriaParametersNamed.FACTORY);
 
-    DbPlainStatement plainStatement = sqlFormatter.formatStatement(query);
+    DbNativeStatement plainStatement = sqlFormatter.formatStatement(query);
     assertThat(plainStatement.getStatement()).isEqualTo(
         "SELECT p FROM Person AS p WHERE p.Age >= :Age AND (p.Name LIKE :Name OR p.Single = :Single) ORDER BY p.Name ASC");
 

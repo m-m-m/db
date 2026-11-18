@@ -11,6 +11,7 @@ import io.github.mmm.db.ddl.constraint.DbCheckConstraint;
 import io.github.mmm.db.ddl.constraint.DbConstraint;
 import io.github.mmm.db.ddl.constraint.state.DbConstraintState;
 import io.github.mmm.db.ddl.table.DbTableReference;
+import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.property.criteria.CriteriaPredicate;
 import io.github.mmm.value.PropertyPath;
 
@@ -33,6 +34,12 @@ public final class DbCheckConstraintImpl extends DbConstraintImpl implements DbC
    * @param state the {@link #getState state}.
    */
   public DbCheckConstraintImpl(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
+      CriteriaPredicate predicate, DbConstraintState state) {
+
+    this(DbQualifiedName.ofName(name), sourceTable, sourceColumns, predicate, state);
+  }
+
+  DbCheckConstraintImpl(DbQualifiedName name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       CriteriaPredicate predicate, DbConstraintState state) {
 
     if (sourceColumns == null) {
@@ -59,7 +66,7 @@ public final class DbCheckConstraintImpl extends DbConstraintImpl implements DbC
     if (newState == this.state) {
       return this;
     }
-    return new DbCheckConstraintImpl(this.name, this.sourceTable, this.sourceColumns, this.predicate, newState);
+    return new DbCheckConstraintImpl(this.rawName, this.sourceTable, this.sourceColumns, this.predicate, newState);
   }
 
 }

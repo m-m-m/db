@@ -11,7 +11,7 @@ import io.github.mmm.db.dialect.DbDialect;
 import io.github.mmm.db.dialect.DbDialectProvider;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.db.source.DbSourceConfig;
-import io.github.mmm.db.statement.DbPlainStatement;
+import io.github.mmm.db.statement.DbNativeStatement;
 import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.db.statement.select.SelectStatement;
 import io.github.mmm.db.tx.spi.AbstractDbTransaction;
@@ -37,7 +37,7 @@ public class JdbcSequence implements IdSequence {
    */
   public JdbcSequence(String sequenceName, DbSourceConfig sourceConfig) {
 
-    this(new DbQualifiedName(sequenceName), sourceConfig);
+    this(DbQualifiedName.ofParsed(sequenceName), sourceConfig);
   }
 
   /**
@@ -59,7 +59,7 @@ public class JdbcSequence implements IdSequence {
 
     DbDialect dialect = DbDialectProvider.get().get(this.sourceConfig.getDialect());
     Connection connection = AbstractDbTransaction.getRequired(this.sourceConfig.getSource()).getConnection();
-    DbPlainStatement plainStatement = dialect.createFormatter().formatStatement(this.statement);
+    DbNativeStatement plainStatement = dialect.createFormatter().formatStatement(this.statement);
     long id = -1;
     while (plainStatement != null) {
       String sql = plainStatement.getStatement();

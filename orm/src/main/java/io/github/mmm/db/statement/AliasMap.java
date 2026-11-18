@@ -100,7 +100,7 @@ public class AliasMap implements PropertyPathParser {
    */
   public String createAlias(AbstractEntityClause<?, ?, ?> entityClause) {
 
-    String entityName = CaseHelper.uncapitalize(entityClause.getName());
+    String entityName = CaseHelper.uncapitalize(entityClause.getName().getName());
     int len = 1;
     int length = entityName.length();
     String alias;

@@ -5,8 +5,8 @@ package io.github.mmm.db.statement;
 import io.github.mmm.db.statement.select.SelectClause;
 
 /**
- * A {@link DbStartClause} is the entry {@link DbClause} that defines the characteristic of the operation in the database
- * such as {@link SelectClause}, Delete.
+ * A {@link DbStartClause} is the entry {@link DbClause} that defines the characteristic of the operation in the
+ * database such as {@link SelectClause}, Delete.
  *
  * @since 1.0.0
  */

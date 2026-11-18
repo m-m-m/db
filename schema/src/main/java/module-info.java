@@ -8,7 +8,7 @@
  */
 module io.github.mmm.db.schema {
 
-  requires transitive io.github.mmm.db;
+  requires transitive io.github.mmm.db.orm;
 
   requires transitive io.github.mmm.base.resource;
 
@@ -17,5 +17,7 @@ module io.github.mmm.db.schema {
   requires java.sql;
 
   exports io.github.mmm.db.schema;
+
+  exports io.github.mmm.db.schema.orm;
 
 }

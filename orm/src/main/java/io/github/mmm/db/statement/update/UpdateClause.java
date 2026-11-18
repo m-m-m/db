@@ -5,8 +5,8 @@ package io.github.mmm.db.statement.update;
 import io.github.mmm.db.statement.AbstractEntitiesClause;
 import io.github.mmm.db.statement.AliasMap;
 import io.github.mmm.db.statement.DbMainClause;
-import io.github.mmm.db.statement.SetFragment;
 import io.github.mmm.db.statement.DbStartClause;
+import io.github.mmm.db.statement.SetFragment;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.WritableProperty;
 import io.github.mmm.property.criteria.PropertyAssignment;
@@ -19,9 +19,6 @@ import io.github.mmm.property.criteria.PropertyAssignment;
  */
 public final class UpdateClause<E extends EntityBean> extends AbstractEntitiesClause<E, E, UpdateClause<E>>
     implements DbStartClause, DbMainClause<E>, SetFragment<E, UpdateSetClause<E>> {
-
-  /** Name of {@link UpdateClause} for marshaling. */
-  public static final String NAME_UPDATE = "UPDATE";
 
   private final UpdateStatement<E> statement;
 

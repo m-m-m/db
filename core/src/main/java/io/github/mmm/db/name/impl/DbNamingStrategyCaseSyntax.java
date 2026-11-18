@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.github.mmm.base.text.CaseSyntax;
+import io.github.mmm.db.name.AbstractDbNamingStrategy;
 import io.github.mmm.db.name.DbNamingStrategy;
 import io.github.mmm.db.name.DbObject;
 
@@ -14,7 +15,7 @@ import io.github.mmm.db.name.DbObject;
  *
  * @since 1.0.0
  */
-public class DbNamingStrategyCaseSyntax implements DbNamingStrategy {
+public class DbNamingStrategyCaseSyntax extends AbstractDbNamingStrategy {
 
   private static final Map<CaseSyntax, DbNamingStrategyCaseSyntax> MAP = new HashMap<>();
 

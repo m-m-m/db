@@ -76,7 +76,7 @@ public class DbColumnImpl extends DbColumnReferenceImpl implements DbColumn {
   @Override
   public void toString(UncheckedAppendable sb, int mode) {
 
-    sb.append(this.name);
+    sb.append(this.rawName);
     if (mode != 0) {
       sb.append(' ');
       sb.append(this.type.toString());

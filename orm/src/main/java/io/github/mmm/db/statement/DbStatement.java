@@ -35,7 +35,7 @@ import io.github.mmm.value.CriteriaObject;
  * @param <E> type of the entity or object this statement primarily operates on.
  * @since 1.0.0
  */
-public abstract interface DbStatement<E> extends MarshallingObject {
+public abstract interface DbStatement<E> extends Statement, MarshallingObject {
 
   /**
    * @return the {@link DbStartClause}
@@ -48,11 +48,6 @@ public abstract interface DbStatement<E> extends MarshallingObject {
    *         type of {@link DbClause}.
    */
   List<? extends DbClause> getClauses();
-
-  /**
-   * @return the {@link DbStatementType type} of this {@link DbStatement statement}.
-   */
-  DbStatementType getType();
 
   /**
    * Alternative for {@code new SelectEntity<>(entity).from()}.

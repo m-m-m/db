@@ -14,9 +14,6 @@ import io.github.mmm.entity.bean.EntityBean;
  */
 public final class MergeClause extends AbstractDbClause implements DbIncompleteStartClause {
 
-  /** Name of {@link MergeClause} for marshaling. */
-  public static final String NAME_MERGE = "MERGE";
-
   private MergeStatement<?> statement;
 
   /**

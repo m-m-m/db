@@ -8,10 +8,8 @@ import io.github.mmm.db.statement.AbstractDbClause;
 import io.github.mmm.db.statement.AbstractEntityClause;
 import io.github.mmm.db.statement.AliasMap;
 import io.github.mmm.db.statement.DbClause;
-import io.github.mmm.db.statement.DbStatement;
-import io.github.mmm.db.statement.DbStatementType;
 import io.github.mmm.db.statement.DbStartClause;
-import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
+import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
 /**
@@ -69,12 +67,6 @@ public class CreateTableStatement<E extends EntityBean> extends CreateStatement<
 
     consumer.accept(this.createTable);
     consumer.accept(this.contents);
-  }
-
-  @Override
-  public DbStatementType getType() {
-
-    return DbStatementTypeImpl.CREATE_TABLE;
   }
 
   @Override

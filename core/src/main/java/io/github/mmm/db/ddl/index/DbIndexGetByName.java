@@ -2,6 +2,8 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.ddl.index;
 
+import io.github.mmm.db.name.DbQualifiedName;
+
 /**
  * API to get {@link DbIndex}es by name.
  *
@@ -14,6 +16,6 @@ public interface DbIndexGetByName {
    * @param name the {@link DbIndex#getName() name} of the requested index.
    * @return the {@link DbIndex} with the given name.
    */
-  <I extends DbIndex> I getIndex(String name);
+  <I extends DbIndex> I getIndex(DbQualifiedName name);
 
 }

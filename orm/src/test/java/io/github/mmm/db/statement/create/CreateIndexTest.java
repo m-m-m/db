@@ -28,7 +28,7 @@ class CreateIndexTest extends DbStatementTest {
 
   /** Test of {@link CreateIndexClause} on multiple columns. */
   @Test
-  void testMultipleColumns() {
+  void testMultipleColumnsWithAlias() {
 
     // arrange
     Song s = Song.of();

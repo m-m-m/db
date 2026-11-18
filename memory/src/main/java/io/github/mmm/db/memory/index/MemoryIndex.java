@@ -9,7 +9,6 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
 
-import io.github.mmm.base.lang.AbstractToString;
 import io.github.mmm.bean.ReadableBean;
 import io.github.mmm.db.ddl.column.DbColumnReference;
 import io.github.mmm.db.ddl.column.DbColumnReferenceWithSortOrder;
@@ -18,7 +17,8 @@ import io.github.mmm.db.ddl.index.DbIndexType;
 import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.db.memory.repository.MemoryRepository;
 import io.github.mmm.db.memory.repository.impl.MemoryRepositoryImpl;
-import io.github.mmm.db.name.DbNamingStrategy;
+import io.github.mmm.db.name.AbstractDbObject;
+import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.ReadableProperty;
 
@@ -29,9 +29,7 @@ import io.github.mmm.property.ReadableProperty;
  * @param <K> type of the index key (e.g. {@link String}).
  * @param <E> type of the {@link EntityBean}.
  */
-public abstract class MemoryIndex<K, E extends EntityBean> extends AbstractToString implements DbIndex {
-
-  private final String name;
+public abstract class MemoryIndex<K, E extends EntityBean> extends AbstractDbObject implements DbIndex {
 
   private final DbTableReference<E> table;
 
@@ -51,10 +49,10 @@ public abstract class MemoryIndex<K, E extends EntityBean> extends AbstractToStr
    * @param normalizer the {@link #getNormalizer() normalizer}.
    * @param properties the {@link ReadableProperty properties} to index also known as {@link #getColumns() columns}.
    */
-  public MemoryIndex(String name, MemoryRepository<E> repository, Function<K, K> normalizer,
+  public MemoryIndex(DbQualifiedName name, MemoryRepository<E> repository, Function<K, K> normalizer,
       ReadableProperty<?>... properties) {
 
-    super();
+    super(name);
     assert (properties != null);
     assert (properties.length > 0);
     this.repository = repository;
@@ -67,19 +65,9 @@ public abstract class MemoryIndex<K, E extends EntityBean> extends AbstractToStr
     }
     this.columns = List.of(cols);
 
-    this.name = name;
     E entity = ReadableBean.from(properties[0]);
     assert (entity != null);
     this.table = DbTableReference.of(entity);
-  }
-
-  @Override
-  public String getName(DbNamingStrategy namingStrategy) {
-
-    if (namingStrategy == null) {
-      return this.name;
-    }
-    return namingStrategy.getIndexName(this);
   }
 
   @Override
@@ -116,28 +104,6 @@ public abstract class MemoryIndex<K, E extends EntityBean> extends AbstractToStr
 
     return this.normalizer;
   }
-
-  //
-  // /**
-  // * @return the number of properties to index.
-  // */
-  // public int getPropertyCount() {
-  //
-  // return this.properties.length;
-  // }
-  //
-  // /**
-  // * @param i the index of the property in the range from {@code 0} to <code>{@link #getPropertyCount()}-1</code>.
-  // * @return the {@link io.github.mmm.property.WritableProperty#getName() property name} of the property to index or
-  // * {@code null} if the given index is out of range.
-  // */
-  // public String getProperty(int i) {
-  //
-  // if ((i < 0) || (i >= this.properties.length)) {
-  // return null;
-  // }
-  // return this.properties[i];
-  // }
 
   /**
    * @param key the key to add to this index.

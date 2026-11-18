@@ -36,12 +36,6 @@ import io.github.mmm.value.PropertyPath;
  */
 public abstract class SelectClause<R> extends AbstractDbClause implements DbIncompleteStartClause {
 
-  /** Name of {@link SelectClause} for marshaling. */
-  public static final String NAME_SELECT = "SELECT";
-
-  /** Name of property {@link #isDistinct()} for marshaling. */
-  public static final String NAME_DISTINCT = "DISTINCT";
-
   /** {@link #getResultName() Result name} for {@link SelectEntityClause}. */
   public static final String VALUE_RESULT_ENTITY = "entity";
 

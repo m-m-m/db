@@ -5,14 +5,11 @@ package io.github.mmm.db.statement.alter;
 import java.util.function.Consumer;
 
 import io.github.mmm.db.statement.AbstractDbClause;
-import io.github.mmm.db.statement.AbstractDbStatement;
 import io.github.mmm.db.statement.AbstractEntityClause;
 import io.github.mmm.db.statement.AliasMap;
 import io.github.mmm.db.statement.DbClause;
-import io.github.mmm.db.statement.DbStatement;
-import io.github.mmm.db.statement.DbStatementType;
 import io.github.mmm.db.statement.DbStartClause;
-import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
+import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
 /**
@@ -21,7 +18,7 @@ import io.github.mmm.entity.bean.EntityBean;
  * @param <E> type of the {@link AbstractEntityClause#getEntity() entity}.
  * @since 1.0.0
  */
-public class AlterTableStatement<E extends EntityBean> extends AbstractDbStatement<E> {
+public class AlterTableStatement<E extends EntityBean> extends AlterStatement<E> {
 
   private final AlterTableClause<E> alterTable;
 
@@ -70,12 +67,6 @@ public class AlterTableStatement<E extends EntityBean> extends AbstractDbStateme
 
     consumer.accept(this.alterTable);
     consumer.accept(this.operations);
-  }
-
-  @Override
-  public DbStatementType getType() {
-
-    return DbStatementTypeImpl.ALTER_TABLE;
   }
 
   @Override

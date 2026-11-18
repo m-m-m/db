@@ -9,6 +9,7 @@ import io.github.mmm.db.ddl.index.DbIndexKindType;
 import io.github.mmm.db.ddl.index.DbIndexMetadata;
 import io.github.mmm.db.ddl.index.DbIndexType;
 import io.github.mmm.db.ddl.table.DbTableReference;
+import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 
 /**
@@ -124,8 +125,8 @@ public class DbIndexMetadataBuilder implements Builder<DbIndexMetadata> {
       type = DbIndexType.HASH;
     }
     DbIndexKindType kind = new DbIndexKindType(this.unique, clustered, type);
-    return new DbIndexMetadataImpl(this.name, this.table, kind, statistics, this.cardinality, this.filterCondition,
-        this.columnsBuilder.build());
+    return new DbIndexMetadataImpl(DbQualifiedName.ofParsed(this.name), this.table, kind, statistics, this.cardinality,
+        this.filterCondition, this.columnsBuilder.build());
   }
 
 }

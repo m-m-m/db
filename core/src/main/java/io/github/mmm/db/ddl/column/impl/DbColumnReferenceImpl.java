@@ -4,9 +4,9 @@ package io.github.mmm.db.ddl.column.impl;
 
 import java.util.Objects;
 
-import io.github.mmm.base.lang.AbstractToString;
 import io.github.mmm.db.ddl.column.DbColumnReference;
-import io.github.mmm.db.name.DbNamingStrategy;
+import io.github.mmm.db.name.AbstractDbObject;
+import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.property.ReadableProperty;
 
 /**
@@ -14,10 +14,7 @@ import io.github.mmm.property.ReadableProperty;
  *
  * @since 1.0.0
  */
-public class DbColumnReferenceImpl extends AbstractToString implements DbColumnReference {
-
-  /** @see #getName() */
-  protected final String name;
+public class DbColumnReferenceImpl extends AbstractDbObject implements DbColumnReference {
 
   /** @see #getProperty() */
   protected final ReadableProperty<?> property;
@@ -49,7 +46,7 @@ public class DbColumnReferenceImpl extends AbstractToString implements DbColumnR
    */
   public DbColumnReferenceImpl(DbColumnReference reference) {
 
-    this(reference.getName(), reference.getProperty());
+    this(reference.getProperty(), reference.getName());
   }
 
   /**
@@ -60,23 +57,22 @@ public class DbColumnReferenceImpl extends AbstractToString implements DbColumnR
    */
   public DbColumnReferenceImpl(String name, ReadableProperty<?> property) {
 
-    super();
-    if (property == null) {
-      Objects.requireNonNull(name);
-    } else if (name == null) {
-      name = property.getName();
-    }
-    this.name = name;
-    this.property = property;
+    this(property, DbQualifiedName.ofName(name));
   }
 
-  @Override
-  public String getName(DbNamingStrategy namingStrategy) {
+  /**
+   * The constructor.
+   *
+   * @param property the {@link #getProperty() property}.
+   * @param name the {@link #getName() column name}.
+   */
+  public DbColumnReferenceImpl(ReadableProperty<?> property, DbQualifiedName name) {
 
-    if (namingStrategy == null) {
-      return this.name;
+    if (property == null) {
+      Objects.requireNonNull(name);
     }
-    return namingStrategy.getColumnName(this);
+    super(name);
+    this.property = property;
   }
 
   @Override

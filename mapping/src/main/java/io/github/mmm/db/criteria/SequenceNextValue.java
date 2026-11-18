@@ -42,6 +42,12 @@ public final class SequenceNextValue implements CriteriaObject<Long> {
   }
 
   @Override
+  public PropertyPath<?> findFirstProperty() {
+
+    return null;
+  }
+
+  @Override
   public String toString() {
 
     return DbKeyword.NEXTVAL + "(" + this.sequenceName + ")";

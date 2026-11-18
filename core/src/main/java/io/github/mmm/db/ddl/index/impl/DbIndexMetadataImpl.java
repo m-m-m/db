@@ -8,6 +8,7 @@ import io.github.mmm.db.ddl.column.DbColumnReferenceWithSortOrder;
 import io.github.mmm.db.ddl.index.DbIndexKind;
 import io.github.mmm.db.ddl.index.DbIndexMetadata;
 import io.github.mmm.db.ddl.table.DbTableReference;
+import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 
 /**
@@ -34,8 +35,8 @@ public class DbIndexMetadataImpl extends DbIndexImpl implements DbIndexMetadata 
    * @param filterCondition the {@link #getFilterCondition() filter condition}.
    * @param columns the {@link #getColumns() columns}.
    */
-  public DbIndexMetadataImpl(String name, DbTableReference<EntityBean> table, DbIndexKind kind, boolean statistics,
-      long cardinality, String filterCondition, List<DbColumnReferenceWithSortOrder> columns) {
+  public DbIndexMetadataImpl(DbQualifiedName name, DbTableReference<EntityBean> table, DbIndexKind kind,
+      boolean statistics, long cardinality, String filterCondition, List<DbColumnReferenceWithSortOrder> columns) {
 
     super(name, table, kind, columns);
     this.statistics = statistics;

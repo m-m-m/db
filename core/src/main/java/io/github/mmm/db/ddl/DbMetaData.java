@@ -36,16 +36,14 @@ public interface DbMetaData {
   Iterable<DbTableData> getTables(String catalog, String schema, String name);
 
   /**
-   * @param name the {@link DbTable#getQualifiedName() qualified table name}.
-   * @return the {@link DbTable} with the given {@link DbTable#getQualifiedName() name} or {@code null} if no such table
-   *         exists.
+   * @param name the {@link DbTable#getName() qualified table name}.
+   * @return the {@link DbTable} with the given {@link DbTable#getName() name} or {@code null} if no such table exists.
    */
   DbTable getTable(DbQualifiedName name);
 
   /**
-   * @param name the {@link DbTable#getQualifiedName() qualified table name}.
-   * @return the {@link DbTable} with the given {@link DbTable#getQualifiedName() name} or {@code null} if no such table
-   *         exists.
+   * @param name the unqualified {@link DbTable#getName() table name}.
+   * @return the {@link DbTable} with the given {@link DbTable#getName() name} or {@code null} if no such table exists.
    */
   DbTable getTable(String name);
 

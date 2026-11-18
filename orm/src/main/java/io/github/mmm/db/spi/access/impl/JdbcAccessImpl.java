@@ -20,7 +20,7 @@ import io.github.mmm.db.result.impl.JdbcResult;
 import io.github.mmm.db.source.DbSourceConfig;
 import io.github.mmm.db.spi.access.AbstractDbAccess;
 import io.github.mmm.db.spi.access.DbAccess;
-import io.github.mmm.db.statement.DbPlainStatement;
+import io.github.mmm.db.statement.DbNativeStatement;
 import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.db.statement.NonUniqueResultException;
 import io.github.mmm.db.statement.insert.InsertClause;
@@ -39,6 +39,7 @@ import io.github.mmm.entity.id.OptimisicLockException;
 import io.github.mmm.entity.id.sequence.IdSequence;
 import io.github.mmm.entity.property.id.PkProperty;
 import io.github.mmm.property.WritableProperty;
+import io.github.mmm.property.criteria.CriteriaParameters;
 import io.github.mmm.property.criteria.CriteriaPredicate;
 import io.github.mmm.property.criteria.PredicateOperator;
 import io.github.mmm.property.criteria.PropertyAssignment;
@@ -159,19 +160,22 @@ public class JdbcAccessImpl extends AbstractDbAccess {
   }
 
   @Override
-  protected long executeSql(DbPlainStatement plainStatement, Consumer<DbResult> receiver, boolean unique) {
+  public long executeSql(DbNativeStatement plainStatement, Consumer<DbResult> receiver, boolean unique) {
 
     Objects.requireNonNull(plainStatement);
     Connection connection = getTx().getConnection();
-    DbPlainStatement current = plainStatement;
+    DbNativeStatement current = plainStatement;
     long count = 0;
     boolean resultReceived = false;
     while (current != null) {
       String sql = current.getStatement();
       LOG.debug("Executing SQL:\n{}", sql);
       try (PreparedStatement jdbcStatement = connection.prepareStatement(sql)) {
-        AbstractCriteriaParameters parameters = current.getParameters().cast();
-        parameters.apply(jdbcStatement, connection);
+        CriteriaParameters<?> parameters = current.getParameters();
+        if (parameters != null) {
+          AbstractCriteriaParameters params = parameters.cast();
+          params.apply(jdbcStatement, connection);
+        }
         if (receiver == null) {
           count += jdbcStatement.executeLargeUpdate();
         } else {

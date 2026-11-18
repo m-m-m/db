@@ -17,7 +17,9 @@ import io.github.mmm.db.mapping.impl.DbMapperDbResult;
 import io.github.mmm.db.mapping.impl.DbPropertyMapper;
 import io.github.mmm.db.mapping.impl.DbPropertyMapperImpl;
 import io.github.mmm.db.mapping.impl.DbSegmentMapper;
+import io.github.mmm.db.name.AbstractDbNamingStrategy;
 import io.github.mmm.db.name.DbNamingStrategy;
+import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.db.orm.Orm;
 import io.github.mmm.db.result.impl.DbResultValueObject;
 import io.github.mmm.db.statement.select.SelectClause;
@@ -48,7 +50,7 @@ public class OrmImpl implements Orm {
 
   private final TypeMapping typeMapping;
 
-  private final DbNamingStrategy namingStrategy;
+  private final AbstractDbNamingStrategy namingStrategy;
 
   /**
    * The constructor.
@@ -60,7 +62,7 @@ public class OrmImpl implements Orm {
 
     super();
     this.typeMapping = typeMapping;
-    this.namingStrategy = namingStrategy;
+    this.namingStrategy = (AbstractDbNamingStrategy) namingStrategy;
   }
 
   @Override
@@ -129,7 +131,7 @@ public class OrmImpl implements Orm {
   public <V> DbSegmentMapper<V, ?> createSegmentMapper(ReadableProperty<V> property) {
 
     DbColumnReference column = DbColumnReference.of(property);
-    String columnName = this.namingStrategy.getColumnName(column);
+    String columnName = this.namingStrategy.getName(column).getName();
     return createSegmentMapper(property, columnName, column, property.getValueClass(), property);
   }
 
@@ -237,22 +239,23 @@ public class OrmImpl implements Orm {
    */
   private <V> DbSegmentMapper<V, ?> createMapper(CriteriaObject<V> selection) {
 
-    String columnName = null;
+    DbQualifiedName columnName = null;
     if (selection instanceof ProjectionProperty<V> projectionProperty) {
       selection = projectionProperty.getSelection();
       columnName = columnName(projectionProperty.getProperty());
     } else if (selection instanceof PropertyPath<V> propertyPath) {
       columnName = columnName(propertyPath);
     }
-    return createSegmentMapper(selection, columnName, null, null);
+    String name = null;
+    if (columnName != null) {
+      name = columnName.toString(); // qualified or local?
+    }
+    return createSegmentMapper(selection, name, null, null);
   }
 
-  private String columnName(PropertyPath<?> propertyPath) {
+  private DbQualifiedName columnName(PropertyPath<?> propertyPath) {
 
-    if (propertyPath instanceof ReadableProperty<?> property) {
-      return this.namingStrategy.getColumnName(property);
-    }
-    return this.namingStrategy.getColumnName(propertyPath);
+    return this.namingStrategy.getColumnName(propertyPath, null, false);
   }
 
 }

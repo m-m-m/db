@@ -11,15 +11,13 @@ import io.github.mmm.base.variable.VariableDefinition;
 import io.github.mmm.db.name.DbQualifiedName;
 
 /**
- * A {@link DbSource} identifies a database to connect to as a tenant. It is just a wrapper for a {@link String} used as
- * {@link #getId() identifier}. Most applications only need to talk to a single database and schema. There is always a
- * {@link DbSource#get() default} {@link DbSource}. However, to support multi-tenancy and connecting to multiple
- * different databases the {@link DbSource} is used to identify the tenant. <br>
- * From a logical point-of-view a {@link DbSource} is similar to a {@link javax.sql.DataSource}. However, it is a much
- * higher abstraction. Only in case a {@link DbSource} points to an RDBMS and you are using JDBC to connect then there
- * will be a {@link javax.sql.DataSource} associated under the hood to talk to that database.<br>
- * When you configure database settings, you will always include the {@link DbSource} {@link #getId() identifier} in the
- * property names:
+ * A {@link DbSource} identifies a database to connect to as a tenant. It is just a wrapper for a {@link String} used as {@link #getId() identifier}. Most
+ * applications only need to talk to a single database and schema. There is always a {@link DbSource#get() default} {@link DbSource}. However, to support
+ * multi-tenancy and connecting to multiple different databases the {@link DbSource} is used to identify the tenant. <br>
+ * From a logical point-of-view a {@link DbSource} is similar to a {@link javax.sql.DataSource}. However, it is a much higher abstraction. Only in case a
+ * {@link DbSource} points to an RDBMS and you are using JDBC to connect then there will be a {@link javax.sql.DataSource} associated under the hood to talk to
+ * that database.<br>
+ * When you configure database settings, you will always include the {@link DbSource} {@link #getId() identifier} in the property names:
  *
  * <pre>
  * db.default.url=jdbc:postgresql://db.company.com:5432/db
@@ -105,39 +103,32 @@ public final class DbSource implements Comparable<DbSource> {
   public static final VariableDefinition<String> KEY_TYPE = VariableDefinition.ofString("type", null);
 
   /**
-   * {@link VariableDefinition} for the {@link Class#getName() class-name} of the database driver. Typically not needed
-   * and derived from {@link #KEY_URL connection URL}, but can be configured for specific cases when meta-drivers (e.g.
-   * aurora-jdbc-wrapper) shall be used.
+   * {@link VariableDefinition} for the {@link Class#getName() class-name} of the database driver. Typically not needed and derived from {@link #KEY_URL
+   * connection URL}, but can be configured for specific cases when meta-drivers (e.g. aurora-jdbc-wrapper) shall be used.
    */
-  public static final VariableDefinition<String> KEY_DRIVER_CLASS_NAME = VariableDefinition
-      .ofString("driver.class.name", null);
+  public static final VariableDefinition<String> KEY_DRIVER_CLASS_NAME = VariableDefinition.ofString("driver.class.name", null);
 
   /**
-   * {@link VariableDefinition} for the ID of the connection pool to use (e.g. "hikari", "c3po", or "dbcp"). Will be
-   * auto-configured if undefined.
+   * {@link VariableDefinition} for the ID of the connection pool to use (e.g. "hikari", "c3po", or "dbcp"). Will be auto-configured if undefined.
    */
   public static final VariableDefinition<String> KEY_POOL_ID = VariableDefinition.ofString("pool.id", null);
 
   /**
    * {@link VariableDefinition} for the minimum size of connections kept in the pool.
    */
-  public static final VariableDefinition<Integer> KEY_POOL_SIZE_MIN = VariableDefinition.ofInteger("pool.size.min",
-      null);
+  public static final VariableDefinition<Integer> KEY_POOL_SIZE_MIN = VariableDefinition.ofInteger("pool.size.min", null);
 
   /**
    * {@link VariableDefinition} for the maximum size of connections kept in the pool.
    */
-  public static final VariableDefinition<Integer> KEY_POOL_SIZE_MAX = VariableDefinition.ofInteger("pool.size.max",
-      null);
+  public static final VariableDefinition<Integer> KEY_POOL_SIZE_MAX = VariableDefinition.ofInteger("pool.size.max", null);
 
   /**
-   * {@link VariableDefinition} for the {@link DbSourceConfig#getPoolConnectionTimeout() connection timeout} of the
-   * pool.
+   * {@link VariableDefinition} for the {@link DbSourceConfig#getPoolConnectionTimeout() connection timeout} of the pool.
    *
    * @see DbSourceConfig#getPoolConnectionTimeout()
    */
-  public static final VariableDefinition<Duration> KEY_POOL_CONNECTION_TIMEOUT = VariableDefinition
-      .ofDuration("pool.connection.timeout", null);
+  public static final VariableDefinition<Duration> KEY_POOL_CONNECTION_TIMEOUT = VariableDefinition.ofDuration("pool.connection.timeout", null);
 
   /**
    * {@link VariableDefinition} for the {@link DbSourceConfig#getKind() kind} of database connection.
@@ -158,20 +149,16 @@ public final class DbSource implements Comparable<DbSource> {
   public static final VariableDefinition<String> KEY_CATALOG = VariableDefinition.ofString("catalog", null);
 
   /** {@link VariableDefinition} for the sequence increment. */
-  public static final VariableDefinition<Integer> KEY_SEQUENCE_INCREMENT = VariableDefinition
-      .ofInteger("sequence_increment", VALUE_SEQUENCE_INCREMENT_DEFAULT);
+  public static final VariableDefinition<Integer> KEY_SEQUENCE_INCREMENT = VariableDefinition.ofInteger("sequence_increment", VALUE_SEQUENCE_INCREMENT_DEFAULT);
 
   /**
-   * The standard keys for the database connection. Other keys will be specific for particular implementations (e.g.
-   * connection pools).
+   * The standard keys for the database connection. Other keys will be specific for particular implementations (e.g. connection pools).
    */
-  public static final Set<VariableDefinition<?>> VARIABLES = Set.of(KEY_URL, KEY_USER, KEY_PASSWORD, KEY_DIALECT,
-      KEY_TYPE, KEY_KIND, KEY_SCHEMA, KEY_HOST, KEY_PORT, KEY_DATABASE, KEY_DRIVER_CLASS_NAME, KEY_SEQUENCE_INCREMENT,
-      KEY_POOL_ID, KEY_POOL_SIZE_MIN, KEY_POOL_SIZE_MAX, KEY_POOL_CONNECTION_TIMEOUT);
+  public static final Set<VariableDefinition<?>> VARIABLES = Set.of(KEY_URL, KEY_USER, KEY_PASSWORD, KEY_DIALECT, KEY_TYPE, KEY_KIND, KEY_SCHEMA, KEY_HOST,
+      KEY_PORT, KEY_DATABASE, KEY_DRIVER_CLASS_NAME, KEY_SEQUENCE_INCREMENT, KEY_POOL_ID, KEY_POOL_SIZE_MIN, KEY_POOL_SIZE_MAX, KEY_POOL_CONNECTION_TIMEOUT);
 
   /** The names of {@link #VARIABLES}. */
-  public static final Set<String> VARIABLE_NAMES = Set
-      .copyOf(VARIABLES.stream().map(VariableDefinition::getName).collect(Collectors.toSet()));
+  public static final Set<String> VARIABLE_NAMES = Set.copyOf(VARIABLES.stream().map(VariableDefinition::getName).collect(Collectors.toSet()));
 
   private DbSource(String id) {
 
@@ -191,7 +178,7 @@ public final class DbSource implements Comparable<DbSource> {
   /**
    * @return the property prefix as "db.«id»." (e.g. "db.default." for the {@link #get() default source}).
    * @see #PROPERTY_PREFIX_DB
-   * @see io.github.mmm.base.metainfo.MetaInfo#with(String)
+   * @see io.github.mmm.base.metainfo.MetaInfo#withPrefix(String)
    */
   public String getPropertyPrefix() {
 
@@ -238,6 +225,12 @@ public final class DbSource implements Comparable<DbSource> {
     return this.id.compareTo(other.id);
   }
 
+  @Override
+  public String toString() {
+
+    return "db." + this.id;
+  }
+
   /**
    * @return the default {@link DbSource} for the "primary" database. It has the {@link #getId() identifier} "default".
    */
@@ -248,8 +241,7 @@ public final class DbSource implements Comparable<DbSource> {
 
   /**
    * @param id the {@link #getId() identifier} to wrap as {@link DbSource}.
-   * @return a {@link DbSource} with the given {@code id}. Will be the {@link #get() default} {@link DbSource} if
-   *         {@code id} is {@code null} or "default".
+   * @return a {@link DbSource} with the given {@code id}. Will be the {@link #get() default} {@link DbSource} if {@code id} is {@code null} or "default".
    */
   public static DbSource of(String id) {
 

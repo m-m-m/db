@@ -12,10 +12,9 @@ import io.github.mmm.base.metainfo.MetaInfo;
 import io.github.mmm.bean.BeanType;
 import io.github.mmm.bean.ReadableBean;
 import io.github.mmm.db.ddl.column.DbColumnReference;
+import io.github.mmm.db.name.AbstractDbObject;
 import io.github.mmm.db.name.DbEntityNameInfo;
 import io.github.mmm.db.name.DbEntityNameMapper;
-import io.github.mmm.db.name.DbNamingStrategy;
-import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.ReadableProperty;
 
@@ -94,33 +93,23 @@ public class DbEntityNameMapperImpl implements DbEntityNameMapper {
   /**
    * Implementation of {@link DbEntityNameInfo}.
    */
-  public static class DbEntityNameInfoImpl implements DbEntityNameInfo {
+  public static class DbEntityNameInfoImpl extends AbstractDbObject implements DbEntityNameInfo {
 
     private final EntityBean entity;
-
-    private final DbQualifiedName qualifiedName;
-
-    private final boolean java;
 
     private final Map<String, DbColumnReference> propertyNameMap;
 
     private DbEntityNameInfoImpl(EntityBean entity) {
 
-      super();
-      this.entity = entity;
       BeanType type = entity.getType();
       String name = getDbName(type.getMetaInfo(), EntityBean.META_KEY_TABLE, "EntityBean", type.getQualifiedName());
+      boolean java = false;
       if (name == null) {
         name = type.getStableName();
-        this.java = type.getSimpleName().equals(name);
-      } else {
-        this.java = false;
+        java = type.getSimpleName().equals(name);
       }
-      if (this.java) {
-        this.qualifiedName = new DbQualifiedName(name);
-      } else {
-        this.qualifiedName = DbQualifiedName.of(name);
-      }
+      super(name, java);
+      this.entity = entity;
       this.propertyNameMap = new ConcurrentHashMap<>();
       addProperties();
     }
@@ -142,21 +131,6 @@ public class DbEntityNameMapperImpl implements DbEntityNameMapper {
     }
 
     @Override
-    public DbQualifiedName getQualifiedName(DbNamingStrategy namingStrategy) {
-
-      if (namingStrategy == null) {
-        return this.qualifiedName;
-      }
-      return namingStrategy.getTableName(this);
-    }
-
-    @Override
-    public boolean hasJavaName() {
-
-      return this.java;
-    }
-
-    @Override
     public DbColumnReference getColumnInfo(ReadableProperty<?> property) {
 
       assert (ReadableBean.from(property).getType() == this.entity.getType());
@@ -168,18 +142,12 @@ public class DbEntityNameMapperImpl implements DbEntityNameMapper {
   /**
    * Implementation of {@link DbColumnReference}.
    */
-  public static class PropertyColumnReference implements DbColumnReference {
+  public static class PropertyColumnReference extends AbstractDbObject implements DbColumnReference {
 
     private final ReadableProperty<?> property;
 
-    private final String name;
-
-    private final boolean java;
-
     private PropertyColumnReference(ReadableProperty<?> property, ReadableBean bean) {
 
-      super();
-      this.property = property;
       String qName;
       if (bean != null) {
         qName = bean.getType().getQualifiedName();
@@ -188,34 +156,19 @@ public class DbEntityNameMapperImpl implements DbEntityNameMapper {
       }
       String columnName = getDbName(property.getMetadata().getMetaInfo(), EntityBean.META_KEY_COLUMN,
           "ReadableProperty", qName + "." + property.getName());
+      boolean java = false;
       if (columnName == null) {
-        this.name = property.getName();
-        this.java = true;
-      } else {
-        this.name = columnName;
-        this.java = false;
+        columnName = property.getName();
+        java = true;
       }
+      super(columnName, java);
+      this.property = property;
     }
 
     @Override
     public ReadableProperty<?> getProperty() {
 
       return this.property;
-    }
-
-    @Override
-    public String getName(DbNamingStrategy namingStrategy) {
-
-      if (namingStrategy == null) {
-        return this.name;
-      }
-      return namingStrategy.getColumnName(this);
-    }
-
-    @Override
-    public boolean hasJavaName() {
-
-      return this.java;
     }
 
   }

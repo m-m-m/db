@@ -42,13 +42,13 @@ public class DbTableImpl extends DbTableDataImpl implements DbTable {
   public DbTableImpl(DbTableData data, List<DbColumn> columns, DbPrimaryKeyConstraint primaryKey,
       List<DbForeignKeyConstraint> foreignKeys, List<DbIndexMetadata> indexes) {
 
-    this(data.getQualifiedName(), data.getComment(), data.getType(), columns, primaryKey, foreignKeys, indexes);
+    this(data.getName(), data.getComment(), data.getType(), columns, primaryKey, foreignKeys, indexes);
   }
 
   /**
    * The constructor.
    *
-   * @param tableName the {@link #getQualifiedName() table name}.
+   * @param tableName the {@link #getName() table name}.
    * @param comment the {@link #getComment() comment}.
    * @param type the {@link #getType() table type}.
    * @param columns the {@link #getColumns() columns}.

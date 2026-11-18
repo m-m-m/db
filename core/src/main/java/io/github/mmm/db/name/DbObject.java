@@ -28,9 +28,16 @@ import io.github.mmm.db.ddl.table.DbTable;
 public interface DbObject extends ToString {
 
   /**
+   * @return the name of this {@link DbObject}. May be be {@code null}. Use {@link #getName()} or
+   *         {@link #getName(DbNamingStrategy)} to get the proper name with auto-generation if the raw name is not
+   *         available.
+   */
+  DbQualifiedName getRawName();
+
+  /**
    * @return the name of this {@link DbObject}. Shall never be {@code null}.
    */
-  default String getName() {
+  default DbQualifiedName getName() {
 
     return getName(DbNamingStrategy.of());
   }
@@ -43,7 +50,10 @@ public interface DbObject extends ToString {
    *         the given {@link DbNamingStrategy} is {@code null}, this method return the raw name that can even be
    *         {@code null} in cases described above.
    */
-  String getName(DbNamingStrategy namingStrategy);
+  default DbQualifiedName getName(DbNamingStrategy namingStrategy) {
+
+    return namingStrategy.getName(this);
+  }
 
   /**
    * @return {@code true} if the name is derived from the Java world (e.g. {@link Class#getSimpleName() simple class

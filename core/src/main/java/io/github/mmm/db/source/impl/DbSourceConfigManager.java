@@ -39,8 +39,7 @@ public final class DbSourceConfigManager {
 
   /**
    * @param source the {@link DbSource}.
-   * @return the existing {@link DbSourceConfigImpl} or {@code null} if not {@link #getOrCreate(DbSource) created}
-   *         before.
+   * @return the existing {@link DbSourceConfigImpl} or {@code null} if not {@link #getOrCreate(DbSource) created} before.
    */
   public DbSourceConfigImpl get(DbSource source) {
 
@@ -59,9 +58,9 @@ public final class DbSourceConfigManager {
 
   private DbSourceConfigImpl create(DbSource source) {
 
-    MetaInfo metaInfo = MetaInfo.config().with(source.getPropertyPrefix());
-    Properties properties = metaInfo.asProperties();
-    metaInfo = MetaInfo.empty().with(properties);
+    MetaInfo dbConfig = MetaInfo.config().withPrefix(source.getPropertyPrefix());
+    Properties properties = dbConfig.asProperties();
+    MetaInfo metaInfo = MetaInfo.empty().with(properties);
     DbSourceConfigImpl config = new DbSourceConfigImpl(source, metaInfo);
     DbSourceConfigurerAdapter.INSTANCE.autoConfigure(properties, source);
     DbConnectionPool<?> pool = createPool(config, properties);
@@ -91,10 +90,8 @@ public final class DbSourceConfigManager {
               logWarning = false;
             }
             if (logWarning) {
-              LOG.warn(
-                  "Connection pool provider is ambiguous: already found {} but also found {}. Please specify property {} explicitly.",
-                  provider.getId(), currentProvider.getId(),
-                  config.getSource().getPropertyKey(DbSource.KEY_POOL_ID.getName()));
+              LOG.warn("Connection pool provider is ambiguous: already found {} but also found {}. Please specify property {} explicitly.", provider.getId(),
+                  currentProvider.getId(), config.getSource().getPropertyKey(DbSource.KEY_POOL_ID.getName()));
             }
           }
         }

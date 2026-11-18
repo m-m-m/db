@@ -16,6 +16,8 @@ import io.github.mmm.entity.bean.typemapping.TypeMapping;
 import io.github.mmm.property.criteria.CriteriaExpression;
 import io.github.mmm.property.criteria.CriteriaParameters;
 import io.github.mmm.property.criteria.Literal;
+import io.github.mmm.property.enumeration.ReadableEnumProperty;
+import io.github.mmm.value.PropertyPath;
 import io.github.mmm.value.converter.TypeMapper;
 
 /**
@@ -56,7 +58,7 @@ public abstract class AbstractCriteriaParameters implements CriteriaParameters<C
         DbType dbType = null;
         while (dbType == null) {
           Class<?> valueClass = value.getClass();
-          TypeMapper typeMapper = this.typeMapping.getTypeMapper(valueClass);
+          TypeMapper typeMapper = getTypeMapper(valueClass, parent);
           if (typeMapper == null) {
             throw new UnmappedTypeException(valueClass);
           } else if (typeMapper instanceof DbType type) {
@@ -82,17 +84,29 @@ public abstract class AbstractCriteriaParameters implements CriteriaParameters<C
     out.append("null");
   }
 
+  private TypeMapper<?, ?> getTypeMapper(Class<?> valueClass, CriteriaExpression<?> expression) {
+
+    if (valueClass.isEnum() && (expression != null)) {
+      PropertyPath<?> propertyPath = expression.findFirstProperty();
+      if (propertyPath instanceof ReadableEnumProperty<?> property) {
+        TypeMapper<?, ?> typeMapper = property.getTypeMapper();
+        if (typeMapper != null) {
+          return typeMapper;
+        }
+      }
+    }
+    return this.typeMapping.getTypeMapper(valueClass);
+  }
+
   /**
    * @param <V> type of the {@code value}.
    * @param index the {@link CriteriaParameterImpl#getIndex() index}.
    * @param value the {@link CriteriaParameterImpl#getValue() value}.
    * @param dbType the the {@link CriteriaParameterImpl#getDbType() database type}.
-   * @param parent the parent {@link CriteriaExpression} (see
-   *        {@link #onLiteral(Literal, AppendableWriter, CriteriaExpression)}).
+   * @param parent the parent {@link CriteriaExpression} (see {@link #onLiteral(Literal, AppendableWriter, CriteriaExpression)}).
    * @return the new {@link CriteriaParameterImpl}.
    */
-  protected abstract <V> CriteriaParameterImpl<V> createParameter(int index, V value, DbType<V, ?, ?> dbType,
-      CriteriaExpression<?> parent);
+  protected abstract <V> CriteriaParameterImpl<V> createParameter(int index, V value, DbType<V, ?, ?> dbType, CriteriaExpression<?> parent);
 
   @Override
   public Iterator<CriteriaParameterImpl<?>> iterator() {

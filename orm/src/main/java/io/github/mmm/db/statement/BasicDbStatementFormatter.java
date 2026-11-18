@@ -33,6 +33,7 @@ import io.github.mmm.db.ddl.table.operation.TableRenameConstraintOperation;
 import io.github.mmm.db.dialect.AbstractDbDialect;
 import io.github.mmm.db.dialect.DbContext;
 import io.github.mmm.db.mapping.DbBeanMapper;
+import io.github.mmm.db.name.AbstractDbNamingStrategy;
 import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.db.name.DbNamingStrategy;
 import io.github.mmm.db.name.DbQualifiedName;
@@ -98,19 +99,21 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
   protected final AbstractDbDialect<?> dialect;
 
   /** The {@link DbNamingStrategy}. */
-  protected final DbNamingStrategy namingStrategy;
+  protected final AbstractDbNamingStrategy namingStrategy;
 
   private final StringBuilder sb;
 
   private CriteriaParametersFactory parametersFactory;
 
-  private DbPlainStatement plainStatement;
+  private DbNativeStatement nativeStatement;
 
   private final String indentation;
 
   private int indent;
 
   private int line;
+
+  private DbStatementType statementType;
 
   BasicDbStatementFormatter() {
 
@@ -152,11 +155,13 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     super(parametersFactory.create((dialect == null) ? null : dialect.getOrm().getTypeMapping()),
         new AppendableWriter(sb));
     this.dialect = dialect;
+    DbNamingStrategy naming;
     if (dialect == null) {
-      this.namingStrategy = DbNamingStrategy.of();
+      naming = DbNamingStrategy.of();
     } else {
-      this.namingStrategy = dialect.getNamingStrategy();
+      naming = dialect.getNamingStrategy();
     }
+    this.namingStrategy = (AbstractDbNamingStrategy) naming;
     this.sb = sb;
     this.parametersFactory = parametersFactory;
     this.indentation = indentation;
@@ -184,18 +189,18 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
   @Override
   public void onPropertyPath(PropertyPath<?> property, int i, CriteriaExpression<?> parent) {
 
-    String columnName = this.namingStrategy.getColumnName(property);
+    DbQualifiedName columnName = this.namingStrategy.getColumnName(property, null, false);
     write(columnName);
   }
 
   /**
-   * Starts a new {@link DbPlainStatement} in case multiple statements are needed.<br>
+   * Starts a new {@link DbNativeStatement} in case multiple statements are needed.<br>
    * <b>ATTENTION:</b> When producing multiple plain statements, they have to be created in reverse order due to the
-   * nature of {@link DbPlainStatement#getNext()}.
+   * nature of {@link DbNativeStatement#getNext()}.
    */
   protected void newStatement() {
 
-    this.plainStatement = new DbPlainStatement(this.out.toString(), this.parameters, this.plainStatement);
+    this.nativeStatement = get();
     this.parameters = this.parametersFactory.create(this.dialect.getOrm().getTypeMapping());
     this.sb.setLength(0);
   }
@@ -223,8 +228,9 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
   }
 
   @Override
-  public DbPlainStatement formatStatement(DbStatement<?> statement, DbContext context) {
+  public DbNativeStatement formatStatement(DbStatement<?> statement, DbContext context) {
 
+    this.statementType = statement.getType();
     for (DbClause clause : statement.getClauses()) {
       formatClause(clause, context);
     }
@@ -475,7 +481,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
     String s = "";
     List<DbConstraint> constraints = contents.getConstraints().stream()
-        .sorted((p1, p2) -> p1.getName().compareTo(p2.getName())).collect(Collectors.toList());
+        .sorted((p1, p2) -> p1.getName().getName().compareTo(p2.getName().getName())).collect(Collectors.toList());
     for (DbConstraint constraint : constraints) {
       write(s);
       writeIndent();
@@ -642,7 +648,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
    */
   protected void formatTableName(DbTableReference<?> table) {
 
-    write(this.namingStrategy.getTableName(table));
+    write(this.namingStrategy.getName(table));
   }
 
   /**
@@ -830,8 +836,9 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
   @SuppressWarnings("rawtypes")
   private PropertyPath<?> mapProperty(PropertyPath<?> property, TypeMapper typeMapper) {
 
-    String name = this.dialect.getNamingStrategy().getColumnName(property, typeMapper);
-    return new SimplePath(property.parentPath(), name);
+    DbQualifiedName name = this.namingStrategy.getColumnName(property, false, typeMapper);
+    assert !name.hasQualifier() : name;
+    return new SimplePath(property.parentPath(), name.getName());
   }
 
   @SuppressWarnings("rawtypes")
@@ -842,9 +849,10 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
       TypeMapper typeMapper = p.getTypeMapper();
       if (typeMapper != null) {
         do {
-          String name = this.dialect.getNamingStrategy().getColumnName(property, typeMapper);
-          index = formatAssignmentRecursive(new SimplePath(property.parentPath(), name), mapValue(value, typeMapper),
-              index, assign, args, clause);
+          DbQualifiedName name = this.namingStrategy.getColumnName(property, false, typeMapper);
+          assert !name.hasQualifier() : name;
+          index = formatAssignmentRecursive(new SimplePath(property.parentPath(), name.getName()),
+              mapValue(value, typeMapper), index, assign, args, clause);
           typeMapper = typeMapper.next();
         } while (typeMapper != null);
         return index;
@@ -949,8 +957,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     if (writeIndent) {
       writeIndent();
     }
-    String columnName = this.namingStrategy.getColumnName(columnRef);
-    formatName(columnName);
+    DbQualifiedName columnName = this.namingStrategy.getName(columnRef);
+    formatQualifiedName(columnName);
     if (withDeclaration) {
       String declaration = null;
       if (columnRef instanceof DbColumn column) {
@@ -991,9 +999,9 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
   /**
    * @param constraint the {@link DbConstraint} to format.
    */
-  private void formatConstraint(TableOperationType type, DbConstraint constraint) {
+  private void formatConstraint(TableOperationType operationType, DbConstraint constraint) {
 
-    formatConstraintKeywordWithName(type, constraint);
+    formatConstraintKeywordWithName(operationType, constraint);
     write(' ');
     formatConstraintType(constraint);
     write(" (");
@@ -1039,14 +1047,14 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
   /**
    * Writes "CONSTRAINT «constraint_name»". May be overridden as needed for specific dialect (e.g. for MySQL flaws).
    *
-   * @param type the {@link TableOperationType}.
+   * @param operationType the {@link TableOperationType}.
    * @param constraint the {@link DbConstraint}.
    */
-  protected void formatConstraintKeywordWithName(TableOperationType type, DbConstraint constraint) {
+  protected void formatConstraintKeywordWithName(TableOperationType operationType, DbConstraint constraint) {
 
     writeDbKeyword(DbKeyword.CONSTRAINT);
     write(' ');
-    String constraintName = this.namingStrategy.getConstraintName(constraint);
+    String constraintName = this.namingStrategy.getName(constraint).getName();
     formatName(constraintName);
   }
 
@@ -1208,8 +1216,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
     writeDbKeyword(DbKeyword.INDEX);
     write(' ');
-    String name = this.namingStrategy.getIndexName(createIndex.get().asIndex());
-    formatName(name);
+    DbQualifiedName name = this.namingStrategy.getName(createIndex.get().asIndex());
+    formatQualifiedName(name);
   }
 
   /**
@@ -1244,7 +1252,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     writeIndent();
     writeDbKeyword(DbKeyword.CREATE_SEQUENCE);
     write(' ');
-    formatQualifiedName(seq.getSequenceName());
+    formatQualifiedName(seq.getName());
     formatCreateSequenceAttribute(DbKeyword.INCREMENT_BY, seq.getIncrementBy());
     formatCreateSequenceAttribute(DbKeyword.START_WITH, seq.getStartWith());
     formatCreateSequenceAttribute(DbKeyword.MINVALUE, seq.getMinValue());
@@ -1303,49 +1311,50 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
    */
   public void formatAlterTableOperation(TableOperation operation) {
 
-    TableOperationType type = operation.getType();
-    formatAlterTableOperationType(type);
+    TableOperationType operationType = operation.getType();
+    formatAlterTableOperationType(operationType);
     write(' ');
     if (operation instanceof TableColumnOperation columnOp) {
-      formatAlterTableColumn(type);
+      formatAlterTableColumn(operationType);
       DbColumnReference column = columnOp.getColumn();
-      formatColumn(column, (type == TableOperationType.ADD) || (type == TableOperationType.MODIFY), false);
+      formatColumn(column, (operationType == TableOperationType.ADD) || (operationType == TableOperationType.MODIFY),
+          false);
     } else if (operation instanceof TableConstraintOperation constraintOp) {
       DbConstraint constraint = constraintOp.getConstraint();
-      if (type == TableOperationType.ADD) {
-        formatConstraint(type, constraint);
+      if (operationType == TableOperationType.ADD) {
+        formatConstraint(operationType, constraint);
       } else {
-        String name = this.namingStrategy.getConstraintName(constraint);
-        formatName(name);
+        DbQualifiedName name = this.namingStrategy.getName(constraint);
+        formatQualifiedName(name);
         if (operation instanceof TableRenameConstraintOperation rename) {
           write(' ');
           writeDbKeyword(DbKeyword.TO);
           write(' ');
           formatName(rename.getNewName());
         } else {
-          assert (type == TableOperationType.DROP);
+          assert (operationType == TableOperationType.DROP);
         }
       }
     }
   }
 
   /**
-   * @param type the {@link TableOperationType} to format. May be overridden as needed for specific dialect (e.g. for MS
-   *        SQL-Server flaws).
+   * @param operationType the {@link TableOperationType} to format. May be overridden as needed for specific dialect
+   *        (e.g. for MS SQL-Server flaws).
    */
-  protected void formatAlterTableOperationType(TableOperationType type) {
+  protected void formatAlterTableOperationType(TableOperationType operationType) {
 
-    write(type.name());
+    write(operationType.name());
   }
 
   /**
    * Write "COLUMN" keyword as needed for ALTER TABLE statement of the given {@code type}.
    *
-   * @param type the {@link TableOperationType}.
+   * @param operationType the {@link TableOperationType}.
    */
-  protected void formatAlterTableColumn(TableOperationType type) {
+  protected void formatAlterTableColumn(TableOperationType operationType) {
 
-    if ((type != TableOperationType.ADD) && (type != TableOperationType.MODIFY)) {
+    if ((operationType != TableOperationType.ADD) && (operationType != TableOperationType.MODIFY)) {
       writeDbKeyword(DbKeyword.COLUMN);
       write(' ');
     }
@@ -1354,9 +1363,9 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
   /**
    * @return the {@link #formatStatement(DbStatement, DbContext) formatted statement} as {@link String} (e.g. SQL).
    */
-  public DbPlainStatement get() {
+  public DbNativeStatement get() {
 
-    return new DbPlainStatement(this.out.toString(), this.parameters, this.plainStatement);
+    return new DbNativeStatement(this.statementType, this.out.toString(), this.parameters, this.nativeStatement);
   }
 
   @Override

@@ -6,6 +6,7 @@ import java.time.Instant;
 import java.util.function.Predicate;
 
 import io.github.mmm.db.schema.impl.DbSchemaManagerImpl;
+import io.github.mmm.db.schema.orm.DbSchemaChangeLog;
 import io.github.mmm.db.source.DbSource;
 
 /**
@@ -46,8 +47,8 @@ import io.github.mmm.db.source.DbSource;
  * <h2>Setup</h2>
  *
  * Now when you {@link #setup() setup} the schema, this schema manager will find the resources from the above structure.
- * It will check the database and create a table named {@value #TABLE_NAME} if it does not yet exist (assuming a fresh
- * setup in a new database).
+ * It will check the database and create a table named {@link DbSchemaChangeLog} if it does not yet exist (assuming a
+ * fresh setup in a new database).
  *
  * It collects all scripts (excluding those from the folder {@code always}) sorted by their path and iterates them. For
  * each script it will do the following:
@@ -101,7 +102,7 @@ import io.github.mmm.db.source.DbSource;
  *
  * <h2>Hash-Verification</h2>
  *
- * As described above for scripts already executed a hash is stored in the {@code schema_version} table. On every
+ * As described above for scripts already executed a hash is stored in the {@link DbSchemaChangeLog} table. On every
  * {@link #setup() setup} that hash is compared to verify that the file contents did not change. In case the hash
  * changed, this can be handled in differnt ways depending on the mode configured in the
  * {@link io.github.mmm.db.source.DbSource} property {@code schema_hash_conflict_mode}:
@@ -118,30 +119,6 @@ import io.github.mmm.db.source.DbSource;
  * to work in future releases.
  */
 public interface DbSchemaManager {
-
-  /** The name of the table for the schema and changelog metadata. */
-  String TABLE_NAME = "DbSchemaChangeLog";
-
-  /** The name of the column in table {@value #TABLE_NAME} for the checksum. */
-  String COLUMN_NAME_CHECKSUM = "Checksum";
-
-  /** The name of the column in table {@value #TABLE_NAME} for the database user that installed the script. */
-  String COLUMN_NAME_USER = "User";
-
-  /** The name of the column in table {@value #TABLE_NAME} for the timestamp when the script was installed. */
-  String COLUMN_NAME_TIMESTAMP = "Timestamp";
-
-  /** The name of the column in table {@value #TABLE_NAME} for the duration the script execution took in seconds. */
-  String COLUMN_NAME_DURATION = "Duration";
-
-  /**
-   * The name of the column in table {@value #TABLE_NAME} for the path to the script that was installed. The path will
-   * exclude the prefix "db/changelog/«source»/".
-   */
-  String COLUMN_NAME_PATH = "Path";
-
-  /** The name of the column in table {@value #TABLE_NAME} for the flag indicating if the script was successful. */
-  String COLUMN_NAME_SUCCESS = "Success";
 
   /** Name of the root folder {@value}. */
   String FOLDER_DB = "db";

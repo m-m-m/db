@@ -2850,6 +2850,15 @@ public interface DbKeyword {
   String DOUBLE_PRECISION = DOUBLE + " " + PRECISION;
 
   /** Keyword {@value}. */
+  String DROP_INDEX = DROP + " " + INDEX;
+
+  /** Keyword {@value}. */
+  String DROP_SEQUENCE = DROP + " " + SEQUENCE;
+
+  /** Keyword {@value}. */
+  String DROP_TABLE = DROP + " " + TABLE;
+
+  /** Keyword {@value}. */
   String FOREIGN_KEY = FOREIGN + " " + KEY;
 
   /** Keyword {@value}. */

@@ -21,6 +21,7 @@ import io.github.mmm.db.ddl.index.DbIndexRegistry;
 import io.github.mmm.db.memory.index.IndexOperation;
 import io.github.mmm.db.memory.index.MemoryIndex;
 import io.github.mmm.db.memory.repository.MemoryRepository;
+import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.db.repository.EntityRepository;
 import io.github.mmm.db.repository.spi.AbstractEntityRepository;
 import io.github.mmm.db.tx.spi.DbEntityHolder;
@@ -31,7 +32,7 @@ import io.github.mmm.entity.id.GenericId;
 import io.github.mmm.entity.id.Id;
 import io.github.mmm.entity.id.OptimisicLockException;
 import io.github.mmm.entity.id.generator.IdGenerator;
-import io.github.mmm.entity.id.generator.SequenceIdGenerator;
+import io.github.mmm.entity.id.generator.IdGeneratorSequence;
 import io.github.mmm.entity.id.sequence.IdSequenceMemory;
 import io.github.mmm.entity.link.IdLink;
 import io.github.mmm.entity.link.Link;
@@ -95,7 +96,7 @@ public class MemoryRepositoryImpl<E extends EntityBean> extends AbstractEntityRe
     }
     this.entitySession = DbEntitySessionFactory.get().create(prototype);
     this.sequence = new IdSequenceMemory();
-    this.idGenerator = new SequenceIdGenerator(this.sequence);
+    this.idGenerator = new IdGeneratorSequence(this.sequence);
     this.findAll = new FindAll();
     this.indices = new DbIndexRegistryImpl();
     this.proxy = proxy;
@@ -160,7 +161,7 @@ public class MemoryRepositoryImpl<E extends EntityBean> extends AbstractEntityRe
   }
 
   @Override
-  public <I extends DbIndex> I getIndex(String name) {
+  public <I extends DbIndex> I getIndex(DbQualifiedName name) {
 
     return this.indices.getIndex(name);
   }
@@ -330,7 +331,7 @@ public class MemoryRepositoryImpl<E extends EntityBean> extends AbstractEntityRe
 
   private class DbIndexRegistryImpl implements DbIndexRegistry, DbIndexGetByName, Iterable<MemoryIndex<?, ?>> {
 
-    private Map<String, DbIndex> name2IndexMap;
+    private Map<DbQualifiedName, DbIndex> name2IndexMap;
 
     private DbIndexRegistryImpl() {
 
@@ -345,7 +346,7 @@ public class MemoryRepositoryImpl<E extends EntityBean> extends AbstractEntityRe
       if (this.name2IndexMap == null) {
         this.name2IndexMap = new HashMap<>();
       }
-      String name = index.getName();
+      DbQualifiedName name = index.getName();
       DbIndex duplicate = this.name2IndexMap.put(name, index);
       if (duplicate != null) {
         throw new DuplicateObjectException(index, name, duplicate);
@@ -354,7 +355,7 @@ public class MemoryRepositoryImpl<E extends EntityBean> extends AbstractEntityRe
 
     @SuppressWarnings("unchecked")
     @Override
-    public <I extends DbIndex> I getIndex(String name) {
+    public <I extends DbIndex> I getIndex(DbQualifiedName name) {
 
       DbIndex index = null;
       if (this.name2IndexMap != null) {
