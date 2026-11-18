@@ -11,22 +11,18 @@ import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.property.criteria.CriteriaPredicate;
 
-/**
- * {@link DbConstraint} checking a given {@link #getPredicate() predicate}.
- *
- * @since 1.0.0
- */
+/// [DbConstraint] checking a given [predicate][#getPredicate()].
+///
+/// @since 1.0.0
 public interface DbCheckConstraint extends DbConstraint {
 
-  /** {@link #getType() Type} {@value}. */
+  /// [Type][#getType()] {@value}.
   String TYPE = DbKeyword.CHECK;
 
-  /** @see #getNamePrefix() */
+  /// @see #getNamePrefix()
   String PREFIX = "CK_";
 
-  /**
-   * @return the {@link CriteriaPredicate} to check.
-   */
+  /// @return the [CriteriaPredicate] to check.
   CriteriaPredicate getPredicate();
 
   @Override
@@ -41,52 +37,44 @@ public interface DbCheckConstraint extends DbConstraint {
     return TYPE;
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param predicate the {@link #getPredicate() predicate} to check.
-   * @return the new {@link DbCheckConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param predicate the [predicate][#getPredicate()] to check.
+  /// @return the new [DbCheckConstraint].
   static DbCheckConstraint of(String name, DbTableReference<?> sourceTable, CriteriaPredicate predicate) {
 
     return of(name, sourceTable, predicate, DbConstraintState.DEFAULT);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param predicate the {@link #getPredicate() predicate} to check.
-   * @param state the {@link #getState state}.
-   * @return the new {@link DbCheckConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param predicate the [predicate][#getPredicate()] to check.
+  /// @param state the [state][#getState].
+  /// @return the new [DbCheckConstraint].
   static DbCheckConstraint of(String name, DbTableReference<?> sourceTable, CriteriaPredicate predicate,
       DbConstraintState state) {
 
     return of(name, sourceTable, null, predicate, state);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param predicate the {@link #getPredicate() predicate} to check.
-   * @return the new {@link DbCheckConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param predicate the [predicate][#getPredicate()] to check.
+  /// @return the new [DbCheckConstraint].
   static DbCheckConstraint of(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       CriteriaPredicate predicate) {
 
     return of(name, sourceTable, sourceColumns, predicate, DbConstraintState.DEFAULT);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param predicate the {@link #getPredicate() predicate} to check.
-   * @param state the {@link #getState state}.
-   * @return the new {@link DbCheckConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param predicate the [predicate][#getPredicate()] to check.
+  /// @param state the [state][#getState].
+  /// @return the new [DbCheckConstraint].
   static DbCheckConstraint of(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       CriteriaPredicate predicate, DbConstraintState state) {
 

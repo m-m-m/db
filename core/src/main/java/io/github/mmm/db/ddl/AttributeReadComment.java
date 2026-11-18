@@ -5,17 +5,13 @@ package io.github.mmm.db.ddl;
 import io.github.mmm.db.ddl.column.DbColumn;
 import io.github.mmm.db.ddl.table.DbTable;
 
-/**
- * Object having a {@link #getComment() comment}.
- *
- * @see DbTable
- * @see DbColumn
- */
+/// Object having a [comment][#getComment()].
+///
+/// @see DbTable
+/// @see DbColumn
 public interface AttributeReadComment {
 
-  /**
-   * @return the optional comment. Will be {@link String#isEmpty() empty} if undefined but never {@code null}.
-   */
+  /// @return the optional comment. Will be [empty][String#isEmpty()] if undefined but never `null`.
   String getComment();
 
 }

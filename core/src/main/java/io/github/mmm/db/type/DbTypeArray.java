@@ -4,9 +4,7 @@ package io.github.mmm.db.type;
 
 import java.sql.Array;
 
-/**
- * {@link DbType} for a regular {@link Array}.
- */
+/// [DbType] for a regular [Array].
 @SuppressWarnings("exports")
 public final class DbTypeArray extends DbType2Array<Array, DbTypeArray> {
 

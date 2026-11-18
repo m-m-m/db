@@ -41,23 +41,19 @@ import io.github.mmm.value.PropertyPath;
 import io.github.mmm.value.ReadablePath;
 import io.github.mmm.value.converter.TypeMapper;
 
-/**
- * Implementation of {@link Orm}.
- *
- * @since 1.0.0
- */
+/// Implementation of [Orm].
+///
+/// @since 1.0.0
 public class OrmImpl implements Orm {
 
   private final TypeMapping typeMapping;
 
   private final AbstractDbNamingStrategy namingStrategy;
 
-  /**
-   * The constructor.
-   *
-   * @param typeMapping the {@link TypeMapping}.
-   * @param namingStrategy the {@link DbNamingStrategy}.
-   */
+  /// The constructor.
+  ///
+  /// @param typeMapping the [TypeMapping].
+  /// @param namingStrategy the [DbNamingStrategy].
   public OrmImpl(TypeMapping typeMapping, DbNamingStrategy namingStrategy) {
 
     super();
@@ -204,10 +200,8 @@ public class OrmImpl implements Orm {
     return (type == Object.class) || (type == Comparable.class) || (type == Serializable.class);
   }
 
-  /**
-   * @param newNamingStrategy the new {@link DbNamingStrategy} to use.
-   * @return a {@link OrmImpl} with the given {@link DbNamingStrategy}.
-   */
+  /// @param newNamingStrategy the new [DbNamingStrategy] to use.
+  /// @return a [OrmImpl] with the given [DbNamingStrategy].
   public OrmImpl withNamingStrategy(DbNamingStrategy newNamingStrategy) {
 
     if (this.namingStrategy == newNamingStrategy) {
@@ -233,10 +227,8 @@ public class OrmImpl implements Orm {
     throw new IllegalStateException("Unknown Select type: " + select.getClass().getName());
   }
 
-  /**
-   * @param selection the {@link SelectSingleClause#getSelection() single selection}.
-   * @return the according {@link DbMapper}.
-   */
+  /// @param selection the [single selection][SelectSingleClause#getSelection()].
+  /// @return the according [DbMapper].
   private <V> DbSegmentMapper<V, ?> createMapper(CriteriaObject<V> selection) {
 
     DbQualifiedName columnName = null;

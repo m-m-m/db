@@ -4,9 +4,7 @@ package io.github.mmm.db.type;
 
 import java.sql.Clob;
 
-/**
- * {@link DbType} for a regular {@link Clob}.
- */
+/// [DbType] for a regular [Clob].
 @SuppressWarnings("exports")
 public final class DbTypeClob extends DbType2Clob<Clob, DbTypeClob> {
 

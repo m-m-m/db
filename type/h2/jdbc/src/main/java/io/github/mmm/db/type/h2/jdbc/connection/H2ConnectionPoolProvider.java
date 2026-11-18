@@ -9,11 +9,9 @@ import org.h2.jdbcx.JdbcDataSource;
 import io.github.mmm.db.pool.spi.JdbcConnectionPoolProvider;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Implementation of {@link JdbcConnectionPoolProvider} for H2 database.
- *
- * @since 1.0.0
- */
+/// Implementation of [JdbcConnectionPoolProvider] for H2 database.
+///
+/// @since 1.0.0
 public class H2ConnectionPoolProvider extends JdbcConnectionPoolProvider {
 
   @Override

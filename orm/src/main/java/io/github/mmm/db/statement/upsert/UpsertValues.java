@@ -5,21 +5,17 @@ package io.github.mmm.db.statement.upsert;
 import io.github.mmm.db.statement.ValuesClause;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link ValuesClause} of an {@link UpsertStatement}.
- *
- * @param <E> type of the {@link UpsertInto#getEntity() entity}.
- * @since 1.0.0
- */
+/// [ValuesClause] of an [UpsertStatement].
+///
+/// @param <E> type of the [entity][UpsertInto#getEntity()].
+/// @since 1.0.0
 public class UpsertValues<E extends EntityBean> extends ValuesClause<E, UpsertValues<E>> {
 
   private final UpsertStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param statement the owning {@link UpsertStatement}.
-   */
+  /// The constructor.
+  ///
+  /// @param statement the owning [UpsertStatement].
   public UpsertValues(UpsertStatement<E> statement) {
 
     super();

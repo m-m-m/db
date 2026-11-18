@@ -19,14 +19,12 @@ import io.github.mmm.db.schema.DbSchemaManager;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.tx.DbTransactionExecutor;
 
-/**
- * Implementation of {@link DbSchemaManager}.
- */
+/// Implementation of [DbSchemaManager].
 public class DbSchemaManagerImpl implements DbSchemaManager {
 
   private static final Logger LOG = LoggerFactory.getLogger(DbSchemaManagerImpl.class);
 
-  /** @see DbSchemaManager#get() */
+  /// @see DbSchemaManager#get()
   public static final DbSchemaManager INSTANCE = new DbSchemaManagerImpl();
 
   private static final Pattern SCRIPT_PATTERN = Pattern.compile(PATH_DB_CHANGELOG +

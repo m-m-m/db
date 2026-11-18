@@ -8,18 +8,14 @@ import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.value.CriteriaObject;
 import io.github.mmm.value.PropertyPath;
 
-/**
- * {@link CriteriaObject} representing the next value of a database sequence.
- */
+/// [CriteriaObject] representing the next value of a database sequence.
 public final class SequenceNextValue implements CriteriaObject<Long> {
 
   private final DbQualifiedName sequenceName;
 
-  /**
-   * The constructor.
-   *
-   * @param sequenceName the {@link DbQualifiedName} of the database sequence.
-   */
+  /// The constructor.
+  ///
+  /// @param sequenceName the [DbQualifiedName] of the database sequence.
   public SequenceNextValue(DbQualifiedName sequenceName) {
 
     super();
@@ -27,9 +23,7 @@ public final class SequenceNextValue implements CriteriaObject<Long> {
     this.sequenceName = sequenceName;
   }
 
-  /**
-   * @return sequenceName
-   */
+  /// @return sequenceName
   public DbQualifiedName getSequenceName() {
 
     return this.sequenceName;

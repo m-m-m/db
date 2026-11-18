@@ -7,11 +7,9 @@ import java.sql.Savepoint;
 
 import io.github.mmm.db.ddl.DbMetaData;
 
-/**
- * {@link JdbcTransaction} implementing a sub-transaction.
- *
- * @since 1.0.0
- */
+/// [JdbcTransaction] implementing a sub-transaction.
+///
+/// @since 1.0.0
 public class JdbcSubTransaction extends JdbcTransaction {
 
   private final Savepoint savepoint;

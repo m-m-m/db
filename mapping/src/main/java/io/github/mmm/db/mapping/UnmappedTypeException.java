@@ -5,31 +5,25 @@ package io.github.mmm.db.mapping;
 import io.github.mmm.base.exception.ApplicationException;
 import io.github.mmm.value.CriteriaObject;
 
-/**
- * {@link ApplicationException} thrown if a {@link Class Java type} is not mapped and therefore unsupported by ORM. If
- * you hit this exception, you need to register an according {@link io.github.mmm.value.converter.TypeMapper} or
- * {@link io.github.mmm.db.type.DbType}.
- *
- * @since 1.0.0
- */
+/// [ApplicationException] thrown if a [Java type][Class] is not mapped and therefore unsupported by ORM. If
+/// you hit this exception, you need to register an according [io.github.mmm.value.converter.TypeMapper] or
+/// [io.github.mmm.db.type.DbType].
+///
+/// @since 1.0.0
 public final class UnmappedTypeException extends ApplicationException {
 
-  /**
-   * The constructor.
-   *
-   * @param valueClass the {@link Class} reflecting the type that could not be mapped.
-   */
+  /// The constructor.
+  ///
+  /// @param valueClass the [Class] reflecting the type that could not be mapped.
   public UnmappedTypeException(Class<?> valueClass) {
 
     this(valueClass, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param valueClass the {@link Class} reflecting the type that could not be mapped.
-   * @param selection the {@link CriteriaObject} to select.
-   */
+  /// The constructor.
+  ///
+  /// @param valueClass the [Class] reflecting the type that could not be mapped.
+  /// @param selection the [CriteriaObject] to select.
   public UnmappedTypeException(Class<?> valueClass, CriteriaObject<?> selection) {
 
     super(createMessage(valueClass, selection));

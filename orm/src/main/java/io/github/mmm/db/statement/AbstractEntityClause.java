@@ -10,40 +10,36 @@ import io.github.mmm.db.name.DbEntityNameMapper;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * A {@link AbstractEntityClause} is a {@link DbClause} of an SQL {@link DbStatement} that specifies the
- * {@link #getEntity() entity} and/or {@link #getName() entity name} (table) to operate on.
- *
- * @param <R> type of the result. Only different from {@literal <E>} for complex selects.
- * @param <E> type of the {@link #getEntity() entity}.
- * @param <SELF> type of this class itself.
- * @since 1.0.0
- */
+/// A [AbstractEntityClause] is a [DbClause] of an SQL [DbStatement] that specifies the
+/// [entity][#getEntity()] and/or [entity name][#getName()] (table) to operate on.
+///
+/// @param <R> type of the result. Only different from `<E>` for complex selects.
+/// @param <E> type of the [entity][#getEntity()].
+/// @param <SELF> type of this class itself.
+/// @since 1.0.0
 public abstract class AbstractEntityClause<R, E extends EntityBean, SELF extends AbstractEntityClause<R, E, SELF>>
     extends AbstractTypedClause<R, SELF> implements DbTableReference<E> {
 
-  /** Name of property {@link #getName()} for marshalling. */
+  /// Name of property [#getName()] for marshalling.
   public static final String NAME_ENTITY = "entity";
 
-  /** Name of property {@link #getAlias() alias} for marshaling. */
+  /// Name of property [alias][#getAlias()] for marshaling.
   public static final String NAME_ALIAS = "as";
 
   private final AliasMap aliasMap;
 
-  /** @see #getName() */
+  /// @see #getName()
   protected transient E entity;
 
   private DbQualifiedName qualifiedName;
 
   private String alias;
 
-  /**
-   * The constructor.
-   *
-   * @param aliasMap the {@link AliasMap}.
-   * @param entity the {@link #getEntity() entity} to operate on.
-   * @param entityName the {@link #getName() entity name}.
-   */
+  /// The constructor.
+  ///
+  /// @param aliasMap the [AliasMap].
+  /// @param entity the [entity][#getEntity()] to operate on.
+  /// @param entityName the [entity name][#getName()].
   protected AbstractEntityClause(AliasMap aliasMap, E entity, String entityName) {
 
     super();
@@ -52,11 +48,7 @@ public abstract class AbstractEntityClause<R, E extends EntityBean, SELF extends
     setEntityPlain(entity, entityName);
   }
 
-  /**
-   * @return the {@link Map} to {@link Map#get(Object) map} from {@link #getAlias() alias} to {@link #getEntity()
-   *         entity}. A single {@link Map} instance is used per {@link DbStatement} to ensure unique {@link #getAlias()
-   *         aliases}.
-   */
+  /// @return the [Map] to [map][Map#get(Object)] from [alias][#getAlias()] to [entity][#getEntity()]. A single [Map] instance is used per [DbStatement] to ensure unique [aliases][#getAlias()].
   protected AliasMap getAliasMap() {
 
     return this.aliasMap;
@@ -92,19 +84,15 @@ public abstract class AbstractEntityClause<R, E extends EntityBean, SELF extends
     this.entity = entity;
   }
 
-  /**
-   * @param entityName new value of {@link #getName()}.
-   */
+  /// @param entityName new value of [#getName()].
   void setName(String entityName) {
 
     setEntityPlain(null, entityName);
   }
 
-  /**
-   * @return alias the alias (variable name) for the {@link EntityBean} to query. Will be created lazily if not
-   *         {@link #hasAlias() already created}.
-   * @see #as(String)
-   */
+  /// @return alias the alias (variable name) for the [EntityBean] to query. Will be created lazily if not
+  ///         [already created][#hasAlias()].
+  /// @see #as(String)
   public String getAlias() {
 
     if (this.alias == null) {
@@ -113,9 +101,7 @@ public abstract class AbstractEntityClause<R, E extends EntityBean, SELF extends
     return this.alias;
   }
 
-  /**
-   * @return {@code true} if an {@link #getAlias() alias} has already been assigned or created, {@code false} otherwise.
-   */
+  /// @return `true` if an [alias][#getAlias()] has already been assigned or created, `false` otherwise.
   public boolean hasAlias() {
 
     return (this.alias != null);
@@ -127,23 +113,19 @@ public abstract class AbstractEntityClause<R, E extends EntityBean, SELF extends
     return this.qualifiedName;
   }
 
-  /**
-   * @param tableName new value of {@link #getRawName()}.
-   */
+  /// @param tableName new value of [#getRawName()].
   public void setTableName(DbQualifiedName tableName) {
 
     this.qualifiedName = tableName;
   }
 
-  /**
-   * <b>ATTENTION:</b> Only define an explicit alias when explicitly required for uniqueness (e.g. joining the same
-   * table). E.g. sqlite database does not support aliases in UPDATE statements. Your statement may therefore not be
-   * portable if you add pointless aliases in such situations.
-   *
-   * @param entityAlias the alias (variable name) for the {@link EntityBean} to query.
-   * @return this {@link DbClause} itself for fluent API calls.
-   * @see #getAlias()
-   */
+  /// **ATTENTION:** Only define an explicit alias when explicitly required for uniqueness (e.g. joining the same
+  /// table). E.g. sqlite database does not support aliases in UPDATE statements. Your statement may therefore not be
+  /// portable if you add pointless aliases in such situations.
+  ///
+  /// @param entityAlias the alias (variable name) for the [EntityBean] to query.
+  /// @return this [DbClause] itself for fluent API calls.
+  /// @see #getAlias()
   public SELF as(String entityAlias) {
 
     setAlias(entityAlias);

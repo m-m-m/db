@@ -8,9 +8,7 @@ import java.sql.Types;
 
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * {@link DbType} mapping {@link BigDecimal} via {@link BigDecimal}.
- */
+/// [DbType] mapping [BigDecimal] via [BigDecimal].
 public final class DbTypeBigInteger2BigDecimal extends DbType2BigDecimal<BigInteger, DbTypeBigInteger2BigDecimal> {
 
   static final DbTypeBigInteger2BigDecimal INSTANCE = new DbTypeBigInteger2BigDecimal(null, null, null, null, false,

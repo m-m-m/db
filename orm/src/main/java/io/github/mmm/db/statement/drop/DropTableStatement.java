@@ -11,30 +11,24 @@ import io.github.mmm.db.statement.DbStartClause;
 import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link DbStatement} to {@link DropTableClause drop a table}.
- *
- * @param <E> type of the {@link AbstractEntityClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// [DbStatement] to [drop a table][DropTableClause].
+///
+/// @param <E> type of the [entity][AbstractEntityClause#getEntity()].
+/// @since 1.0.0
 public class DropTableStatement<E extends EntityBean> extends DropStatement<E> {
 
   private final DropTableClause<E> dropTable;
 
-  /**
-   * The constructor.
-   *
-   * @param dropTable the {@link #getDropTable() drop table}.
-   */
+  /// The constructor.
+  ///
+  /// @param dropTable the [drop table][#getDropTable()].
   public DropTableStatement(DropTableClause<E> dropTable) {
 
     super();
     this.dropTable = dropTable;
   }
 
-  /**
-   * @deprecated use {@link #getDropTable()} to make it more explicit.
-   */
+  /// @deprecated use [#getDropTable()] to make it more explicit.
   @Deprecated
   @Override
   public DbStartClause getStart() {
@@ -42,9 +36,7 @@ public class DropTableStatement<E extends EntityBean> extends DropStatement<E> {
     return this.dropTable;
   }
 
-  /**
-   * @return the opening {@link DropTableClause}.
-   */
+  /// @return the opening [DropTableClause].
   public DropTableClause<E> getDropTable() {
 
     return this.dropTable;

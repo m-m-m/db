@@ -4,31 +4,20 @@ package io.github.mmm.db.schema;
 
 import io.github.mmm.base.resource.ResourceFile;
 
-/**
- * A single script {@link #getFile() file} wrapped with additional information such as {@link #getDbType() database
- * type} or {@link #getExtension() extension}.
- */
+/// A single script [file][#getFile()] wrapped with additional information such as [database type][#getDbType()] or [extension][#getExtension()].
 public interface DbChangeLogScript extends Comparable<DbChangeLogScript> {
 
-  /** The default {@link #getExtension() extension}. */
+  /// The default [extension][#getExtension()].
   String EXTENSION_SQL = "sql";
 
-  /**
-   * @return the {@link ResourceFile} containing the migration script.
-   */
+  /// @return the [ResourceFile] containing the migration script.
   ResourceFile getFile();
 
-  /**
-   * @return the optional database type (e.g. "postgres" or "h2") or {@code null} if generic. Most scripts are generic
-   *         and can be applied to any type of database so they will return {@code null} here. Otherwise the script
-   *         needs to be skipped if your current database does not match this specific database type.
-   */
+  /// @return the optional database type (e.g. "postgres" or "h2") or `null` if generic. Most scripts are generic and can be applied to any type of database so
+  ///         they will return `null` here. Otherwise the script needs to be skipped if your current database does not match this specific database type.
   String getDbType();
 
-  /**
-   * @return the script extension. Should be {@link #EXTENSION_SQL} but in the future other extensions could also be
-   *         supported.
-   */
+  /// @return the script extension. Should be [#EXTENSION_SQL] but in the future other extensions could also be supported.
   String getExtension();
 
   @Override

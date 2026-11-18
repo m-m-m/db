@@ -9,9 +9,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import io.github.mmm.db.pool.spi.JdbcConnectionPoolProvider;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Implementation of {@link JdbcConnectionPoolProvider} for C3Po.
- */
+/// Implementation of [JdbcConnectionPoolProvider] for C3Po.
 public final class C3poConnectionPoolProvider extends JdbcConnectionPoolProvider {
 
   @Override

@@ -5,30 +5,24 @@ package io.github.mmm.db.type.postgresql.dialect;
 import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.param.CriteriaParametersFactory;
 
-/**
- * {@link DbDialectStatementFormatter} for PostgreSQL Database.
- *
- * @since 1.0.0
- */
+/// [DbDialectStatementFormatter] for PostgreSQL Database.
+///
+/// @since 1.0.0
 public class PostgreSqlFormatter extends DbDialectStatementFormatter {
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link PostgreSqlDialect}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [PostgreSqlDialect].
   public PostgreSqlFormatter(PostgreSqlDialect dialect) {
 
     super(dialect);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link PostgreSqlDialect}.
-   * @param parametersFactory the {@link CriteriaParametersFactory}.
-   * @param indentation the {@link #getIndentation() indentation}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [PostgreSqlDialect].
+  /// @param parametersFactory the [CriteriaParametersFactory].
+  /// @param indentation the [indentation][#getIndentation()].
   public PostgreSqlFormatter(PostgreSqlDialect dialect, CriteriaParametersFactory parametersFactory,
       String indentation) {
 

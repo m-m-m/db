@@ -7,9 +7,7 @@ import java.util.Objects;
 
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * {@link DbType} for a regular {@link Boolean}.
- */
+/// [DbType] for a regular [Boolean].
 public final class DbTypeBoolean2Bit extends DbTypeSimpleBoolean {
 
   static final DbTypeBoolean2Bit INSTANCE = new DbTypeBoolean2Bit(null, null, null, null, false,

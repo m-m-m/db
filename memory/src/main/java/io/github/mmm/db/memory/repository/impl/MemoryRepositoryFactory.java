@@ -7,9 +7,7 @@ import io.github.mmm.db.repository.EntityRepository;
 import io.github.mmm.db.repository.spi.EntityRepositoryFactory;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Implementation of {@link EntityRepositoryFactory} for {@link MemoryRepository}.
- */
+/// Implementation of [EntityRepositoryFactory] for [MemoryRepository].
 public class MemoryRepositoryFactory implements EntityRepositoryFactory<MemoryRepository<?>> {
 
   @Override

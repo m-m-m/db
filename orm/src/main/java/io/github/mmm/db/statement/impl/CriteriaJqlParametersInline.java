@@ -14,14 +14,12 @@ import io.github.mmm.property.criteria.CriteriaParameter;
 import io.github.mmm.property.criteria.CriteriaParameters;
 import io.github.mmm.property.criteria.Literal;
 
-/**
- * Implementation of {@link CriteriaParameters} for JQL.
- */
+/// Implementation of [CriteriaParameters] for JQL.
 public class CriteriaJqlParametersInline implements CriteriaParameters<CriteriaParameter<?>> {
 
   private static final CriteriaJqlParametersInline INSTANCE = new CriteriaJqlParametersInline();
 
-  /** {@link CriteriaParametersFactory} for this implementation. */
+  /// [CriteriaParametersFactory] for this implementation.
   public static final CriteriaParametersFactory FACTORY = _ -> INSTANCE;
 
   @Override
@@ -43,9 +41,7 @@ public class CriteriaJqlParametersInline implements CriteriaParameters<CriteriaP
     return Collections.emptyIterator();
   }
 
-  /**
-   * @return the singleton instance of this {@link CriteriaJqlParametersInline}.
-   */
+  /// @return the singleton instance of this [CriteriaJqlParametersInline].
   public static CriteriaJqlParametersInline get() {
 
     return INSTANCE;

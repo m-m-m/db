@@ -9,33 +9,22 @@ import io.github.mmm.db.ddl.constraint.DbForeignKeyConstraint;
 import io.github.mmm.db.ddl.constraint.DbPrimaryKeyConstraint;
 import io.github.mmm.db.ddl.index.DbIndexMetadata;
 
-/**
- * Meta-information about a database table (or view, materialized view, etc.). Extends {@link DbTableData} with advanced
- * details like {@link #getColumns() columns}, {@link #getPrimaryKey() primary key}, {@link #getForeignKeys() foreign
- * keys}, and {@link #getIndexes() indexes}.
- *
- * @since 1.0.0
- */
+/// Meta-information about a database table (or view, materialized view, etc.). Extends [DbTableData] with advanced details like
+/// [columns][#getColumns()], [primary key][#getPrimaryKey()], [foreign keys][#getForeignKeys()], and [indexes][#getIndexes()].
+///
+/// @since 1.0.0
 public interface DbTable extends DbTableData {
 
-  /**
-   * @return the {@link DbPrimaryKeyConstraint primary key}.
-   */
+  /// @return the [primary key][DbPrimaryKeyConstraint].
   DbPrimaryKeyConstraint getPrimaryKey();
 
-  /**
-   * @return the {@link List} of {@link DbColumn columns} of this table.
-   */
+  /// @return the [List] of [columns][DbColumn] of this table.
   List<DbColumn> getColumns();
 
-  /**
-   * @return the {@link List} of {@link DbForeignKeyConstraint}s of this table.
-   */
+  /// @return the [List] of [DbForeignKeyConstraint]s of this table.
   List<DbForeignKeyConstraint> getForeignKeys();
 
-  /**
-   * @return the {@link List} of {@link DbIndexMetadata indexes} of this table.
-   */
+  /// @return the [List] of [indexes][DbIndexMetadata] of this table.
   List<DbIndexMetadata> getIndexes();
 
 }

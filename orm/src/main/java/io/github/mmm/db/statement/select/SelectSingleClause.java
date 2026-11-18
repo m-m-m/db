@@ -9,22 +9,18 @@ import io.github.mmm.property.criteria.CriteriaAggregation;
 import io.github.mmm.value.CriteriaObject;
 import io.github.mmm.value.PropertyPath;
 
-/**
- * {@link SelectClause} to query a single {@link #getSelection() selection}.
- *
- * @param <R> type of the result of the selection.
- * @since 1.0.0
- */
+/// [SelectClause] to query a single [selection][#getSelection()].
+///
+/// @param <R> type of the result of the selection.
+/// @since 1.0.0
 public class SelectSingleClause<R> extends SelectClause<R> {
 
   private final CriteriaObject<R> selection;
 
-  /**
-   * The constructor.
-   *
-   * @param selection the {@link CriteriaObject} to select. Typically a {@link PropertyPath property} but may also be
-   *        a {@link CriteriaAggregation}, etc.
-   */
+  /// The constructor.
+  ///
+  /// @param selection the [CriteriaObject] to select. Typically a [property][PropertyPath] but may also be
+  ///        a [CriteriaAggregation], etc.
   public SelectSingleClause(CriteriaObject<R> selection) {
 
     super(null);
@@ -34,9 +30,7 @@ public class SelectSingleClause<R> extends SelectClause<R> {
     add(selection);
   }
 
-  /**
-   * @return the single selection to select.
-   */
+  /// @return the single selection to select.
   public CriteriaObject<R> getSelection() {
 
     return this.selection;

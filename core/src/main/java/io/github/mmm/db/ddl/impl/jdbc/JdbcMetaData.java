@@ -38,11 +38,9 @@ import io.github.mmm.db.ddl.table.impl.DbTableDataImpl;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.db.type.DbType;
 
-/**
- * Implementation of {@link DbMetaData} for JDBC.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbMetaData] for JDBC.
+///
+/// @since 1.0.0
 public class JdbcMetaData implements DbMetaData {
 
   private static final Logger LOG = LoggerFactory.getLogger(JdbcMetaData.class);
@@ -97,11 +95,9 @@ public class JdbcMetaData implements DbMetaData {
 
   private String currentSchema;
 
-  /**
-   * The constructor.
-   *
-   * @param connection the JDBC {@link Connection}.
-   */
+  /// The constructor.
+  ///
+  /// @param connection the JDBC [Connection].
   public JdbcMetaData(Connection connection) {
 
     super();
@@ -350,11 +346,9 @@ public class JdbcMetaData implements DbMetaData {
     return DbPrimaryKeyConstraint.of(name, tableReference, columnBuilder.build());
   }
 
-  /**
-   * @param qualifiedName the {@link DbQualifiedName} of the {@link DbTable table}.
-   * @param metaData the {@link DatabaseMetaData}.
-   * @return the {@link DbObjectContainer} with the {@link DbForeignKey}s for the specified {@link DbTable table}.
-   */
+  /// @param qualifiedName the [DbQualifiedName] of the [table][DbTable].
+  /// @param metaData the [DatabaseMetaData].
+  /// @return the [DbObjectContainer] with the [DbForeignKey]s for the specified [table][DbTable].
   static List<DbForeignKeyConstraint> extractForeignKeys(DbTable table, DatabaseMetaData metaData) {
 
     DbQualifiedName tableName = table.getName();

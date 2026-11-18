@@ -8,29 +8,23 @@ import io.github.mmm.db.mapping.DbMapper;
 import io.github.mmm.db.result.DbResult;
 import io.github.mmm.db.statement.NonUniqueResultException;
 
-/**
- * {@link Consumer} of {@link DbResult} building the mapped Java result object.
- *
- * @param <R> type of the Java result object.
- * @since 1.0.0
- */
+/// [Consumer] of [DbResult] building the mapped Java result object.
+///
+/// @param <R> type of the Java result object.
+/// @since 1.0.0
 public class DbResultReceiverSingle<R> extends DbResultReceiver<R> {
 
   private R result;
 
-  /**
-   * The constructor.
-   *
-   * @param mapper the {@link DbMapper}.
-   */
+  /// The constructor.
+  ///
+  /// @param mapper the [DbMapper].
   public DbResultReceiverSingle(DbMapper<R> mapper) {
 
     super(mapper);
   }
 
-  /**
-   * @return the single result object.
-   */
+  /// @return the single result object.
   public R getResult() {
 
     return this.result;

@@ -12,12 +12,10 @@ import io.github.mmm.marshall.MarshallingConfig;
 import io.github.mmm.marshall.StructuredReader;
 import io.github.mmm.marshall.StructuredWriter;
 
-/**
- * Abstract base implementation of an SQL {@link DbStatement} that may be executed to the database.
- *
- * @param <E> type of the {@link AbstractEntityClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// Abstract base implementation of an SQL [DbStatement] that may be executed to the database.
+///
+/// @param <E> type of the [entity][AbstractEntityClause#getEntity()].
+/// @since 1.0.0
 public abstract class AbstractDbStatement<E> implements DbStatement<E> {
 
   private List<AbstractDbClause> clauses;
@@ -38,10 +36,8 @@ public abstract class AbstractDbStatement<E> implements DbStatement<E> {
     return this.clauses;
   }
 
-  /**
-   * @param consumer the {@link List} where to {@link List#add(Object) add} the {@link DbClause}s.
-   * @see #getClauses()
-   */
+  /// @param consumer the [List] where to [add][List#add(Object)] the [DbClause]s.
+  /// @see #getClauses()
   protected abstract void addClauses(Consumer<AbstractDbClause> consumer);
 
   @Override
@@ -59,9 +55,7 @@ public abstract class AbstractDbStatement<E> implements DbStatement<E> {
     return DbStatementMarshalling.read(reader);
   }
 
-  /**
-   * @return the {@link AliasMap} of this statement.
-   */
+  /// @return the [AliasMap] of this statement.
   protected abstract AliasMap getAliasMap();
 
   @Override

@@ -7,36 +7,30 @@ import io.github.mmm.db.statement.FromClause;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.criteria.CriteriaPredicate;
 
-/**
- * A {@link FromClause} of a {@link SelectStatement}.
- *
- * @param <R> type of the result of the selection.
- * @param <E> type of the {@link #getEntity() entity}.
- * @since 1.0.0
- */
+/// A [FromClause] of a [SelectStatement].
+///
+/// @param <R> type of the result of the selection.
+/// @param <E> type of the [entity][#getEntity()].
+/// @since 1.0.0
 public class SelectFromClause<R, E extends EntityBean> extends FromClause<R, E, SelectFromClause<R, E>>
     implements ClauseWithGroupBy<R>, ClauseWithOrderBy<R> {
 
   private final SelectStatement<R> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param select the {@link SelectClause}.
-   * @param entity the {@link #getEntity() entity}.
-   */
+  /// The constructor.
+  ///
+  /// @param select the [SelectClause].
+  /// @param entity the [entity][#getEntity()].
   public SelectFromClause(SelectClause<R> select, E entity) {
 
     this(select, entity, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param select the {@link SelectClause}.
-   * @param entity the {@link #getEntity() entity}.
-   * @param entityName the {@link #getName() entity name}.
-   */
+  /// The constructor.
+  ///
+  /// @param select the [SelectClause].
+  /// @param entity the [entity][#getEntity()].
+  /// @param entityName the [entity name][#getName()].
   public SelectFromClause(SelectClause<R> select, E entity, String entityName) {
 
     super(new AliasMap(), entity, entityName);

@@ -23,9 +23,7 @@ import org.junit.jupiter.api.Test;
 
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * Test of {@link DbType}.
- */
+/// Test of [DbType].
 class DbTypeTest extends Assertions {
 
   @Test

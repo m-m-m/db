@@ -13,12 +13,10 @@ import io.github.mmm.db.statement.DbClause;
 import io.github.mmm.db.statement.DbMainClause;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * A {@link CreateTableContentsClause}-{@link DbClause} of an SQL {@link CreateTableStatement}.
- *
- * @param <E> type of the {@link io.github.mmm.db.statement.AbstractEntityClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// A [CreateTableContentsClause]-[DbClause] of an SQL [CreateTableStatement].
+///
+/// @param <E> type of the [entity][io.github.mmm.db.statement.AbstractEntityClause#getEntity()].
+/// @since 1.0.0
 public class CreateTableContentsClause<E extends EntityBean>
     extends AbstractTypedClause<E, CreateTableContentsClause<E>> implements DbMainClause<E>, DbCreateTableClause<E> {
 
@@ -28,11 +26,9 @@ public class CreateTableContentsClause<E extends EntityBean>
 
   private final List<DbConstraint> constraints;
 
-  /**
-   * The constructor.
-   *
-   * @param statement the {@link CreateTableStatement}.
-   */
+  /// The constructor.
+  ///
+  /// @param statement the [CreateTableStatement].
   public CreateTableContentsClause(CreateTableStatement<E> statement) {
 
     super();
@@ -53,17 +49,13 @@ public class CreateTableContentsClause<E extends EntityBean>
     return this.statement.getCreateTable();
   }
 
-  /**
-   * @return the {@link List} of {@link DbColumnReference}s.
-   */
+  /// @return the [List] of [DbColumnReference]s.
   public List<DbColumnReference> getColumns() {
 
     return this.columns;
   }
 
-  /**
-   * @return the {@link List} of {@link DbConstraint}s.
-   */
+  /// @return the [List] of [DbConstraint]s.
   public List<DbConstraint> getConstraints() {
 
     return this.constraints;
@@ -76,10 +68,8 @@ public class CreateTableContentsClause<E extends EntityBean>
     return this;
   }
 
-  /**
-   * @param constraint the {@link DbConstraint} to add.
-   * @return this {@link CreateTableContentsClause} for fluent API calls.
-   */
+  /// @param constraint the [DbConstraint] to add.
+  /// @return this [CreateTableContentsClause] for fluent API calls.
   @Override
   public CreateTableContentsClause<E> constraint(DbConstraint constraint) {
 

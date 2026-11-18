@@ -9,14 +9,12 @@ import java.sql.Types;
 
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * {@link DbType} with {@link #getTargetType() DB target type} of {@link String}.
- *
- * @param <J> type of {@link #getSourceType() Java source type}.
- * @param <SELF> type of this class itself for fluent API calls.
- *
- * @since 1.0.0
- */
+/// [DbType] with [DB target type][#getTargetType()] of [String].
+///
+/// @param <J> type of [Java source type][#getSourceType()].
+/// @param <SELF> type of this class itself for fluent API calls.
+///
+/// @since 1.0.0
 @SuppressWarnings("exports")
 public abstract class DbType2String<J, SELF extends DbType2String<J, SELF>> extends DbType<J, String, SELF> {
 

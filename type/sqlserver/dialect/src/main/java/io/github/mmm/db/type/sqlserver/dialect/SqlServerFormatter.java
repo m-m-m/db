@@ -6,30 +6,24 @@ import io.github.mmm.db.ddl.table.operation.TableOperationType;
 import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.param.CriteriaParametersFactory;
 
-/**
- * {@link DbDialectStatementFormatter} for <a href="https://docs.microsoft.com/en-us/sql/">MS SQL Server</a>.
- *
- * @since 1.0.0
- */
+/// [DbDialectStatementFormatter] for <a href="https://docs.microsoft.com/en-us/sql/">MS SQL Server</a>.
+///
+/// @since 1.0.0
 public class SqlServerFormatter extends DbDialectStatementFormatter {
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link SqlServerDialect}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [SqlServerDialect].
   public SqlServerFormatter(SqlServerDialect dialect) {
 
     super(dialect);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link SqlServerDialect}.
-   * @param parametersFactory the {@link CriteriaParametersFactory}.
-   * @param indentation the {@link #getIndentation() indentation}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [SqlServerDialect].
+  /// @param parametersFactory the [CriteriaParametersFactory].
+  /// @param indentation the [indentation][#getIndentation()].
   public SqlServerFormatter(SqlServerDialect dialect, CriteriaParametersFactory parametersFactory, String indentation) {
 
     super(dialect, parametersFactory, indentation);

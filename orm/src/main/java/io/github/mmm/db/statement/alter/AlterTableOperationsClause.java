@@ -18,12 +18,10 @@ import io.github.mmm.db.statement.DbClause;
 import io.github.mmm.db.statement.DbMainClause;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * A {@link AlterTableOperationsClause}-{@link DbClause} of an SQL {@link AlterTableStatement}.
- *
- * @param <E> type of the {@link io.github.mmm.db.statement.AbstractEntityClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// A [AlterTableOperationsClause]-[DbClause] of an SQL [AlterTableStatement].
+///
+/// @param <E> type of the [entity][io.github.mmm.db.statement.AbstractEntityClause#getEntity()].
+/// @since 1.0.0
 public class AlterTableOperationsClause<E extends EntityBean>
     extends AbstractTypedClause<E, AlterTableOperationsClause<E>> implements DbMainClause<E>, DbAlterTableClause<E> {
 
@@ -31,11 +29,9 @@ public class AlterTableOperationsClause<E extends EntityBean>
 
   private final List<TableOperation> operations;
 
-  /**
-   * The constructor.
-   *
-   * @param statement the {@link AlterTableStatement}.
-   */
+  /// The constructor.
+  ///
+  /// @param statement the [AlterTableStatement].
   public AlterTableOperationsClause(AlterTableStatement<E> statement) {
 
     super();
@@ -55,9 +51,7 @@ public class AlterTableOperationsClause<E extends EntityBean>
     return this.statement.getAlterTable();
   }
 
-  /**
-   * @return the {@link List} of {@link TableOperation}s.
-   */
+  /// @return the [List] of [TableOperation]s.
   public List<TableOperation> getOperations() {
 
     return this.operations;

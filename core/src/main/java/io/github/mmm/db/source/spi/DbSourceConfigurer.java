@@ -7,18 +7,14 @@ import java.util.Properties;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Interface to {@link #autoConfigure(Properties, DbSource) auto-configure} {@link Properties} from {@link DbSource} for
- * {@link DbSourceConfig}.
- */
+/// Interface to [auto-configure][#autoConfigure(Properties, DbSource)] [Properties] from [DbSource] for
+/// [DbSourceConfig].
 public interface DbSourceConfigurer {
 
-  /**
-   * @param properties the {@link Properties} from {@link DbSource} to auto-configure for {@link DbSourceConfig}.
-   * @param source the {@link DbSource}.
-   * @return {@code true} if auto-configuration was successful, {@code false} otherwise (not responsible for this
-   *         source).
-   */
+  /// @param properties the [Properties] from [DbSource] to auto-configure for [DbSourceConfig].
+  /// @param source the [DbSource].
+  /// @return `true` if auto-configuration was successful, `false` otherwise (not responsible for this
+  ///         source).
   boolean autoConfigure(Properties properties, DbSource source);
 
 }

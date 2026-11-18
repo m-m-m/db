@@ -9,12 +9,10 @@ import io.github.mmm.db.statement.Person;
 import io.github.mmm.db.statement.Song;
 import io.github.mmm.entity.id.PkId;
 
-/**
- * Test of {@link UpdateClause} and {@link UpdateStatement}.
- */
+/// Test of [UpdateClause] and [UpdateStatement].
 class UpdateTest extends DbStatementTest {
 
-  /** Test of {@link UpdateClause} for entire table. */
+  /// Test of [UpdateClause] for entire table.
   @Test
   void testUpdateAll() {
 
@@ -26,7 +24,7 @@ class UpdateTest extends DbStatementTest {
     check(updateStatement, "UPDATE Person p SET p.Single = TRUE", true);
   }
 
-  /** Test of {@link UpdateClause} for with {@link UpdateWhere} clause. */
+  /// Test of [UpdateClause] for with [UpdateWhere] clause.
   @Test
   void testUpdateWhere() {
 
@@ -39,7 +37,7 @@ class UpdateTest extends DbStatementTest {
     check(updateStatement, "UPDATE Person p SET p.Single = FALSE WHERE p.Id = 4711", true);
   }
 
-  /** Test of {@link UpdateClause} for with data from other entity. */
+  /// Test of [UpdateClause] for with data from other entity.
   @Test
   void testUpdateFromJoinTable() {
 

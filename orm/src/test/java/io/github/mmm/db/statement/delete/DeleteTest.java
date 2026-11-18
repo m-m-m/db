@@ -7,12 +7,10 @@ import org.junit.jupiter.api.Test;
 import io.github.mmm.db.statement.DbStatementTest;
 import io.github.mmm.db.statement.Person;
 
-/**
- * Test of {@link DeleteClause} and {@link DeleteStatement}.
- */
+/// Test of [DeleteClause] and [DeleteStatement].
 class DeleteTest extends DbStatementTest {
 
-  /** Test of {@link DeleteClause} for entire table. */
+  /// Test of [DeleteClause] for entire table.
   @Test
   void testDeleteAll() {
 
@@ -24,7 +22,7 @@ class DeleteTest extends DbStatementTest {
     check(deleteStatement, "DELETE FROM Person p", true);
   }
 
-  /** Test of {@link DeleteClause} with where clause. */
+  /// Test of [DeleteClause] with where clause.
   @Test
   void testDeleteWhere() {
 

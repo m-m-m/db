@@ -7,9 +7,7 @@ import org.junit.jupiter.api.Test;
 import io.github.mmm.db.statement.DbStatementTest;
 import io.github.mmm.db.statement.Song;
 
-/**
- * Test of {@link CreateTableClause} and {@link CreateTableStatement}.
- */
+/// Test of [CreateTableClause] and [CreateTableStatement].
 class CreateTableTest extends DbStatementTest {
 
   private static final String JQL = """
@@ -39,7 +37,7 @@ class CreateTableTest extends DbStatementTest {
         CONSTRAINT PK_SONG PRIMARY KEY (ID)
       )""";
 
-  /** Test of {@link CreateTableClause} that automatically creates all columns. */
+  /// Test of [CreateTableClause] that automatically creates all columns.
   @Test
   void testAuto() {
 

@@ -8,29 +8,19 @@ import io.github.mmm.entity.property.link.LinkProperty;
 import io.github.mmm.property.booleans.BooleanProperty;
 import io.github.mmm.property.string.StringProperty;
 
-/**
- * {@link EntityBean} for an item of a {@link TaskList}.
- */
+/// [EntityBean] for an item of a [TaskList].
 public interface TaskItem extends EntityBean {
 
-  /**
-   * @return name (title) of the item.
-   */
+  /// @return name (title) of the item.
   StringProperty Name();
 
-  /**
-   * @return {@code true} if completed, {@code false} otherwise (task is an open todo).
-   */
+  /// @return `true` if completed, `false` otherwise (task is an open todo).
   BooleanProperty Completed();
 
-  /**
-   * @return the {@link TaskList} owning this item.
-   */
+  /// @return the [TaskList] owning this item.
   LinkProperty<TaskList> TaskList();
 
-  /**
-   * @return a new instance of {@link TaskItem}.
-   */
+  /// @return a new instance of [TaskItem].
   static TaskItem of() {
 
     return BeanFactory.get().create(TaskItem.class);

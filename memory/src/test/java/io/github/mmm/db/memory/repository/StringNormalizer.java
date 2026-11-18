@@ -5,11 +5,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.function.Function;
 
-/**
- * Utility class to {@link #normalize(String) normalize} {@link String}s.
- *
- * @see #normalize(String)
- */
+/// Utility class to [normalize][#normalize(String)] [String]s.
+///
+/// @see #normalize(String)
 public final class StringNormalizer implements Function<String, String> {
 
   private static final StringNormalizer INSTANCE = new StringNormalizer();
@@ -32,24 +30,18 @@ public final class StringNormalizer implements Function<String, String> {
     MAPPINGS.put(Character.valueOf(c), mapping);
   }
 
-  /**
-   * @param value the value to normalize.
-   * @return the normalized value. Will be transliterated to only contain Latin {@link Character#isLowerCase(char) lower
-   *         case} letters and regular digits (0-9). Also includes stemming of the words "a" and "the" so "The Beatles"
-   *         becomes "beatles" and "A Hard Day's Night" becomes "hard days night".
-   */
+  /// @param value the value to normalize.
+  /// @return the normalized value. Will be transliterated to only contain Latin [lower case][Character#isLowerCase(char)] letters and regular digits (0-9). Also
+  ///         includes stemming of the words "a" and "the" so "The Beatles" becomes "beatles" and "A Hard Day's Night" becomes "hard days night".
   public static String normalize(String value) {
 
     return normalize(value, false);
   }
 
-  /**
-   * @param value the value to normalize.
-   * @param removeSpaces - {@code true} to also remove whitespaces, {@code false} otherwise.
-   * @return the normalized value. Will be transliterated to only contain Latin {@link Character#isLowerCase(char) lower
-   *         case} letters and regular digits (0-9). Also includes stemming of the words "a" and "the" so "The Beatles"
-   *         becomes "beatles" and "A Hard Day's Night" becomes "hard days night".
-   */
+  /// @param value the value to normalize.
+  /// @param removeSpaces - `true` to also remove whitespaces, `false` otherwise.
+  /// @return the normalized value. Will be transliterated to only contain Latin [lower case][Character#isLowerCase(char)] letters and regular digits (0-9). Also
+  ///         includes stemming of the words "a" and "the" so "The Beatles" becomes "beatles" and "A Hard Day's Night" becomes "hard days night".
   public static String normalize(String value, boolean removeSpaces) {
 
     if (value == null) {
@@ -85,9 +77,7 @@ public final class StringNormalizer implements Function<String, String> {
     return normalize(t);
   }
 
-  /**
-   * @return the singleton instance of {@link StringNormalizer}.
-   */
+  /// @return the singleton instance of [StringNormalizer].
   public static StringNormalizer get() {
 
     return INSTANCE;

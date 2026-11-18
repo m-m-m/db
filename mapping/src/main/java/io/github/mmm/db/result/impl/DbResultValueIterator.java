@@ -8,11 +8,9 @@ import java.util.NoSuchElementException;
 import io.github.mmm.db.result.DbResult;
 import io.github.mmm.db.result.DbResultValue;
 
-/**
- * Implementation of {@link Iterator} for {@link DbResultValue}s of {@link DbResult}.
- *
- * @since 1.0.0
- */
+/// Implementation of [Iterator] for [DbResultValue]s of [DbResult].
+///
+/// @since 1.0.0
 public class DbResultValueIterator implements Iterator<DbResultValue<?>>, DbResultValue<Object> {
 
   private DbResult result;
@@ -21,11 +19,9 @@ public class DbResultValueIterator implements Iterator<DbResultValue<?>>, DbResu
 
   private int index;
 
-  /**
-   * The constructor.
-   *
-   * @param result the {@link DbResult} to adapt.
-   */
+  /// The constructor.
+  ///
+  /// @param result the [DbResult] to adapt.
   public DbResultValueIterator(DbResult result) {
 
     super();

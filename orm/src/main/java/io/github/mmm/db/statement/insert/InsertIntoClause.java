@@ -8,34 +8,28 @@ import io.github.mmm.db.statement.IntoClause;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.criteria.PropertyAssignment;
 
-/**
- * A {@link IntoClause}-{@link DbClause} of an SQL {@link InsertStatement}.
- *
- * @param <E> type of the {@link #getEntity() entity}.
- * @since 1.0.0
- */
+/// A [IntoClause]-[DbClause] of an SQL [InsertStatement].
+///
+/// @param <E> type of the [entity][#getEntity()].
+/// @since 1.0.0
 public class InsertIntoClause<E extends EntityBean> extends IntoClause<E, InsertValuesClause<E>, InsertIntoClause<E>> {
 
   private final InsertStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param insert the opening {@link InsertClause}.
-   * @param entity the {@link #getEntity() entity} to operate on.
-   */
+  /// The constructor.
+  ///
+  /// @param insert the opening [InsertClause].
+  /// @param entity the [entity][#getEntity()] to operate on.
   public InsertIntoClause(InsertClause insert, E entity) {
 
     this(insert, entity, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param insert the opening {@link InsertClause}.
-   * @param entity the {@link #getEntity() entity} to operate on.
-   * @param entityName the {@link #getName() entity name}.
-   */
+  /// The constructor.
+  ///
+  /// @param insert the opening [InsertClause].
+  /// @param entity the [entity][#getEntity()] to operate on.
+  /// @param entityName the [entity name][#getName()].
   public InsertIntoClause(InsertClause insert, E entity, String entityName) {
 
     super(new AliasMap(), entity, entityName);
@@ -60,9 +54,7 @@ public class InsertIntoClause<E extends EntityBean> extends IntoClause<E, Insert
     return false;
   }
 
-  /**
-   * @deprecated SQL does not support ALIAS for INSERT therefore also column names shall not be prefixed with alias.
-   */
+  /// @deprecated SQL does not support ALIAS for INSERT therefore also column names shall not be prefixed with alias.
   @Override
   @Deprecated
   public InsertIntoClause<E> as(String entityAlias) {

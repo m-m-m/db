@@ -8,15 +8,11 @@ import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.db.statement.select.SelectStatement;
 import io.github.mmm.entity.id.Id;
 
-/**
- * {@link DbRepository Repository} for {@link TaskItem}.
- */
+/// [Repository][DbRepository] for [TaskItem].
 public interface TaskItemRepository extends DbRepository<TaskItem>, DbDdlOperations<TaskItem> {
 
-  /**
-   * @param taskListId the {@link Id} of the {@link TaskList}.
-   * @return an {@link Iterable} of the {@link TaskItem}s.
-   */
+  /// @param taskListId the [Id] of the [TaskList].
+  /// @return an [Iterable] of the [TaskItem]s.
   default Iterable<TaskItem> findByTaskList(Id<TaskList> taskListId) {
 
     Objects.requireNonNull(taskListId);

@@ -6,29 +6,21 @@ import io.github.mmm.base.io.UncheckedAppendable;
 import io.github.mmm.base.lang.ToString;
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * Interface for the kind of an index with its {@link #getType() type} and flags such as {@link #isUnique() unique} and
- * {@link #isClustered() clustered}.
- */
+/// Interface for the kind of an index with its [type][#getType()] and flags such as [unique][#isUnique()] and
+/// [clustered][#isClustered()].
 public interface DbIndexKind extends ToString {
 
-  /**
-   * @return {@code true} if index values must be unique, {@code false} otherwise. Please note that in JDBC a NON_UNIQUE
-   *         column is defined, the method gets the inverse of that result.
-   */
+  /// @return `true` if index values must be unique, `false` otherwise. Please note that in JDBC a NON_UNIQUE
+  ///         column is defined, the method gets the inverse of that result.
   boolean isUnique();
 
-  /**
-   * @return {@code true} if the index is
-   *         <a href="https://en.wikipedia.org/wiki/Database_index#Clustered">clustered</a>, {@code false} otherwise.
-   *         Please note that not all databases support clustered indexes including famous products such as postgresql.
-   *         If the database does not support this, it will simply be ignored.
-   */
+  /// @return `true` if the index is
+  ///         <a href="https://en.wikipedia.org/wiki/Database_index#Clustered">clustered</a>, `false` otherwise.
+  ///         Please note that not all databases support clustered indexes including famous products such as postgresql.
+  ///         If the database does not support this, it will simply be ignored.
   boolean isClustered();
 
-  /**
-   * @return the {@link DbIndexType}. Returns {@link DbIndexType#NONE} for no special type but never {@code null}.
-   */
+  /// @return the [DbIndexType]. Returns [DbIndexType#NONE] for no special type but never `null`.
   DbIndexType getType();
 
   @Override

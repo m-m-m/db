@@ -16,12 +16,10 @@ import io.github.mmm.entity.bean.typemapping.SingleTypeMapping;
 import io.github.mmm.property.ReadableProperty;
 import io.github.mmm.value.converter.TypeMapper;
 
-/**
- * Abstract base implementation of {@link SingleTypeMapping} based on {@link DbType}.
- *
- * @param <V> type of the {@link TypeMapper#getSourceType() source type}.
- * @since 1.0.0
- */
+/// Abstract base implementation of [SingleTypeMapping] based on [DbType].
+///
+/// @param <V> type of the [source type][TypeMapper#getSourceType()].
+/// @since 1.0.0
 public class SingleTypeMappingDb<V> extends SingleTypeMapping<V> {
 
   private static final Logger LOG = LoggerFactory.getLogger(SingleTypeMappingDb.class);
@@ -32,13 +30,11 @@ public class SingleTypeMappingDb<V> extends SingleTypeMapping<V> {
 
   private final int maxScale;
 
-  /**
-   * The constructor.
-   *
-   * @param dbType the {@link DbType}.
-   * @param maxSize DB specific limit for {@link DbType#getSize() size}.
-   * @param maxScale DB specific limit for {@link DbType#getScale() scale}.
-   */
+  /// The constructor.
+  ///
+  /// @param dbType the [DbType].
+  /// @param maxSize DB specific limit for [size][DbType#getSize()].
+  /// @param maxScale DB specific limit for [scale][DbType#getScale()].
   public SingleTypeMappingDb(DbType<V, ?, ?> dbType, int maxSize, int maxScale) {
 
     super();

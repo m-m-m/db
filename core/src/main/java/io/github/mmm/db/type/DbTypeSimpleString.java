@@ -2,9 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.type;
 
-/**
- * {@link DbType} for a regular {@link String}.
- */
+/// [DbType] for a regular [String].
 public abstract class DbTypeSimpleString extends DbType2String<String, DbTypeSimpleString> {
 
   DbTypeSimpleString(String name, Integer size, Integer scale, String format, String suffix, boolean nativeTypeSupport,

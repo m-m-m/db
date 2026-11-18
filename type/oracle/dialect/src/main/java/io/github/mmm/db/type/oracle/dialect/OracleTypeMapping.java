@@ -6,11 +6,9 @@ import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.db.type.DbType;
 import io.github.mmm.db.typemapping.DbTypeMapping;
 
-/**
- * {@link DbTypeMapping} for Oracle database.
- *
- * @since 1.0.0
- */
+/// [DbTypeMapping] for Oracle database.
+///
+/// @since 1.0.0
 public class OracleTypeMapping extends DbTypeMapping {
 
   @Override

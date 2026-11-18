@@ -13,12 +13,10 @@ import io.github.mmm.db.statement.IntoValuesStatement;
 import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link DbStatement} to {@link InsertClause insert} data into the database.
- *
- * @param <E> type of the {@link InsertIntoClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// [DbStatement] to [insert][InsertClause] data into the database.
+///
+/// @param <E> type of the [entity][InsertIntoClause#getEntity()].
+/// @since 1.0.0
 // TODO: support sub-query as alternative to values
 // INSERT INTO table4 ( name, age, sex, city, id, number, nationality)
 // SELECT name, age, sex, city, p.id, number, n.nationality
@@ -33,12 +31,10 @@ public class InsertStatement<E extends EntityBean> extends IntoValuesStatement<E
 
   private final InsertValuesClause<E> values;
 
-  /**
-   * The constructor.
-   *
-   * @param insert the {@link #getInsert() insert}.
-   * @param into the #getInto
-   */
+  /// The constructor.
+  ///
+  /// @param insert the [insert][#getInsert()].
+  /// @param into the #getInto
   public InsertStatement(InsertClause insert, InsertIntoClause<E> into) {
 
     super();
@@ -47,9 +43,7 @@ public class InsertStatement<E extends EntityBean> extends IntoValuesStatement<E
     this.values = new InsertValuesClause<>(this);
   }
 
-  /**
-   * @deprecated use {@link #getInsert()} to make it more explicit.
-   */
+  /// @deprecated use [#getInsert()] to make it more explicit.
   @Deprecated
   @Override
   public InsertClause getStart() {
@@ -57,26 +51,20 @@ public class InsertStatement<E extends EntityBean> extends IntoValuesStatement<E
     return this.insert;
   }
 
-  /**
-   * @return the opening {@link InsertClause}-{@link DbClause}.
-   */
+  /// @return the opening [InsertClause]-[DbClause].
   public InsertClause getInsert() {
 
     return this.insert;
   }
 
-  /**
-   * @return the {@link InsertIntoClause Into}-{@link DbClause}.
-   */
+  /// @return the [Into][InsertIntoClause]-[DbClause].
   @Override
   public InsertIntoClause<E> getInto() {
 
     return this.into;
   }
 
-  /**
-   * @return the {@link InsertValuesClause Values}-{@link DbClause} or {@code null} if none was added.
-   */
+  /// @return the [Values][InsertValuesClause]-[DbClause] or `null` if none was added.
   @Override
   public InsertValuesClause<E> getValues() {
 

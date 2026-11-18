@@ -4,9 +4,7 @@ package io.github.mmm.db.type;
 
 import java.sql.Blob;
 
-/**
- * {@link DbType} for a regular {@link Blob}.
- */
+/// [DbType] for a regular [Blob].
 @SuppressWarnings("exports")
 public final class DbTypeBlob extends DbType2Blob<Blob, DbTypeBlob> {
 

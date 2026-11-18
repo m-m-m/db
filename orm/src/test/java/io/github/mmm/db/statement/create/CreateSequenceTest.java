@@ -7,12 +7,10 @@ import org.junit.jupiter.api.Test;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.db.statement.DbStatementTest;
 
-/**
- * Test of {@link CreateSequenceClause} and {@link CreateSequenceStatement}.
- */
+/// Test of [CreateSequenceClause] and [CreateSequenceStatement].
 class CreateSequenceTest extends DbStatementTest {
 
-  /** Test of {@link CreateSequenceClause} with all attributes. */
+  /// Test of [CreateSequenceClause] with all attributes.
   @Test
   void testAllAttributes() {
 

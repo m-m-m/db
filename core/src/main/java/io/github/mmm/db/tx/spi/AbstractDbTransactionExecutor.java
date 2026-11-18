@@ -8,9 +8,7 @@ import io.github.mmm.db.tx.DbTransactionConfig;
 import io.github.mmm.db.tx.DbTransactionExecutor;
 import io.github.mmm.db.tx.DbTransactionPropagation;
 
-/**
- * Abstract base implementation of {@link DbTransactionExecutor}.
- */
+/// Abstract base implementation of [DbTransactionExecutor].
 public abstract class AbstractDbTransactionExecutor implements DbTransactionExecutor {
 
   @Override
@@ -42,11 +40,9 @@ public abstract class AbstractDbTransactionExecutor implements DbTransactionExec
     return newTx.doInTx(task);
   }
 
-  /**
-   * @param txConfig the {@link DbTransactionConfig}.
-   * @param parent the {@link AbstractDbTransaction#getParent() parent transaction}.
-   * @return the newly created {@link AbstractDbTransaction}.
-   */
+  /// @param txConfig the [DbTransactionConfig].
+  /// @param parent the [parent transaction][AbstractDbTransaction#getParent()].
+  /// @return the newly created [AbstractDbTransaction].
   protected abstract AbstractDbTransaction createNewTransaction(DbTransactionConfig txConfig,
       AbstractDbTransaction parent);
 

@@ -5,9 +5,7 @@ package io.github.mmm.db.type;
 import java.sql.Time;
 import java.time.LocalTime;
 
-/**
- * Implementation of {@link DbType} for a regular {@link LocalTime}.
- */
+/// Implementation of [DbType] for a regular [LocalTime].
 @SuppressWarnings("exports")
 public final class DbTypeLocalTime2Time extends DbType2Time<LocalTime, DbTypeLocalTime2Time> {
 

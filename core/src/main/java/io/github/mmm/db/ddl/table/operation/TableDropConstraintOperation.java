@@ -2,28 +2,22 @@ package io.github.mmm.db.ddl.table.operation;
 
 import io.github.mmm.db.ddl.constraint.DbConstraint;
 
-/**
- * {@link TableConstraintOperation} to drop a constraint.
- *
- * @since 1.0.0
- */
+/// [TableConstraintOperation] to drop a constraint.
+///
+/// @since 1.0.0
 public class TableDropConstraintOperation extends TableConstraintOperation {
 
-  /**
-   * The constructor.
-   *
-   * @param name the name of the {@link #getConstraint() constraint} to drop.
-   */
+  /// The constructor.
+  ///
+  /// @param name the name of the [constraint][#getConstraint()] to drop.
   public TableDropConstraintOperation(String name) {
 
     super(name);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param constraint the {@link #getConstraint() constraint} to drop.
-   */
+  /// The constructor.
+  ///
+  /// @param constraint the [constraint][#getConstraint()] to drop.
   public TableDropConstraintOperation(DbConstraint constraint) {
 
     super(constraint);

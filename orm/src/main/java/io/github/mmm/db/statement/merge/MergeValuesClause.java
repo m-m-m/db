@@ -5,21 +5,17 @@ package io.github.mmm.db.statement.merge;
 import io.github.mmm.db.statement.ValuesClause;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link ValuesClause} of an {@link MergeStatement}.
- *
- * @param <E> type of the {@link MergeIntoClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// [ValuesClause] of an [MergeStatement].
+///
+/// @param <E> type of the [entity][MergeIntoClause#getEntity()].
+/// @since 1.0.0
 public class MergeValuesClause<E extends EntityBean> extends ValuesClause<E, MergeValuesClause<E>> {
 
   private final MergeStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param statement the owning {@link MergeStatement}.
-   */
+  /// The constructor.
+  ///
+  /// @param statement the owning [MergeStatement].
   public MergeValuesClause(MergeStatement<E> statement) {
 
     super();

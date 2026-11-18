@@ -37,37 +37,31 @@ import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.entity.id.Id;
 import io.github.mmm.entity.id.sequence.IdSequence;
 
-/**
- * Abstract base implementation of {@link DbAccess}.
- *
- * @since 1.0.0
- */
+/// Abstract base implementation of [DbAccess].
+///
+/// @since 1.0.0
 public abstract class AbstractDbAccess implements DbAccess {
 
-  /** The {@link DbSourceConfig}. */
+  /// The [DbSourceConfig].
   protected final DbSourceConfig sourceConfig;
 
-  /** @see #getDialect() */
+  /// @see #getDialect()
   protected final AbstractDbDialect<?> dialect;
 
   private final DbEntitySessionFactory factory;
 
-  /**
-   * The constructor.
-   *
-   * @param sourceConfig the {@link DbSourceConfig}.
-   */
+  /// The constructor.
+  ///
+  /// @param sourceConfig the [DbSourceConfig].
   public AbstractDbAccess(DbSourceConfig sourceConfig) {
 
     this(sourceConfig, DbEntitySessionFactory.get());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param sourceConfig the {@link DbSourceConfig}.
-   * @param factory the {@link DbEntitySessionFactory}.
-   */
+  /// The constructor.
+  ///
+  /// @param sourceConfig the [DbSourceConfig].
+  /// @param factory the [DbEntitySessionFactory].
   public AbstractDbAccess(DbSourceConfig sourceConfig, DbEntitySessionFactory factory) {
 
     super();
@@ -76,58 +70,47 @@ public abstract class AbstractDbAccess implements DbAccess {
     this.dialect = (AbstractDbDialect<?>) DbDialectProvider.get().get(sourceConfig.getDialect());
   }
 
-  /**
-   * @return the current database transaction.
-   */
+  /// @return the current database transaction.
   protected AbstractDbTransaction getTx() {
 
     return AbstractDbTransaction.getRequired(this.sourceConfig.getSource());
   }
 
-  /**
-   * @param <E> type of the {@link EntityBean}.
-   * @param entity the {@link EntityBean}.
-   * @return the {@link DbEntitySession} will be created via {@link DbEntitySessionFactory factory} if not yet exist.
-   */
+  /// @param <E> type of the [EntityBean].
+  /// @param entity the [EntityBean].
+  /// @return the [DbEntitySession] will be created via [factory][DbEntitySessionFactory] if not yet exist.
   protected <E extends EntityBean> DbEntitySession<E> getEntitySession(E entity) {
 
     return getTx().getEntitySession(entity, this.factory);
   }
 
-  /**
-   * @return the {@link DbDialect}.
-   */
+  /// @return the [DbDialect].
   public AbstractDbDialect<?> getDialect() {
 
     return this.dialect;
   }
 
-  /**
-   * Generic method to execute a {@link DbStatement}. Convenient for statements that do not return a {@link DbResult
-   * result}. Otherwise use {@link #executeStatement(DbStatement, Consumer, boolean)}.
-   *
-   * @param statement the {@link DbStatement} to execute.
-   * @return the number of rows that have been updated or selected.
-   * @see #executeStatement(DbStatement, Consumer, boolean)
-   */
+  /// Generic method to execute a [DbStatement]. Convenient for statements that do not return a [result][DbResult]. Otherwise use [#executeStatement(DbStatement, Consumer, boolean)].
+  ///
+  /// @param statement the [DbStatement] to execute.
+  /// @return the number of rows that have been updated or selected.
+  /// @see #executeStatement(DbStatement, Consumer, boolean)
   protected long executeStatement(DbStatement<?> statement) {
 
     return executeStatement(statement, null, true);
   }
 
-  /**
-   * Generic method to execute a {@link DbStatement}.
-   *
-   * @param statement the {@link DbStatement} to execute.
-   * @param receiver the {@link Consumer} of a potential {@link DbResult} (e.g. for SELECT) or {@code null} if no result
-   *        is expected (e.g. for INSERT or DELETE).
-   * @param unique {@code true} if a unique {@link DbResult} is expected and an
-   *        {@link io.github.mmm.db.statement.NonUniqueResultException} should be thrown if multiple results have been
-   *        received.
-   * @return the number of rows that have been updated or selected.
-   * @see #executeStatement(DbStatement)
-   * @see #executeSql(DbNativeStatement, Consumer, boolean)
-   */
+  /// Generic method to execute a [DbStatement].
+  ///
+  /// @param statement the [DbStatement] to execute.
+  /// @param receiver the [Consumer] of a potential [DbResult] (e.g. for SELECT) or `null` if no result
+  ///        is expected (e.g. for INSERT or DELETE).
+  /// @param unique `true` if a unique [DbResult] is expected and an
+  ///        [io.github.mmm.db.statement.NonUniqueResultException] should be thrown if multiple results have been
+  ///        received.
+  /// @return the number of rows that have been updated or selected.
+  /// @see #executeStatement(DbStatement)
+  /// @see #executeSql(DbNativeStatement, Consumer, boolean)
   protected long executeStatement(DbStatement<?> statement, Consumer<DbResult> receiver, boolean unique) {
 
     BasicDbStatementFormatter formatter = getDialect().createFormatter();
@@ -135,17 +118,15 @@ public abstract class AbstractDbAccess implements DbAccess {
     return executeSql(plainStatement, receiver, unique);
   }
 
-  /**
-   * Low-level and DB/orm specific method method to execute a query.
-   *
-   * @param statement the {@link DbNativeStatement}.
-   * @param receiver the {@link Consumer} of a potential {@link DbResult} (e.g. for SELECT) or {@code null} if no result
-   *        is expected (e.g. for INSERT or DELETE).
-   * @param unique {@code true} if a unique {@link DbResult} is expected and an
-   *        {@link io.github.mmm.db.statement.NonUniqueResultException} should be thrown if multiple results have been
-   *        received.
-   * @return the number of rows that have been updated or selected.
-   */
+  /// Low-level and DB/orm specific method method to execute a query.
+  ///
+  /// @param statement the [DbNativeStatement].
+  /// @param receiver the [Consumer] of a potential [DbResult] (e.g. for SELECT) or `null` if no result
+  ///        is expected (e.g. for INSERT or DELETE).
+  /// @param unique `true` if a unique [DbResult] is expected and an
+  ///        [io.github.mmm.db.statement.NonUniqueResultException] should be thrown if multiple results have been
+  ///        received.
+  /// @return the number of rows that have been updated or selected.
   public abstract long executeSql(DbNativeStatement statement, Consumer<DbResult> receiver, boolean unique);
 
   @Override
@@ -265,10 +246,8 @@ public abstract class AbstractDbAccess implements DbAccess {
     return receiver.getResult();
   }
 
-  /**
-   * @param sequenceName the {@link DbQualifiedName} of the database sequence.
-   * @return the {@link IdSequence} implementation.
-   */
+  /// @param sequenceName the [DbQualifiedName] of the database sequence.
+  /// @return the [IdSequence] implementation.
   public abstract IdSequence createIdSequence(DbQualifiedName sequenceName);
 
   @Override

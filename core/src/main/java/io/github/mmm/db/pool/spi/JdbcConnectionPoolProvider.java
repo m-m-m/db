@@ -12,11 +12,9 @@ import io.github.mmm.db.pool.DbConnectionPoolProvider;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Abstract base implementation of {@link DbConnectionPoolProvider} for JDBC.
- *
- * @since 1.0.0
- */
+/// Abstract base implementation of [DbConnectionPoolProvider] for JDBC.
+///
+/// @since 1.0.0
 public abstract class JdbcConnectionPoolProvider implements DbConnectionPoolProvider<Connection> {
 
   @Override
@@ -42,17 +40,13 @@ public abstract class JdbcConnectionPoolProvider implements DbConnectionPoolProv
     }
   }
 
-  /**
-   * @param config the configuration as {@link MetaInfo}.
-   * @return the connection pool as {@link DataSource}.
-   * @throws Exception on error.
-   */
+  /// @param config the configuration as [MetaInfo].
+  /// @return the connection pool as [DataSource].
+  /// @throws Exception on error.
   protected abstract DataSource createDataSource(DbSourceConfig config) throws Exception;
 
-  /**
-   * @param dataSource the {@link DataSource} that was created by {@link #createDataSource(DbSourceConfig)} and is now
-   *        to be closed to free resources as the connection pool is no longer needed.
-   */
+  /// @param dataSource the [DataSource] that was created by [#createDataSource(DbSourceConfig)] and is now
+  ///        to be closed to free resources as the connection pool is no longer needed.
   protected abstract void close(DataSource dataSource);
 
 }

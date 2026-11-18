@@ -12,9 +12,7 @@ import org.apache.commons.dbcp2.BasicDataSourceFactory;
 import io.github.mmm.db.pool.spi.JdbcConnectionPoolProvider;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Implementation of {@link JdbcConnectionPoolProvider} for Apache commons DBCP.
- */
+/// Implementation of [JdbcConnectionPoolProvider] for Apache commons DBCP.
 public final class DbcpConnectionPoolProvider extends JdbcConnectionPoolProvider {
 
   @Override

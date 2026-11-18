@@ -10,18 +10,16 @@ import io.github.mmm.db.ddl.constraint.state.DbConstraintState;
 import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * Foreign key {@link DbConstraint} uniquely identifying a different {@link io.github.mmm.entity.bean.EntityBean entity}
- * (row from another table).
- *
- * @since 1.0.0
- */
+/// Foreign key [DbConstraint] uniquely identifying a different [entity][io.github.mmm.entity.bean.EntityBean]
+/// (row from another table).
+///
+/// @since 1.0.0
 public interface DbPrimaryKeyConstraint extends DbConstraint {
 
-  /** {@link #getType() Type} {@value}. */
+  /// [Type][#getType()] {@value}.
   String TYPE = DbKeyword.PRIMARY_KEY;
 
-  /** @see #getNamePrefix() */
+  /// @see #getNamePrefix()
   String PREFIX = "PK_";
 
   @Override
@@ -39,81 +37,67 @@ public interface DbPrimaryKeyConstraint extends DbConstraint {
   @Override
   DbPrimaryKeyConstraint withState(DbConstraintState newState);
 
-  /**
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumn the {@link #getSourceColumns() source column}.
-   * @return the new {@link DbPrimaryKeyConstraint}.
-   */
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumn the [source column][#getSourceColumns()].
+  /// @return the new [DbPrimaryKeyConstraint].
   static DbPrimaryKeyConstraint of(DbTableReference<?> sourceTable, DbColumnReference sourceColumn) {
 
     return of(null, sourceTable, sourceColumn);
   }
 
-  /**
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @return the new {@link DbPrimaryKeyConstraint}.
-   */
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @return the new [DbPrimaryKeyConstraint].
   static DbPrimaryKeyConstraint of(DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns) {
 
     return of(null, sourceTable, sourceColumns, DbConstraintState.DEFAULT);
   }
 
-  /**
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param state the {@link #getState state}.
-   * @return the new {@link DbPrimaryKeyConstraint}.
-   */
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param state the [state][#getState].
+  /// @return the new [DbPrimaryKeyConstraint].
   static DbPrimaryKeyConstraint of(DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       DbConstraintState state) {
 
     return of(null, sourceTable, sourceColumns, state);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumn the {@link #getSourceColumns() source column}.
-   * @return the new {@link DbPrimaryKeyConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumn the [source column][#getSourceColumns()].
+  /// @return the new [DbPrimaryKeyConstraint].
   static DbPrimaryKeyConstraint of(String name, DbTableReference<?> sourceTable, DbColumnReference sourceColumn) {
 
     return of(name, sourceTable, sourceColumn, DbConstraintState.DEFAULT);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @return the new {@link DbPrimaryKeyConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @return the new [DbPrimaryKeyConstraint].
   static DbPrimaryKeyConstraint of(String name, DbTableReference<?> sourceTable,
       List<DbColumnReference> sourceColumns) {
 
     return of(name, sourceTable, sourceColumns, DbConstraintState.DEFAULT);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumn the {@link #getSourceColumns() source column}.
-   * @param state the {@link #getState state}.
-   * @return the new {@link DbPrimaryKeyConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumn the [source column][#getSourceColumns()].
+  /// @param state the [state][#getState].
+  /// @return the new [DbPrimaryKeyConstraint].
   static DbPrimaryKeyConstraint of(String name, DbTableReference<?> sourceTable, DbColumnReference sourceColumn,
       DbConstraintState state) {
 
     return of(name, sourceTable, List.of(sourceColumn), state);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param state the {@link #getState state}.
-   * @return the new {@link DbPrimaryKeyConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param state the [state][#getState].
+  /// @return the new [DbPrimaryKeyConstraint].
   static DbPrimaryKeyConstraint of(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       DbConstraintState state) {
 

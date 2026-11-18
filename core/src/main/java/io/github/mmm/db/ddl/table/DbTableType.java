@@ -7,20 +7,18 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
-/**
- * Name of a database object (schema, table, column, etc.).
- */
+/// Name of a database object (schema, table, column, etc.).
 public final class DbTableType {
 
   private static final Map<String, DbTableType> STANDARD_TYPES = new HashMap<>();
 
-  /** {@link DbTableType} for a regular {@link DbTable database table}. */
+  /// [DbTableType] for a regular [database table][DbTable].
   public static final DbTableType TABLE = new DbTableType("TABLE", true);
 
-  /** {@link DbTableType} for a view that selects from other {@link DbTable}(s). */
+  /// [DbTableType] for a view that selects from other [DbTable]s.
   public static final DbTableType VIEW = new DbTableType("VIEW", true);
 
-  /** {@link DbTableType} for a synonym that imports a {@link DbTable} from a different catalog/schema. */
+  /// [DbTableType] for a synonym that imports a [DbTable] from a different catalog/schema.
   public static final DbTableType SYNONYM = new DbTableType("SYNONYM", true);
 
   static {
@@ -36,33 +34,25 @@ public final class DbTableType {
     this.type = type;
   }
 
-  /**
-   * @return the type as {@link String}.
-   */
+  /// @return the type as [String].
   public String get() {
 
     return this.type;
   }
 
-  /**
-   * @return {@code true} for a regular {@link #TABLE}, {@code false} otherwise.
-   */
+  /// @return `true` for a regular [#TABLE], `false` otherwise.
   public boolean isTable() {
 
     return (this == TABLE);
   }
 
-  /**
-   * @return {@code true} for a {@link #VIEW}, {@code false} otherwise.
-   */
+  /// @return `true` for a [#VIEW], `false` otherwise.
   public boolean isView() {
 
     return (this == VIEW);
   }
 
-  /**
-   * @return {@code true} for a {@link #SYNONYM}, {@code false} otherwise.
-   */
+  /// @return `true` for a [#SYNONYM], `false` otherwise.
   public boolean isSynonym() {
 
     return (this == TABLE);
@@ -92,11 +82,8 @@ public final class DbTableType {
     return this.type;
   }
 
-  /**
-   * @param type the {@link #get() type} as {@link String}.
-   * @return the new {@link DbTableType} or {@code null} if the given {@link String} was {@code null} or
-   *         {@link String#isBlank() blank}.
-   */
+  /// @param type the [type][#get()] as [String].
+  /// @return the new [DbTableType] or `null` if the given [String] was `null` or [blank][String#isBlank()].
   public static DbTableType of(String type) {
 
     if (type == null) {

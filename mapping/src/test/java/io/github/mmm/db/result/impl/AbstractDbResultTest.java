@@ -11,23 +11,19 @@ import io.github.mmm.base.exception.ObjectNotFoundException;
 import io.github.mmm.db.result.DbResult;
 import io.github.mmm.db.result.DbResultValue;
 
-/**
- * Abstract test for {@link DbResult}.
- */
+/// Abstract test for [DbResult].
 public abstract class AbstractDbResultTest extends Assertions {
 
-  /** Dummy cell 0. */
+  /// Dummy cell 0.
   protected static final DbResultValue<String> CELL0 = new DbResultValueObject<>("foo", "foo1", "VARCHAR");
 
-  /** Dummy cell 1. */
+  /// Dummy cell 1.
   protected static final DbResultValue<Integer> CELL1 = new DbResultValueObject<>("bar", Integer.valueOf(42), "NUMBER");
 
-  /** Dummy cell 2. */
+  /// Dummy cell 2.
   protected static final DbResultValue<Boolean> CELL2 = new DbResultValueObject<>("some", Boolean.TRUE, "BOOLEAN");
 
-  /**
-   * Test the basic functionality of {@link DbResult}.
-   */
+  /// Test the basic functionality of [DbResult].
   @Test
   void testBasics() {
 
@@ -55,18 +51,14 @@ public abstract class AbstractDbResultTest extends Assertions {
     assertThat(error.getLocalizedMessage()).isEqualTo("Could not find DB-column for key 'id' in foo, bar, some.");
   }
 
-  /**
-   * @param cells the {@link DbResultValue}s.
-   * @return the {@link DbResult} for the given {@code cells}.
-   */
+  /// @param cells the [DbResultValue]s.
+  /// @return the [DbResult] for the given `cells`.
   protected abstract DbResult create(DbResultValue<?>... cells);
 
-  /**
-   * Verifies that {@link DbResult#iterator()} iterates exactly the given {@link DbResultValue}s in order.
-   *
-   * @param result the {@link DbResult}.
-   * @param cells the expected {@link DbResultValue}s in order.
-   */
+  /// Verifies that [DbResult#iterator()] iterates exactly the given [DbResultValue]s in order.
+  ///
+  /// @param result the [DbResult].
+  /// @param cells the expected [DbResultValue]s in order.
   protected void verifyIterator(DbResult result, DbResultValue<?>... cells) {
 
     Iterator<DbResultValue<?>> iterator = result.iterator();

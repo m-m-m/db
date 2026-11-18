@@ -8,23 +8,19 @@ import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.number.integers.IntegerProperty;
 import io.github.mmm.property.string.StringProperty;
 
-/**
- * {@link EntityBean} for a city.
- */
+/// [EntityBean] for a city.
 public interface City extends EntityBean {
 
-  /** @return the name of this city. */
+  /// @return the name of this city.
   StringProperty Name();
 
-  /** @return the approximate number of inhabitants. */
+  /// @return the approximate number of inhabitants.
   IntegerProperty Inhabitants();
 
-  /** @return the {@link GeoLocation} of this city. */
+  /// @return the [GeoLocation] of this city.
   BeanProperty<GeoLocation> GeoLocation();
 
-  /**
-   * @return a new instance of {@link City}.
-   */
+  /// @return a new instance of [City].
   static City of() {
 
     return BeanFactory.get().create(City.class);

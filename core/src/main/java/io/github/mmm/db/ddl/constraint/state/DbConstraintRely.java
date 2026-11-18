@@ -5,24 +5,20 @@ package io.github.mmm.db.ddl.constraint.state;
 import io.github.mmm.db.ddl.constraint.DbConstraint;
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * {@link DbConstraint} state for rely status. It specifies whether a constraint in NOVALIDATE mode is to be taken into
- * account for query rewrite.
- *
- * @since 1.0.0
- */
+/// [DbConstraint] state for rely status. It specifies whether a constraint in NOVALIDATE mode is to be taken into
+/// account for query rewrite.
+///
+/// @since 1.0.0
 public enum DbConstraintRely {
 
-  /** Unspecified, let the database decide (typically {@link #NORELY norely}). */
+  /// Unspecified, let the database decide (typically [norely][#NORELY]).
   DEFAULT(""),
 
-  /**
-   * Make the {@link DbConstraint constraint} rely activate it in NOVALIDATE mode for query rewrite in an unenforced
-   * query rewrite integrity mode.
-   */
+  /// Make the [constraint][DbConstraint] rely activate it in NOVALIDATE mode for query rewrite in an unenforced
+  /// query rewrite integrity mode.
   RELY(DbKeyword.RELY),
 
-  /** Explicitly make the {@link DbConstraint} initially immediate. */
+  /// Explicitly make the [DbConstraint] initially immediate.
   NORELY(DbKeyword.NORELY);
 
   private final String syntax;

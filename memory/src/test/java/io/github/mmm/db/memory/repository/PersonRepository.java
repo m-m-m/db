@@ -4,9 +4,8 @@ package io.github.mmm.db.memory.repository;
 
 import io.github.mmm.db.repository.EntityRepository;
 
-/**
- * {@link EntityRepository} for {@link Person}.
- */
+/// [EntityRepository] for [Person].
+@SuppressWarnings("javadoc")
 public interface PersonRepository extends EntityRepository<Person> {
 
   Person findByNameOrAlias(String key);

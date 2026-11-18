@@ -11,32 +11,28 @@ import io.github.mmm.db.result.impl.DbResultPojo;
 import io.github.mmm.db.result.impl.DbResultValueObject;
 import io.github.mmm.value.converter.TypeMapper;
 
-/**
- * A node of the mapping tree for mapping from Java to database and vice versa.
- *
- * @param <S> the {@link TypeMapper#getSourceType() source type}.
- * @param <T> the {@link TypeMapper#getTargetType() target type}.
- * @since 1.0.0
- */
+/// A node of the mapping tree for mapping from Java to database and vice versa.
+///
+/// @param <S> the [source type][TypeMapper#getSourceType()].
+/// @param <T> the [target type][TypeMapper#getTargetType()].
+/// @since 1.0.0
 public final class DbSegmentMapper<S, T> extends ComposableDbMapper<S> {
 
-  /** The {@link TypeMapper} to wrap. */
+  /// The [TypeMapper] to wrap.
   private final TypeMapper<S, T> typeMapper;
 
   private final DbResultValueObject<T> dbResultValue;
 
   private final DbSegmentMapper<T, ?> child;
 
-  /** The {@link TypeMapper#next()} {@link DbSegmentMapper}. */
+  /// The [TypeMapper#next()] [DbSegmentMapper].
   private final DbSegmentMapper<S, ?> next;
 
-  /**
-   * The constructor.
-   *
-   * @param typeMapper the {@link #getTypeMapper() type mapper}.
-   * @param dbResultValue the {@link #getDbResultValue() entry}.
-   * @param next the {@link #getNext() next}.
-   */
+  /// The constructor.
+  ///
+  /// @param typeMapper the [type mapper][#getTypeMapper()].
+  /// @param dbResultValue the [entry][#getDbResultValue()].
+  /// @param next the [next][#getNext()].
   public DbSegmentMapper(TypeMapper<S, T> typeMapper, DbResultValueObject<T> dbResultValue,
       DbSegmentMapper<S, ?> next) {
 
@@ -44,26 +40,22 @@ public final class DbSegmentMapper<S, T> extends ComposableDbMapper<S> {
     assert (typeMapper.getDeclaration() == dbResultValue.getDeclaration());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param typeMapper the {@link #getTypeMapper() type mapper}.
-   * @param child the {@link #getChild() child}.
-   * @param next the {@link #getNext() next}.
-   */
+  /// The constructor.
+  ///
+  /// @param typeMapper the [type mapper][#getTypeMapper()].
+  /// @param child the [child][#getChild()].
+  /// @param next the [next][#getNext()].
   public DbSegmentMapper(TypeMapper<S, T> typeMapper, DbSegmentMapper<T, ?> child, DbSegmentMapper<S, ?> next) {
 
     this(typeMapper, null, child, next);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param typeMapper the {@link #getTypeMapper() type mapper}.
-   * @param dbResultValue the {@link #getDbResultValue() entry}.
-   * @param child the {@link #getChild() child}.
-   * @param next the {@link #getNext() next}.
-   */
+  /// The constructor.
+  ///
+  /// @param typeMapper the [type mapper][#getTypeMapper()].
+  /// @param dbResultValue the [entry][#getDbResultValue()].
+  /// @param child the [child][#getChild()].
+  /// @param next the [next][#getNext()].
   private DbSegmentMapper(TypeMapper<S, T> typeMapper, DbResultValueObject<T> dbResultValue,
       DbSegmentMapper<T, ?> child, DbSegmentMapper<S, ?> next) {
 
@@ -77,34 +69,26 @@ public final class DbSegmentMapper<S, T> extends ComposableDbMapper<S> {
     this.next = next;
   }
 
-  /**
-   * @return the {@link TypeMapper} to wrap. May not be {@code null}.
-   */
+  /// @return the [TypeMapper] to wrap. May not be `null`.
   protected TypeMapper<S, T> getTypeMapper() {
 
     return this.typeMapper;
   }
 
-  /**
-   * @return entry the {@link DbResultValueObject} to use as template. Will be {@code null} if this is no leaf node.
-   */
+  /// @return entry the [DbResultValueObject] to use as template. Will be `null` if this is no leaf node.
   protected DbResultValueObject<T> getDbResultValue() {
 
     return this.dbResultValue;
   }
 
-  /**
-   * @return child the {@link DbSegmentMapper} to chain as child. Will be {@code null} if leaf node.
-   */
+  /// @return child the [DbSegmentMapper] to chain as child. Will be `null` if leaf node.
   protected DbSegmentMapper<T, ?> getChild() {
 
     return this.child;
   }
 
-  /**
-   * @return the {@link TypeMapper#next() siblings} as {@link DbSegmentMapper}s. Will be {@code null} if this instance
-   *         itself is already a sibling of another instance.
-   */
+  /// @return the [siblings][TypeMapper#next()] as [DbSegmentMapper]s. Will be `null` if this instance
+  ///         itself is already a sibling of another instance.
   protected DbSegmentMapper<S, ?> getNext() {
 
     return this.next;
@@ -118,11 +102,8 @@ public final class DbSegmentMapper<S, T> extends ComposableDbMapper<S> {
     return dbResult;
   }
 
-  /**
-   * @param javaValue the Java value to convert and send to the database.
-   * @param dbResult the {@link DbResultPojo} where to {@link DbResultPojo#add(io.github.mmm.db.result.DbResultValue)
-   *        add} the collected {@link io.github.mmm.db.result.DbResultValue database values}.
-   */
+  /// @param javaValue the Java value to convert and send to the database.
+  /// @param dbResult the [DbResultPojo] where to [add][DbResultPojo#add(io.github.mmm.db.result.DbResultValue)] the collected [database values][io.github.mmm.db.result.DbResultValue].
   public void java2db(S javaValue, DbResultPojo dbResult) {
 
     T dbValue;
@@ -149,11 +130,9 @@ public final class DbSegmentMapper<S, T> extends ComposableDbMapper<S> {
     return db2java(dbIterator, null);
   }
 
-  /**
-   * @param dbIterator the {@link Iterator} of the {@link DbResultValue database values} to convert to Java.
-   * @param javaBuilder the optional {@link Builder} to build the converted Java value. May be {@code null}.
-   * @return the Java value.
-   */
+  /// @param dbIterator the [Iterator] of the [database values][DbResultValue] to convert to Java.
+  /// @param javaBuilder the optional [Builder] to build the converted Java value. May be `null`.
+  /// @return the Java value.
   @SuppressWarnings("unchecked")
   public S db2java(Iterator<DbResultValue<?>> dbIterator, Builder<S> javaBuilder) {
 

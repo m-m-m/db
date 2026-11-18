@@ -12,17 +12,13 @@ import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.ReadableProperty;
 
-/**
- * Reference to a {@link DbTable database table} (or view, materialized view, etc.).
- *
- * @param <E> type of the referenced {@link EntityBean}.
- * @since 1.0.0
- */
+/// Reference to a [database table][DbTable] (or view, materialized view, etc.).
+///
+/// @param <E> type of the referenced [EntityBean].
+/// @since 1.0.0
 public interface DbTableReference<E extends EntityBean> extends DbObject {
 
-  /**
-   * @return the optional {@link EntityBean} from where to get the data and to operate on.
-   */
+  /// @return the optional [EntityBean] from where to get the data and to operate on.
   E getEntity();
 
   @Override
@@ -31,10 +27,8 @@ public interface DbTableReference<E extends EntityBean> extends DbObject {
     sb.append(getName());
   }
 
-  /**
-   * @param property the {@link ReadableProperty} of an {@link EntityBean}.
-   * @return the new {@link DbTableReference}.
-   */
+  /// @param property the [ReadableProperty] of an [EntityBean].
+  /// @return the new [DbTableReference].
   static DbTableReference<EntityBean> of(ReadableProperty<?> property) {
 
     Objects.requireNonNull(property);
@@ -46,33 +40,27 @@ public interface DbTableReference<E extends EntityBean> extends DbObject {
         + "] is from bean " + bean.getType() + " that is not an EntityBean.");
   }
 
-  /**
-   * @param <E> type of the {@link #getEntity() entity}.
-   * @param entity the {@link #getEntity() entity}.
-   * @return the new {@link DbTableReference}.
-   */
+  /// @param <E> type of the [entity][#getEntity()].
+  /// @param entity the [entity][#getEntity()].
+  /// @return the new [DbTableReference].
   static <E extends EntityBean> DbTableReference<E> of(E entity) {
 
     return new DbTableReferenceImpl<>(null, entity);
   }
 
-  /**
-   * @param <E> type of the {@link #getEntity() entity}.
-   * @param name the unqualified {@link #getName() name}.
-   * @param entity the {@link #getEntity() entity}.
-   * @return the new {@link DbTableReference}.
-   */
+  /// @param <E> type of the [entity][#getEntity()].
+  /// @param name the unqualified [name][#getName()].
+  /// @param entity the [entity][#getEntity()].
+  /// @return the new [DbTableReference].
   static <E extends EntityBean> DbTableReference<E> of(String name, E entity) {
 
     return of(DbQualifiedName.ofParsed(name), entity);
   }
 
-  /**
-   * @param <E> type of the {@link #getEntity() entity}.
-   * @param name the {@link #getName() qualified name}.
-   * @param entity the {@link #getEntity() entity}.
-   * @return the new {@link DbTableReference}.
-   */
+  /// @param <E> type of the [entity][#getEntity()].
+  /// @param name the [qualified name][#getName()].
+  /// @param entity the [entity][#getEntity()].
+  /// @return the new [DbTableReference].
   static <E extends EntityBean> DbTableReference<E> of(DbQualifiedName name, E entity) {
 
     return new DbTableReferenceImpl<>(name, entity);

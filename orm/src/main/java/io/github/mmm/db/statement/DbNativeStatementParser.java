@@ -12,9 +12,7 @@ import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.scanner.CharScannerParser;
 import io.github.mmm.scanner.CharStreamScanner;
 
-/**
- * {@link CharScannerParser} for {@link DbNativeStatement}s.
- */
+/// [CharScannerParser] for [DbNativeStatement]s.
 public class DbNativeStatementParser extends AbstractDbStatementParser<DbNativeStatement> {
 
   private static final DbNativeStatementParser INSTANCE = new DbNativeStatementParser();
@@ -25,10 +23,8 @@ public class DbNativeStatementParser extends AbstractDbStatementParser<DbNativeS
     return doParse(scanner, new StatementBuilder());
   }
 
-  /**
-   * @param scanner the {@link CharStreamScanner} to read from.
-   * @return the {@link List} of {@link DbNativeStatement}s.
-   */
+  /// @param scanner the [CharStreamScanner] to read from.
+  /// @return the [List] of [DbNativeStatement]s.
   public List<DbNativeStatement> parseAll(CharStreamScanner scanner) {
 
     List<DbNativeStatement> list = new ArrayList<>();
@@ -71,7 +67,7 @@ public class DbNativeStatementParser extends AbstractDbStatementParser<DbNativeS
     return scanner.readUntil(CharFilter.WHITESPACE, true);
   }
 
-  private void skipComments(CharStreamScanner scanner) {
+  void skipComments(CharStreamScanner scanner) {
 
     boolean found;
     do {
@@ -89,9 +85,7 @@ public class DbNativeStatementParser extends AbstractDbStatementParser<DbNativeS
     } while (found);
   }
 
-  /**
-   * @return the singleton instance of this {@link DbNativeStatementParser}.
-   */
+  /// @return the singleton instance of this [DbNativeStatementParser].
   public static DbNativeStatementParser get() {
 
     return INSTANCE;

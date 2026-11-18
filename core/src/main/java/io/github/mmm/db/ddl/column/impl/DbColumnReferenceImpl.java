@@ -9,63 +9,51 @@ import io.github.mmm.db.name.AbstractDbObject;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.property.ReadableProperty;
 
-/**
- * Implementation of {@link DbColumnReference}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbColumnReference].
+///
+/// @since 1.0.0
 public class DbColumnReferenceImpl extends AbstractDbObject implements DbColumnReference {
 
-  /** @see #getProperty() */
+  /// @see #getProperty()
   protected final ReadableProperty<?> property;
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() column name}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [column name][#getName()].
   public DbColumnReferenceImpl(String name) {
 
     this(name, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param property the {@link #getProperty() property}.
-   */
+  /// The constructor.
+  ///
+  /// @param property the [property][#getProperty()].
   public DbColumnReferenceImpl(ReadableProperty<?> property) {
 
     this(null, property);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param reference the {@link DbColumnReference} to copy.
-   */
+  /// The constructor.
+  ///
+  /// @param reference the [DbColumnReference] to copy.
   public DbColumnReferenceImpl(DbColumnReference reference) {
 
     this(reference.getProperty(), reference.getName());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() column name}.
-   * @param property the {@link #getProperty() property}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [column name][#getName()].
+  /// @param property the [property][#getProperty()].
   public DbColumnReferenceImpl(String name, ReadableProperty<?> property) {
 
     this(property, DbQualifiedName.ofName(name));
   }
 
-  /**
-   * The constructor.
-   *
-   * @param property the {@link #getProperty() property}.
-   * @param name the {@link #getName() column name}.
-   */
+  /// The constructor.
+  ///
+  /// @param property the [property][#getProperty()].
+  /// @param name the [column name][#getName()].
   public DbColumnReferenceImpl(ReadableProperty<?> property, DbQualifiedName name) {
 
     if (property == null) {

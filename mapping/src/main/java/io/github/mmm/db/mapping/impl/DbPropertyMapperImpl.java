@@ -11,24 +11,20 @@ import io.github.mmm.db.result.impl.DbResultPojo;
 import io.github.mmm.property.ReadableProperty;
 import io.github.mmm.property.WritableProperty;
 
-/**
- * Implementation of {@link DbPropertyMapper}.
- *
- * @param <V> type of the {@link WritableProperty#get() value} to map.
- * @since 1.0.0
- */
+/// Implementation of [DbPropertyMapper].
+///
+/// @param <V> type of the [value][WritableProperty#get()] to map.
+/// @since 1.0.0
 public class DbPropertyMapperImpl<V> implements DbPropertyMapper<V> {
 
   private final String propertyName;
 
   private final DbSegmentMapper<V, ?> valueMapper;
 
-  /**
-   * The constructor.
-   *
-   * @param propertyName the {@link ReadableProperty#getName() property name} to map.
-   * @param valueMapper the {@link DbSegmentMapper} with the underlying complexity of the mapping.
-   */
+  /// The constructor.
+  ///
+  /// @param propertyName the [property name][ReadableProperty#getName()] to map.
+  /// @param valueMapper the [DbSegmentMapper] with the underlying complexity of the mapping.
   public DbPropertyMapperImpl(String propertyName, DbSegmentMapper<V, ?> valueMapper) {
 
     super();

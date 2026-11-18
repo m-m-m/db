@@ -20,11 +20,9 @@ import io.github.mmm.property.enumeration.ReadableEnumProperty;
 import io.github.mmm.value.PropertyPath;
 import io.github.mmm.value.converter.TypeMapper;
 
-/**
- * {@link CriteriaParameters} using {@link CriteriaParameterImpl}.
- *
- * @since 1.0.0
- */
+/// [CriteriaParameters] using [CriteriaParameterImpl].
+///
+/// @since 1.0.0
 public abstract class AbstractCriteriaParameters implements CriteriaParameters<CriteriaParameterImpl<?>> {
 
   private final TypeMapping typeMapping;
@@ -33,11 +31,9 @@ public abstract class AbstractCriteriaParameters implements CriteriaParameters<C
 
   private CriteriaParameterImpl<?> last;
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link TypeMapping}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [TypeMapping].
   public AbstractCriteriaParameters(TypeMapping dialect) {
 
     super();
@@ -98,14 +94,12 @@ public abstract class AbstractCriteriaParameters implements CriteriaParameters<C
     return this.typeMapping.getTypeMapper(valueClass);
   }
 
-  /**
-   * @param <V> type of the {@code value}.
-   * @param index the {@link CriteriaParameterImpl#getIndex() index}.
-   * @param value the {@link CriteriaParameterImpl#getValue() value}.
-   * @param dbType the the {@link CriteriaParameterImpl#getDbType() database type}.
-   * @param parent the parent {@link CriteriaExpression} (see {@link #onLiteral(Literal, AppendableWriter, CriteriaExpression)}).
-   * @return the new {@link CriteriaParameterImpl}.
-   */
+  /// @param <V> type of the `value`.
+  /// @param index the [index][CriteriaParameterImpl#getIndex()].
+  /// @param value the [value][CriteriaParameterImpl#getValue()].
+  /// @param dbType the the [database type][CriteriaParameterImpl#getDbType()].
+  /// @param parent the parent [CriteriaExpression] (see [#onLiteral(Literal, AppendableWriter, CriteriaExpression)]).
+  /// @return the new [CriteriaParameterImpl].
   protected abstract <V> CriteriaParameterImpl<V> createParameter(int index, V value, DbType<V, ?, ?> dbType, CriteriaExpression<?> parent);
 
   @Override
@@ -117,11 +111,9 @@ public abstract class AbstractCriteriaParameters implements CriteriaParameters<C
     return new CriteriaParameterIterator(this.first);
   }
 
-  /**
-   * @param statement the {@link PreparedStatement}.
-   * @param connection the JDBC {@link Connection}.
-   * @throws SQLException on error.
-   */
+  /// @param statement the [PreparedStatement].
+  /// @param connection the JDBC [Connection].
+  /// @throws SQLException on error.
   @SuppressWarnings("exports")
   public void apply(PreparedStatement statement, Connection connection) throws SQLException {
 

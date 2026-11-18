@@ -11,38 +11,32 @@ import io.github.mmm.db.statement.DbClause;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.ReadableProperty;
 
-/**
- * A {@link CreateIndexOnClause}-{@link DbClause} of an SQL {@link CreateIndexStatement}.
- *
- * @param <E> type of the {@link #getEntity() entity}.
- * @since 1.0.0
- */
+/// A [CreateIndexOnClause]-[DbClause] of an SQL [CreateIndexStatement].
+///
+/// @param <E> type of the [entity][#getEntity()].
+/// @since 1.0.0
 public class CreateIndexOnClause<E extends EntityBean> extends AbstractEntityClause<E, E, CreateIndexOnClause<E>>
     implements CreateIndexFragment<E> {
 
-  /** Name of {@link CreateIndexOnClause} for marshaling. */
+  /// Name of [CreateIndexOnClause] for marshaling.
   public static final String NAME_ON = DbKeyword.ON;
 
   private final CreateIndexStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param createIndex the {@link CreateIndexClause}-{@link DbClause}.
-   * @param entity the {@link #getEntity() entity} to operate on.
-   */
+  /// The constructor.
+  ///
+  /// @param createIndex the [CreateIndexClause]-[DbClause].
+  /// @param entity the [entity][#getEntity()] to operate on.
   public CreateIndexOnClause(CreateIndexClause createIndex, E entity) {
 
     this(createIndex, entity, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param createIndex the {@link CreateIndexClause}-{@link DbClause}.
-   * @param entity the {@link #getEntity() entity} to operate on.
-   * @param entityName the {@link #getName() entity name}.
-   */
+  /// The constructor.
+  ///
+  /// @param createIndex the [CreateIndexClause]-[DbClause].
+  /// @param entity the [entity][#getEntity()] to operate on.
+  /// @param entityName the [entity name][#getName()].
   public CreateIndexOnClause(CreateIndexClause createIndex, E entity, String entityName) {
 
     super(new AliasMap(), entity, entityName);

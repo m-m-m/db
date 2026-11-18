@@ -9,14 +9,12 @@ import java.time.format.DateTimeFormatter;
 
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * {@link DbType} with {@link OffsetDateTime} as {@link #getSourceType() Java source type}.<br>
- * Unfortunately, JDBC has a long legacy history and still does not support {@code java.time} (JSR310). Unless your JDBC
- * driver does not properly support this as {@link #isNativeTypeSupport() native type}, we have to do {@link String}
- * conversion what is wasting performance and could break on unexpected formatting (e.g. if a DB changes its format).
- *
- * @since 1.0.0
- */
+/// [DbType] with [OffsetDateTime] as [Java source type][#getSourceType()].
+/// Unfortunately, JDBC has a long legacy history and still does not support `java.time` (JSR310). Unless your JDBC
+/// driver does not properly support this as [native type][#isNativeTypeSupport()], we have to do [String]
+/// conversion what is wasting performance and could break on unexpected formatting (e.g. if a DB changes its format).
+///
+/// @since 1.0.0
 public final class DbTypeOffsetTime2String extends DbType2String<OffsetTime, DbTypeOffsetTime2String> {
 
   static final DbTypeOffsetTime2String INSTANCE = new DbTypeOffsetTime2String(null, null, null, "HH:mm:ss.SSSSS x",

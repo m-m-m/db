@@ -13,23 +13,19 @@ import io.github.mmm.db.result.DbResult;
 import io.github.mmm.db.result.DbResultValue;
 import io.github.mmm.db.result.impl.DbResultPojo;
 
-/**
- * Implementation of {@link DbBeanMapper}.
- *
- * @param <B> type of the {@link WritableBean} to map.
- * @since 1.0.0
- */
+/// Implementation of [DbBeanMapper].
+///
+/// @param <B> type of the [WritableBean] to map.
+/// @since 1.0.0
 public class DbBeanMapperImpl<B extends WritableBean> extends ComposableDbMapper<B> implements DbBeanMapper<B> {
 
   private final B bean;
 
   private final List<DbPropertyMapper<?>> propertyMappers;
 
-  /**
-   * The constructor.
-   *
-   * @param bean the {@link WritableBean} template.
-   */
+  /// The constructor.
+  ///
+  /// @param bean the [WritableBean] template.
   public DbBeanMapperImpl(B bean) {
 
     super();
@@ -37,9 +33,7 @@ public class DbBeanMapperImpl<B extends WritableBean> extends ComposableDbMapper
     this.propertyMappers = new ArrayList<>(bean.getProperties().size());
   }
 
-  /**
-   * @param propertyMapper the {@link DbPropertyMapper} to add.
-   */
+  /// @param propertyMapper the [DbPropertyMapper] to add.
   public void add(DbPropertyMapper<?> propertyMapper) {
 
     assert (this.bean.getProperty(propertyMapper.getPropertyName()) != null);

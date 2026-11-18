@@ -5,24 +5,18 @@ package io.github.mmm.db.repository.operation;
 import io.github.mmm.db.repository.EntityRepository;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Interface for the save operations of an {@link EntityRepository}.
- *
- * @param <E> type of the managed {@link EntityBean}.
- * @since 1.0.0
- */
+/// Interface for the save operations of an [EntityRepository].
+///
+/// @param <E> type of the managed [EntityBean].
+/// @since 1.0.0
 public interface EntitySaveOperations<E extends EntityBean> {
 
-  /**
-   * @param entity the {@link EntityBean} to save. If transient, it will be inserted, otherwise it will be updated.
-   * @return the saved {@link EntityBean} that has been inserted or updated. This will be a different instance than the
-   *         one provided as argument.
-   */
+  /// @param entity the [EntityBean] to save. If transient, it will be inserted, otherwise it will be updated.
+  /// @return the saved [EntityBean] that has been inserted or updated. This will be a different instance than the
+  ///         one provided as argument.
   E save(E entity);
 
-  /**
-   * @param entities the array of {@link EntityBean entities} to {@link #save(EntityBean) save}.
-   */
+  /// @param entities the array of [entities][EntityBean] to [save][#save(EntityBean)].
   @SuppressWarnings("unchecked")
   default void saveAll(E... entities) {
 
@@ -32,9 +26,7 @@ public interface EntitySaveOperations<E extends EntityBean> {
     }
   }
 
-  /**
-   * @param entities the {@link Iterable} of {@link EntityBean entities} to {@link #save(EntityBean) save}.
-   */
+  /// @param entities the [Iterable] of [entities][EntityBean] to [save][#save(EntityBean)].
   default void saveAll(Iterable<E> entities) {
 
     // this is a naive default implementation. Real database backed implementations shall override with bulk operation.

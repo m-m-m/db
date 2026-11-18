@@ -6,13 +6,10 @@ import java.util.Locale;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import io.github.mmm.db.memory.repository.MemoryRepository;
 import io.github.mmm.db.repository.EntityRepositoryManager;
 import io.github.mmm.entity.id.PkId;
 
-/**
- * Test of {@link MemoryRepository} with all its features using {@link PersonMemoryRepository} as example.
- */
+/// Test of [MemoryRepository] with all its features using [PersonMemoryRepository] as example.
 class SequenceMemoryRepositoryTest extends Assertions {
 
   private PersonMemoryRepository repo;

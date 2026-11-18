@@ -7,9 +7,7 @@ import java.util.Objects;
 import io.github.mmm.base.resource.ResourceFile;
 import io.github.mmm.db.schema.DbChangeLogScript;
 
-/**
- * Implementation of {@link DbChangeLogScript}.
- */
+/// Implementation of [DbChangeLogScript].
 public class DbChangeLogScriptImpl implements DbChangeLogScript {
 
   private final ResourceFile file;

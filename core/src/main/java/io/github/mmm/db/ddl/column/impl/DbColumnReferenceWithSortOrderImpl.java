@@ -8,46 +8,38 @@ import io.github.mmm.db.ddl.column.DbColumnReference;
 import io.github.mmm.db.ddl.column.DbColumnReferenceWithSortOrder;
 import io.github.mmm.property.ReadableProperty;
 
-/**
- * Implementation of {@link DbColumnReferenceWithSortOrder}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbColumnReferenceWithSortOrder].
+///
+/// @since 1.0.0
 public class DbColumnReferenceWithSortOrderImpl extends DbColumnReferenceImpl
     implements DbColumnReferenceWithSortOrder {
 
   private final SortOrder sortOrder;
 
-  /**
-   * The constructor.
-   *
-   * @param columnName the {@link #getName() column name}.
-   * @param sortOrder the {@link #getSortOrder() sort order}.
-   */
+  /// The constructor.
+  ///
+  /// @param columnName the [column name][#getName()].
+  /// @param sortOrder the [sort order][#getSortOrder()].
   public DbColumnReferenceWithSortOrderImpl(String columnName, SortOrder sortOrder) {
 
     super(columnName);
     this.sortOrder = sortOrder;
   }
 
-  /**
-   * The constructor.
-   *
-   * @param property the {@link #getProperty() property}.
-   * @param sortOrder the {@link #getSortOrder() sort order}.
-   */
+  /// The constructor.
+  ///
+  /// @param property the [property][#getProperty()].
+  /// @param sortOrder the [sort order][#getSortOrder()].
   public DbColumnReferenceWithSortOrderImpl(ReadableProperty<?> property, SortOrder sortOrder) {
 
     super(property);
     this.sortOrder = sortOrder;
   }
 
-  /**
-   * The constructor.
-   *
-   * @param reference the {@link DbColumnReference} to copy.
-   * @param sortOrder the {@link #getSortOrder() sort order}.
-   */
+  /// The constructor.
+  ///
+  /// @param reference the [DbColumnReference] to copy.
+  /// @param sortOrder the [sort order][#getSortOrder()].
   public DbColumnReferenceWithSortOrderImpl(DbColumnReference reference, SortOrder sortOrder) {
 
     super(reference);

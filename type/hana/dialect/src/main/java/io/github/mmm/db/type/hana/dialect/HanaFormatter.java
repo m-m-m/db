@@ -5,30 +5,24 @@ package io.github.mmm.db.type.hana.dialect;
 import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.param.CriteriaParametersFactory;
 
-/**
- * {@link DbDialectStatementFormatter} for SAP Hana Database.
- *
- * @since 1.0.0
- */
+/// [DbDialectStatementFormatter] for SAP Hana Database.
+///
+/// @since 1.0.0
 public class HanaFormatter extends DbDialectStatementFormatter {
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link HanaDialect}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [HanaDialect].
   public HanaFormatter(HanaDialect dialect) {
 
     super(dialect);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link HanaDialect}.
-   * @param parametersFactory the {@link CriteriaParametersFactory}.
-   * @param indentation the {@link #getIndentation() indentation}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [HanaDialect].
+  /// @param parametersFactory the [CriteriaParametersFactory].
+  /// @param indentation the [indentation][#getIndentation()].
   public HanaFormatter(HanaDialect dialect, CriteriaParametersFactory parametersFactory, String indentation) {
 
     super(dialect, parametersFactory, indentation);

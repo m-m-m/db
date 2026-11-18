@@ -14,12 +14,10 @@ import io.github.mmm.db.statement.DbMainClause;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.ReadableProperty;
 
-/**
- * A {@link CreateIndexColumnsClause}-{@link DbClause} of an SQL {@link CreateIndexStatement}.
- *
- * @param <E> type of the {@link io.github.mmm.db.statement.AbstractEntityClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// A [CreateIndexColumnsClause]-[DbClause] of an SQL [CreateIndexStatement].
+///
+/// @param <E> type of the [entity][io.github.mmm.db.statement.AbstractEntityClause#getEntity()].
+/// @since 1.0.0
 public class CreateIndexColumnsClause<E extends EntityBean> extends AbstractTypedClause<E, CreateIndexColumnsClause<E>>
     implements DbMainClause<E>, CreateIndexFragment<E> {
 
@@ -27,11 +25,9 @@ public class CreateIndexColumnsClause<E extends EntityBean> extends AbstractType
 
   private final List<DbColumnReferenceWithSortOrder> columns;
 
-  /**
-   * The constructor.
-   *
-   * @param statement the {@link CreateIndexStatement}.
-   */
+  /// The constructor.
+  ///
+  /// @param statement the [CreateIndexStatement].
   public CreateIndexColumnsClause(CreateIndexStatement<E> statement) {
 
     super();
@@ -80,9 +76,7 @@ public class CreateIndexColumnsClause<E extends EntityBean> extends AbstractType
     return this;
   }
 
-  /**
-   * @return the {@link List} of {@link DbColumnReferenceWithSortOrder}s.
-   */
+  /// @return the [List] of [DbColumnReferenceWithSortOrder]s.
   public List<DbColumnReferenceWithSortOrder> getColumns() {
 
     return this.columns;

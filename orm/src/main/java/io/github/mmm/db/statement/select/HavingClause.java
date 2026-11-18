@@ -5,24 +5,20 @@ package io.github.mmm.db.statement.select;
 import io.github.mmm.db.statement.DbClause;
 import io.github.mmm.db.statement.PredicateClause;
 
-/**
- * A {@link HavingClause}-{@link DbClause} of an SQL {@link SelectStatement}.
- *
- * @param <R> type of the result of the selection.
- * @since 1.0.0
- */
+/// A [HavingClause]-[DbClause] of an SQL [SelectStatement].
+///
+/// @param <R> type of the result of the selection.
+/// @since 1.0.0
 public class HavingClause<R> extends PredicateClause<R, HavingClause<R>> implements ClauseWithOrderBy<R> {
 
-  /** Name of {@link HavingClause} for marshaling. */
+  /// Name of [HavingClause] for marshaling.
   public static final String NAME_HAVING = "HAVING";
 
   private final SelectStatement<R> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param statement the owning {@link SelectStatement}.
-   */
+  /// The constructor.
+  ///
+  /// @param statement the owning [SelectStatement].
   public HavingClause(SelectStatement<R> statement) {
 
     super();

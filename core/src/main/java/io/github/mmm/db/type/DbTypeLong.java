@@ -2,9 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.type;
 
-/**
- * {@link DbType} for a regular {@link Long}.
- */
+/// [DbType] for a regular [Long].
 public final class DbTypeLong extends DbType2Long<Long, DbTypeLong> {
 
   static final DbTypeLong INSTANCE = new DbTypeLong(null, null, null, null, null, false, DbTypeRegistration.ALL);

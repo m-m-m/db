@@ -6,34 +6,26 @@ import io.github.mmm.db.statement.delete.DeleteStatement;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.entity.id.Id;
 
-/**
- * Interface providing support for {@link #delete(DeleteStatement)}.
- *
- * @since 1.0.0
- */
+/// Interface providing support for [#delete(DeleteStatement)].
+///
+/// @since 1.0.0
 public interface DbDeleteAccess {
 
-  /**
-   * @param statement the {@link DeleteStatement} to execute.
-   * @return the number of records that have been deleted.
-   */
+  /// @param statement the [DeleteStatement] to execute.
+  /// @return the number of records that have been deleted.
   long delete(DeleteStatement<?> statement);
 
-  /**
-   * @param <E> type of the {@link EntityBean} to delete.
-   * @param id the {@link Id} of the {@link EntityBean} to delete.
-   * @param prototype the (empty) {@link EntityBean} instance to act as template.
-   * @return {@code true} if the {@link EntityBean} with the given {@link Id} has been deleted, {@code false} otherwise
-   *         (no such entity exists).
-   */
+  /// @param <E> type of the [EntityBean] to delete.
+  /// @param id the [Id] of the [EntityBean] to delete.
+  /// @param prototype the (empty) [EntityBean] instance to act as template.
+  /// @return `true` if the [EntityBean] with the given [Id] has been deleted, `false` otherwise
+  ///         (no such entity exists).
   <E extends EntityBean> boolean deleteById(Id<E> id, E prototype);
 
-  /**
-   * @param <E> type of the {@link EntityBean}s to delete.
-   * @param ids the {@link Iterable} with the {@link Id}s to delete.
-   * @param prototype the (empty) {@link EntityBean} instance to act as template.
-   * @return the actual number of {@link EntityBean}s that have been deleted.
-   */
+  /// @param <E> type of the [EntityBean]s to delete.
+  /// @param ids the [Iterable] with the [Id]s to delete.
+  /// @param prototype the (empty) [EntityBean] instance to act as template.
+  /// @return the actual number of [EntityBean]s that have been deleted.
   <E extends EntityBean> int deleteAllById(Iterable<Id<E>> ids, E prototype);
 
 }

@@ -5,9 +5,7 @@ package io.github.mmm.db.type;
 import java.sql.Date;
 import java.time.LocalDate;
 
-/**
- * {@link DbType} for a regular {@link LocalDate}.
- */
+/// [DbType] for a regular [LocalDate].
 @SuppressWarnings("exports")
 public final class DbTypeLocalDate2Date extends DbType2Date<LocalDate, DbTypeLocalDate2Date> {
 

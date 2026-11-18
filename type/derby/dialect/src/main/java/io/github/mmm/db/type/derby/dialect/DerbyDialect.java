@@ -7,24 +7,18 @@ import io.github.mmm.db.dialect.DbDialect;
 import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.orm.Orm;
 
-/**
- * Implementation of {@link DbDialect} for Apache Derby database.
- */
+/// Implementation of [DbDialect] for Apache Derby database.
 public final class DerbyDialect extends AbstractDbDialect<DerbyDialect> {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public DerbyDialect() {
 
     super(new DerbyTypeMapping());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param orm the {@link Orm}.
-   */
+  /// The constructor.
+  ///
+  /// @param orm the [Orm].
   protected DerbyDialect(Orm orm) {
 
     super(orm);

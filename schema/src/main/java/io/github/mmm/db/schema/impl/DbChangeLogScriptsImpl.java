@@ -10,9 +10,7 @@ import io.github.mmm.base.collection.CollectionHelper;
 import io.github.mmm.db.schema.DbChangeLogScript;
 import io.github.mmm.db.schema.DbChangeLogScripts;
 
-/**
- * for a specific release version.
- */
+/// for a specific release version.
 public class DbChangeLogScriptsImpl implements DbChangeLogScripts {
 
   private final List<DbChangeLogScript> scripts;

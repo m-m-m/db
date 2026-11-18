@@ -4,18 +4,14 @@ package io.github.mmm.db.ddl.index;
 
 import io.github.mmm.db.name.DbQualifiedName;
 
-/**
- * API to get {@link DbIndex}es by name.
- *
- * @since 1.0.0
- */
+/// API to get [DbIndex]es by name.
+///
+/// @since 1.0.0
 public interface DbIndexGetByName {
 
-  /**
-   * @param <I> type of the {@link DbIndex}. Typically {@link DbIndex} itself.
-   * @param name the {@link DbIndex#getName() name} of the requested index.
-   * @return the {@link DbIndex} with the given name.
-   */
+  /// @param <I> type of the [DbIndex]. Typically [DbIndex] itself.
+  /// @param name the [name][DbIndex#getName()] of the requested index.
+  /// @return the [DbIndex] with the given name.
   <I extends DbIndex> I getIndex(DbQualifiedName name);
 
 }

@@ -5,20 +5,16 @@ package io.github.mmm.db.result.impl;
 import io.github.mmm.db.result.DbResult;
 import io.github.mmm.db.result.DbResultValue;
 
-/**
- * Implementation of {@link DbResult} as mutable Java bean (POJO).
- *
- * @since 1.0.0
- */
+/// Implementation of [DbResult] as mutable Java bean (POJO).
+///
+/// @since 1.0.0
 public class DbResultObject extends AbstractDbResult {
 
   private final DbResultValue<?>[] values;
 
-  /**
-   * The constructor.
-   *
-   * @param values the {@link DbResultValue}s.
-   */
+  /// The constructor.
+  ///
+  /// @param values the [DbResultValue]s.
   public DbResultObject(DbResultValue<?>... values) {
 
     super();

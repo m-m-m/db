@@ -17,9 +17,7 @@ import io.github.mmm.db.tx.DbTransaction;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.WritableProperty;
 
-/**
- * Implementation of {@link ModelSynchronizer}.
- */
+/// Implementation of [ModelSynchronizer].
 public class ModelSynchronizerImpl implements ModelSynchronizer {
 
   private DbSourceConfig sourceConfig;

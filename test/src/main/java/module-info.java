@@ -7,7 +7,7 @@
  */
 module io.github.mmm.db.orm.test {
 
-  requires io.github.mmm.db.orm;
+  requires transitive io.github.mmm.db.orm;
 
   requires java.sql;
 

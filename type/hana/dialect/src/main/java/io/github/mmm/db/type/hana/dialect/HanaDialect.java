@@ -7,24 +7,18 @@ import io.github.mmm.db.dialect.DbDialect;
 import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.orm.Orm;
 
-/**
- * Implementation of {@link DbDialect} for SAP Hana database.
- */
+/// Implementation of [DbDialect] for SAP Hana database.
 public final class HanaDialect extends AbstractDbDialect<HanaDialect> {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public HanaDialect() {
 
     super(new HanaTypeMapping());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param orm the {@link Orm}.
-   */
+  /// The constructor.
+  ///
+  /// @param orm the [Orm].
   protected HanaDialect(Orm orm) {
 
     super(orm);

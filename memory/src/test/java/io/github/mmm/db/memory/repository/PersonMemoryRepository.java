@@ -7,15 +7,13 @@ import io.github.mmm.db.memory.index.MemoryNonUniqueIndex;
 import io.github.mmm.db.memory.index.MemoryUniqueIndex;
 import io.github.mmm.db.name.DbQualifiedName;
 
-/**
- * Implementation of {@link PersonRepository} using {@link MemoryRepository}.
- */
+/// Implementation of [PersonRepository] using [MemoryRepository].
 public interface PersonMemoryRepository extends MemoryRepository<Person>, PersonRepository {
 
-  /** @see #findByAge(int) */
+  /// @see #findByAge(int)
   DbQualifiedName INDEX_AGE = DbQualifiedName.ofName("IX_AGE");
 
-  /** @see #findByNameOrAlias(String) */
+  /// @see #findByNameOrAlias(String)
   DbQualifiedName INDEX_NAME_OR_ALIAS = DbQualifiedName.ofName("UX_NAME_OR_ALIAS");
 
   @Override

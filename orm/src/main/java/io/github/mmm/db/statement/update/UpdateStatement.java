@@ -15,12 +15,10 @@ import io.github.mmm.db.statement.insert.InsertClause;
 import io.github.mmm.db.statement.insert.InsertIntoClause;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link DbStatement} to {@link InsertClause insert} data into the database.
- *
- * @param <E> type of the {@link InsertIntoClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// [DbStatement] to [insert][InsertClause] data into the database.
+///
+/// @param <E> type of the [entity][InsertIntoClause#getEntity()].
+/// @since 1.0.0
 public class UpdateStatement<E extends EntityBean> extends AbstractDbStatement<E> {
 
   private final UpdateClause<E> update;
@@ -29,11 +27,9 @@ public class UpdateStatement<E extends EntityBean> extends AbstractDbStatement<E
 
   private final UpdateWhere<E> where;
 
-  /**
-   * The constructor.
-   *
-   * @param update the {@link #getUpdate() update}.
-   */
+  /// The constructor.
+  ///
+  /// @param update the [update][#getUpdate()].
   public UpdateStatement(UpdateClause<E> update) {
 
     super();
@@ -42,9 +38,7 @@ public class UpdateStatement<E extends EntityBean> extends AbstractDbStatement<E
     this.where = new UpdateWhere<>(this);
   }
 
-  /**
-   * @deprecated use {@link #getUpdate()} to make it more explicit.
-   */
+  /// @deprecated use [#getUpdate()] to make it more explicit.
   @Deprecated
   @Override
   public UpdateClause<E> getStart() {
@@ -52,25 +46,19 @@ public class UpdateStatement<E extends EntityBean> extends AbstractDbStatement<E
     return this.update;
   }
 
-  /**
-   * @return the opening {@link UpdateClause}-{@link DbClause}.
-   */
+  /// @return the opening [UpdateClause]-[DbClause].
   public UpdateClause<E> getUpdate() {
 
     return this.update;
   }
 
-  /**
-   * @return the {@link UpdateSetClause Set}-{@link DbClause}.
-   */
+  /// @return the [Set][UpdateSetClause]-[DbClause].
   public UpdateSetClause<E> getSet() {
 
     return this.set;
   }
 
-  /**
-   * @return the {@link UpdateWhere Where}-{@link DbClause}.
-   */
+  /// @return the [Where][UpdateWhere]-[DbClause].
   public UpdateWhere<E> getWhere() {
 
     return this.where;

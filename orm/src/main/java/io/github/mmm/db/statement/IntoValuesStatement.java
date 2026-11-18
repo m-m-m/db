@@ -4,23 +4,17 @@ package io.github.mmm.db.statement;
 
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link AbstractDbStatement} for "... INTO ... VALUES" statements like
- * {@link io.github.mmm.db.statement.insert.InsertStatement}, {@link io.github.mmm.db.statement.merge.MergeStatement},
- * or {@link io.github.mmm.db.statement.upsert.UpsertStatement}.
- *
- * @param <E> type of the {@link AbstractEntityClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// [AbstractDbStatement] for "... INTO ... VALUES" statements like
+/// [io.github.mmm.db.statement.insert.InsertStatement], [io.github.mmm.db.statement.merge.MergeStatement],
+/// or [io.github.mmm.db.statement.upsert.UpsertStatement].
+///
+/// @param <E> type of the [entity][AbstractEntityClause#getEntity()].
+/// @since 1.0.0
 public abstract class IntoValuesStatement<E extends EntityBean> extends AbstractDbStatement<E> {
 
-  /**
-   * @return the {@link IntoClause}.
-   */
+  /// @return the [IntoClause].
   public abstract IntoClause<E, ?, ?> getInto();
 
-  /**
-   * @return the {@link ValuesClause}.
-   */
+  /// @return the [ValuesClause].
   public abstract ValuesClause<E, ?> getValues();
 }

@@ -10,23 +10,17 @@ import io.github.mmm.db.name.DbObject;
 import io.github.mmm.property.ReadableProperty;
 import io.github.mmm.value.PropertyPath;
 
-/**
- * Reference to a {@link DbColumn column}.
- */
+/// Reference to a [column][DbColumn].
 public interface DbColumnReference extends DbObject {
 
-  /** Empty {@link DbColumnReference} array. */
+  /// Empty [DbColumnReference] array.
   static final DbColumnReference[] NO_COLUMNS = new DbColumnReference[0];
 
-  /**
-   * @return the name of the property.
-   */
+  /// @return the name of the property.
   ReadableProperty<?> getProperty();
 
-  /**
-   * @param order the {@link SortOrder}.
-   * @return this column reference with the given {@link SortOrder} as {@link DbColumnReferenceWithSortOrder}.
-   */
+  /// @param order the [SortOrder].
+  /// @return this column reference with the given [SortOrder] as [DbColumnReferenceWithSortOrder].
   default DbColumnReferenceWithSortOrder with(SortOrder order) {
 
     return new DbColumnReferenceWithSortOrderImpl(this, order);
@@ -38,28 +32,22 @@ public interface DbColumnReference extends DbObject {
     sb.append(getName());
   }
 
-  /**
-   * @param name the {@link #getName() name}.
-   * @return the new {@link DbColumnReference}.
-   */
+  /// @param name the [name][#getName()].
+  /// @return the new [DbColumnReference].
   static DbColumnReference of(String name) {
 
     return of(name, null);
   }
 
-  /**
-   * @param property the {@link #getProperty() property}.
-   * @return the new {@link DbColumnReference}.
-   */
+  /// @param property the [property][#getProperty()].
+  /// @return the new [DbColumnReference].
   static DbColumnReference of(ReadableProperty<?> property) {
 
     return of(null, property);
   }
 
-  /**
-   * @param path the {@link PropertyPath}.
-   * @return the new {@link DbColumnReference}.
-   */
+  /// @param path the [PropertyPath].
+  /// @return the new [DbColumnReference].
   static DbColumnReference of(PropertyPath<?> path) {
 
     if (path instanceof ReadableProperty<?> property) {
@@ -68,11 +56,9 @@ public interface DbColumnReference extends DbObject {
     return of(path.getName(), null);
   }
 
-  /**
-   * @param name the {@link #getName() name}.
-   * @param property the {@link #getProperty() property}.
-   * @return the new {@link DbColumnReference}.
-   */
+  /// @param name the [name][#getName()].
+  /// @param property the [property][#getProperty()].
+  /// @return the new [DbColumnReference].
   static DbColumnReference of(String name, ReadableProperty<?> property) {
 
     return new DbColumnReferenceImpl(name, property);

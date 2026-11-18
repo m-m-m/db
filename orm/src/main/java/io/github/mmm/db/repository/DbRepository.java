@@ -9,31 +9,22 @@ import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.statement.select.SelectStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link EntityRepository} with DB operations like {@link #findByQuery(SelectStatement)}
- *
- * @param <E> type of the managed {@link EntityBean}.
- */
-public interface DbRepository<E extends EntityBean>
-    extends EntityRepository<E>, DbFindOperations<E>, DbDeleteOperations<E>, DbUpdateOperations<E> {
+/// [EntityRepository] with DB operations like [#findByQuery(SelectStatement)]
+///
+/// @param <E> type of the managed [EntityBean].
+public interface DbRepository<E extends EntityBean> extends EntityRepository<E>, DbFindOperations<E>, DbDeleteOperations<E>, DbUpdateOperations<E> {
 
-  /** The default {@link #getSequenceName() sequence name}. */
+  /// The default [sequence name][#getSequenceName()].
   String DEFAULT_SEQUENCE = "ENTITY_SEQUENCE";
 
-  /**
-   * @return the {@link DbSource} of this repository. Typically this is the {@link DbSource#get() default}
-   *         {@link DbSource}. May be overridden to connect your repository to a different {@link DbSource database
-   *         source}.
-   */
+  /// @return the [DbSource] of this repository. Typically this is the [default][DbSource#get()] [DbSource]. May be overridden to connect your repository to a
+  ///         different [database source][DbSource].
   default DbSource getSource() {
 
     return DbSource.get();
   }
 
-  /**
-   * @return the (unqualified) name of the database sequence for the managed entity. May be {@code null} for non
-   *         sequence based IDs (e.g. UUID).
-   */
+  /// @return the (unqualified) name of the database sequence for the managed entity. May be `null` for non sequence based IDs (e.g. UUID).
   default String getSequenceName() {
 
     return DEFAULT_SEQUENCE;

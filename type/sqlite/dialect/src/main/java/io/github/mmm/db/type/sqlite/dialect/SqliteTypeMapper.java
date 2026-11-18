@@ -4,11 +4,9 @@ package io.github.mmm.db.type.sqlite.dialect;
 
 import io.github.mmm.db.typemapping.DbTypeMapping;
 
-/**
- * {@link DbTypeMapping} for SQLite database.
- *
- * @since 1.0.0
- */
+/// [DbTypeMapping] for SQLite database.
+///
+/// @since 1.0.0
 public class SqliteTypeMapper extends DbTypeMapping {
 
   @Override

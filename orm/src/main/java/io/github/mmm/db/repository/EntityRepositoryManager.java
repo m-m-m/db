@@ -9,20 +9,16 @@ import io.github.mmm.bean.ReadableBean;
 import io.github.mmm.db.repository.impl.EntityRepositoryManagerImpl;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Manager of all {@link EntityRepository repositories}.
- *
- * @see EntityRepository
- * @since 1.0.0
- */
+/// Manager of all [repositories][EntityRepository].
+///
+/// @see EntityRepository
+/// @since 1.0.0
 public interface EntityRepositoryManager extends Iterable<EntityRepository<?>> {
 
-  /**
-   * @param <R> type of the {@link EntityRepository}.
-   * @param repositoryClass the {@link Class} reflecting the requested {@link EntityRepository}.
-   * @throws ObjectNotFoundException if the requested {@link EntityRepository} does not exist.
-   * @return the requested {@link EntityRepository}.
-   */
+  /// @param <R> type of the [EntityRepository].
+  /// @param repositoryClass the [Class] reflecting the requested [EntityRepository].
+  /// @throws ObjectNotFoundException if the requested [EntityRepository] does not exist.
+  /// @return the requested [EntityRepository].
   default <R extends EntityRepository<?>> R get(Class<R> repositoryClass) throws ObjectNotFoundException {
 
     R repository = getOptional(repositoryClass);
@@ -32,19 +28,15 @@ public interface EntityRepositoryManager extends Iterable<EntityRepository<?>> {
     return repository;
   }
 
-  /**
-   * @param <R> type of the {@link EntityRepository}.
-   * @param repositoryClass the {@link Class} reflecting the requested {@link EntityRepository}.
-   * @return the requested {@link EntityRepository} or {@code null} if not found.
-   */
+  /// @param <R> type of the [EntityRepository].
+  /// @param repositoryClass the [Class] reflecting the requested [EntityRepository].
+  /// @return the requested [EntityRepository] or `null` if not found.
   <R extends EntityRepository<?>> R getOptional(Class<R> repositoryClass);
 
-  /**
-   * @param <E> type of the managed {@link EntityBean}.
-   * @param entity the {@link EntityBean} to get the {@link EntityRepository} for.
-   * @return the requested {@link EntityRepository}.
-   * @throws ObjectNotFoundException if the requested {@link EntityRepository} does not exist.
-   */
+  /// @param <E> type of the managed [EntityBean].
+  /// @param entity the [EntityBean] to get the [EntityRepository] for.
+  /// @return the requested [EntityRepository].
+  /// @throws ObjectNotFoundException if the requested [EntityRepository] does not exist.
   default <E extends EntityBean> EntityRepository<E> getByEntity(E entity) throws ObjectNotFoundException {
 
     Objects.requireNonNull(entity);
@@ -52,11 +44,9 @@ public interface EntityRepositoryManager extends Iterable<EntityRepository<?>> {
     return getByEntity(entityClass);
   }
 
-  /**
-   * @param <E> type of the managed {@link EntityBean}.
-   * @param entityClass the {@link Class} reflecting the {@link EntityBean} to get the {@link EntityRepository} for.
-   * @return the requested {@link EntityRepository} or {@code null} if not found.
-   */
+  /// @param <E> type of the managed [EntityBean].
+  /// @param entityClass the [Class] reflecting the [EntityBean] to get the [EntityRepository] for.
+  /// @return the requested [EntityRepository] or `null` if not found.
   default <E extends EntityBean> EntityRepository<E> getByEntity(Class<E> entityClass) {
 
     EntityRepository<E> repository = getByEntityOptional(entityClass);
@@ -66,16 +56,12 @@ public interface EntityRepositoryManager extends Iterable<EntityRepository<?>> {
     return repository;
   }
 
-  /**
-   * @param <E> type of the managed {@link EntityBean}.
-   * @param entityClass the {@link Class} reflecting the {@link EntityBean} to get the {@link EntityRepository} for.
-   * @return the requested {@link EntityRepository} or {@code null} if not found.
-   */
+  /// @param <E> type of the managed [EntityBean].
+  /// @param entityClass the [Class] reflecting the [EntityBean] to get the [EntityRepository] for.
+  /// @return the requested [EntityRepository] or `null` if not found.
   <E extends EntityBean> EntityRepository<E> getByEntityOptional(Class<E> entityClass);
 
-  /**
-   * @return the {@link EntityRepositoryManager} instance.
-   */
+  /// @return the [EntityRepositoryManager] instance.
   static EntityRepositoryManager get() {
 
     return EntityRepositoryManagerImpl.INSTANCE;

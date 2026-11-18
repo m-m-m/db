@@ -11,44 +11,36 @@ import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.WritableProperty;
 import io.github.mmm.property.criteria.PropertyAssignment;
 
-/**
- * {@link DbStartClause} of an UpdateStatement to update data in the database.
- *
- * @param <E> type of the {@link #getEntity() entity}.
- * @since 1.0.0
- */
+/// [DbStartClause] of an UpdateStatement to update data in the database.
+///
+/// @param <E> type of the [entity][#getEntity()].
+/// @since 1.0.0
 public final class UpdateClause<E extends EntityBean> extends AbstractEntitiesClause<E, E, UpdateClause<E>>
     implements DbStartClause, DbMainClause<E>, SetFragment<E, UpdateSetClause<E>> {
 
   private final UpdateStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param entity the {@link #getEntity() entity} to operate on.
-   */
+  /// The constructor.
+  ///
+  /// @param entity the [entity][#getEntity()] to operate on.
   public UpdateClause(E entity) {
 
     this(entity, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param entity the {@link #getEntity() entity} to operate on.
-   * @param entityName the {@link #getName() entity name}.
-   */
+  /// The constructor.
+  ///
+  /// @param entity the [entity][#getEntity()] to operate on.
+  /// @param entityName the [entity name][#getName()].
   public UpdateClause(E entity, String entityName) {
 
     super(new AliasMap(), entity, entityName);
     this.statement = new UpdateStatement<>(this);
   }
 
-  /**
-   * Sets all properties of the {@link #getEntity() entity} to their current values.
-   *
-   * @return the {@link UpdateSetClause} for fluent API.
-   */
+  /// Sets all properties of the [entity][#getEntity()] to their current values.
+  ///
+  /// @return the [UpdateSetClause] for fluent API.
   public UpdateSetClause<E> set() {
 
     UpdateSetClause<E> set = this.statement.getSet();

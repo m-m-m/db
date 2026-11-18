@@ -12,31 +12,27 @@ import io.github.mmm.db.ddl.constraint.state.DbConstraintState;
 import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.db.name.DbQualifiedName;
 
-/**
- * Implementation of {@link DbForeignKeyConstraint}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbForeignKeyConstraint].
+///
+/// @since 1.0.0
 public final class DbForeignKeyConstraintImpl extends DbConstraintImpl implements DbForeignKeyConstraint {
 
   private final DbTableReference<?> targetTable;
 
-  /** @see #getTargetColumns() */
+  /// @see #getTargetColumns()
   protected final List<DbColumnReference> targetColumns;
 
   private final DbConstraintOnDelete onDelete;
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param targetTable the {@link #getTargetTable() target table} where the foreign key is pointing to.
-   * @param targetColumns the {@link #getTargetColumns() target columns}.
-   * @param state the {@link #getState state}.
-   * @param onDelete the {@link #getOnDelete() on delete behaviour}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param targetTable the [target table][#getTargetTable()] where the foreign key is pointing to.
+  /// @param targetColumns the [target columns][#getTargetColumns()].
+  /// @param state the [state][#getState].
+  /// @param onDelete the [on delete behaviour][#getOnDelete()].
   public DbForeignKeyConstraintImpl(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       DbTableReference<?> targetTable, List<DbColumnReference> targetColumns, DbConstraintState state,
       DbConstraintOnDelete onDelete) {
@@ -72,9 +68,7 @@ public final class DbForeignKeyConstraintImpl extends DbConstraintImpl implement
     return this.targetColumns;
   }
 
-  /**
-   * @return the {@link DbConstraintOnDelete on delete} behaviour.
-   */
+  /// @return the [on delete][DbConstraintOnDelete] behaviour.
   @Override
   public DbConstraintOnDelete getOnDelete() {
 

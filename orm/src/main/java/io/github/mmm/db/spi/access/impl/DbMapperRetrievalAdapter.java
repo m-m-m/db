@@ -8,11 +8,9 @@ import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.entity.id.PkId;
 import io.github.mmm.entity.property.id.PkProperty;
 
-/**
- * Adapter on {@link DbMapper2Java} that retrieves entities from first level cache.
- *
- * @param <E> type of the managed {@link EntityBean}.
- */
+/// Adapter on [DbMapper2Java] that retrieves entities from first level cache.
+///
+/// @param <E> type of the managed [EntityBean].
 public class DbMapperRetrievalAdapter<E extends EntityBean> implements DbMapper2Java<E> {
 
   private final DbMapper2Java<E> delegate;
@@ -21,12 +19,10 @@ public class DbMapperRetrievalAdapter<E extends EntityBean> implements DbMapper2
 
   private int idIndex;
 
-  /**
-   * The constructor.
-   *
-   * @param delegate the {@link DbMapper2Java} to delegate to.
-   * @param entitySession the {@link DbEntitySession}.
-   */
+  /// The constructor.
+  ///
+  /// @param delegate the [DbMapper2Java] to delegate to.
+  /// @param entitySession the [DbEntitySession].
   public DbMapperRetrievalAdapter(DbMapper2Java<E> delegate, DbEntitySession<E> entitySession) {
 
     super();

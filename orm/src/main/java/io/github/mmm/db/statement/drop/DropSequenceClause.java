@@ -8,32 +8,26 @@ import io.github.mmm.db.statement.DbMainClause;
 import io.github.mmm.db.statement.DbStartClause;
 import io.github.mmm.db.statement.DbStatement;
 
-/**
- * A {@link DbStartClause} of a {@link DropTableStatement}.
- *
- * @since 1.0.0
- */
+/// A [DbStartClause] of a [DropTableStatement].
+///
+/// @since 1.0.0
 public class DropSequenceClause extends AbstractDbClause implements DbStartClause, DbMainClause<Void> {
 
   private final DropSequenceStatement statement;
 
   private final DbQualifiedName sequenceName;
 
-  /**
-   * The constructor.
-   *
-   * @param sequenceName the {@link #getSequenceName()}.
-   */
+  /// The constructor.
+  ///
+  /// @param sequenceName the [#getSequenceName()].
   public DropSequenceClause(String sequenceName) {
 
     this(new DbQualifiedName(sequenceName, null, null));
   }
 
-  /**
-   * The constructor.
-   *
-   * @param sequenceName the {@link #getSequenceName()}.
-   */
+  /// The constructor.
+  ///
+  /// @param sequenceName the [#getSequenceName()].
   public DropSequenceClause(DbQualifiedName sequenceName) {
 
     super();
@@ -47,9 +41,7 @@ public class DropSequenceClause extends AbstractDbClause implements DbStartClaus
     return this.statement;
   }
 
-  /**
-   * @return the {@link DbQualifiedName} of the sequence to drop.
-   */
+  /// @return the [DbQualifiedName] of the sequence to drop.
   public DbQualifiedName getSequenceName() {
 
     return this.sequenceName;

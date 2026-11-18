@@ -6,21 +6,17 @@ import io.github.mmm.db.statement.DbClause;
 import io.github.mmm.db.statement.WhereClause;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * A {@link WhereClause}-{@link DbClause} of an SQL {@link DeleteStatement}.
- *
- * @param <E> type of the {@link DeleteFromClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// A [WhereClause]-[DbClause] of an SQL [DeleteStatement].
+///
+/// @param <E> type of the [entity][DeleteFromClause#getEntity()].
+/// @since 1.0.0
 public class DeleteWhere<E extends EntityBean> extends WhereClause<E, DeleteWhere<E>> {
 
   private final DeleteStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param statement the owning {@link DeleteStatement}.
-   */
+  /// The constructor.
+  ///
+  /// @param statement the owning [DeleteStatement].
   public DeleteWhere(DeleteStatement<E> statement) {
 
     super();

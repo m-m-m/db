@@ -10,9 +10,7 @@ import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.db.ddl.table.impl.DbTableReferenceImpl;
 import io.github.mmm.db.name.DbQualifiedName;
 
-/**
- * {@link Builder} of {@link DbForeignKeyConstraint}.
- */
+/// [Builder] of [DbForeignKeyConstraint].
 public class DbForeignKeyConstraintBuilder implements Builder<DbForeignKeyConstraint> {
 
   private final String name;
@@ -25,12 +23,10 @@ public class DbForeignKeyConstraintBuilder implements Builder<DbForeignKeyConstr
 
   private DbTableReference<?> targetTable;
 
-  /**
-   * The constructor.
-   *
-   * @param name the name of the foreign key.
-   * @param sourceTable the {@link DbForeignKeyConstraint#getSourceTable() source table}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the name of the foreign key.
+  /// @param sourceTable the [source table][DbForeignKeyConstraint#getSourceTable()].
   public DbForeignKeyConstraintBuilder(String name, DbTableReference<?> sourceTable) {
 
     super();
@@ -40,33 +36,25 @@ public class DbForeignKeyConstraintBuilder implements Builder<DbForeignKeyConstr
     this.targetColumnBuilder = new ListBuilder<>();
   }
 
-  /**
-   * @return the {@link ListBuilder} for {@link DbForeignKeyConstraint#getSourceColumns()}.
-   */
+  /// @return the [ListBuilder] for [DbForeignKeyConstraint#getSourceColumns()].
   public ListBuilder<DbColumnReference> getSourceColumnBuilder() {
 
     return this.sourceColumnBuilder;
   }
 
-  /**
-   * @return the {@link ListBuilder} for {@link DbForeignKeyConstraint#getTargetColumns()}.
-   */
+  /// @return the [ListBuilder] for [DbForeignKeyConstraint#getTargetColumns()].
   public ListBuilder<DbColumnReference> getTargetColumnBuilder() {
 
     return this.targetColumnBuilder;
   }
 
-  /**
-   * @param targetTable the {@link DbForeignKeyConstraint#getTargetTable() target table}.
-   */
+  /// @param targetTable the [target table][DbForeignKeyConstraint#getTargetTable()].
   public void setTargetTable(DbTableReference<?> targetTable) {
 
     this.targetTable = targetTable;
   }
 
-  /**
-   * @param targetTable the {@link DbForeignKeyConstraint#getTargetTable() target table}.
-   */
+  /// @param targetTable the [target table][DbForeignKeyConstraint#getTargetTable()].
   public void setTargetTable(DbQualifiedName targetTable) {
 
     if (this.targetTable != null) {

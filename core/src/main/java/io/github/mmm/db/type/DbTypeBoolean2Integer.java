@@ -6,9 +6,7 @@ import java.util.Objects;
 
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * {@link DbType} that maps from {@link Boolean} to {@link Integer}.
- */
+/// [DbType] that maps from [Boolean] to [Integer].
 public final class DbTypeBoolean2Integer extends DbType2Integer<Boolean, DbTypeBoolean2Integer> {
 
   static final DbTypeBoolean2Integer INSTANCE = new DbTypeBoolean2Integer(DbKeyword.NUMBER, null, null,

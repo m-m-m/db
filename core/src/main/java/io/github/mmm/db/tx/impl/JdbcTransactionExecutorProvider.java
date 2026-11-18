@@ -7,9 +7,7 @@ import io.github.mmm.db.source.DbSourceConfig;
 import io.github.mmm.db.tx.DbTransactionExecutor;
 import io.github.mmm.db.tx.spi.DbTransactionExecutorProvider;
 
-/**
- * Implementation of {@link DbTransactionExecutorProvider} for JDBC.
- */
+/// Implementation of [DbTransactionExecutorProvider] for JDBC.
 public class JdbcTransactionExecutorProvider implements DbTransactionExecutorProvider {
 
   @Override

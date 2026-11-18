@@ -2,9 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.type;
 
-/**
- * {@link DbType} for a regular {@link Integer}.
- */
+/// [DbType] for a regular [Integer].
 public final class DbTypeInteger extends DbType2Integer<Integer, DbTypeInteger> {
 
   static final DbTypeInteger INSTANCE = new DbTypeInteger(null, null, null, null, null, false, DbTypeRegistration.ALL);

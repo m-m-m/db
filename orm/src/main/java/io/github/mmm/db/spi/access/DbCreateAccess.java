@@ -8,46 +8,33 @@ import io.github.mmm.db.statement.create.CreateTableClause;
 import io.github.mmm.db.statement.create.CreateTableStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Interface providing support for {@link #createTable(CreateTableStatement) createTable},
- * {@link #createIndex(CreateIndexStatement) createIndex}, and {@link #createSequence(CreateSequenceStatement)
- * createSequence}.
- *
- * @since 1.0.0
- */
+/// Interface providing support for [createTable][#createTable(CreateTableStatement)],
+/// [createIndex][#createIndex(CreateIndexStatement)], and [createSequence][#createSequence(CreateSequenceStatement)].
+///
+/// @since 1.0.0
 public interface DbCreateAccess {
 
-  /**
-   * @param statement the {@link CreateTableStatement} to execute.
-   */
+  /// @param statement the [CreateTableStatement] to execute.
   void createTable(CreateTableStatement<?> statement);
 
-  /**
-   * @param entity the {@link EntityBean} prototype to create the database table for.
-   */
+  /// @param entity the [EntityBean] prototype to create the database table for.
   default void createTable(EntityBean entity) {
 
     CreateTableStatement<EntityBean> statement = new CreateTableClause<>(entity).columns().get();
     createTable(statement);
   }
 
-  /**
-   * Synchronise the database table for the given {@link EntityBean}. If the table does not exist, it will be
-   * {@link #createTable(EntityBean) created}, otherwise missing columns will be added. If all is up-to-date, nothing
-   * needs to be done.
-   *
-   * @param entity the {@link EntityBean} prototype to sync the database table for.
-   */
+  /// Synchronise the database table for the given [EntityBean]. If the table does not exist, it will be
+  /// [created][#createTable(EntityBean)], otherwise missing columns will be added. If all is up-to-date, nothing
+  /// needs to be done.
+  ///
+  /// @param entity the [EntityBean] prototype to sync the database table for.
   void syncTable(EntityBean entity);
 
-  /**
-   * @param statement the {@link CreateIndexStatement} to execute.
-   */
+  /// @param statement the [CreateIndexStatement] to execute.
   void createIndex(CreateIndexStatement<?> statement);
 
-  /**
-   * @param statement the {@link CreateSequenceStatement} to execute.
-   */
+  /// @param statement the [CreateSequenceStatement] to execute.
   void createSequence(CreateSequenceStatement statement);
 
 }

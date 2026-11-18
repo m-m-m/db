@@ -14,12 +14,10 @@ import io.github.mmm.db.statement.DbStatementTest;
 import io.github.mmm.db.statement.Person;
 import io.github.mmm.db.statement.Song;
 
-/**
- * Test of {@link AlterTableClause} and {@link AlterTableStatement}.
- */
+/// Test of [AlterTableClause] and [AlterTableStatement].
 class AlterTableTest extends DbStatementTest {
 
-  /** Test of {@link AlterTableClause} that adds a single column. */
+  /// Test of [AlterTableClause] that adds a single column.
   @Test
   void testAddColumn() {
 
@@ -33,7 +31,7 @@ class AlterTableTest extends DbStatementTest {
         ADD Composer Link""", false);
   }
 
-  /** Test of {@link AlterTableClause} that adds a single column with auto constraint. */
+  /// Test of [AlterTableClause] that adds a single column with auto constraint.
   @Test
   void testAddColumnAutoConstraint() {
 
@@ -48,7 +46,7 @@ class AlterTableTest extends DbStatementTest {
         ADD CONSTRAINT FK_Song_Composer FOREIGN KEY (Composer) REFERENCES Person(Id)""", false);
   }
 
-  /** Test of {@link AlterTableClause} that adds a single column with a custom constraint. */
+  /// Test of [AlterTableClause] that adds a single column with a custom constraint.
   @Test
   void testAddColumnCustomConstraint() {
 

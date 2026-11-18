@@ -3,9 +3,7 @@ package io.github.mmm.db.statement;
 import io.github.mmm.property.criteria.AttributeReadParameters;
 import io.github.mmm.property.criteria.CriteriaParameters;
 
-/**
- * Simple container for a plain native database statement (SQL).
- */
+/// Simple container for a plain native database statement (SQL).
 public class DbNativeStatement implements Statement, AttributeReadParameters {
 
   private final DbStatementType type;
@@ -16,14 +14,12 @@ public class DbNativeStatement implements Statement, AttributeReadParameters {
 
   private final DbNativeStatement next;
 
-  /**
-   * The constructor.
-   *
-   * @param type the {@link #getType() type}.
-   * @param statement the {@link #getStatement() raw statement}.
-   * @param parameters the {@link #getParameters() parameters}.
-   * @param next the {@link #getNext() next}.
-   */
+  /// The constructor.
+  ///
+  /// @param type the [type][#getType()].
+  /// @param statement the [raw statement][#getStatement()].
+  /// @param parameters the [parameters][#getParameters()].
+  /// @param next the [next][#getNext()].
   public DbNativeStatement(DbStatementType type, String statement, CriteriaParameters<?> parameters,
       DbNativeStatement next) {
 
@@ -34,9 +30,7 @@ public class DbNativeStatement implements Statement, AttributeReadParameters {
     this.next = next;
   }
 
-  /**
-   * @return the SQL of this statement.
-   */
+  /// @return the SQL of this statement.
   public String getStatement() {
 
     return this.statement;
@@ -54,9 +48,7 @@ public class DbNativeStatement implements Statement, AttributeReadParameters {
     return this.type;
   }
 
-  /**
-   * @return the next {@link DbNativeStatement} or {@code null} if this is the last one.
-   */
+  /// @return the next [DbNativeStatement] or `null` if this is the last one.
   public DbNativeStatement getNext() {
 
     return this.next;

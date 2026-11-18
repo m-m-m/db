@@ -6,21 +6,17 @@ import io.github.mmm.db.statement.DbClause;
 import io.github.mmm.db.statement.ValuesClause;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link ValuesClause}-{@link DbClause} of an {@link InsertStatement}.
- *
- * @param <E> type of the {@link InsertIntoClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// [ValuesClause]-[DbClause] of an [InsertStatement].
+///
+/// @param <E> type of the [entity][InsertIntoClause#getEntity()].
+/// @since 1.0.0
 public class InsertValuesClause<E extends EntityBean> extends ValuesClause<E, InsertValuesClause<E>> {
 
   private final InsertStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param statement the owning {@link InsertStatement}.
-   */
+  /// The constructor.
+  ///
+  /// @param statement the owning [InsertStatement].
   public InsertValuesClause(InsertStatement<E> statement) {
 
     super();

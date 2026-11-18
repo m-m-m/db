@@ -12,23 +12,19 @@ import io.github.mmm.db.statement.DbStartClause;
 import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link DbStatement} to {@link CreateTableClause create a table}.
- *
- * @param <E> type of the {@link AbstractEntityClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// [DbStatement] to [create a table][CreateTableClause].
+///
+/// @param <E> type of the [entity][AbstractEntityClause#getEntity()].
+/// @since 1.0.0
 public class CreateTableStatement<E extends EntityBean> extends CreateStatement<E> {
 
   private final CreateTableClause<E> createTable;
 
   private final CreateTableContentsClause<E> contents;
 
-  /**
-   * The constructor.
-   *
-   * @param createTable the {@link #getCreateTable() create table}.
-   */
+  /// The constructor.
+  ///
+  /// @param createTable the [create table][#getCreateTable()].
   public CreateTableStatement(CreateTableClause<E> createTable) {
 
     super();
@@ -36,9 +32,7 @@ public class CreateTableStatement<E extends EntityBean> extends CreateStatement<
     this.contents = new CreateTableContentsClause<>(this);
   }
 
-  /**
-   * @deprecated use {@link #getCreateTable()} to make it more explicit.
-   */
+  /// @deprecated use [#getCreateTable()] to make it more explicit.
   @Deprecated
   @Override
   public DbStartClause getStart() {
@@ -46,17 +40,13 @@ public class CreateTableStatement<E extends EntityBean> extends CreateStatement<
     return this.createTable;
   }
 
-  /**
-   * @return the opening {@link CreateTableClause}-{@link DbClause}.
-   */
+  /// @return the opening [CreateTableClause]-[DbClause].
   public CreateTableClause<E> getCreateTable() {
 
     return this.createTable;
   }
 
-  /**
-   * @return columns
-   */
+  /// @return columns
   public CreateTableContentsClause<E> getContents() {
 
     return this.contents;

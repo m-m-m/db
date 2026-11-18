@@ -46,11 +46,9 @@ import io.github.mmm.property.container.collection.CollectionProperty;
 import io.github.mmm.property.container.collection.ReadableCollectionProperty;
 import io.github.mmm.property.string.StringCollectionProperty;
 
-/**
- * Abstract base class for an in-memory {@link EntityRepository}.
- *
- * @param <E> type of the managed {@link EntityBean}.
- */
+/// Abstract base class for an in-memory [EntityRepository].
+///
+/// @param <E> type of the managed [EntityBean].
 public class MemoryRepositoryImpl<E extends EntityBean> extends AbstractEntityRepository<E>
     implements MemoryRepository<E> {
 
@@ -68,24 +66,20 @@ public class MemoryRepositoryImpl<E extends EntityBean> extends AbstractEntityRe
 
   private MemoryRepository<E> proxy;
 
-  /**
-   * The constructor.
-   *
-   * @param prototype the {@link #getPrototype() prototype}.
-   * @param proxy the dynamic proxy instance of this internal {@link MemoryRepository} acting as external instance.
-   */
+  /// The constructor.
+  ///
+  /// @param prototype the [prototype][#getPrototype()].
+  /// @param proxy the dynamic proxy instance of this internal [MemoryRepository] acting as external instance.
   public MemoryRepositoryImpl(E prototype, MemoryRepository<E> proxy) {
 
     this(prototype, proxy, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param prototype the {@link #getPrototype() prototype}.
-   * @param proxy the dynamic proxy instance of this internal {@link MemoryRepository} acting as external instance.
-   * @param resolver the custom resolver {@link Function} for lazy loading or {@code null} to build default.
-   */
+  /// The constructor.
+  ///
+  /// @param prototype the [prototype][#getPrototype()].
+  /// @param proxy the dynamic proxy instance of this internal [MemoryRepository] acting as external instance.
+  /// @param resolver the custom resolver [Function] for lazy loading or `null` to build default.
   public MemoryRepositoryImpl(E prototype, MemoryRepository<E> proxy, Function<Id<?>, EntityBean> resolver) {
 
     super(prototype);
@@ -277,21 +271,17 @@ public class MemoryRepositoryImpl<E extends EntityBean> extends AbstractEntityRe
     return this.idGenerator;
   }
 
-  /**
-   * @return the {@link IdSequenceMemory}.
-   */
+  /// @return the [IdSequenceMemory].
   protected IdSequenceMemory getSequence() {
 
     return this.sequence;
   }
 
-  /**
-   * Loads an entire array of {@link EntityBean entities} from the given {@link StructuredReader} and insert them into
-   * this repository.
-   *
-   * @param reader the {@link StructuredReader} to read the array of entities from.
-   * @see #read(Path)
-   */
+  /// Loads an entire array of [entities][EntityBean] from the given [StructuredReader] and insert them into
+  /// this repository.
+  ///
+  /// @param reader the [StructuredReader] to read the array of entities from.
+  /// @see #read(Path)
   @Override
   public void read(StructuredReader reader) {
 

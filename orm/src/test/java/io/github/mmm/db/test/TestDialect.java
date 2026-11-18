@@ -6,14 +6,10 @@ import io.github.mmm.db.dialect.AbstractDbDialect;
 import io.github.mmm.db.name.DbNamingStrategy;
 import io.github.mmm.db.orm.Orm;
 
-/**
- * {@link AbstractDbDialect} implementation for testing.
- */
+/// [AbstractDbDialect] implementation for testing.
 public class TestDialect extends AbstractDbDialect<TestDialect> {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public TestDialect() {
 
     super(new TestTypeMapping());

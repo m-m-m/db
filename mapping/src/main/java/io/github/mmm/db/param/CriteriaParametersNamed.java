@@ -15,38 +15,32 @@ import io.github.mmm.property.criteria.Literal;
 import io.github.mmm.value.CriteriaObject;
 import io.github.mmm.value.PropertyPath;
 
-/**
- * {@link CriteriaParameters} using named parameters. It puts "{@code :«name»}" into the output and collects the
- * parameters that can get accessed via {@link #iterator()} after the database statement has been formatted and can be
- * bound as parameters to the statement.
- *
- * @since 1.0.0
- */
+/// [CriteriaParameters] using named parameters. It puts "`:«name»`" into the output and collects the
+/// parameters that can get accessed via [#iterator()] after the database statement has been formatted and can be
+/// bound as parameters to the statement.
+///
+/// @since 1.0.0
 public class CriteriaParametersNamed extends AbstractCriteriaParameters {
 
-  /** {@link CriteriaParametersFactory} for this implementation. */
+  /// [CriteriaParametersFactory] for this implementation.
   public static final CriteriaParametersFactory FACTORY = CriteriaParametersNamed::new;
 
   private final Map<String, Object> parameters;
 
   private final boolean merge;
 
-  /**
-   * The constructor.
-   *
-   * @param typeMapping the {@link TypeMapping}.
-   */
+  /// The constructor.
+  ///
+  /// @param typeMapping the [TypeMapping].
   public CriteriaParametersNamed(TypeMapping typeMapping) {
 
     this(typeMapping, true);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param typeMapping the {@link TypeMapping}.
-   * @param merge the {@link #isMerge() merge flag}.
-   */
+  /// The constructor.
+  ///
+  /// @param typeMapping the [TypeMapping].
+  /// @param merge the [merge flag][#isMerge()].
   public CriteriaParametersNamed(TypeMapping typeMapping, boolean merge) {
 
     super(typeMapping);
@@ -54,13 +48,11 @@ public class CriteriaParametersNamed extends AbstractCriteriaParameters {
     this.merge = merge;
   }
 
-  /**
-   * @return {@code true} if two {@link Literal}s with same parameter name should be joined if their
-   *         {@link Literal#get() value}s are {@link Object#equals(Object) equal} to each other, {@code false}
-   *         otherwise. So if your SQL has {@code p.Property() = 42 AND q.Property() = 42} a merge would create just one
-   *         parameter ":property" with the value "42" and without merge it would add two parameters ":property" and
-   *         ":property2" both with the value "42".
-   */
+  /// @return `true` if two [Literal]s with same parameter name should be joined if their
+  ///         [value][Literal#get()]s are [equal][Object#equals(Object)] to each other, `false`
+  ///         otherwise. So if your SQL has `p.Property() = 42 AND q.Property() = 42` a merge would create just one
+  ///         parameter ":property" with the value "42" and without merge it would add two parameters ":property" and
+  ///         ":property2" both with the value "42".
   public boolean isMerge() {
 
     return this.merge;
@@ -131,9 +123,7 @@ public class CriteriaParametersNamed extends AbstractCriteriaParameters {
     return null;
   }
 
-  /**
-   * @return the {@link Map} of collected named parameter values to bind to the database statement.
-   */
+  /// @return the [Map] of collected named parameter values to bind to the database statement.
   public Map<String, Object> getParameters() {
 
     return this.parameters;

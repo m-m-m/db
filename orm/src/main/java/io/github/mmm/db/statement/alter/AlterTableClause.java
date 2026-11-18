@@ -11,33 +11,27 @@ import io.github.mmm.db.statement.DbClause;
 import io.github.mmm.db.statement.DbIncompleteStartClause;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * A {@link AlterTableClause}-{@link DbClause} of an SQL {@link AlterTableStatement}.
- *
- * @param <E> type of the {@link #getEntity() entity}.
- * @since 1.0.0
- */
+/// A [AlterTableClause]-[DbClause] of an SQL [AlterTableStatement].
+///
+/// @param <E> type of the [entity][#getEntity()].
+/// @since 1.0.0
 public class AlterTableClause<E extends EntityBean> extends AbstractEntityClause<E, E, AlterTableClause<E>>
     implements DbIncompleteStartClause, DbAlterTableClause<E> {
 
   private final AlterTableStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param entity the {@link #getEntity() entity} to operate on.
-   */
+  /// The constructor.
+  ///
+  /// @param entity the [entity][#getEntity()] to operate on.
   public AlterTableClause(E entity) {
 
     this(entity, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param entity the {@link #getEntity() entity} to operate on.
-   * @param entityName the {@link #getName() entity name}.
-   */
+  /// The constructor.
+  ///
+  /// @param entity the [entity][#getEntity()] to operate on.
+  /// @param entityName the [entity name][#getName()].
   public AlterTableClause(E entity, String entityName) {
 
     super(new AliasMap(), entity, entityName);
@@ -50,10 +44,8 @@ public class AlterTableClause<E extends EntityBean> extends AbstractEntityClause
     return this;
   }
 
-  /**
-   * @param columns the {@link DbColumnReference column}s.
-   * @return the {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param columns the [column][DbColumnReference]s.
+  /// @return the [AlterTableOperationsClause] for fluent API calls.
   public AlterTableOperationsClause<E> addColumns(DbColumnReference... columns) {
 
     AlterTableOperationsClause<E> operations = this.statement.getOperations();

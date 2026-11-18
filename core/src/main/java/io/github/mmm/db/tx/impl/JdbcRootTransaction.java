@@ -11,9 +11,7 @@ import io.github.mmm.db.pool.DbConnectionPool;
 import io.github.mmm.db.tx.DbTransactionConfig;
 import io.github.mmm.db.tx.spi.AbstractDbTransaction;
 
-/**
- * Database session data for a single transaction.
- */
+/// Database session data for a single transaction.
 public class JdbcRootTransaction extends JdbcTransaction {
 
   private final DbConnectionPool<Connection> pool;

@@ -11,9 +11,7 @@ import io.github.mmm.db.dialect.DbDialectProvider;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.spi.AbstractDbSourceConfigurer;
 
-/**
- * Implementation of {@link AbstractDbSourceConfigurer} via available {@link DbDialect}.
- */
+/// Implementation of [AbstractDbSourceConfigurer] via available [DbDialect].
 public class OrmDbSourceConfigurer extends AbstractDbSourceConfigurer {
 
   @Override

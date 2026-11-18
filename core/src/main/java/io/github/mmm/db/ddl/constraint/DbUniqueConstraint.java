@@ -10,18 +10,16 @@ import io.github.mmm.db.ddl.constraint.state.DbConstraintState;
 import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * Unique {@link DbConstraint} ensuring that all values in the {@link #getSourceColumns() column(s)} are different (no
- * duplicates).
- *
- * @since 1.0.0
- */
+/// Unique [DbConstraint] ensuring that all values in the [column(s)][#getSourceColumns()] are different (no
+/// duplicates).
+///
+/// @since 1.0.0
 public interface DbUniqueConstraint extends DbConstraint {
 
-  /** {@link #getType() Type} {@value}. */
+  /// [Type][#getType()] {@value}.
   String TYPE = DbKeyword.UNIQUE;
 
-  /** @see #getNamePrefix() */
+  /// @see #getNamePrefix()
   String PREFIX = "UQ_";
 
   @Override
@@ -39,68 +37,56 @@ public interface DbUniqueConstraint extends DbConstraint {
   @Override
   DbUniqueConstraint withState(DbConstraintState newState);
 
-  /**
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumn the single {@link #getSourceColumns() source column}.
-   * @return the new {@link DbUniqueConstraint}.
-   */
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumn the single [source column][#getSourceColumns()].
+  /// @return the new [DbUniqueConstraint].
   static DbUniqueConstraint of(DbTableReference<?> sourceTable, DbColumnReference sourceColumn) {
 
     return of(null, sourceTable, sourceColumn);
   }
 
-  /**
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @return the new {@link DbUniqueConstraint}.
-   */
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @return the new [DbUniqueConstraint].
   static DbUniqueConstraint of(DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns) {
 
     return of(null, sourceTable, sourceColumns);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumn the {@link #getSourceColumns() source column}.
-   * @return the new {@link DbUniqueConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumn the [source column][#getSourceColumns()].
+  /// @return the new [DbUniqueConstraint].
   static DbUniqueConstraint of(String name, DbTableReference<?> sourceTable, DbColumnReference sourceColumn) {
 
     return of(name, sourceTable, sourceColumn, DbConstraintState.DEFAULT);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @return the new {@link DbUniqueConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @return the new [DbUniqueConstraint].
   static DbUniqueConstraint of(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns) {
 
     return of(name, sourceTable, sourceColumns, DbConstraintState.DEFAULT);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumn the {@link #getSourceColumns() source column}.
-   * @param state the {@link #getState state}.
-   * @return the new {@link DbUniqueConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumn the [source column][#getSourceColumns()].
+  /// @param state the [state][#getState].
+  /// @return the new [DbUniqueConstraint].
   static DbUniqueConstraint of(String name, DbTableReference<?> sourceTable, DbColumnReference sourceColumn,
       DbConstraintState state) {
 
     return new DbUniqueConstraintImpl(name, sourceTable, List.of(sourceColumn), state);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param state the {@link #getState state}.
-   * @return the new {@link DbUniqueConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param state the [state][#getState].
+  /// @return the new [DbUniqueConstraint].
   static DbUniqueConstraint of(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       DbConstraintState state) {
 

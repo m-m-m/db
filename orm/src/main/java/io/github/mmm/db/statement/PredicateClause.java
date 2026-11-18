@@ -11,25 +11,21 @@ import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.criteria.CriteriaPredicate;
 import io.github.mmm.property.criteria.PredicateOperator;
 
-/**
- * {@link DbClause} containing {@link #getPredicates() predicates} like a {@link SelectWhere}- or {@link HavingClause}-clause.
- *
- * @param <E> type of the {@link EntityBean} to query.
- * @param <SELF> type of this class itself.
- * @since 1.0.0
- */
+/// [DbClause] containing [predicates][#getPredicates()] like a [SelectWhere]- or [HavingClause]-clause.
+///
+/// @param <E> type of the [EntityBean] to query.
+/// @param <SELF> type of this class itself.
+/// @since 1.0.0
 public abstract class PredicateClause<E, SELF extends PredicateClause<E, SELF>> extends AbstractTypedClause<E, SELF> {
 
-  /** Name of the property {@link #getPredicates()} for marshaling. */
+  /// Name of the property [#getPredicates()] for marshaling.
   public static final String NAME_PREDICATES = "and";
 
   private final List<CriteriaPredicate> predicates;
 
   private transient boolean simplify;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public PredicateClause() {
 
     super();
@@ -37,11 +33,9 @@ public abstract class PredicateClause<E, SELF extends PredicateClause<E, SELF>> 
     this.simplify = true;
   }
 
-  /**
-   * @param predicate the {@link CriteriaPredicate} to add. They will be combined with {@link PredicateOperator#AND AND}
-   *        if called multiple times.
-   * @return this {@link DbClause} itself for fluent API calls.
-   */
+  /// @param predicate the [CriteriaPredicate] to add. They will be combined with [AND][PredicateOperator#AND]
+  ///        if called multiple times.
+  /// @return this [DbClause] itself for fluent API calls.
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public SELF and(CriteriaPredicate predicate) {
 
@@ -60,11 +54,9 @@ public abstract class PredicateClause<E, SELF extends PredicateClause<E, SELF>> 
     return self();
   }
 
-  /**
-   * @param criteriaPredicates the {@link CriteriaPredicate}s to add. They will be combined with
-   *        {@link PredicateOperator#AND AND}.
-   * @return this {@link DbClause} itself for fluent API calls.
-   */
+  /// @param criteriaPredicates the [CriteriaPredicate]s to add. They will be combined with
+  ///        [AND][PredicateOperator#AND].
+  /// @return this [DbClause] itself for fluent API calls.
   public SELF and(CriteriaPredicate... criteriaPredicates) {
 
     for (CriteriaPredicate predicate : criteriaPredicates) {
@@ -73,9 +65,7 @@ public abstract class PredicateClause<E, SELF extends PredicateClause<E, SELF>> 
     return self();
   }
 
-  /**
-   * @return the {@link List} of {@link CriteriaPredicate}s.
-   */
+  /// @return the [List] of [CriteriaPredicate]s.
   public List<CriteriaPredicate> getPredicates() {
 
     return this.predicates;

@@ -10,24 +10,18 @@ import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.orm.Orm;
 import io.github.mmm.db.source.DbSource;
 
-/**
- * Implementation of {@link DbDialect} for H2 database.
- */
+/// Implementation of [DbDialect] for H2 database.
 public class H2Dialect extends AbstractDbDialect<H2Dialect> {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public H2Dialect() {
 
     super(new H2TypeMapping());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param orm the {@link Orm}.
-   */
+  /// The constructor.
+  ///
+  /// @param orm the [Orm].
   protected H2Dialect(Orm orm) {
 
     super(orm);

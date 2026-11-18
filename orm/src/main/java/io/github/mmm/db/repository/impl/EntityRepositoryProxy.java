@@ -14,15 +14,13 @@ import io.github.mmm.db.repository.spi.AbstractEntityRepository;
 import io.github.mmm.db.repository.spi.EntityRepositoryFactory;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Support to create an instance of an {@link EntityRepository} interface as dynamic proxy.
- *
- * @param <R> type of the {@link EntityRepository}.
- * @since 1.0.0
- */
+/// Support to create an instance of an [EntityRepository] interface as dynamic proxy.
+///
+/// @param <R> type of the [EntityRepository].
+/// @since 1.0.0
 public class EntityRepositoryProxy<R extends EntityRepository<?>> implements InvocationHandler {
 
-  /** @see #getProxy() */
+  /// @see #getProxy()
   protected final R proxy;
 
   private final AbstractEntityRepository<?> repository;
@@ -51,20 +49,16 @@ public class EntityRepositoryProxy<R extends EntityRepository<?>> implements Inv
     return result;
   }
 
-  /**
-   * @return the {@link EntityRepository} instance.
-   */
+  /// @return the [EntityRepository] instance.
   public R getProxy() {
 
     return this.proxy;
   }
 
-  /**
-   * @param <R> type of the {@link EntityRepository}.
-   * @param type the {@link Class} reflecting the {@link EntityRepository} to instantiate.
-   * @param factory the {@link EntityRepositoryFactory#isApplicable(Class) applicable} {@link EntityRepositoryFactory}.
-   * @return the {@link EntityRepositoryProxy}.
-   */
+  /// @param <R> type of the [EntityRepository].
+  /// @param type the [Class] reflecting the [EntityRepository] to instantiate.
+  /// @param factory the [applicable][EntityRepositoryFactory#isApplicable(Class)] [EntityRepositoryFactory].
+  /// @return the [EntityRepositoryProxy].
   @SuppressWarnings("unchecked")
   public static <R extends EntityRepository<?>> EntityRepositoryProxy<R> of(Class<R> type,
       EntityRepositoryFactory<?> factory) {

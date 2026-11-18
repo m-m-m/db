@@ -9,29 +9,23 @@ import io.github.mmm.db.statement.AliasMap;
 import io.github.mmm.db.statement.DbClause;
 import io.github.mmm.db.statement.DbStartClause;
 
-/**
- * {@link DropStatement} to {@link DropTableClause drop an index}.
- *
- * @since 1.0.0
- */
+/// [DropStatement] to [drop an index][DropTableClause].
+///
+/// @since 1.0.0
 public class DropIndexStatement extends DropStatement<Void> {
 
   private final DropIndexClause dropIndex;
 
-  /**
-   * The constructor.
-   *
-   * @param dropIndex the {@link #getDropIndex() drop sequence}.
-   */
+  /// The constructor.
+  ///
+  /// @param dropIndex the [drop sequence][#getDropIndex()].
   public DropIndexStatement(DropIndexClause dropIndex) {
 
     super();
     this.dropIndex = dropIndex;
   }
 
-  /**
-   * @deprecated use {@link #getDropIndex()} to make it more explicit.
-   */
+  /// @deprecated use [#getDropIndex()] to make it more explicit.
   @Deprecated
   @Override
   public DbStartClause getStart() {
@@ -39,9 +33,7 @@ public class DropIndexStatement extends DropStatement<Void> {
     return this.dropIndex;
   }
 
-  /**
-   * @return the opening {@link DropTableClause}-{@link DbClause}.
-   */
+  /// @return the opening [DropTableClause]-[DbClause].
   public DropIndexClause getDropIndex() {
 
     return this.dropIndex;

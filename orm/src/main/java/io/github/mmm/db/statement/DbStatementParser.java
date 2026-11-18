@@ -105,14 +105,10 @@ import io.github.mmm.value.PropertyPath;
 import io.github.mmm.value.ReadablePath;
 import io.github.mmm.value.SimplePath;
 
-/**
- * {@link CharScannerParser} for {@link DbStatement}s.<br>
- * <b>ATTENTION:</b> This is NOT a generic SQL parser. It will only support the exact syntax produced by
- * {@link BasicDbStatementFormatter} with the defaults (as used by {@link DbStatement#toString()}). For native SQL use
- * {@link DbNativeStatementParser}.
- *
- * @since 1.0.0
- */
+/// [CharScannerParser] for [DbStatement]s. **ATTENTION:** This is NOT a generic SQL parser. It will only support the exact syntax produced by
+/// [BasicDbStatementFormatter] with the defaults (as used by [DbStatement#toString()]). For native SQL use [DbNativeStatementParser].
+///
+/// @since 1.0.0
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public final class DbStatementParser extends AbstractDbStatementParser<DbStatement<?>> {
 
@@ -124,9 +120,7 @@ public final class DbStatementParser extends AbstractDbStatementParser<DbStateme
 
   private final CriteriaObjectParser criteriaSelectionParser;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   protected DbStatementParser() {
 
     super();
@@ -264,7 +258,7 @@ public final class DbStatementParser extends AbstractDbStatementParser<DbStateme
     return null;
   }
 
-  private boolean matchesKeyword(String keyword, String tokenUpper, CharStreamScanner scanner) {
+  boolean matchesKeyword(String keyword, String tokenUpper, CharStreamScanner scanner) {
 
     if (keyword.equals(tokenUpper)) {
       return true;
@@ -282,8 +276,7 @@ public final class DbStatementParser extends AbstractDbStatementParser<DbStateme
     return false;
   }
 
-  private CreateIndexStatement<?> parseCreateIndexStatement(CharStreamScanner scanner, boolean unique,
-      Boolean clustered, DbIndexType type) {
+  private CreateIndexStatement<?> parseCreateIndexStatement(CharStreamScanner scanner, boolean unique, Boolean clustered, DbIndexType type) {
 
     DbIndexKindType kind = new DbIndexKindType(unique, (clustered == null) ? false : clustered.booleanValue(), type);
     CreateIndexClause createIndex = parseCreateIndex(scanner, kind);
@@ -308,8 +301,7 @@ public final class DbStatementParser extends AbstractDbStatementParser<DbStateme
     return createIndexOn;
   }
 
-  private CreateIndexColumnsClause<?> parseCreateIndexColumns(CharStreamScanner scanner,
-      CreateIndexOnClause<?> createIndexOn) {
+  private CreateIndexColumnsClause<?> parseCreateIndexColumns(CharStreamScanner scanner, CreateIndexOnClause<?> createIndexOn) {
 
     DbColumnReference[] columns = parseColumns(scanner, createIndexOn.getEntity(), 1);
     return createIndexOn.columns(columns);
@@ -351,8 +343,7 @@ public final class DbStatementParser extends AbstractDbStatementParser<DbStateme
     return false;
   }
 
-  private boolean parseCreateSequenceAttribute(String attribute, CharStreamScanner scanner,
-      Consumer<Long> numberConsumer) {
+  private boolean parseCreateSequenceAttribute(String attribute, CharStreamScanner scanner, Consumer<Long> numberConsumer) {
 
     if (!scanner.expect(attribute, true)) {
       return false;
@@ -382,8 +373,7 @@ public final class DbStatementParser extends AbstractDbStatementParser<DbStateme
     return alterTable;
   }
 
-  private AlterTableOperationsClause<?> parseAlterTableOperations(CharStreamScanner scanner,
-      AlterTableClause<?> alterTable) {
+  private AlterTableOperationsClause<?> parseAlterTableOperations(CharStreamScanner scanner, AlterTableClause<?> alterTable) {
 
     AlterTableOperationsClause<?> operations = alterTable.addColumns(DbColumnReference.NO_COLUMNS);
     EntityBean entity = alterTable.getEntity();
@@ -444,8 +434,7 @@ public final class DbStatementParser extends AbstractDbStatementParser<DbStateme
     return operations;
   }
 
-  private DbConstraint parseConstraint(String constraintName, DbTableReference<?> sourceTable,
-      CharStreamScanner scanner) {
+  private DbConstraint parseConstraint(String constraintName, DbTableReference<?> sourceTable, CharStreamScanner scanner) {
 
     if (constraintName == null) {
       constraintName = parseSegment(scanner);
@@ -532,8 +521,7 @@ public final class DbStatementParser extends AbstractDbStatementParser<DbStateme
     return deferrable;
   }
 
-  private DbColumnReference parseColumn(String name, ReadableBean bean, boolean withDeclaration,
-      CharStreamScanner scanner) {
+  private DbColumnReference parseColumn(String name, ReadableBean bean, boolean withDeclaration, CharStreamScanner scanner) {
 
     if (name == null) {
       name = scanner.readWhile(CharFilter.IDENTIFIER, 1, 128);
@@ -590,8 +578,7 @@ public final class DbStatementParser extends AbstractDbStatementParser<DbStateme
     return contents.get();
   }
 
-  private CreateTableContentsClause<?> parseCreateTableContents(CharStreamScanner scanner,
-      CreateTableClause<?> createTable) {
+  private CreateTableContentsClause<?> parseCreateTableContents(CharStreamScanner scanner, CreateTableClause<?> createTable) {
 
     CreateTableContentsClause<?> contents = createTable.columns(DbColumnReference.NO_COLUMNS);
     EntityBean entity = createTable.getEntity();
@@ -650,16 +637,14 @@ public final class DbStatementParser extends AbstractDbStatementParser<DbStateme
 
   private MergeStatement<?> parseMergeStatement(CharStreamScanner scanner) {
 
-    MergeStatement statement = new MergeIntoClause<>(new MergeClause(), null).values(PropertyAssignment.EMPTY_ARRAY)
-        .get();
+    MergeStatement statement = new MergeIntoClause<>(new MergeClause(), null).values(PropertyAssignment.EMPTY_ARRAY).get();
     // TODO Auto-generated method stub
     return statement;
   }
 
   private UpsertStatement<?> parseUsertStatement(CharStreamScanner scanner) {
 
-    UpsertStatement upsertStatement = new UpsertInto<>(new UpsertClause(), null).values(PropertyAssignment.EMPTY_ARRAY)
-        .get();
+    UpsertStatement upsertStatement = new UpsertInto<>(new UpsertClause(), null).values(PropertyAssignment.EMPTY_ARRAY).get();
     // TODO Auto-generated method stub
     return upsertStatement;
   }
@@ -731,8 +716,7 @@ public final class DbStatementParser extends AbstractDbStatementParser<DbStateme
       String aliasFrom = from.getAlias();
       String aliasSelect = select.getResultName();
       if (!Objects.equals(aliasFrom, aliasSelect)) {
-        throw new IllegalArgumentException(
-            "Alias of SELECT (" + aliasSelect + ") and FROM (" + aliasFrom + ") do not match.");
+        throw new IllegalArgumentException("Alias of SELECT (" + aliasSelect + ") and FROM (" + aliasFrom + ") do not match.");
       }
     }
     SelectStatement statement = from.get();
@@ -973,10 +957,8 @@ public final class DbStatementParser extends AbstractDbStatementParser<DbStateme
     return select;
   }
 
-  /**
-   * @param path the {@link ReadablePath} holding the sequence name.
-   * @return the converted {@link DbQualifiedName}.
-   */
+  /// @param path the [ReadablePath] holding the sequence name.
+  /// @return the converted [DbQualifiedName].
   private DbQualifiedName toSequenceName(ReadablePath path) {
 
     String catalog = null;
@@ -1117,9 +1099,7 @@ public final class DbStatementParser extends AbstractDbStatementParser<DbStateme
     return ((AbstractDbStatement) clause.get()).getAliasMap();
   }
 
-  /**
-   * @return the singleton instance of this {@link DbStatementParser}.
-   */
+  /// @return the singleton instance of this [DbStatementParser].
   public static DbStatementParser get() {
 
     return INSTANCE;

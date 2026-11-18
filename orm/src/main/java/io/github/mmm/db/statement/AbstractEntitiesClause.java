@@ -8,70 +8,58 @@ import java.util.Objects;
 
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * A {@link AbstractEntitiesClause} is a {@link DbClause} of an SQL {@link DbStatement} that specifies the
- * {@link #getEntity() entity} and/or {@link #getName() entity name} (table) to operate on.
- *
- * @param <R> type of the result. Only different from {@literal <E>} for complex selects.
- * @param <E> type of the {@link #getEntity() entity}.
- * @param <SELF> type of this class itself.
- * @since 1.0.0
- */
+/// A [AbstractEntitiesClause] is a [DbClause] of an SQL [DbStatement] that specifies the
+/// [entity][#getEntity()] and/or [entity name][#getName()] (table) to operate on.
+///
+/// @param <R> type of the result. Only different from `<E>` for complex selects.
+/// @param <E> type of the [entity][#getEntity()].
+/// @param <SELF> type of this class itself.
+/// @since 1.0.0
 public abstract class AbstractEntitiesClause<R, E extends EntityBean, SELF extends AbstractEntitiesClause<R, E, SELF>>
     extends AbstractEntityClause<R, E, SELF> {
 
-  /** Name of property {@link #getName()} for marshalling. */
+  /// Name of property [#getName()] for marshalling.
   public static final String NAME_ADDITIONAL_ENTITIES = "and";
 
   private final List<EntitySubClause<?, ?>> additionalEntities;
 
-  /**
-   * The constructor.
-   *
-   * @param aliasMap the {@link #getAliasMap() aliasMap}.
-   * @param entity the {@link #getEntity() entity} to operate on.
-   * @param entityName the {@link #getName() entity name}.
-   */
+  /// The constructor.
+  ///
+  /// @param aliasMap the [aliasMap][#getAliasMap()].
+  /// @param entity the [entity][#getEntity()] to operate on.
+  /// @param entityName the [entity name][#getName()].
   protected AbstractEntitiesClause(AliasMap aliasMap, E entity, String entityName) {
 
     super(aliasMap, entity, entityName);
     this.additionalEntities = new ArrayList<>();
   }
 
-  /**
-   * @param additionalEntity the additional {@link EntitySubClause#getEntity() entity} to access (similar to a JOIN).
-   * @return this {@link DbClause} itself for fluent API calls.
-   */
+  /// @param additionalEntity the additional [entity][EntitySubClause#getEntity()] to access (similar to a JOIN).
+  /// @return this [DbClause] itself for fluent API calls.
   public SELF and(EntityBean additionalEntity) {
 
     return and(new EntitySubClause<>(getAliasMap(), additionalEntity, null, null));
   }
 
-  /**
-   * @param additionalEntity the additional {@link EntitySubClause#getEntity() entity} to access (similar to a JOIN).
-   * @param alias the {@link EntitySubClause#getAlias() alias}.
-   * @return this {@link DbClause} itself for fluent API calls.
-   */
+  /// @param additionalEntity the additional [entity][EntitySubClause#getEntity()] to access (similar to a JOIN).
+  /// @param alias the [alias][EntitySubClause#getAlias()].
+  /// @return this [DbClause] itself for fluent API calls.
   public SELF and(EntityBean additionalEntity, String alias) {
 
     return and(new EntitySubClause<>(getAliasMap(), additionalEntity, null, alias));
   }
 
-  /**
-   * @param entityName the {@link EntitySubClause#getName() entity name}.
-   * @param additionalEntity the additional {@link EntitySubClause#getEntity() entity} to access (similar to a JOIN).
-   * @param alias the {@link EntitySubClause#getAlias() alias}.
-   * @return this {@link DbClause} itself for fluent API calls.
-   */
+  /// @param entityName the [entity name][EntitySubClause#getName()].
+  /// @param additionalEntity the additional [entity][EntitySubClause#getEntity()] to access (similar to a JOIN).
+  /// @param alias the [alias][EntitySubClause#getAlias()].
+  /// @return this [DbClause] itself for fluent API calls.
   public SELF and(String entityName, EntityBean additionalEntity, String alias) {
 
     return and(new EntitySubClause<>(getAliasMap(), additionalEntity, entityName, alias));
   }
 
-  /**
-   * @param entityFragment the {@link EntitySubClause} to add.
-   * @return this {@link DbClause} itself for fluent API calls.
-   */
+  /// @param entityFragment the [EntitySubClause] to add.
+  /// @return this [DbClause] itself for fluent API calls.
   protected SELF and(EntitySubClause<?, ?> entityFragment) {
 
     Objects.requireNonNull(entityFragment);
@@ -91,9 +79,7 @@ public abstract class AbstractEntitiesClause<R, E extends EntityBean, SELF exten
     }
   }
 
-  /**
-   * @return the {@link List} of {@link EntitySubClause}s in addition to the {@link #getEntity() main entity}.
-   */
+  /// @return the [List] of [EntitySubClause]s in addition to the [main entity][#getEntity()].
   public List<EntitySubClause<?, ?>> getAdditionalEntities() {
 
     return this.additionalEntities;

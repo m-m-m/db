@@ -2,9 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.type;
 
-/**
- * {@link DbType} for a regular {@link Double}.
- */
+/// [DbType] for a regular [Double].
 public final class DbTypeReal extends DbType2DoubleReal<Double, DbTypeReal> {
 
   static final DbTypeReal INSTANCE = new DbTypeReal(null, null, null, null, null, false, DbTypeRegistration.CODE_NAME);

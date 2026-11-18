@@ -23,39 +23,29 @@ import io.github.mmm.entity.property.link.LinkProperty;
 import io.github.mmm.property.ReadableProperty;
 import io.github.mmm.value.PropertyPath;
 
-/**
- * Interface for a fragment or clause to add {@link DbColumnReference columns}.
- *
- * @param <E> type of the {@link AlterTableClause#getEntity() entity}.
- */
+/// Interface for a fragment or clause to add [columns][DbColumnReference].
+///
+/// @param <E> type of the [entity][AlterTableClause#getEntity()].
 public interface DbCreateTableClause<E extends EntityBean> extends DbClause {
 
-  /**
-   * @return the {@link DbTableReference} from this clause or its statement.
-   */
+  /// @return the [DbTableReference] from this clause or its statement.
   DbTableReference<E> asTableReference();
 
-  /**
-   * @param property the {@link PropertyPath property} to add as column.
-   * @return this {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param property the [property][PropertyPath] to add as column.
+  /// @return this [AlterTableOperationsClause] for fluent API calls.
   default CreateTableContentsClause<E> column(ReadableProperty<?> property) {
 
     return column(DbColumnReference.of(property));
   }
 
-  /**
-   * @param column the {@link DbColumnReference column} to add.
-   * @return this {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param column the [column][DbColumnReference] to add.
+  /// @return this [AlterTableOperationsClause] for fluent API calls.
   CreateTableContentsClause<E> column(DbColumnReference column);
 
-  /**
-   * @param property the {@link PropertyPath} to add.
-   * @param autoConstraints - {@code true} to automatically add constraints, {@code false} otherwise (to only add the
-   *        property as column).
-   * @return this {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param property the [PropertyPath] to add.
+  /// @param autoConstraints - `true` to automatically add constraints, `false` otherwise (to only add the
+  ///        property as column).
+  /// @return this [AlterTableOperationsClause] for fluent API calls.
   default CreateTableContentsClause<E> column(ReadableProperty<?> property, boolean autoConstraints) {
 
     Objects.requireNonNull(property, "properety");
@@ -76,16 +66,12 @@ public interface DbCreateTableClause<E extends EntityBean> extends DbClause {
     return column(column);
   }
 
-  /**
-   * @param constraint the {@link DbConstraint} to add.
-   * @return this {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param constraint the [DbConstraint] to add.
+  /// @return this [AlterTableOperationsClause] for fluent API calls.
   CreateTableContentsClause<E> constraint(DbConstraint constraint);
 
-  /**
-   * @param column the {@link DbColumnReference column} to add with {@link DbNotNullConstraint}.
-   * @return this {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param column the [column][DbColumnReference] to add with [DbNotNullConstraint].
+  /// @return this [AlterTableOperationsClause] for fluent API calls.
   default CreateTableContentsClause<E> columnNotNull(DbColumnReference column) {
 
     column(column);
@@ -93,10 +79,8 @@ public interface DbCreateTableClause<E extends EntityBean> extends DbClause {
     return constraint(constraint);
   }
 
-  /**
-   * @param column the {@link DbColumnReference column} to add with {@link DbUniqueConstraint}.
-   * @return this {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param column the [column][DbColumnReference] to add with [DbUniqueConstraint].
+  /// @return this [AlterTableOperationsClause] for fluent API calls.
   default CreateTableContentsClause<E> columnUnique(DbColumnReference column) {
 
     column(column);
@@ -104,10 +88,8 @@ public interface DbCreateTableClause<E extends EntityBean> extends DbClause {
     return constraint(constraint);
   }
 
-  /**
-   * @param property the {@link IdProperty} to add as column with {@link DbForeignKeyConstraint}.
-   * @return this {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param property the [IdProperty] to add as column with [DbForeignKeyConstraint].
+  /// @return this [AlterTableOperationsClause] for fluent API calls.
   default CreateTableContentsClause<E> columnForeignKey(FkProperty<?> property) {
 
     DbColumnReference column = DbColumnReference.of(property);
@@ -115,10 +97,8 @@ public interface DbCreateTableClause<E extends EntityBean> extends DbClause {
     return constraintFk(column, property.get().getEntityClass());
   }
 
-  /**
-   * @param property the {@link LinkProperty} to add as column with {@link DbForeignKeyConstraint}.
-   * @return this {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param property the [LinkProperty] to add as column with [DbForeignKeyConstraint].
+  /// @return this [AlterTableOperationsClause] for fluent API calls.
   default CreateTableContentsClause<E> columnForeignKey(LinkProperty<?> property) {
 
     DbColumnReference column = DbColumnReference.of(property);

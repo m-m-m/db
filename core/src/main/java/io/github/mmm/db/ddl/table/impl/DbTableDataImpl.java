@@ -7,25 +7,21 @@ import io.github.mmm.db.ddl.table.DbTableType;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Implementation of {@link DbTableData}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbTableData].
+///
+/// @since 1.0.0
 public class DbTableDataImpl extends DbTableReferenceImpl<EntityBean> implements DbTableData {
 
   private final String comment;
 
-  /** @see #getType() */
+  /// @see #getType()
   protected final DbTableType type;
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() qualified name}.
-   * @param comment the {@link #getComment() comment}
-   * @param type the {@link #getType() table type}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [qualified name][#getName()].
+  /// @param comment the [comment][#getComment()]
+  /// @param type the [table type][#getType()].
   public DbTableDataImpl(DbQualifiedName name, String comment, DbTableType type) {
 
     super(name);

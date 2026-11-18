@@ -2,9 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.type;
 
-/**
- * {@link DbType} for a regular {@link Byte}.
- */
+/// [DbType] for a regular [Byte].
 public final class DbTypeByte extends DbType2Byte<Byte, DbTypeByte> {
 
   static final DbTypeByte INSTANCE = new DbTypeByte(null, null, null, null, null, false, DbTypeRegistration.ALL);

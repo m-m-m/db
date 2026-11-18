@@ -4,9 +4,7 @@ package io.github.mmm.db.type;
 
 import java.math.BigDecimal;
 
-/**
- * {@link DbType} for a regular {@link BigDecimal}.
- */
+/// [DbType] for a regular [BigDecimal].
 public final class DbTypeBigDecimal extends DbType2BigDecimal<BigDecimal, DbTypeBigDecimal> {
 
   static final DbTypeBigDecimal INSTANCE = new DbTypeBigDecimal(null, null, null, null, null, false,

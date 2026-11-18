@@ -11,26 +11,22 @@ import io.github.mmm.db.statement.DbClause;
 import io.github.mmm.db.statement.DbMainClause;
 import io.github.mmm.property.criteria.CriteriaOrdering;
 
-/**
- * A {@link OrderByClause}-{@link DbClause} of an SQL {@link SelectStatement}.
- *
- * @param <R> type of the result of the selection.
- * @since 1.0.0
- */
+/// A [OrderByClause]-[DbClause] of an SQL [SelectStatement].
+///
+/// @param <R> type of the result of the selection.
+/// @since 1.0.0
 public class OrderByClause<R> extends AbstractTypedClause<R, OrderByClause<R>> implements DbMainClause<R> {
 
-  /** Name of {@link OrderByClause} for marshaling. */
+  /// Name of [OrderByClause] for marshaling.
   public static final String NAME_ORDER_BY = "ORDER BY";
 
   private final SelectStatement<R> statement;
 
   private final List<CriteriaOrdering> orderings;
 
-  /**
-   * The constructor.
-   *
-   * @param statement the owning {@link SelectStatement}.
-   */
+  /// The constructor.
+  ///
+  /// @param statement the owning [SelectStatement].
   public OrderByClause(SelectStatement<R> statement) {
 
     super();
@@ -44,10 +40,8 @@ public class OrderByClause<R> extends AbstractTypedClause<R, OrderByClause<R>> i
     return this.orderings.isEmpty();
   }
 
-  /**
-   * @param ordering the {@link CriteriaOrdering} to add.
-   * @return this {@link OrderByClause}-class itself for fluent API calls.
-   */
+  /// @param ordering the [CriteriaOrdering] to add.
+  /// @return this [OrderByClause]-class itself for fluent API calls.
   public OrderByClause<R> and(CriteriaOrdering ordering) {
 
     Objects.requireNonNull(ordering);
@@ -55,10 +49,8 @@ public class OrderByClause<R> extends AbstractTypedClause<R, OrderByClause<R>> i
     return this;
   }
 
-  /**
-   * @param criteriaOrderings the {@link CriteriaOrdering}s to add.
-   * @return this {@link OrderByClause}-class itself for fluent API calls.
-   */
+  /// @param criteriaOrderings the [CriteriaOrdering]s to add.
+  /// @return this [OrderByClause]-class itself for fluent API calls.
   public OrderByClause<R> and(CriteriaOrdering... criteriaOrderings) {
 
     for (CriteriaOrdering ordering : criteriaOrderings) {
@@ -67,9 +59,7 @@ public class OrderByClause<R> extends AbstractTypedClause<R, OrderByClause<R>> i
     return this;
   }
 
-  /**
-   * @return the {@link List} of {@link CriteriaOrdering}s to order by.
-   */
+  /// @return the [List] of [CriteriaOrdering]s to order by.
   public List<CriteriaOrdering> getOrderings() {
 
     return this.orderings;

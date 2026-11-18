@@ -5,46 +5,34 @@ package io.github.mmm.db.pool;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Service provider interface (SPI) to {@link #create(DbSourceConfig) create} instances of {@link DbConnectionPool} for
- * a specific provider implementation.
- *
- * @param <C> type of the database connection.
- */
+/// Service provider interface (SPI) to [create][#create(DbSourceConfig)] instances of [DbConnectionPool] for
+/// a specific provider implementation.
+///
+/// @param <C> type of the database connection.
 public interface DbConnectionPoolProvider<C> {
 
-  /**
-   * @return the identifier of this provider.
-   */
+  /// @return the identifier of this provider.
   String getId();
 
-  /**
-   * @return the {@link DbSource#KEY_KIND kind} of database connection.
-   */
+  /// @return the [kind][DbSource#KEY_KIND] of database connection.
   String getKind();
 
-  /**
-   * @param url the database connection URL (e.g. JDBC URL).
-   * @return {@code true} if this {@link DbConnectionPoolProvider} is responsible for the given {@code url},
-   *         {@code false} otherwise.
-   */
+  /// @param url the database connection URL (e.g. JDBC URL).
+  /// @return `true` if this [DbConnectionPoolProvider] is responsible for the given `url`,
+  ///         `false` otherwise.
   default boolean isResponsible(String url) {
 
     return url.startsWith(getKind());
   }
 
-  /**
-   * @return {@code true} if a real connection pool is provided, {@code false} otherwise.
-   */
+  /// @return `true` if a real connection pool is provided, `false` otherwise.
   default boolean isPool() {
 
     return true;
   }
 
-  /**
-   * @param config the {@link DbSourceConfig}.
-   * @return the new {@link DbConnectionPool} instance for the given configuration.
-   */
+  /// @param config the [DbSourceConfig].
+  /// @return the new [DbConnectionPool] instance for the given configuration.
   DbConnectionPool<C> create(DbSourceConfig config);
 
 }

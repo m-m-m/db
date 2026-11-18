@@ -11,31 +11,23 @@ import io.github.mmm.db.result.impl.DbResultPojo;
 import io.github.mmm.property.ReadableProperty;
 import io.github.mmm.property.WritableProperty;
 
-/**
- * Interface to map a {@link WritableProperty property} to the database and vice versa.
- *
- * @param <V> type of the {@link WritableProperty#get() value} to map.
- * @since 1.0.0
- */
+/// Interface to map a [property][WritableProperty] to the database and vice versa.
+///
+/// @param <V> type of the [value][WritableProperty#get()] to map.
+/// @since 1.0.0
 public interface DbPropertyMapper<V> {
 
-  /**
-   * @return the {@link ReadableProperty#getName() property name}.
-   */
+  /// @return the [property name][ReadableProperty#getName()].
   String getPropertyName();
 
-  /**
-   * @param javaBean the {@link ReadableBean} to map.
-   * @param dbResult the {@link DbResultPojo} where to {@link DbResultPojo#add(io.github.mmm.db.result.DbResultValue)
-   *        add} the collected {@link io.github.mmm.db.result.DbResultValue database values}.
-   */
+  /// @param javaBean the [ReadableBean] to map.
+  /// @param dbResult the [DbResultPojo] where to [add][DbResultPojo#add(io.github.mmm.db.result.DbResultValue)] the collected
+  ///        [database values][io.github.mmm.db.result.DbResultValue].
   void java2db(ReadableBean javaBean, DbResultPojo dbResult);
 
-  /**
-   * @param javaProperty the {@link ReadableProperty} to map.
-   * @param dbResult the {@link DbResultPojo} where to {@link DbResultPojo#add(io.github.mmm.db.result.DbResultValue)
-   *        add} the collected {@link io.github.mmm.db.result.DbResultValue database values}.
-   */
+  /// @param javaProperty the [ReadableProperty] to map.
+  /// @param dbResult the [DbResultPojo] where to [add][DbResultPojo#add(io.github.mmm.db.result.DbResultValue)] the collected
+  ///        [database values][io.github.mmm.db.result.DbResultValue].
   default void java2db(ReadableProperty<V> javaProperty, DbResultPojo dbResult) {
 
     V value = null;
@@ -45,17 +37,13 @@ public interface DbPropertyMapper<V> {
     java2dbValue(value, dbResult);
   }
 
-  /**
-   * @param javaValue the Java value to map.
-   * @param dbResult the {@link DbResultPojo} where to {@link DbResultPojo#add(io.github.mmm.db.result.DbResultValue)
-   *        add} the collected {@link io.github.mmm.db.result.DbResultValue database values}.
-   */
+  /// @param javaValue the Java value to map.
+  /// @param dbResult the [DbResultPojo] where to [add][DbResultPojo#add(io.github.mmm.db.result.DbResultValue)] the collected
+  ///        [database values][io.github.mmm.db.result.DbResultValue].
   void java2dbValue(V javaValue, DbResultPojo dbResult);
 
-  /**
-   * @param dbIterator the {@link Iterator} of the {@link DbResultValue database values} to convert to Java.
-   * @param javaBean the {@link WritableBean} where to map the {@link DbResultValue}(s) to.
-   */
+  /// @param dbIterator the [Iterator] of the [database values][DbResultValue] to convert to Java.
+  /// @param javaBean the [WritableBean] where to map the [DbResultValue]s to.
   void db2java(Iterator<DbResultValue<?>> dbIterator, WritableBean javaBean);
 
 }

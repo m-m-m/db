@@ -10,9 +10,7 @@ import org.junit.jupiter.api.Test;
 import io.github.mmm.base.variable.VariableDefinition;
 import io.github.mmm.db.source.DbSource;
 
-/**
- * Test of {@link DbSourceConfigurerFallback}.
- */
+/// Test of [DbSourceConfigurerFallback].
 class DbSourceConfigurerFallbackTest extends Assertions {
 
   // mongodb+srv://cluster0.example.com/testdb?authSource=$external&authMechanism=MONGODB-AWS

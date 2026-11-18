@@ -81,24 +81,22 @@ import io.github.mmm.value.PropertyPath;
 import io.github.mmm.value.SimplePath;
 import io.github.mmm.value.converter.TypeMapper;
 
-/**
- * Formatter to format a {@link DbClause} or {@link DbStatement} to SQL.
- *
- * @since 1.0.0
- */
+/// Formatter to format a [DbClause] or [DbStatement] to SQL.
+///
+/// @since 1.0.0
 public class BasicDbStatementFormatter extends CriteriaFormatter implements DbStatementFormatter {
 
-  /** Default value for {@link #getIndentation() indentation}. */
+  /// Default value for [indentation][#getIndentation()].
   protected static final String INDENTATION = "  ";
 
   private static final Logger LOG = LoggerFactory.getLogger(BasicDbStatementFormatter.class);
 
   private static final CriteriaPredicate PARENT_AND = PredicateOperator.AND.expression(List.of(BooleanLiteral.TRUE));
 
-  /** The {@link AbstractDbDialect} or {@code null} for generic formatter. */
+  /// The [AbstractDbDialect] or `null` for generic formatter.
   protected final AbstractDbDialect<?> dialect;
 
-  /** The {@link DbNamingStrategy}. */
+  /// The [DbNamingStrategy].
   protected final AbstractDbNamingStrategy namingStrategy;
 
   private final StringBuilder sb;
@@ -125,35 +123,28 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     this(null, CriteriaJqlParametersInline.FACTORY, indentation);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the owning {@link AbstractDbDialect}.
-   * @param parametersFactory the {@link CriteriaParametersFactory}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the owning [AbstractDbDialect].
+  /// @param parametersFactory the [CriteriaParametersFactory].
   public BasicDbStatementFormatter(AbstractDbDialect<?> dialect, CriteriaParametersFactory parametersFactory) {
 
     this(dialect, parametersFactory, INDENTATION);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the owning {@link AbstractDbDialect}.
-   * @param parametersFactory the {@link CriteriaParametersFactory}.
-   * @param indentation the {@link #getIndentation() indentation}.
-   */
-  public BasicDbStatementFormatter(AbstractDbDialect<?> dialect, CriteriaParametersFactory parametersFactory,
-      String indentation) {
+  /// The constructor.
+  ///
+  /// @param dialect the owning [AbstractDbDialect].
+  /// @param parametersFactory the [CriteriaParametersFactory].
+  /// @param indentation the [indentation][#getIndentation()].
+  public BasicDbStatementFormatter(AbstractDbDialect<?> dialect, CriteriaParametersFactory parametersFactory, String indentation) {
 
     this(dialect, parametersFactory, indentation, new StringBuilder(32));
   }
 
-  private BasicDbStatementFormatter(AbstractDbDialect<?> dialect, CriteriaParametersFactory parametersFactory,
-      String indentation, StringBuilder sb) {
+  private BasicDbStatementFormatter(AbstractDbDialect<?> dialect, CriteriaParametersFactory parametersFactory, String indentation, StringBuilder sb) {
 
-    super(parametersFactory.create((dialect == null) ? null : dialect.getOrm().getTypeMapping()),
-        new AppendableWriter(sb));
+    super(parametersFactory.create((dialect == null) ? null : dialect.getOrm().getTypeMapping()), new AppendableWriter(sb));
     this.dialect = dialect;
     DbNamingStrategy naming;
     if (dialect == null) {
@@ -167,17 +158,13 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     this.indentation = indentation;
   }
 
-  /**
-   * @return the indentation (e.g. " " or "") or {@code null} to format as single line.
-   */
+  /// @return the indentation (e.g. " " or "") or `null` to format as single line.
   protected String getIndentation() {
 
     return this.indentation;
   }
 
-  /**
-   * @return the {@link Orm object/relational mapping}.
-   */
+  /// @return the [object/relational mapping][Orm].
   protected Orm getOrm() {
 
     if (this.dialect == null) {
@@ -193,11 +180,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     write(columnName);
   }
 
-  /**
-   * Starts a new {@link DbNativeStatement} in case multiple statements are needed.<br>
-   * <b>ATTENTION:</b> When producing multiple plain statements, they have to be created in reverse order due to the
-   * nature of {@link DbNativeStatement#getNext()}.
-   */
+  /// Starts a new [DbNativeStatement] in case multiple statements are needed. **ATTENTION:** When producing multiple plain statements, they have to be created
+  /// in reverse order due to the nature of [DbNativeStatement#getNext()].
   protected void newStatement() {
 
     this.nativeStatement = get();
@@ -205,17 +189,13 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     this.sb.setLength(0);
   }
 
-  /**
-   * @param name the unqualified DB name to format.
-   */
+  /// @param name the unqualified DB name to format.
   protected void formatName(String name) {
 
     write(name);
   }
 
-  /**
-   * @param qName the {@link DbQualifiedName} to format.
-   */
+  /// @param qName the [DbQualifiedName] to format.
   protected void formatQualifiedName(DbQualifiedName qName) {
 
     String formattedName;
@@ -237,10 +217,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     return get();
   }
 
-  /**
-   * @param clause the {@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param clause the [DbClause] to format.
+  /// @param context the [DbContext].
   public void formatClause(DbClause clause, DbContext context) {
 
     if (!clause.isOmit()) {
@@ -254,10 +232,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param start the {@link DbStartClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param start the [DbStartClause] to format.
+  /// @param context the [DbContext].
   public void formatStartClause(DbStartClause start, DbContext context) {
 
     if (start instanceof SelectClause) {
@@ -283,10 +259,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param clause the {@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param clause the [DbClause] to format.
+  /// @param context the [DbContext].
   public void formatMainClause(DbMainClause<?> clause, DbContext context) {
 
     if (clause instanceof FromClause<?, ?, ?> from) {
@@ -312,10 +286,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param clause the {@link DbClause} that is neither a {@link DbStartClause} nor a {@link DbMainClause}.
-   * @param context the {@link DbContext}.
-   */
+  /// @param clause the [DbClause] that is neither a [DbStartClause] nor a [DbMainClause].
+  /// @param context the [DbContext].
   public void formatOtherClause(DbClause clause, DbContext context) {
 
     if (clause instanceof IntoClause<?, ?, ?> into) {
@@ -325,9 +297,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * Writes an indentation as needed.
-   */
+  /// Writes an indentation as needed.
   protected void writeIndent() {
 
     if (this.indentation == null) {
@@ -344,9 +314,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param keyword the {@link DbKeyword database keyword} to {@link #write(String) write}.
-   */
+  /// @param keyword the [database keyword][DbKeyword] to [write][#write(String)].
   protected void writeDbKeyword(String keyword) {
 
     write(keyword);
@@ -363,10 +331,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     this.indent--;
   }
 
-  /**
-   * @param select the {@link SelectClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param select the [SelectClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatSelectClause(SelectClause<?> select, DbContext context) {
 
     if (select instanceof SelectSequenceNextValueClause seq) {
@@ -384,9 +350,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     formatSelections(select, selectFrom);
   }
 
-  /**
-   * @param seq the {@link SelectSequenceNextValueClause} to format.
-   */
+  /// @param seq the [SelectSequenceNextValueClause] to format.
   protected void formatSelectSeqNextVal(SelectSequenceNextValueClause seq) {
 
     writeIndent();
@@ -398,10 +362,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     write(")");
   }
 
-  /**
-   * @param delete the {@link DeleteClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param delete the [DeleteClause] to format.
+  /// @param context the [DbContext].
   public void formatDeleteClause(DeleteClause delete, DbContext context) {
 
     writeIndent();
@@ -409,10 +371,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     write(' ');
   }
 
-  /**
-   * @param insert the {@link InsertClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param insert the [InsertClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatInsertClause(InsertClause insert, DbContext context) {
 
     writeIndent();
@@ -420,10 +380,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     write(' ');
   }
 
-  /**
-   * @param update the {@link UpdateClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param update the [UpdateClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatUpdateClause(UpdateClause<?> update, DbContext context) {
 
     writeIndent();
@@ -432,10 +390,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     formatEntities(update);
   }
 
-  /**
-   * @param merge the {@link MergeClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param merge the [MergeClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatMergeClause(MergeClause merge, DbContext context) {
 
     writeIndent();
@@ -443,10 +399,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     write(' ');
   }
 
-  /**
-   * @param upsert the {@link UpsertClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param upsert the [UpsertClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatUpsertClause(UpsertClause upsert, DbContext context) {
 
     writeIndent();
@@ -454,10 +408,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     write(' ');
   }
 
-  /**
-   * @param createTable the {@link CreateTableClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param createTable the [CreateTableClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatCreateTableClause(CreateTableClause<?> createTable, DbContext context) {
 
     writeIndent();
@@ -467,10 +419,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     write(" (");
   }
 
-  /**
-   * @param contents the {@link CreateTableContentsClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param contents the [CreateTableContentsClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatCreateTableContentsClause(CreateTableContentsClause<?> contents, DbContext context) {
 
     incIndent();
@@ -480,8 +430,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
       write(",");
     }
     String s = "";
-    List<DbConstraint> constraints = contents.getConstraints().stream()
-        .sorted((p1, p2) -> p1.getName().getName().compareTo(p2.getName().getName())).collect(Collectors.toList());
+    List<DbConstraint> constraints = contents.getConstraints().stream().sorted((p1, p2) -> p1.getName().getName().compareTo(p2.getName().getName()))
+        .collect(Collectors.toList());
     for (DbConstraint constraint : constraints) {
       write(s);
       writeIndent();
@@ -493,10 +443,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     write(')');
   }
 
-  /**
-   * @param alterTable the {@link AlterTableClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param alterTable the [AlterTableClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatAlterTableClause(AlterTableClause<?> alterTable, DbContext context) {
 
     writeIndent();
@@ -505,10 +453,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     formatEntityName(alterTable);
   }
 
-  /**
-   * @param select the {@link SelectClause} with the {@link SelectClause#getSelections() selections}.
-   * @param selectFrom the {@link SelectFromClause}.
-   */
+  /// @param select the [SelectClause] with the [selections][SelectClause#getSelections()].
+  /// @param selectFrom the [SelectFromClause].
   protected void formatSelections(SelectClause<?> select, SelectFromClause<?, ?> selectFrom) {
 
     List<? extends CriteriaObject<?>> selectionCriterias = select.getSelections();
@@ -536,29 +482,21 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @return {@code true} if a {@link SelectClause} of all properties should happen via
-   *         {@link SelectFromClause#getAlias() alias}, {@code false} otherwise (to simply use {@code *}). The default
-   *         is {@code false}. Override to change. E.g. in JPQL you would write "SELECT a FROM Entity a ..." whereas in
-   *         plain SQL you would write "SELECT * FROM Entity ..."
-   */
+  /// @return `true` if a [SelectClause] of all properties should happen via [alias][SelectFromClause#getAlias()], `false` otherwise (to simply use `*`). The
+  ///         default is `false`. Override to change. E.g. in JPQL you would write "SELECT a FROM Entity a ..." whereas in plain SQL you would write "SELECT *
+  ///         FROM Entity ..."
   public boolean isSelectAllByAlias() {
 
     return true;
   }
 
-  /**
-   * @return {@code true} to use the {@code AS} keyword before an {@link SelectFromClause#getAlias() alias} (e.g. "FROM
-   *         Entity <b>AS</b> e"), {@code false} otherwise.
-   */
+  /// @return `true` to use the `AS` keyword before an [alias][SelectFromClause#getAlias()] (e.g. "FROM Entity **AS** e"), `false` otherwise.
   public boolean isUseAsBeforeAlias() {
 
     return false;
   }
 
-  /**
-   * @param selectFrom the {@link SelectFromClause} giving access to the {@link SelectFromClause#getAlias() alias}.
-   */
+  /// @param selectFrom the [SelectFromClause] giving access to the [alias][SelectFromClause#getAlias()].
   protected void formatSelectAll(SelectFromClause<?, ?> selectFrom) {
 
     if (selectFrom == null) {
@@ -573,10 +511,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param from the {@link FromClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param from the [FromClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatFromClause(FromClause<?, ?, ?> from, DbContext context) {
 
     writeDbKeyword(DbKeyword.FROM);
@@ -588,9 +524,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param entities the {@link AbstractEntitiesClause} to format.
-   */
+  /// @param entities the [AbstractEntitiesClause] to format.
   protected void formatEntities(AbstractEntitiesClause<?, ?, ?> entities) {
 
     formatEntity(entities);
@@ -599,19 +533,15 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param entity the {@link AbstractEntityClause} to format.
-   */
+  /// @param entity the [AbstractEntityClause] to format.
   protected void formatEntity(AbstractEntityClause<?, ?, ?> entity) {
 
     formatEntity(entity, true);
   }
 
-  /**
-   * @param entity the {@link AbstractEntityClause} for which to format the {@link AbstractEntityClause#getName() entity
-   *        name} or table name and optional {@link #formatAlias(String, DbClause) alias}.
-   * @param forceAlias - {@code true} to force an {@link #formatAlias(String, DbClause) alias}, {@code false} otherwise.
-   */
+  /// @param entity the [AbstractEntityClause] for which to format the [entity name][AbstractEntityClause#getName()] or table name and optional
+  ///        [alias][#formatAlias(String, DbClause)].
+  /// @param forceAlias - `true` to force an [alias][#formatAlias(String, DbClause)], `false` otherwise.
   protected void formatEntity(AbstractEntityClause<?, ?, ?> entity, boolean forceAlias) {
 
     formatEntityName(entity);
@@ -620,20 +550,14 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param table the {@link DbTableReference} for which to format the {@link DbTableReference#getName() name} name and
-   *        optional {@link #formatAlias(String, DbClause) alias}.
-   */
+  /// @param table the [DbTableReference] for which to format the [name][DbTableReference#getName()] name and optional [alias][#formatAlias(String, DbClause)].
   protected void formatTable(AbstractEntityClause<?, ?, ?> table) {
 
     formatTable(table, true);
   }
 
-  /**
-   * @param table the {@link DbTableReference} for which to format the {@link DbTableReference#getName() name} name and
-   *        optional {@link #formatAlias(String, DbClause) alias}.
-   * @param forceAlias - {@code true} to force an {@link #formatAlias(String, DbClause) alias}, {@code false} otherwise.
-   */
+  /// @param table the [DbTableReference] for which to format the [name][DbTableReference#getName()] name and optional [alias][#formatAlias(String, DbClause)].
+  /// @param forceAlias - `true` to force an [alias][#formatAlias(String, DbClause)], `false` otherwise.
   protected void formatTable(AbstractEntityClause<?, ?, ?> table, boolean forceAlias) {
 
     formatTableName(table);
@@ -642,37 +566,27 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param table the {@link DbTableReference} for which to format the {@link AbstractEntityClause#getName() entity
-   *        name} or table name.
-   */
+  /// @param table the [DbTableReference] for which to format the [entity name][AbstractEntityClause#getName()] or table name.
   protected void formatTableName(DbTableReference<?> table) {
 
     write(this.namingStrategy.getName(table));
   }
 
-  /**
-   * @param entityClause the {@link AbstractEntityClause} for which to format the {@link AbstractEntityClause#getName()
-   *        entity name} or table name.
-   */
+  /// @param entityClause the [AbstractEntityClause] for which to format the [entity name][AbstractEntityClause#getName()] or table name.
   protected void formatEntityName(AbstractEntityClause<?, ?, ?> entityClause) {
 
     write(entityClause.getName());
   }
 
-  /**
-   * @param entity the {@link EntitySubClause} to format.
-   */
+  /// @param entity the [EntitySubClause] to format.
   protected void formatAdditionalEntity(EntitySubClause<?, ?> entity) {
 
     write(", ");
     formatTable(entity);
   }
 
-  /**
-   * @param alias the {@link EntitySubClause#getAlias() alias}.
-   * @param clause the owning {@link AbstractEntityClause}.
-   */
+  /// @param alias the [alias][EntitySubClause#getAlias()].
+  /// @param clause the owning [AbstractEntityClause].
   protected void formatAlias(String alias, DbClause clause) {
 
     if (alias != null) {
@@ -685,10 +599,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param where the {@link WhereClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param where the [WhereClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatWhereClause(WhereClause<?, ?> where, DbContext context) {
 
     write(' ');
@@ -712,10 +624,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param orderBy the {@link OrderByClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param orderBy the [OrderByClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatOrderByClause(OrderByClause<?> orderBy, DbContext context) {
 
     write(' ');
@@ -729,10 +639,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param groupBy the {@link GroupByClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param groupBy the [GroupByClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatGroupByClause(GroupByClause<?> groupBy, DbContext context) {
 
     write(' ');
@@ -746,10 +654,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param having the {@link HavingClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param having the [HavingClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatHavingClause(HavingClause<?> having, DbContext context) {
 
     write(' ');
@@ -763,10 +669,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param into the {@link IntoClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param into the [IntoClause] to format.
+  /// @param context the [DbContext].
   public void formatIntoClause(IntoClause<?, ?, ?> into, DbContext context) {
 
     writeDbKeyword(DbKeyword.INTO);
@@ -774,10 +678,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     formatEntity(into, false);
   }
 
-  /**
-   * @param values the {@link ValuesClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param values the [ValuesClause] to format.
+  /// @param context the [DbContext].
   public void formatValuesClause(ValuesClause<?, ?> values, DbContext context) {
 
     boolean isInto = values instanceof InsertValuesClause;
@@ -825,8 +727,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     } else if (value instanceof PropertyPath<?> property) {
       return mapProperty(property, typeMapper);
     } else if (value instanceof ProjectionProperty<?> projection) {
-      return new ProjectionProperty(mapValue(projection.getSelection(), typeMapper),
-          mapProperty(projection.getProperty(), typeMapper));
+      return new ProjectionProperty(mapValue(projection.getSelection(), typeMapper), mapProperty(projection.getProperty(), typeMapper));
     } else {
       // currently unsupported...
       return value;
@@ -842,8 +743,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
   }
 
   @SuppressWarnings("rawtypes")
-  private int formatAssignmentRecursive(PropertyPath<?> property, CriteriaObject<?> value, int index, boolean assign,
-      List<CriteriaObject<?>> args, DbClause clause) {
+  private int formatAssignmentRecursive(PropertyPath<?> property, CriteriaObject<?> value, int index, boolean assign, List<CriteriaObject<?>> args,
+      DbClause clause) {
 
     if ((this.dialect != null) && (property instanceof ReadableProperty<?> p)) {
       TypeMapper typeMapper = p.getTypeMapper();
@@ -851,8 +752,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
         do {
           DbQualifiedName name = this.namingStrategy.getColumnName(property, false, typeMapper);
           assert !name.hasQualifier() : name;
-          index = formatAssignmentRecursive(new SimplePath(property.parentPath(), name.getName()),
-              mapValue(value, typeMapper), index, assign, args, clause);
+          index = formatAssignmentRecursive(new SimplePath(property.parentPath(), name.getName()), mapValue(value, typeMapper), index, assign, args, clause);
           typeMapper = typeMapper.next();
         } while (typeMapper != null);
         return index;
@@ -862,18 +762,13 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     return index + 1;
   }
 
-  /**
-   *
-   * @param property the {@link PropertyAssignment#getProperty() property to assign}.
-   * @param value the {@link PropertyAssignment#getValue() value to assign}.
-   * @param index the index of the assignment in the potential list of assignments (0 for first).
-   * @param assign - {@code true} for a regular assignment, {@code false} to only format the {@code value} and ignore
-   *        the {@code property}.
-   * @param args the optional {@link List} where to {@link List#add(Object) add} the {@code value} or {@code null}.
-   * @param clause the owning {@link DbClause}.
-   */
-  protected void formatAssignment(PropertyPath<?> property, CriteriaObject<?> value, int index, boolean assign,
-      List<CriteriaObject<?>> args, DbClause clause) {
+  /// @param property the [property to assign][PropertyAssignment#getProperty()].
+  /// @param value the [value to assign][PropertyAssignment#getValue()].
+  /// @param index the index of the assignment in the potential list of assignments (0 for first).
+  /// @param assign - `true` for a regular assignment, `false` to only format the `value` and ignore the `property`.
+  /// @param args the optional [List] where to [add][List#add(Object)] the `value` or `null`.
+  /// @param clause the owning [DbClause].
+  protected void formatAssignment(PropertyPath<?> property, CriteriaObject<?> value, int index, boolean assign, List<CriteriaObject<?>> args, DbClause clause) {
 
     if (index > 0) {
       write(", ");
@@ -891,10 +786,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param set the {@link SetClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param set the [SetClause] to format.
+  /// @param context the [DbContext].
   public void formatSetClause(SetClause<?, ?> set, DbContext context) {
 
     write(' ');
@@ -906,15 +799,11 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param columns the {@link Iterable} with the {@link DbColumnReference columns} to format.
-   * @param entity the {@link EntityBean} containing the columns.
-   * @param withDeclaration - {@code true} to write column declarations, {@code false} otherwise (to omit declarations).
-   * @param skipDecompose - {@code true} to skip decomposing columns via ORM (e.g. for PK-Constraint), {@code false}
-   *        otherwise.
-   */
-  protected void formatColumns(Iterable<? extends DbColumnReference> columns, EntityBean entity,
-      boolean withDeclaration, boolean skipDecompose) {
+  /// @param columns the [Iterable] with the [columns][DbColumnReference] to format.
+  /// @param entity the [EntityBean] containing the columns.
+  /// @param withDeclaration - `true` to write column declarations, `false` otherwise (to omit declarations).
+  /// @param skipDecompose - `true` to skip decomposing columns via ORM (e.g. for PK-Constraint), `false` otherwise.
+  protected void formatColumns(Iterable<? extends DbColumnReference> columns, EntityBean entity, boolean withDeclaration, boolean skipDecompose) {
 
     String s = "";
     if (skipDecompose || (this.dialect == null)) {
@@ -970,9 +859,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param sortOrder the {@link SortOrder} to format.
-   */
+  /// @param sortOrder the [SortOrder] to format.
   protected void formatSortOrder(SortOrder sortOrder) {
 
     if (sortOrder == null) {
@@ -996,9 +883,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     write(declaration);
   }
 
-  /**
-   * @param constraint the {@link DbConstraint} to format.
-   */
+  /// @param constraint the [DbConstraint] to format.
   private void formatConstraint(TableOperationType operationType, DbConstraint constraint) {
 
     formatConstraintKeywordWithName(operationType, constraint);
@@ -1013,8 +898,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
       List<DbColumnReference> sourceColumns = constraint.getSourceColumns();
       constraint.getTargetColumns();
       EntityBean entity = sourceTable.getEntity();
-      boolean skipDecompose = (constraint instanceof DbPrimaryKeyConstraint)
-          || (constraint instanceof DbForeignKeyConstraint);
+      boolean skipDecompose = (constraint instanceof DbPrimaryKeyConstraint) || (constraint instanceof DbForeignKeyConstraint);
       formatColumns(sourceColumns, entity, false, skipDecompose);
     }
     write(')');
@@ -1029,9 +913,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     write(constraint.getType());
   }
 
-  /**
-   * @param fkConstraint the {@link DbForeignKeyConstraint} for which the references shall be formatted.
-   */
+  /// @param fkConstraint the [DbForeignKeyConstraint] for which the references shall be formatted.
   protected void formatConstraintFkReference(DbForeignKeyConstraint fkConstraint) {
 
     write(' ');
@@ -1044,12 +926,10 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     write(')');
   }
 
-  /**
-   * Writes "CONSTRAINT «constraint_name»". May be overridden as needed for specific dialect (e.g. for MySQL flaws).
-   *
-   * @param operationType the {@link TableOperationType}.
-   * @param constraint the {@link DbConstraint}.
-   */
+  /// Writes "CONSTRAINT «constraint_name»". May be overridden as needed for specific dialect (e.g. for MySQL flaws).
+  ///
+  /// @param operationType the [TableOperationType].
+  /// @param constraint the [DbConstraint].
   protected void formatConstraintKeywordWithName(TableOperationType operationType, DbConstraint constraint) {
 
     writeDbKeyword(DbKeyword.CONSTRAINT);
@@ -1058,12 +938,10 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     formatName(constraintName);
   }
 
-  /**
-   * @param state the {@link DbConstraintState}.
-   * @see #formatConstraintStateInitially(DbConstraintInitially)
-   * @see #formatConstraintStateDeferrable(DbConstraintDeferrable)
-   * @see #formatConstraintStateRely(DbConstraintRely)
-   */
+  /// @param state the [DbConstraintState].
+  /// @see #formatConstraintStateInitially(DbConstraintInitially)
+  /// @see #formatConstraintStateDeferrable(DbConstraintDeferrable)
+  /// @see #formatConstraintStateRely(DbConstraintRely)
   protected void formatConstraintState(DbConstraintState state) {
 
     formatConstraintStateInitially(state.getInitially());
@@ -1071,9 +949,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     formatConstraintStateRely(state.getRely());
   }
 
-  /**
-   * @param rely the {@link DbConstraintRely} to format.
-   */
+  /// @param rely the [DbConstraintRely] to format.
   protected void formatConstraintStateRely(DbConstraintRely rely) {
 
     String keyword = rely.toString();
@@ -1084,9 +960,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     writeDbKeyword(keyword);
   }
 
-  /**
-   * @param initially the {@link DbConstraintInitially} to format.
-   */
+  /// @param initially the [DbConstraintInitially] to format.
   protected void formatConstraintStateInitially(DbConstraintInitially initially) {
 
     String keyword = initially.toString();
@@ -1097,9 +971,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     writeDbKeyword(keyword);
   }
 
-  /**
-   * @param deferrable the {@link DbConstraintDeferrable} to format.
-   */
+  /// @param deferrable the [DbConstraintDeferrable] to format.
   protected void formatConstraintStateDeferrable(DbConstraintDeferrable deferrable) {
 
     String keyword = deferrable.toString();
@@ -1110,9 +982,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     writeDbKeyword(keyword);
   }
 
-  /**
-   * @param predicate the {@link CriteriaPredicate} to format (for a check constraint).
-   */
+  /// @param predicate the [CriteriaPredicate] to format (for a check constraint).
   protected void formatCriteriaExpression(CriteriaExpression<?> predicate) {
 
     CriteriaOperator operator = predicate.getOperator();
@@ -1147,17 +1017,13 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param operator the {@link PredicateOperator} to format.
-   */
+  /// @param operator the [PredicateOperator] to format.
   protected void formatOperator(CriteriaOperator operator) {
 
     write(operator.getSyntax());
   }
 
-  /**
-   * @param object the {@link CriteriaObject} to format.
-   */
+  /// @param object the [CriteriaObject] to format.
   protected void formatCriteriaObject(CriteriaObject<?> object) {
 
     if (object instanceof ReadableProperty<?> property) {
@@ -1171,35 +1037,27 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param path the {@link PropertyPath} to format.
-   */
+  /// @param path the [PropertyPath] to format.
   private void formatPath(PropertyPath<?> path) {
 
     write(path.path());
   }
 
-  /**
-   * @param literal the {@link Literal} to format.
-   */
+  /// @param literal the [Literal] to format.
   private void formatLiteral(Literal<?> literal) {
 
     write(literal.toString());
   }
 
-  /**
-   * @param property the {@link ReadableProperty} to format as column.
-   */
+  /// @param property the [ReadableProperty] to format as column.
   protected void formatColumn(ReadableProperty<?> property) {
 
     // TODO not entirely correct, may be multiple columns...
     formatColumn(DbColumnReference.of(property), false);
   }
 
-  /**
-   * @param createIndex the {@link CreateIndexClause}-{@link DbClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param createIndex the [CreateIndexClause]-[DbClause] to format.
+  /// @param context the [DbContext].
   public void formatCreateIndexClause(CreateIndexClause createIndex, DbContext context) {
 
     writeIndent();
@@ -1220,10 +1078,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     formatQualifiedName(name);
   }
 
-  /**
-   * @param on the {@link CreateIndexOnClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param on the [CreateIndexOnClause] to format.
+  /// @param context the [DbContext].
   public void formatCreateIndexOnClause(CreateIndexOnClause<?> on, DbContext context) {
 
     write(' ');
@@ -1232,10 +1088,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     formatTable(on, false);
   }
 
-  /**
-   * @param columns the {@link CreateIndexColumnsClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param columns the [CreateIndexColumnsClause] to format.
+  /// @param context the [DbContext].
   public void formatCreateIndexColumnsClause(CreateIndexColumnsClause<?> columns, DbContext context) {
 
     write('(');
@@ -1243,10 +1097,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     write(')');
   }
 
-  /**
-   * @param seq the {@link CreateSequenceClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param seq the [CreateSequenceClause] to format.
+  /// @param context the [DbContext].
   protected void formatCreateSequenceClause(CreateSequenceClause seq, DbContext context) {
 
     writeIndent();
@@ -1263,10 +1115,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param keyword the {@link DbKeyword} to {@link #writeDbKeyword(String) write}.
-   * @param value the {@link Number} value to format.
-   */
+  /// @param keyword the [DbKeyword] to [write][#writeDbKeyword(String)].
+  /// @param value the [Number] value to format.
   protected void formatCreateSequenceAttribute(String keyword, Number value) {
 
     if (value == null) {
@@ -1278,11 +1128,9 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     write(value.toString());
   }
 
-  /**
-   * Formats the explicit cycle attribute of a sequence.
-   *
-   * @param cycle {@code true} for cycle, {@code false} otherwise (nocycle).
-   */
+  /// Formats the explicit cycle attribute of a sequence.
+  ///
+  /// @param cycle `true` for cycle, `false` otherwise (nocycle).
   protected void formatCreateSequenceCycle(boolean cycle) {
 
     if (cycle) {
@@ -1292,10 +1140,8 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param operations the {@link AlterTableOperationsClause} to format.
-   * @param context the {@link DbContext}.
-   */
+  /// @param operations the [AlterTableOperationsClause] to format.
+  /// @param context the [DbContext].
   public void formatAlterTableOperationsClause(AlterTableOperationsClause<?> operations, DbContext context) {
 
     String s = "\n";
@@ -1306,9 +1152,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param operation the {@link TableOperation} to format.
-   */
+  /// @param operation the [TableOperation] to format.
   public void formatAlterTableOperation(TableOperation operation) {
 
     TableOperationType operationType = operation.getType();
@@ -1317,8 +1161,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     if (operation instanceof TableColumnOperation columnOp) {
       formatAlterTableColumn(operationType);
       DbColumnReference column = columnOp.getColumn();
-      formatColumn(column, (operationType == TableOperationType.ADD) || (operationType == TableOperationType.MODIFY),
-          false);
+      formatColumn(column, (operationType == TableOperationType.ADD) || (operationType == TableOperationType.MODIFY), false);
     } else if (operation instanceof TableConstraintOperation constraintOp) {
       DbConstraint constraint = constraintOp.getConstraint();
       if (operationType == TableOperationType.ADD) {
@@ -1338,20 +1181,15 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @param operationType the {@link TableOperationType} to format. May be overridden as needed for specific dialect
-   *        (e.g. for MS SQL-Server flaws).
-   */
+  /// @param operationType the [TableOperationType] to format. May be overridden as needed for specific dialect (e.g. for MS SQL-Server flaws).
   protected void formatAlterTableOperationType(TableOperationType operationType) {
 
     write(operationType.name());
   }
 
-  /**
-   * Write "COLUMN" keyword as needed for ALTER TABLE statement of the given {@code type}.
-   *
-   * @param operationType the {@link TableOperationType}.
-   */
+  /// Write "COLUMN" keyword as needed for ALTER TABLE statement of the given `type`.
+  ///
+  /// @param operationType the [TableOperationType].
   protected void formatAlterTableColumn(TableOperationType operationType) {
 
     if ((operationType != TableOperationType.ADD) && (operationType != TableOperationType.MODIFY)) {
@@ -1360,9 +1198,7 @@ public class BasicDbStatementFormatter extends CriteriaFormatter implements DbSt
     }
   }
 
-  /**
-   * @return the {@link #formatStatement(DbStatement, DbContext) formatted statement} as {@link String} (e.g. SQL).
-   */
+  /// @return the [formatted statement][#formatStatement(DbStatement, DbContext)] as [String] (e.g. SQL).
   public DbNativeStatement get() {
 
     return new DbNativeStatement(this.statementType, this.out.toString(), this.parameters, this.nativeStatement);

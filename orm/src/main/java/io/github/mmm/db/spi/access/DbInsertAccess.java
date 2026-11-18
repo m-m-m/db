@@ -5,29 +5,21 @@ package io.github.mmm.db.spi.access;
 import io.github.mmm.db.statement.insert.InsertStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Interface providing support for {@link #insert(InsertStatement)}.
- *
- * @since 1.0.0
- */
+/// Interface providing support for [#insert(InsertStatement)].
+///
+/// @since 1.0.0
 public interface DbInsertAccess {
 
-  /**
-   * @param statement the {@link InsertStatement} to execute.
-   * @return the number of rows that have been inserted. Typically {@code 1}.
-   */
+  /// @param statement the [InsertStatement] to execute.
+  /// @return the number of rows that have been inserted. Typically `1`.
   long insert(InsertStatement<?> statement);
 
-  /**
-   * @param <E> type of the {@link EntityBean}.
-   * @param entity the {@link EntityBean} to insert.
-   * @return the {@link EntityBean} that has been inserted.
-   */
+  /// @param <E> type of the [EntityBean].
+  /// @param entity the [EntityBean] to insert.
+  /// @return the [EntityBean] that has been inserted.
   <E extends EntityBean> E insert(E entity);
 
-  /**
-   * @param entities the {@link EntityBean}s to insert as batch operation.
-   */
+  /// @param entities the [EntityBean]s to insert as batch operation.
   default void insertAll(EntityBean... entities) {
 
     for (EntityBean entity : entities) {

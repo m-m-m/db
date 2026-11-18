@@ -4,55 +4,45 @@ package io.github.mmm.db.name;
 
 import io.github.mmm.base.lang.AbstractToString;
 
-/**
- * Abstract base implementation of {@link DbObject}.
- *
- * @since 1.0.0
- */
+/// Abstract base implementation of [DbObject].
+///
+/// @since 1.0.0
 public abstract class AbstractDbObject extends AbstractToString implements DbObject {
 
-  /** @see #getRawName() */
+  /// @see #getRawName()
   protected final DbQualifiedName rawName;
 
   private final boolean java;
 
-  /**
-   * The constructor.
-   *
-   * @param rawName the {@link #getRawName() raw name}.
-   */
+  /// The constructor.
+  ///
+  /// @param rawName the [raw name][#getRawName()].
   protected AbstractDbObject(String rawName) {
 
     this(rawName, false);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param rawName the {@link #getRawName() raw name}.
-   * @param java the {@link #hasJavaName() Java name flag}.
-   */
+  /// The constructor.
+  ///
+  /// @param rawName the [raw name][#getRawName()].
+  /// @param java the [Java name flag][#hasJavaName()].
   protected AbstractDbObject(String rawName, boolean java) {
 
     this(java ? DbQualifiedName.ofName(rawName) : DbQualifiedName.ofParsed(rawName), java);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param rawName the {@link #getRawName() raw name}.
-   */
+  /// The constructor.
+  ///
+  /// @param rawName the [raw name][#getRawName()].
   protected AbstractDbObject(DbQualifiedName rawName) {
 
     this(rawName, false);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param rawName the {@link #getRawName() raw name}.
-   * @param java the {@link #hasJavaName() Java name flag}.
-   */
+  /// The constructor.
+  ///
+  /// @param rawName the [raw name][#getRawName()].
+  /// @param java the [Java name flag][#hasJavaName()].
   protected AbstractDbObject(DbQualifiedName rawName, boolean java) {
 
     super();

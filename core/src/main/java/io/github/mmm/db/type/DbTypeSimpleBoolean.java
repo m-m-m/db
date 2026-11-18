@@ -2,9 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.type;
 
-/**
- * {@link DbType} for a regular {@link Boolean}.
- */
+/// [DbType] for a regular [Boolean].
 public abstract class DbTypeSimpleBoolean extends DbType2Boolean<Boolean, DbTypeSimpleBoolean> {
 
   DbTypeSimpleBoolean(String name, Integer size, Integer scale, String format, String suffix, boolean nativeTypeSupport,

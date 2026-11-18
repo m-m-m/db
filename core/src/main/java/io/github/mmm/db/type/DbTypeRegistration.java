@@ -2,37 +2,35 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.type;
 
-/**
- * {@link Enum} for auto-registration of {@link DbType}.
- *
- * @see DbType#get(int)
- * @see DbType#get(Class)
- * @see DbType#get(String)
- */
+/// [Enum] for auto-registration of [DbType].
+///
+/// @see DbType#get(int)
+/// @see DbType#get(Class)
+/// @see DbType#get(String)
 public enum DbTypeRegistration {
 
-  /** No registration. */
+  /// No registration.
   NONE(false, false, false),
 
-  /** Only {@link #isRegisterCode() register code}. */
+  /// Only [register code][#isRegisterCode()].
   CODE(true, false, false),
 
-  /** Only {@link #isRegisterType() register type}. */
+  /// Only [register type][#isRegisterType()].
   TYPE(false, true, false),
 
-  /** Only {@link #isRegisterName() register name}. */
+  /// Only [register name][#isRegisterName()].
   NAME(false, false, true),
 
-  /** Only {@link #isRegisterCode() register code} and {@link #isRegisterType() type}. */
+  /// Only [register code][#isRegisterCode()] and [type][#isRegisterType()].
   CODE_TYPE(true, true, false),
 
-  /** Only {@link #isRegisterCode() register code} and {@link #isRegisterName() name}. */
+  /// Only [register code][#isRegisterCode()] and [name][#isRegisterName()].
   CODE_NAME(true, false, true),
 
-  /** Only {@link #isRegisterType() register type} and {@link #isRegisterName() name}. */
+  /// Only [register type][#isRegisterType()] and [name][#isRegisterName()].
   TYPE_NAME(false, true, true),
 
-  /** All registrations. */
+  /// All registrations.
   ALL(true, true, true);
 
   private final boolean code;
@@ -48,25 +46,19 @@ public enum DbTypeRegistration {
     this.name = name;
   }
 
-  /**
-   * @return {@code true} to register {@link DbType#getCode() code} for {@link DbType#get(int)}.
-   */
+  /// @return `true` to register [code][DbType#getCode()] for [DbType#get(int)].
   public boolean isRegisterCode() {
 
     return this.code;
   }
 
-  /**
-   * @return {@code true} to register {@link DbType#getSourceType() Java source type} for {@link DbType#get(Class)}.
-   */
+  /// @return `true` to register [Java source type][DbType#getSourceType()] for [DbType#get(Class)].
   public boolean isRegisterType() {
 
     return this.type;
   }
 
-  /**
-   * @return {@code true} to register {@link DbType#getName() type name} for {@link DbType#get(String)}.
-   */
+  /// @return `true` to register [type name][DbType#getName()] for [DbType#get(String)].
   public boolean isRegisterName() {
 
     return this.name;

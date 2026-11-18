@@ -10,29 +10,23 @@ import io.github.mmm.db.pool.DbConnectionPool;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Implementation of {@link DbConnectionPool} for JDBC {@link Connection}s based on {@link DataSource}.
- *
- * @param <C> type of the database connection.
- */
+/// Implementation of [DbConnectionPool] for JDBC [Connection]s based on [DataSource].
+///
+/// @param <C> type of the database connection.
 public abstract class AbstractDbConnectionPool<C> implements DbConnectionPool<C> {
 
   private final DbSourceConfig config;
 
-  /**
-   * The constructor.
-   *
-   * @param config the {@link DbSource}.
-   */
+  /// The constructor.
+  ///
+  /// @param config the [DbSource].
   public AbstractDbConnectionPool(DbSourceConfig config) {
 
     super();
     this.config = config;
   }
 
-  /**
-   * @return the {@link DbSourceConfig}.
-   */
+  /// @return the [DbSourceConfig].
   public DbSourceConfig getConfig() {
 
     return this.config;

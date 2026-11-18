@@ -6,39 +6,27 @@ import java.util.stream.Stream;
 
 import io.github.mmm.db.source.DbSource;
 
-/**
- * Interface for the {@link DbChangeLog}.
- */
+/// Interface for the [DbChangeLog].
 public interface DbChangeLog {
 
-  /**
-   * @param source the {@link DbSource#getId() database source identifier}.
-   * @return the requested {@link DbChangeLogSource} or {@code null} if not available.
-   */
+  /// @param source the [database source identifier][DbSource#getId()].
+  /// @return the requested [DbChangeLogSource] or `null` if not available.
   DbChangeLogSource get(String source);
 
-  /**
-   *
-   * @param source the {@link DbSource}.
-   * @return the requested {@link DbChangeLogSource} or {@code null} if not available.
-   */
+  /// @param source the [DbSource].
+  /// @return the requested [DbChangeLogSource] or `null` if not available.
   default DbChangeLogSource get(DbSource source) {
 
     return get(source.getId());
   }
 
-  /**
-   * @return the default {@link DbChangeLogSource}.
-   */
+  /// @return the default [DbChangeLogSource].
   default DbChangeLogSource get() {
 
     return get(DbSource.get());
   }
 
-  /**
-   * @return the {@link Stream} of available {@link DbSource}s for which a {@link #get(DbSource) children are
-   *         available}.
-   */
+  /// @return the [Stream] of available [DbSource]s for which a [children are available][#get(DbSource)].
   Stream<DbSource> getSources();
 
 }

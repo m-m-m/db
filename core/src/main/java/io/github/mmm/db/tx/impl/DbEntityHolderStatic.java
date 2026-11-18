@@ -6,32 +6,26 @@ import io.github.mmm.db.tx.spi.AbstractDbEntityHolder;
 import io.github.mmm.db.tx.spi.DbEntityHolder;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Implementation of {@link DbEntityHolder} with static {@link #getExternal() external entity}.
- *
- * @param <E> type of the managed {@link EntityBean}.
- * @since 1.0.0
- */
+/// Implementation of [DbEntityHolder] with static [external entity][#getExternal()].
+///
+/// @param <E> type of the managed [EntityBean].
+/// @since 1.0.0
 public class DbEntityHolderStatic<E extends EntityBean> extends AbstractDbEntityHolder<E> {
 
   private final E external;
 
-  /**
-   * The constructor.
-   *
-   * @param internal the {@link #getInternal() internal entity}.
-   */
+  /// The constructor.
+  ///
+  /// @param internal the [internal entity][#getInternal()].
   public DbEntityHolderStatic(E internal) {
 
     this(internal, WritableBean.getReadOnly(internal));
   }
 
-  /**
-   * The constructor.
-   *
-   * @param internal the {@link #getInternal() internal entity}.
-   * @param external the {@link #getExternal() external entity}.
-   */
+  /// The constructor.
+  ///
+  /// @param internal the [internal entity][#getInternal()].
+  /// @param external the [external entity][#getExternal()].
   public DbEntityHolderStatic(E internal, E external) {
 
     super(internal);

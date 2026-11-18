@@ -13,20 +13,16 @@ import io.github.mmm.db.ddl.table.DbTableData;
 import io.github.mmm.db.ddl.table.impl.DbTableDataImpl;
 import io.github.mmm.db.ddl.table.impl.DbTableImpl;
 
-/**
- * JDBC implementation of {@link DbTableImpl}.
- */
+/// JDBC implementation of [DbTableImpl].
 public class JdbcTableImpl extends DbTableImpl {
 
   private DatabaseMetaData metaData;
 
-  /**
-   * The constructor.
-   *
-   * @param data the {@link DbTableDataImpl}.
-   * @param columns the {@link #getColumns() columns}.
-   * @param metaData the JDBC {@link DatabaseMetaData}.
-   */
+  /// The constructor.
+  ///
+  /// @param data the [DbTableDataImpl].
+  /// @param columns the [columns][#getColumns()].
+  /// @param metaData the JDBC [DatabaseMetaData].
   public JdbcTableImpl(DbTableData data, List<DbColumn> columns, DatabaseMetaData metaData) {
 
     super(data, columns, null, null, null);

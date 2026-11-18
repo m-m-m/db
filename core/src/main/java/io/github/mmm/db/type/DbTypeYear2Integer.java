@@ -4,9 +4,7 @@ package io.github.mmm.db.type;
 
 import java.time.Year;
 
-/**
- * {@link DbType} that maps from {@link Year} to {@link Integer}.
- */
+/// [DbType] that maps from [Year] to [Integer].
 public final class DbTypeYear2Integer extends DbType2Integer<Year, DbTypeYear2Integer> {
 
   static final DbTypeYear2Integer INSTANCE = new DbTypeYear2Integer(null, null, null, null, null, false, DbTypeRegistration.TYPE);

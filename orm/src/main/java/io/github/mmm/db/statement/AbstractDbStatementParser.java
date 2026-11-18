@@ -11,17 +11,13 @@ import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.scanner.CharScannerParser;
 import io.github.mmm.scanner.CharStreamScanner;
 
-/**
- * Abstract base class for {@link CharScannerParser} of a database statement.
- *
- * @param <S> type of {@link Statement}.
- * @since 1.0.0
- */
+/// Abstract base class for [CharScannerParser] of a database statement.
+///
+/// @param <S> type of [Statement].
+/// @since 1.0.0
 public abstract class AbstractDbStatementParser<S extends Statement> implements CharScannerParser<S>, DbKeyword {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   protected AbstractDbStatementParser() {
 
     super();
@@ -38,43 +34,35 @@ public abstract class AbstractDbStatementParser<S extends Statement> implements 
     }
   }
 
-  /**
-   * Implementation of {@link #parse(CharStreamScanner)} without caring about exception handling.
-   *
-   * @param scanner the {@link CharStreamScanner}.
-   * @return the parsed {@link Statement}.
-   */
+  /// Implementation of [#parse(CharStreamScanner)] without caring about exception handling.
+  ///
+  /// @param scanner the [CharStreamScanner].
+  /// @return the parsed [Statement].
   protected abstract S doParse(CharStreamScanner scanner);
 
-  /**
-   * Consumes and returns the next segment.
-   *
-   * @param scanner the {@link CharStreamScanner}.
-   * @return the next consumed segment.
-   */
+  /// Consumes and returns the next segment.
+  ///
+  /// @param scanner the [CharStreamScanner].
+  /// @return the next consumed segment.
   protected String parseSegment(CharStreamScanner scanner) {
 
     return scanner.readWhile(CharFilter.SEGMENT, 1, 128);
   }
 
-  /**
-   * Consumes and returns the next keyword, requires and skips following whitespaces.
-   *
-   * @param scanner the {@link CharStreamScanner}.
-   * @return the next consumed keyword in UPPER CASE.
-   */
+  /// Consumes and returns the next keyword, requires and skips following whitespaces.
+  ///
+  /// @param scanner the [CharStreamScanner].
+  /// @return the next consumed keyword in UPPER CASE.
   protected String readKeyword(CharStreamScanner scanner) {
 
     return readKeyword(scanner, false);
   }
 
-  /**
-   * Consumes and returns the next keyword, requires and skips following whitespaces.
-   *
-   * @param scanner the {@link CharStreamScanner}.
-   * @param keepCase {@code true} to keep the keyword in the original case, {@code false} otherwise (UPPER CASE).
-   * @return the next consumed keyword. Converted to UPPER CASE if {@code keepCase} is {@code false}.
-   */
+  /// Consumes and returns the next keyword, requires and skips following whitespaces.
+  ///
+  /// @param scanner the [CharStreamScanner].
+  /// @param keepCase `true` to keep the keyword in the original case, `false` otherwise (UPPER CASE).
+  /// @return the next consumed keyword. Converted to UPPER CASE if `keepCase` is `false`.
   protected String readKeyword(CharStreamScanner scanner, boolean keepCase) {
 
     String keyword = scanner.readWhile(CharFilter.LATIN_LETTER, 1, 128).toUpperCase(Locale.ROOT);

@@ -18,9 +18,7 @@ import io.github.mmm.db.test.TestTypeMapping;
 import io.github.mmm.entity.id.PkId;
 import io.github.mmm.entity.id.RevisionedIdVersion;
 
-/**
- * Test of {@link Orm} and {@link DbBeanMapper}.
- */
+/// Test of [Orm] and [DbBeanMapper].
 class OrmTest extends Assertions {
 
   private Orm createOrm() {
@@ -28,7 +26,7 @@ class OrmTest extends Assertions {
     return new OrmImpl(new TestTypeMapping(), DbNamingStrategy.ofRdbms());
   }
 
-  /** Test {@link DbBeanMapper} on {@link City}. */
+  /// Test [DbBeanMapper] on [City].
   @Test
   void testMapCity() {
 

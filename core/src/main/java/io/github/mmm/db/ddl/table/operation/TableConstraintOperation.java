@@ -5,22 +5,18 @@ import java.util.Objects;
 import io.github.mmm.db.ddl.constraint.DbConstraint;
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * {@link TableOperation} on a {@link DbConstraint constraint}.
- *
- * @since 1.0.0
- */
+/// [TableOperation] on a [constraint][DbConstraint].
+///
+/// @since 1.0.0
 public abstract class TableConstraintOperation extends TableOperation {
 
   private final String name;
 
   private final DbConstraint constraint;
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() constraint name}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [constraint name][#getName()].
   public TableConstraintOperation(String name) {
 
     super();
@@ -29,11 +25,9 @@ public abstract class TableConstraintOperation extends TableOperation {
     this.constraint = null;
   }
 
-  /**
-   * The constructor.
-   *
-   * @param constraint the #getConstraint()
-   */
+  /// The constructor.
+  ///
+  /// @param constraint the #getConstraint()
   public TableConstraintOperation(DbConstraint constraint) {
 
     super();
@@ -43,18 +37,14 @@ public abstract class TableConstraintOperation extends TableOperation {
     this.constraint = constraint;
   }
 
-  /**
-   * @return the name of the constraint to operate on.
-   */
+  /// @return the name of the constraint to operate on.
   public String getName() {
 
     return this.name;
   }
 
-  /**
-   * @return the {@link DbConstraint} to operate on. May be {@code null} if only the name is given (e.g. in case of a
-   *         drop constraint operation).
-   */
+  /// @return the [DbConstraint] to operate on. May be `null` if only the name is given (e.g. in case of a
+  ///         drop constraint operation).
   public DbConstraint getConstraint() {
 
     return this.constraint;

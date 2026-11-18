@@ -8,11 +8,9 @@ import java.sql.SQLException;
 
 import io.github.mmm.db.result.DbResult;
 
-/**
- * Implementation of {@link DbResult} for JDBC {@link ResultSet}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbResult] for JDBC [ResultSet].
+///
+/// @since 1.0.0
 @SuppressWarnings("exports")
 public class JdbcResult implements DbResult {
 
@@ -22,11 +20,9 @@ public class JdbcResult implements DbResult {
 
   private String[] names;
 
-  /**
-   * The constructor.
-   *
-   * @param resultSet the JDBC {@link ResultSet} to wrap.
-   */
+  /// The constructor.
+  ///
+  /// @param resultSet the JDBC [ResultSet] to wrap.
   public JdbcResult(ResultSet resultSet) {
 
     super();
@@ -76,9 +72,7 @@ public class JdbcResult implements DbResult {
     return this.size;
   }
 
-  /**
-   * @param resultSet new {@link ResultSet}.
-   */
+  /// @param resultSet new [ResultSet].
   public void setResultSet(ResultSet resultSet) {
 
     this.resultSet = resultSet;

@@ -4,14 +4,10 @@ package io.github.mmm.db.schema;
 
 import java.util.stream.Stream;
 
-/**
- * Interface for the {@link DbChangeLogScripts}.
- */
+/// Interface for the [DbChangeLogScripts].
 public interface DbChangeLogScripts {
 
-  /**
-   * @return a {@link Stream} of the contained {@link DbChangeLogScript}s in ascending order.
-   */
+  /// @return a [Stream] of the contained [DbChangeLogScript]s in ascending order.
   Stream<DbChangeLogScript> getScripts();
 
 }

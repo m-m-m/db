@@ -11,9 +11,7 @@ import java.util.Set;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-/**
- * Test of {@link DbKeyword}.
- */
+/// Test of [DbKeyword].
 class DbKeywordTest extends Assertions {
 
   @Test

@@ -6,18 +6,14 @@ import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.DbSourceConfig;
 import io.github.mmm.db.tx.DbTransactionExecutor;
 
-/**
- * Provider of {@link DbTransactionExecutor}.
- *
- * @see DbTransactionExecutor#get(DbSource)
- * @since 1.0.0
- */
+/// Provider of [DbTransactionExecutor].
+///
+/// @see DbTransactionExecutor#get(DbSource)
+/// @since 1.0.0
 public interface DbTransactionExecutorProvider {
 
-  /**
-   * @param config the {@link DbSourceConfig}.
-   * @return the corresponding {@link DbTransactionExecutor}.
-   */
+  /// @param config the [DbSourceConfig].
+  /// @return the corresponding [DbTransactionExecutor].
   DbTransactionExecutor create(DbSourceConfig config);
 
 }

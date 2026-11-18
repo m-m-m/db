@@ -15,24 +15,20 @@ import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.property.criteria.CriteriaPredicate;
 import io.github.mmm.value.PropertyPath;
 
-/**
- * {@link DbConstraint} to check a {@link #getPredicate() predicate} (condition).
- *
- * @since 1.0.0
- */
+/// [DbConstraint] to check a [predicate][#getPredicate()] (condition).
+///
+/// @since 1.0.0
 public final class DbCheckConstraintImpl extends DbConstraintImpl implements DbCheckConstraint {
 
   private final CriteriaPredicate predicate;
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param predicate the {@link #getPredicate() predicate} to check.
-   * @param state the {@link #getState state}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param predicate the [predicate][#getPredicate()] to check.
+  /// @param state the [state][#getState].
   public DbCheckConstraintImpl(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       CriteriaPredicate predicate, DbConstraintState state) {
 
@@ -51,9 +47,7 @@ public final class DbCheckConstraintImpl extends DbConstraintImpl implements DbC
     this.predicate = predicate;
   }
 
-  /**
-   * @return the {@link CriteriaPredicate} to check.
-   */
+  /// @return the [CriteriaPredicate] to check.
   @Override
   public CriteriaPredicate getPredicate() {
 

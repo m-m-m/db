@@ -6,68 +6,48 @@ import io.github.mmm.db.ddl.table.DbTable;
 import io.github.mmm.db.ddl.table.DbTableData;
 import io.github.mmm.db.name.DbQualifiedName;
 
-/**
- * Meta-information about the database (DDL).
- *
- * @since 1.0.0
- */
+/// Meta-information about the database (DDL).
+///
+/// @since 1.0.0
 public interface DbMetaData {
 
-  /**
-   * @return an {@link Iterable} with the {@link DbTableData} of all tables in the current catalog/schema.
-   */
+  /// @return an [Iterable] with the [DbTableData] of all tables in the current catalog/schema.
   default Iterable<DbTableData> getTables() {
 
     return getTables(null);
   }
 
-  /**
-   * @param name the {@link DbQualifiedName#getName() name} or name-pattern of the tables.
-   * @return an {@link Iterable} with the {@link DbTableData} of the matching tables in the current catalog/schema.
-   */
+  /// @param name the [name][DbQualifiedName#getName()] or name-pattern of the tables.
+  /// @return an [Iterable] with the [DbTableData] of the matching tables in the current catalog/schema.
   Iterable<DbTableData> getTables(String name);
 
-  /**
-   * @param catalog the {@link DbQualifiedName#getCatalog() catalog}. May be {@code null}.
-   * @param schema the {@link DbQualifiedName#getSchema() schema}. May be {@code null}.
-   * @param name the {@link DbQualifiedName#getName() name} or name-pattern of the tables.
-   * @return an {@link Iterable} with the {@link DbTableData} of the matching tables.
-   */
+  /// @param catalog the [catalog][DbQualifiedName#getCatalog()]. May be `null`.
+  /// @param schema the [schema][DbQualifiedName#getSchema()]. May be `null`.
+  /// @param name the [name][DbQualifiedName#getName()] or name-pattern of the tables.
+  /// @return an [Iterable] with the [DbTableData] of the matching tables.
   Iterable<DbTableData> getTables(String catalog, String schema, String name);
 
-  /**
-   * @param name the {@link DbTable#getName() qualified table name}.
-   * @return the {@link DbTable} with the given {@link DbTable#getName() name} or {@code null} if no such table exists.
-   */
+  /// @param name the [qualified table name][DbTable#getName()].
+  /// @return the [DbTable] with the given [name][DbTable#getName()] or `null` if no such table exists.
   DbTable getTable(DbQualifiedName name);
 
-  /**
-   * @param name the unqualified {@link DbTable#getName() table name}.
-   * @return the {@link DbTable} with the given {@link DbTable#getName() name} or {@code null} if no such table exists.
-   */
+  /// @param name the unqualified [table name][DbTable#getName()].
+  /// @return the [DbTable] with the given [name][DbTable#getName()] or `null` if no such table exists.
   DbTable getTable(String name);
 
-  /**
-   * @param tableData the {@link DbTableData} (from {@link #getTables(String, String, String)}).
-   * @return the {@link DbTable} populated with additional information.
-   */
+  /// @param tableData the [DbTableData] (from [#getTables(String, String, String)]).
+  /// @return the [DbTable] populated with additional information.
   DbTable getTable(DbTableData tableData);
 
-  /**
-   * @return the current {@link DbQualifiedName#getCatalog() catalog}.
-   */
+  /// @return the current [catalog][DbQualifiedName#getCatalog()].
   String getCurrentCatalog();
 
-  /**
-   * @return the current {@link DbQualifiedName#getSchema() schema}.
-   */
+  /// @return the current [schema][DbQualifiedName#getSchema()].
   String getCurrentSchema();
 
-  /**
-   * @param name the {@link DbQualifiedName}.
-   * @return the given {@link DbQualifiedName} qualified with {@link #getCurrentSchema() current schema} and
-   *         {@link #getCurrentCatalog() current catalog} where not already qualified.
-   */
+  /// @param name the [DbQualifiedName].
+  /// @return the given [DbQualifiedName] qualified with [current schema][#getCurrentSchema()] and
+  ///         [current catalog][#getCurrentCatalog()] where not already qualified.
   default DbQualifiedName qualify(DbQualifiedName name) {
 
     if (name.getSchema() == null) {

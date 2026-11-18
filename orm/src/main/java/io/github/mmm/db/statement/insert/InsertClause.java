@@ -6,28 +6,22 @@ import io.github.mmm.db.statement.AbstractDbClause;
 import io.github.mmm.db.statement.DbIncompleteStartClause;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link DbIncompleteStartClause} to insert data into the database.
- *
- * @since 1.0.0
- */
+/// [DbIncompleteStartClause] to insert data into the database.
+///
+/// @since 1.0.0
 public final class InsertClause extends AbstractDbClause implements DbIncompleteStartClause {
 
   private InsertStatement<?> statement;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public InsertClause() {
 
     super();
   }
 
-  /**
-   * @param <E> type of the {@link EntityBean}.
-   * @param entity the {@link EntityBean entity} to insert into.
-   * @return the {@link InsertIntoClause} for fluent API calls.
-   */
+  /// @param <E> type of the [EntityBean].
+  /// @param entity the [entity][EntityBean] to insert into.
+  /// @return the [InsertIntoClause] for fluent API calls.
   public <E extends EntityBean> InsertIntoClause<E> into(E entity) {
 
     InsertIntoClause<E> insertInto = new InsertIntoClause<>(this, entity);

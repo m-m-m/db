@@ -8,9 +8,7 @@ import io.github.mmm.db.pool.DbConnectionPool;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Implementation of {@link DbSourceConfig}.
- */
+/// Implementation of [DbSourceConfig].
 public class DbSourceConfigImpl implements DbSourceConfig {
 
   private final DbSource source;
@@ -21,12 +19,10 @@ public class DbSourceConfigImpl implements DbSourceConfig {
 
   private DbConnectionPool<?> pool;
 
-  /**
-   * The constructor.
-   *
-   * @param source the {@link #getSource() source}.
-   * @param metaInfo the {@link #getMetaInfo() metaInfo}.
-   */
+  /// The constructor.
+  ///
+  /// @param source the [source][#getSource()].
+  /// @param metaInfo the [metaInfo][#getMetaInfo()].
   public DbSourceConfigImpl(DbSource source, MetaInfo metaInfo) {
 
     super();
@@ -47,17 +43,13 @@ public class DbSourceConfigImpl implements DbSourceConfig {
     return this.metaInfo;
   }
 
-  /**
-   * @return the {@link DbConnectionPool}.
-   */
+  /// @return the [DbConnectionPool].
   public DbConnectionPool<?> getConnectionPool() {
 
     return this.pool;
   }
 
-  /**
-   * @param pool new value of {@link #getPoolId()}.
-   */
+  /// @param pool new value of [#getPoolId()].
   public void setConnectionPool(DbConnectionPool<?> pool) {
 
     if (this.pool != null) {

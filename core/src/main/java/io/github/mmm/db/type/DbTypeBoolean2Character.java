@@ -4,10 +4,8 @@ package io.github.mmm.db.type;
 
 import java.util.Objects;
 
-/**
- * Implementation of {@link DbType} for a {@link Boolean} mapped as {@link Character} like suggested by
- * <a href="https://asktom.oracle.com/pls/apex/asktom.search?tag=boolean-datatype">Tom</a> for older Oracle databases.
- */
+/// Implementation of [DbType] for a [Boolean] mapped as [Character] like suggested by
+/// <a href="https://asktom.oracle.com/pls/apex/asktom.search?tag=boolean-datatype">Tom</a> for older Oracle databases.
 public final class DbTypeBoolean2Character extends DbType2Character<Boolean, DbTypeBoolean2Character> {
 
   static final DbTypeBoolean2Character INSTANCE = new DbTypeBoolean2Character(null, null, null,

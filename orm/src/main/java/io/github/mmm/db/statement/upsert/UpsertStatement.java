@@ -13,12 +13,10 @@ import io.github.mmm.db.statement.IntoValuesStatement;
 import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link DbStatement} to {@link UpsertClause} data into the database.
- *
- * @param <E> type of the {@link UpsertInto#getEntity() entity}.
- * @since 1.0.0
- */
+/// [DbStatement] to [UpsertClause] data into the database.
+///
+/// @param <E> type of the [entity][UpsertInto#getEntity()].
+/// @since 1.0.0
 public class UpsertStatement<E extends EntityBean> extends IntoValuesStatement<E> {
 
   private final UpsertClause upsert;
@@ -27,12 +25,10 @@ public class UpsertStatement<E extends EntityBean> extends IntoValuesStatement<E
 
   private final UpsertValues<E> values;
 
-  /**
-   * The constructor.
-   *
-   * @param upsert the {@link #getUpsert() upsert}.
-   * @param into the #getInto
-   */
+  /// The constructor.
+  ///
+  /// @param upsert the [upsert][#getUpsert()].
+  /// @param into the #getInto
   public UpsertStatement(UpsertClause upsert, UpsertInto<E> into) {
 
     super();
@@ -41,9 +37,7 @@ public class UpsertStatement<E extends EntityBean> extends IntoValuesStatement<E
     this.values = new UpsertValues<>(this);
   }
 
-  /**
-   * @deprecated use {@link #getUpsert()} to make it more explicit.
-   */
+  /// @deprecated use [#getUpsert()] to make it more explicit.
   @Deprecated
   @Override
   public UpsertClause getStart() {
@@ -51,26 +45,20 @@ public class UpsertStatement<E extends EntityBean> extends IntoValuesStatement<E
     return this.upsert;
   }
 
-  /**
-   * @return the opening {@link UpsertClause}-{@link DbClause clause}.
-   */
+  /// @return the opening [UpsertClause]-[clause][DbClause].
   public UpsertClause getUpsert() {
 
     return this.upsert;
   }
 
-  /**
-   * @return the {@link UpsertInto INTO}-{@link DbClause clause}.
-   */
+  /// @return the [INTO][UpsertInto]-[clause][DbClause].
   @Override
   public UpsertInto<E> getInto() {
 
     return this.into;
   }
 
-  /**
-   * @return the {@link UpsertValues VALUES}-{@link DbClause clause} or {@code null} if none was added.
-   */
+  /// @return the [VALUES][UpsertValues]-[clause][DbClause] or `null` if none was added.
   @Override
   public UpsertValues<E> getValues() {
 

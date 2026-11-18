@@ -5,14 +5,12 @@ package io.github.mmm.db.name.impl;
 import io.github.mmm.db.name.AbstractDbNamingStrategy;
 import io.github.mmm.db.name.DbNamingStrategy;
 
-/**
- * The default implementation of {@link DbNamingStrategy}.
- *
- * @since 1.0.0
- */
+/// The default implementation of [DbNamingStrategy].
+///
+/// @since 1.0.0
 public class DbNamingStrategyDefault extends AbstractDbNamingStrategy {
 
-  /** The singleton instance. */
+  /// The singleton instance.
   public static final DbNamingStrategy INSTANCE = new DbNamingStrategyDefault();
 
 }

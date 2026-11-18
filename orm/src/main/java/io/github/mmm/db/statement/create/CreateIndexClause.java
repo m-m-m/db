@@ -11,12 +11,10 @@ import io.github.mmm.db.statement.DbIncompleteStartClause;
 import io.github.mmm.db.statement.DbStartClause;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * A {@link CreateIndexClause}-{@link DbStartClause} of an SQL {@link CreateIndexStatement}.
- *
- * @since 1.0.0
- * @see io.github.mmm.db.statement.DbStatement#createIndex()
- */
+/// A [CreateIndexClause]-[DbStartClause] of an SQL [CreateIndexStatement].
+///
+/// @since 1.0.0
+/// @see io.github.mmm.db.statement.DbStatement#createIndex()
 public class CreateIndexClause extends AbstractDbClause implements DbIncompleteStartClause {
 
   private final DbIndexKindType kind;
@@ -25,23 +23,19 @@ public class CreateIndexClause extends AbstractDbClause implements DbIncompleteS
 
   private CreateIndexStatement<?> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param kind the {@link DbIndexKindType}.
-   * @param name the {@link #getName() name of the index}.
-   */
+  /// The constructor.
+  ///
+  /// @param kind the [DbIndexKindType].
+  /// @param name the [name of the index][#getName()].
   public CreateIndexClause(DbIndexKindType kind, String name) {
 
     this(kind, new DbQualifiedName(name, null, null));
   }
 
-  /**
-   * The constructor.
-   *
-   * @param kind the {@link DbIndexKindType}.
-   * @param name the {@link #getName() name of the index}.
-   */
+  /// The constructor.
+  ///
+  /// @param kind the [DbIndexKindType].
+  /// @param name the [name of the index][#getName()].
   public CreateIndexClause(DbIndexKindType kind, DbQualifiedName name) {
 
     super();
@@ -51,38 +45,30 @@ public class CreateIndexClause extends AbstractDbClause implements DbIncompleteS
     this.name = name;
   }
 
-  /**
-   * @return the name of the index. Will be empty if it should be auto-generated.
-   */
+  /// @return the name of the index. Will be empty if it should be auto-generated.
   public DbQualifiedName getName() {
 
     return this.name;
   }
 
-  /**
-   * @return the {@link DbIndexKindType}.
-   */
+  /// @return the [DbIndexKindType].
   public DbIndexKindType getKind() {
 
     return this.kind;
   }
 
-  /**
-   * @param <E> type of the {@link CreateIndexOnClause#getEntity() entity}.
-   * @param entity the {@link CreateIndexOnClause#getEntity() entity} (table) to create an index on.
-   * @return the {@link CreateIndexOnClause} for fluent API calls.
-   */
+  /// @param <E> type of the [entity][CreateIndexOnClause#getEntity()].
+  /// @param entity the [entity][CreateIndexOnClause#getEntity()] (table) to create an index on.
+  /// @return the [CreateIndexOnClause] for fluent API calls.
   public <E extends EntityBean> CreateIndexOnClause<E> on(E entity) {
 
     return on(entity, null);
   }
 
-  /**
-   * @param <E> type of the {@link CreateIndexOnClause#getEntity() entity}.
-   * @param entity the {@link CreateIndexOnClause#getEntity() entity} (table) to create an index on.
-   * @param entityName the {@link CreateIndexOnClause#getName() entity name} (table name) to create an index on.
-   * @return the {@link CreateIndexOnClause} for fluent API calls.
-   */
+  /// @param <E> type of the [entity][CreateIndexOnClause#getEntity()].
+  /// @param entity the [entity][CreateIndexOnClause#getEntity()] (table) to create an index on.
+  /// @param entityName the [entity name][CreateIndexOnClause#getName()] (table name) to create an index on.
+  /// @return the [CreateIndexOnClause] for fluent API calls.
   public <E extends EntityBean> CreateIndexOnClause<E> on(E entity, String entityName) {
 
     CreateIndexOnClause<E> onClause = new CreateIndexOnClause<>(this, entity, entityName);

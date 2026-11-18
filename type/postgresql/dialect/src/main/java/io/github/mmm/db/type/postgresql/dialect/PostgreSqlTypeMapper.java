@@ -4,11 +4,9 @@ package io.github.mmm.db.type.postgresql.dialect;
 
 import io.github.mmm.db.typemapping.DbTypeMapping;
 
-/**
- * {@link DbTypeMapping} for <a href="https://www.postgresql.org/docs/current/datatype.html">PostgreSQL</a>.
- *
- * @since 1.0.0
- */
+/// [DbTypeMapping] for <a href="https://www.postgresql.org/docs/current/datatype.html">PostgreSQL</a>.
+///
+/// @since 1.0.0
 public class PostgreSqlTypeMapper extends DbTypeMapping {
 
   @Override

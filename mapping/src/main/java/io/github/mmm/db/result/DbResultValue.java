@@ -4,37 +4,26 @@ package io.github.mmm.db.result;
 
 import io.github.mmm.value.converter.TypeMapper;
 
-/**
- * A single value {@link #getValue() value} with {@link #getName() name} of a {@link DbResult}.
- *
- * @param <V> type of the {@link #getValue() value}.
- */
+/// A single value [value][#getValue()] with [name][#getName()] of a [DbResult].
+///
+/// @param <V> type of the [value][#getValue()].
 public interface DbResultValue<V> {
 
-  /**
-   * @return the database name of this entry. That is the name of the column, the explicit alias, or a {@link String}
-   *         representation derived from the {@link io.github.mmm.value.CriteriaObject selection criteria}.
-   */
+  /// @return the database name of this entry. That is the name of the column, the explicit alias, or a [String]
+  ///         representation derived from the [selection criteria][io.github.mmm.value.CriteriaObject].
   String getName();
 
-  /**
-   * @return the optional {@link TypeMapper#getDeclaration() database declaration}.
-   */
+  /// @return the optional [database declaration][TypeMapper#getDeclaration()].
   default String getDeclaration() {
 
     return "";
   }
 
-  /**
-   * @return the result value from the database. May be {@code null}.
-   */
+  /// @return the result value from the database. May be `null`.
   V getValue();
 
-  /**
-   * @param newValue the new {@link #getValue() value}.
-   * @return a new instance of {@link DbResultValue} with the same {@link #getName() name} and {@link #getDeclaration()
-   *         declaration} but the given {@code value} as {@link #getValue() value}.
-   */
+  /// @param newValue the new [value][#getValue()].
+  /// @return a new instance of [DbResultValue] with the same [name][#getName()] and [declaration][#getDeclaration()] but the given `value` as [value][#getValue()].
   DbResultValue<V> withValue(V newValue);
 
 }

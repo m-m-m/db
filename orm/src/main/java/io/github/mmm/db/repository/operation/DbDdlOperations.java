@@ -6,24 +6,18 @@ import io.github.mmm.db.statement.create.CreateIndexStatement;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.WritableProperty;
 
-/**
- * Interface for the DDL (data-definition language) operations of an {@link EntityBean}.
- *
- * @param <E> type of the managed {@link EntityBean}.
- * @since 1.0.0
- */
+/// Interface for the DDL (data-definition language) operations of an [EntityBean].
+///
+/// @param <E> type of the managed [EntityBean].
+/// @since 1.0.0
 public interface DbDdlOperations<E extends EntityBean> {
 
-  /**
-   * Create the table for the managed entity.
-   */
+  /// Create the table for the managed entity.
   void createTable();
 
-  /**
-   * Create the table for the managed entity.
-   *
-   * @param autoIndex {@code true} to automatically
-   */
+  /// Create the table for the managed entity.
+  ///
+  /// @param autoIndex `true` to automatically
   default void createTable(boolean autoIndex) {
 
     createTable();
@@ -32,21 +26,15 @@ public interface DbDdlOperations<E extends EntityBean> {
     }
   }
 
-  /**
-   * Create automatic indexes for the table. By default, for each foreign key an index will be created. You can override
-   * this entire method or {@link #createIndex(WritableProperty)} in order to replace, extend or adapt the default
-   * behaviour.
-   */
+  /// Create automatic indexes for the table. By default, for each foreign key an index will be created. You can override
+  /// this entire method or [#createIndex(WritableProperty)] in order to replace, extend or adapt the default
+  /// behaviour.
   void createIndexes();
 
-  /**
-   * @param property the {@link WritableProperty} to potentially generate an automatic index for.
-   * @return the {@link CreateIndexStatement} or {@code null} for no index.
-   */
+  /// @param property the [WritableProperty] to potentially generate an automatic index for.
+  /// @return the [CreateIndexStatement] or `null` for no index.
   CreateIndexStatement<E> createIndex(WritableProperty<?> property);
 
-  /**
-   * Create the ID sequence for the managed entity.
-   */
+  /// Create the ID sequence for the managed entity.
   void createSequence();
 }

@@ -9,30 +9,24 @@ import java.util.function.Consumer;
 import io.github.mmm.db.mapping.DbMapper2Java;
 import io.github.mmm.db.result.DbResult;
 
-/**
- * {@link Consumer} of {@link DbResult} building the mapped Java result object.
- *
- * @param <R> type of the Java result object.
- * @since 1.0.0
- */
+/// [Consumer] of [DbResult] building the mapped Java result object.
+///
+/// @param <R> type of the Java result object.
+/// @since 1.0.0
 public class DbResultReceiverMultiple<R> extends DbResultReceiver<R> {
 
   private final List<R> results;
 
-  /**
-   * The constructor.
-   *
-   * @param mapper the {@link DbMapper2Java}.
-   */
+  /// The constructor.
+  ///
+  /// @param mapper the [DbMapper2Java].
   public DbResultReceiverMultiple(DbMapper2Java<R> mapper) {
 
     super(mapper);
     this.results = new ArrayList<>();
   }
 
-  /**
-   * @return the single result object.
-   */
+  /// @return the single result object.
   public List<R> getResults() {
 
     return this.results;

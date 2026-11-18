@@ -5,31 +5,25 @@ package io.github.mmm.db.statement.select;
 import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link SelectClause} to query the {@link SelectFromClause#getEntity() primary entity}.
- *
- * @param <R> type of the result of the selection.
- * @see DbStatement#select(EntityBean)
- * @since 1.0.0
- */
+/// [SelectClause] to query the [primary entity][SelectFromClause#getEntity()].
+///
+/// @param <R> type of the result of the selection.
+/// @see DbStatement#select(EntityBean)
+/// @since 1.0.0
 public class SelectEntityClause<R extends EntityBean> extends SelectClause<R> {
 
-  /**
-   * The constructor.
-   *
-   * @param entity the entity.
-   */
+  /// The constructor.
+  ///
+  /// @param entity the entity.
   public SelectEntityClause(R entity) {
 
     super(entity);
     setResultName(VALUE_RESULT_ENTITY);
   }
 
-  /**
-   * The constructor for internal usage.
-   *
-   * @param alias the alias to use as {@link #getResultName() result name}.
-   */
+  /// The constructor for internal usage.
+  ///
+  /// @param alias the alias to use as [result name][#getResultName()].
   public SelectEntityClause(String alias) {
 
     super(null);
@@ -40,9 +34,7 @@ public class SelectEntityClause<R extends EntityBean> extends SelectClause<R> {
     }
   }
 
-  /**
-   * @return the {@link SelectFromClause} for fluent API calls.
-   */
+  /// @return the [SelectFromClause] for fluent API calls.
   public SelectFromClause<R, R> from() {
 
     return new SelectFromClause<>(this, getResultBean());

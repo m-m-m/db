@@ -6,2943 +6,2941 @@ import java.util.Set;
 
 import io.github.mmm.base.sort.SortOrder;
 
-/**
- * Declares all common keywords for database statements. Mainly derived from
- * <a href="https://en.wikipedia.org/wiki/List_of_SQL_reserved_words">wikipedia</a> but also manually extended with
- * missing keywords.
- */
+/// Declares all common keywords for database statements. Mainly derived from
+/// <a href="https://en.wikipedia.org/wiki/List_of_SQL_reserved_words">wikipedia</a> but also manually extended with
+/// missing keywords.
 public interface DbKeyword {
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ABORT = "ABORT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ABORTSESSION = "ABORTSESSION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ABS = "ABS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ABSENT = "ABSENT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ABSOLUTE = "ABSOLUTE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ACCESS = "ACCESS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ACCESSIBLE = "ACCESSIBLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ACCESS_LOCK = "ACCESS_LOCK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ACCOUNT = "ACCOUNT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ACOS = "ACOS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ACOSH = "ACOSH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ACTION = "ACTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ADD = "ADD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ADD_MONTHS = "ADD_MONTHS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ADMIN = "ADMIN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String AFTER = "AFTER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String AGGREGATE = "AGGREGATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ALIAS = "ALIAS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ALL = "ALL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ALLOCATE = "ALLOCATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ALLOW = "ALLOW";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ALTER = "ALTER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ALTERAND = "ALTERAND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String AMP = "AMP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ANALYSE = "ANALYSE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ANALYZE = "ANALYZE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String AND = "AND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ANSIDATE = "ANSIDATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ANY = "ANY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ANY_VALUE = "ANY_VALUE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ARE = "ARE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ARRAY = "ARRAY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ARRAY_AGG = "ARRAY_AGG";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ARRAY_EXISTS = "ARRAY_EXISTS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ARRAY_MAX_CARDINALITY = "ARRAY_MAX_CARDINALITY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String AS = "AS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ASC = SortOrder.ASC.name();
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ASENSITIVE = "ASENSITIVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ASIN = "ASIN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ASINH = "ASINH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ASSERTION = "ASSERTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ASSOCIATE = "ASSOCIATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ASUTIME = "ASUTIME";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ASYMMETRIC = "ASYMMETRIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String AT = "AT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ATAN = "ATAN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ATAN2 = "ATAN2";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ATANH = "ATANH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ATOMIC = "ATOMIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String AUDIT = "AUDIT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String AUTHORIZATION = "AUTHORIZATION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String AUX = "AUX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String AUXILIARY = "AUXILIARY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String AVE = "AVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String AVERAGE = "AVERAGE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String AVG = "AVG";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BACKUP = "BACKUP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BEFORE = "BEFORE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BEGIN = "BEGIN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BEGIN_FRAME = "BEGIN_FRAME";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BEGIN_PARTITION = "BEGIN_PARTITION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BETWEEN = "BETWEEN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BIGINT = "BIGINT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BINARY = "BINARY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BIT = "BIT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BLOB = "BLOB";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BOOLEAN = "BOOLEAN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BOTH = "BOTH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BREADTH = "BREADTH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BREAK = "BREAK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BROWSE = "BROWSE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BT = "BT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BTRIM = "BTRIM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BUFFERPOOL = "BUFFERPOOL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BULK = "BULK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BUT = "BUT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BY = "BY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BYTE = "BYTE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BYTEINT = "BYTEINT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String BYTES = "BYTES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CALL = "CALL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CALLED = "CALLED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CAPTURE = "CAPTURE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CARDINALITY = "CARDINALITY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CASCADE = "CASCADE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CASCADED = "CASCADED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CASE = "CASE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CASESPECIFIC = "CASESPECIFIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CASE_N = "CASE_N";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CAST = "CAST";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CATALOG = "CATALOG";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CCSID = "CCSID";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CD = "CD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CEIL = "CEIL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CEILING = "CEILING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CHANGE = "CHANGE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CHAR = "CHAR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CHAR2HEXINT = "CHAR2HEXINT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CHARACTER = "CHARACTER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CHARACTERS = "CHARACTERS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CHARACTER_LENGTH = "CHARACTER_LENGTH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CHARS = "CHARS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CHAR_LENGTH = "CHAR_LENGTH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CHECK = "CHECK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CHECKPOINT = "CHECKPOINT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CLASS = "CLASS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CLASSIFIER = "CLASSIFIER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CLOB = "CLOB";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CLONE = "CLONE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CLOSE = "CLOSE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CLUSTER = "CLUSTER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CLUSTERED = "CLUSTERED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CM = "CM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COALESCE = "COALESCE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COLLATE = "COLLATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COLLATION = "COLLATION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COLLECT = "COLLECT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COLLECTION = "COLLECTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COLLID = "COLLID";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COLUMN = "COLUMN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COLUMN_VALUE = "COLUMN_VALUE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COMMENT = "COMMENT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COMMIT = "COMMIT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COMPLETION = "COMPLETION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COMPRESS = "COMPRESS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COMPUTE = "COMPUTE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONCAT = "CONCAT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONCURRENTLY = "CONCURRENTLY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONDITION = "CONDITION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONFLICT = "CONFLICT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONNECT = "CONNECT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONNECTION = "CONNECTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONSTRAINT = "CONSTRAINT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONSTRAINTS = "CONSTRAINTS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONSTRUCTOR = "CONSTRUCTOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONTAINS = "CONTAINS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONTAINSTABLE = "CONTAINSTABLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONTENT = "CONTENT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONTINUE = "CONTINUE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONVERT = "CONVERT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CONVERT_TABLE_HEADER = "CONVERT_TABLE_HEADER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COPY = "COPY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CORR = "CORR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CORRESPONDING = "CORRESPONDING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COS = "COS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COSH = "COSH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COUNT = "COUNT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COVAR_POP = "COVAR_POP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String COVAR_SAMP = "COVAR_SAMP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CREATE = "CREATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CROSS = "CROSS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CS = "CS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CSUM = "CSUM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CT = "CT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CUBE = "CUBE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CUME_DIST = "CUME_DIST";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT = "CURRENT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_CATALOG = "CURRENT_CATALOG";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_DATE = "CURRENT_DATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_DEFAULT_TRANSFORM_GROUP = "CURRENT_DEFAULT_TRANSFORM_GROUP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_LC_CTYPE = "CURRENT_LC_CTYPE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_PATH = "CURRENT_PATH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_ROLE = "CURRENT_ROLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_ROW = "CURRENT_ROW";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_SCHEMA = "CURRENT_SCHEMA";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_SERVER = "CURRENT_SERVER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_TIME = "CURRENT_TIME";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_TIMESTAMP = "CURRENT_TIMESTAMP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_TIMEZONE = "CURRENT_TIMEZONE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_TRANSFORM_GROUP_FOR_TYPE = "CURRENT_TRANSFORM_GROUP_FOR_TYPE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRENT_USER = "CURRENT_USER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURRVAL = "CURRVAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CURSOR = "CURSOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CV = "CV";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CYCLE = "CYCLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DATA = "DATA";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DATABASE = "DATABASE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DATABASES = "DATABASES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DATABLOCKSIZE = "DATABLOCKSIZE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DATE = "DATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DATEFORM = "DATEFORM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DATEFROM = "DATEFROM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DAY = "DAY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DAYS = "DAYS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DAY_HOUR = "DAY_HOUR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DAY_MICROSECOND = "DAY_MICROSECOND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DAY_MINUTE = "DAY_MINUTE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DAY_SECOND = "DAY_SECOND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DBCC = "DBCC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DBINFO = "DBINFO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DEALLOCATE = "DEALLOCATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DEC = "DEC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DECFLOAT = "DECFLOAT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DECIMAL = "DECIMAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DECLARE = "DECLARE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DEFAULT = "DEFAULT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DEFERRABLE = "DEFERRABLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DEFERRED = "DEFERRED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DEFINE = "DEFINE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DEGREES = "DEGREES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DEL = "DEL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DELAYED = "DELAYED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DELETE = "DELETE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DENSE_RANK = "DENSE_RANK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DENY = "DENY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DEPTH = "DEPTH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DEREF = "DEREF";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DESC = SortOrder.DESC.name();
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DESCRIBE = "DESCRIBE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DESCRIPTOR = "DESCRIPTOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DESTROY = "DESTROY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DESTRUCTOR = "DESTRUCTOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DETERMINISTIC = "DETERMINISTIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DIAGNOSTIC = "DIAGNOSTIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DIAGNOSTICS = "DIAGNOSTICS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DICTIONARY = "DICTIONARY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DISABLE = "DISABLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DISABLED = "DISABLED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DISALLOW = "DISALLOW";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DISCONNECT = "DISCONNECT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DISK = "DISK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DISTINCT = "DISTINCT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DISTINCTROW = "DISTINCTROW";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DISTRIBUTED = "DISTRIBUTED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DIV = "DIV";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DO = "DO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DOCUMENT = "DOCUMENT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DOMAIN = "DOMAIN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DOUBLE = "DOUBLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DROP = "DROP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DSSIZE = "DSSIZE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DUAL = "DUAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DUMP = "DUMP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DYNAMIC = "DYNAMIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EACH = "EACH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ECHO = "ECHO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EDITPROC = "EDITPROC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ELEMENT = "ELEMENT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ELSE = "ELSE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ELSEIF = "ELSEIF";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EMPTY = "EMPTY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ENABLED = "ENABLED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ENCLOSED = "ENCLOSED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ENCODING = "ENCODING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ENCRYPTION = "ENCRYPTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String END = "END";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ENDING = "ENDING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String END_EXEC = "END-EXEC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String END_FRAME = "END_FRAME";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String END_PARTITION = "END_PARTITION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EQ = "EQ";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EQUALS = "EQUALS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ERASE = "ERASE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ERRLVL = "ERRLVL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ERROR = "ERROR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ERRORFILES = "ERRORFILES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ERRORTABLES = "ERRORTABLES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ESCAPE = "ESCAPE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ESCAPED = "ESCAPED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
 
   String ET = "ET";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EVERY = "EVERY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EXCEPT = "EXCEPT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EXCEPTION = "EXCEPTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EXCLUSIVE = "EXCLUSIVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EXEC = "EXEC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EXECUTE = "EXECUTE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EXISTS = "EXISTS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EXIT = "EXIT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EXP = "EXP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EXPLAIN = "EXPLAIN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EXTERNAL = "EXTERNAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String EXTRACT = "EXTRACT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FALLBACK = "FALLBACK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FALSE = "FALSE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FASTEXPORT = "FASTEXPORT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FENCED = "FENCED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FETCH = "FETCH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FIELDPROC = "FIELDPROC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FILE = "FILE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FILLFACTOR = "FILLFACTOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FILTER = "FILTER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FINAL = "FINAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FIRST = "FIRST";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FIRST_VALUE = "FIRST_VALUE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FLOAT = "FLOAT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FLOAT4 = "FLOAT4";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FLOAT8 = "FLOAT8";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FLOOR = "FLOOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FOR = "FOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FORCE = "FORCE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FOREIGN = "FOREIGN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FORMAT = "FORMAT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FOUND = "FOUND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FRAME_ROW = "FRAME_ROW";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FREE = "FREE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FREESPACE = "FREESPACE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FREETEXT = "FREETEXT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FREETEXTTABLE = "FREETEXTTABLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FREEZE = "FREEZE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FROM = "FROM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FULL = "FULL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FULLTEXT = "FULLTEXT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FUNCTION = "FUNCTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FUSION = "FUSION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GE = "GE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GENERAL = "GENERAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GENERATED = "GENERATED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GET = "GET";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GIVE = "GIVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GLOBAL = "GLOBAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GO = "GO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GOTO = "GOTO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GRANT = "GRANT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GRAPHIC = "GRAPHIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GREATEST = "GREATEST";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GROUP = "GROUP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GROUPING = "GROUPING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GROUPS = "GROUPS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GT = "GT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HANDLER = "HANDLER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HASH = "HASH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HASHAMP = "HASHAMP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HASHBAKAMP = "HASHBAKAMP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HASHBUCKET = "HASHBUCKET";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HASHROW = "HASHROW";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HAVING = "HAVING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HELP = "HELP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HIGH_PRIORITY = "HIGH_PRIORITY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HOLD = "HOLD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HOLDLOCK = "HOLDLOCK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HOST = "HOST";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HOUR = "HOUR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HOURS = "HOURS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HOUR_MICROSECOND = "HOUR_MICROSECOND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HOUR_MINUTE = "HOUR_MINUTE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String HOUR_SECOND = "HOUR_SECOND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IDENTIFIED = "IDENTIFIED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IDENTITY = "IDENTITY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IDENTITYCOL = "IDENTITYCOL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IDENTITY_INSERT = "IDENTITY_INSERT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IF = "IF";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IGNORE = "IGNORE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ILIKE = "ILIKE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IMMEDIATE = "IMMEDIATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IN = "IN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INCLUSIVE = "INCLUSIVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INCONSISTENT = "INCONSISTENT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INCREMENT = "INCREMENT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INDEX = "INDEX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INDICATOR = "INDICATOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INFILE = "INFILE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INHERIT = "INHERIT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INITIAL = "INITIAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INITIALIZE = "INITIALIZE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INITIALLY = "INITIALLY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INITIATE = "INITIATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INNER = "INNER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INOUT = "INOUT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INPUT = "INPUT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INS = "INS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INSENSITIVE = "INSENSITIVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INSERT = "INSERT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INSTEAD = "INSTEAD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INT = "INT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INT1 = "INT1";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INT2 = "INT2";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INT3 = "INT3";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INT4 = "INT4";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INT8 = "INT8";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INTEGER = "INTEGER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INTEGERDATE = "INTEGERDATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INTERSECT = "INTERSECT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INTERSECTION = "INTERSECTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INTERVAL = "INTERVAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INTO = "INTO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IO_AFTER_GTIDS = "IO_AFTER_GTIDS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IO_BEFORE_GTIDS = "IO_BEFORE_GTIDS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IS = "IS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ISNULL = "ISNULL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ISOBID = "ISOBID";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ISOLATION = "ISOLATION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ITERATE = "ITERATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JAR = "JAR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JOIN = "JOIN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JOURNAL = "JOURNAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JSON = "JSON";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JSON_ARRAY = "JSON_ARRAY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JSON_ARRAYAGG = "JSON_ARRAYAGG";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JSON_EXISTS = "JSON_EXISTS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JSON_OBJECT = "JSON_OBJECT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JSON_OBJECTAGG = "JSON_OBJECTAGG";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JSON_QUERY = "JSON_QUERY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JSON_SCALAR = "JSON_SCALAR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JSON_SERIALIZE = "JSON_SERIALIZE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JSON_TABLE = "JSON_TABLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JSON_TABLE_PRIMITIVE = "JSON_TABLE_PRIMITIVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String JSON_VALUE = "JSON_VALUE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String KEEP = "KEEP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String KEY = "KEY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String KEYS = "KEYS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String KILL = "KILL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String KURTOSIS = "KURTOSIS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LABEL = "LABEL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LAG = "LAG";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LANGUAGE = "LANGUAGE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LARGE = "LARGE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LAST = "LAST";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LAST_VALUE = "LAST_VALUE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LATERAL = "LATERAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LC_CTYPE = "LC_CTYPE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LE = "LE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LEAD = "LEAD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LEADING = "LEADING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LEAST = "LEAST";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LEAVE = "LEAVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LEFT = "LEFT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LESS = "LESS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LEVEL = "LEVEL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LIKE = "LIKE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LIKE_REGEX = "LIKE_REGEX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LIMIT = "LIMIT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LINEAR = "LINEAR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LINENO = "LINENO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LINES = "LINES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LISTAGG = "LISTAGG";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LN = "LN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOAD = "LOAD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOADING = "LOADING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOCAL = "LOCAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOCALE = "LOCALE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOCALTIME = "LOCALTIME";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOCALTIMESTAMP = "LOCALTIMESTAMP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOCATOR = "LOCATOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOCATORS = "LOCATORS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOCK = "LOCK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOCKING = "LOCKING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOCKMAX = "LOCKMAX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOCKSIZE = "LOCKSIZE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOG = "LOG";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOG10 = "LOG10";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOGGING = "LOGGING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOGON = "LOGON";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LONG = "LONG";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LONGBLOB = "LONGBLOB";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LONGTEXT = "LONGTEXT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOOP = "LOOP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOWER = "LOWER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LOW_PRIORITY = "LOW_PRIORITY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LPAD = "LPAD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LT = "LT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LTRIM = "LTRIM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MACRO = "MACRO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MAINTAINED = "MAINTAINED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MAP = "MAP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MASTER_BIND = "MASTER_BIND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MASTER_SSL_VERIFY_SERVER_CERT = "MASTER_SSL_VERIFY_SERVER_CERT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MATCH = "MATCH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MATCHES = "MATCHES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MATCH_NUMBER = "MATCH_NUMBER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MATCH_RECOGNIZE = "MATCH_RECOGNIZE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MATERIALIZED = "MATERIALIZED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MAVG = "MAVG";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MAX = "MAX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MAXEXTENTS = "MAXEXTENTS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MAXIMUM = "MAXIMUM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MAXVALUE = "MAXVALUE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MCHARACTERS = "MCHARACTERS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MDIFF = "MDIFF";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MEDIUMBLOB = "MEDIUMBLOB";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MEDIUMINT = "MEDIUMINT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MEDIUMTEXT = "MEDIUMTEXT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MEMBER = "MEMBER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MERGE = "MERGE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String METHOD = "METHOD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MICROSECOND = "MICROSECOND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MICROSECONDS = "MICROSECONDS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MIDDLEINT = "MIDDLEINT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MIN = "MIN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MINDEX = "MINDEX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MINIMUM = "MINIMUM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MINUS = "MINUS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MINUTE = "MINUTE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MINUTES = "MINUTES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MINUTE_MICROSECOND = "MINUTE_MICROSECOND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MINUTE_SECOND = "MINUTE_SECOND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MINVALUE = "MINVALUE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MLINREG = "MLINREG";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MLOAD = "MLOAD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MLSLABEL = "MLSLABEL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MOD = "MOD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MODE = "MODE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MODIFIES = "MODIFIES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MODIFY = "MODIFY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MODULE = "MODULE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MONITOR = "MONITOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MONRESOURCE = "MONRESOURCE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MONSESSION = "MONSESSION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MONTH = "MONTH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MONTHS = "MONTHS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MSUBSTR = "MSUBSTR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MSUM = "MSUM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MULTISET = "MULTISET";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NAMED = "NAMED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NAMES = "NAMES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NATIONAL = "NATIONAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NATURAL = "NATURAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NCHAR = "NCHAR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NCLOB = "NCLOB";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NE = "NE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NESTED_TABLE_ID = "NESTED_TABLE_ID";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NEW = "NEW";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NEW_TABLE = "NEW_TABLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NEXT = "NEXT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NEXTVAL = "NEXTVAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NO = "NO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NOAUDIT = "NOAUDIT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NOCHECK = "NOCHECK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NOCOMPRESS = "NOCOMPRESS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NONCLUSTERED = "NONCLUSTERED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NONE = "NONE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NORELY = "NORELY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NORMALIZE = "NORMALIZE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NOT = "NOT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NOTHING = "NOTHING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NOTNULL = "NOTNULL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NOWAIT = "NOWAIT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NO_WRITE_TO_BINLOG = "NO_WRITE_TO_BINLOG";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NTH_VALUE = "NTH_VALUE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NTILE = "NTILE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NULL = "NULL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NULLABLE = "NULLABLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NULLIF = "NULLIF";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NULLIFZERO = "NULLIFZERO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NULLS = "NULLS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NUMBER = "NUMBER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NUMERIC = "NUMERIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NUMPARTS = "NUMPARTS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OBID = "OBID";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OBJECT = "OBJECT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OBJECTS = "OBJECTS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OCCURRENCES_REGEX = "OCCURRENCES_REGEX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OCTET_LENGTH = "OCTET_LENGTH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OF = "OF";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OFF = "OFF";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OFFLINE = "OFFLINE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OFFSET = "OFFSET";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OFFSETS = "OFFSETS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OLD = "OLD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OLD_TABLE = "OLD_TABLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OMIT = "OMIT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ON = "ON";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ONE = "ONE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ONLINE = "ONLINE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ONLY = "ONLY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OPEN = "OPEN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OPENDATASOURCE = "OPENDATASOURCE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OPENQUERY = "OPENQUERY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OPENROWSET = "OPENROWSET";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OPENXML = "OPENXML";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OPERATION = "OPERATION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OPTIMIZATION = "OPTIMIZATION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OPTIMIZE = "OPTIMIZE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OPTIMIZER_COSTS = "OPTIMIZER_COSTS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OPTION = "OPTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OPTIONALLY = "OPTIONALLY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OR = "OR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ORDER = "ORDER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ORDINALITY = "ORDINALITY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ORGANIZATION = "ORGANIZATION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OUT = "OUT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OUTER = "OUTER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OUTFILE = "OUTFILE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OUTPUT = "OUTPUT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OVER = "OVER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OVERLAPS = "OVERLAPS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OVERLAY = "OVERLAY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OVERRIDE = "OVERRIDE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PACKAGE = "PACKAGE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PAD = "PAD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PADDED = "PADDED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PARAMETER = "PARAMETER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PARAMETERS = "PARAMETERS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PART = "PART";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PARTIAL = "PARTIAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PARTITION = "PARTITION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PARTITIONED = "PARTITIONED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PARTITIONING = "PARTITIONING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PASSWORD = "PASSWORD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PATH = "PATH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PATTERN = "PATTERN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PCTFREE = "PCTFREE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PER = "PER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PERCENT = "PERCENT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PERCENTILE_CONT = "PERCENTILE_CONT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PERCENTILE_DISC = "PERCENTILE_DISC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PERCENT_RANK = "PERCENT_RANK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PERIOD = "PERIOD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PERM = "PERM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PERMANENT = "PERMANENT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PIECESIZE = "PIECESIZE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PIVOT = "PIVOT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PLACING = "PLACING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PLAN = "PLAN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PORTION = "PORTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String POSITION = "POSITION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String POSITION_REGEX = "POSITION_REGEX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String POSTFIX = "POSTFIX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String POWER = "POWER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PRECEDES = "PRECEDES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PRECISION = "PRECISION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PREFIX = "PREFIX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PREORDER = "PREORDER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PREPARE = "PREPARE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PRESERVE = "PRESERVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PREVVAL = "PREVVAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PRIMARY = "PRIMARY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PRINT = "PRINT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PRIOR = "PRIOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PRIQTY = "PRIQTY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PRIVATE = "PRIVATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PRIVILEGES = "PRIVILEGES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PROC = "PROC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PROCEDURE = "PROCEDURE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PROFILE = "PROFILE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PROGRAM = "PROGRAM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PROPORTIONAL = "PROPORTIONAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PROTECTION = "PROTECTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PSID = "PSID";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PTF = "PTF";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PUBLIC = "PUBLIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PURGE = "PURGE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String QUALIFIED = "QUALIFIED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String QUALIFY = "QUALIFY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String QUANTILE = "QUANTILE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String QUERY = "QUERY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String QUERYNO = "QUERYNO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RADIANS = "RADIANS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RAISERROR = "RAISERROR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RANDOM = "RANDOM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RANGE = "RANGE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RANGE_N = "RANGE_N";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RANK = "RANK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RAW = "RAW";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String READ = "READ";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String READS = "READS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String READTEXT = "READTEXT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String READ_WRITE = "READ_WRITE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REAL = "REAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RECONFIGURE = "RECONFIGURE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RECURSIVE = "RECURSIVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REF = "REF";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REFERENCES = "REFERENCES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REFERENCING = "REFERENCING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REFRESH = "REFRESH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REGEXP = "REGEXP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REGR_AVGX = "REGR_AVGX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REGR_AVGY = "REGR_AVGY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REGR_COUNT = "REGR_COUNT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REGR_INTERCEPT = "REGR_INTERCEPT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REGR_R2 = "REGR_R2";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REGR_SLOPE = "REGR_SLOPE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REGR_SXX = "REGR_SXX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REGR_SXY = "REGR_SXY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REGR_SYY = "REGR_SYY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RELATIVE = "RELATIVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RELEASE = "RELEASE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RELY = "RELY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RENAME = "RENAME";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REPEAT = "REPEAT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REPLACE = "REPLACE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REPLICATION = "REPLICATION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REPOVERRIDE = "REPOVERRIDE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REQUEST = "REQUEST";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REQUIRE = "REQUIRE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RESIGNAL = "RESIGNAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RESOURCE = "RESOURCE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RESTART = "RESTART";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RESTORE = "RESTORE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RESTRICT = "RESTRICT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RESULT = "RESULT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RESULT_SET_LOCATOR = "RESULT_SET_LOCATOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RESUME = "RESUME";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RET = "RET";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RETRIEVE = "RETRIEVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RETURN = "RETURN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RETURNING = "RETURNING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RETURNS = "RETURNS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REVALIDATE = "REVALIDATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REVERT = "REVERT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String REVOKE = "REVOKE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RIGHT = "RIGHT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RIGHTS = "RIGHTS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RLIKE = "RLIKE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROLE = "ROLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROLLBACK = "ROLLBACK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROLLFORWARD = "ROLLFORWARD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROLLUP = "ROLLUP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROUND_CEILING = "ROUND_CEILING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROUND_DOWN = "ROUND_DOWN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROUND_FLOOR = "ROUND_FLOOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROUND_HALF_DOWN = "ROUND_HALF_DOWN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROUND_HALF_EVEN = "ROUND_HALF_EVEN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROUND_HALF_UP = "ROUND_HALF_UP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROUND_UP = "ROUND_UP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROUTINE = "ROUTINE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROW = "ROW";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROWCOUNT = "ROWCOUNT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROWGUIDCOL = "ROWGUIDCOL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROWID = "ROWID";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROWNUM = "ROWNUM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROWS = "ROWS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROWSET = "ROWSET";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ROW_NUMBER = "ROW_NUMBER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RPAD = "RPAD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RTRIM = "RTRIM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RULE = "RULE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RUN = "RUN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RUNNING = "RUNNING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SAMPLE = "SAMPLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SAMPLEID = "SAMPLEID";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SAVE = "SAVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SAVEPOINT = "SAVEPOINT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SCHEMA = "SCHEMA";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SCHEMAS = "SCHEMAS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SCOPE = "SCOPE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SCRATCHPAD = "SCRATCHPAD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SCROLL = "SCROLL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SEARCH = "SEARCH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SECOND = "SECOND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SECONDS = "SECONDS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SECOND_MICROSECOND = "SECOND_MICROSECOND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SECQTY = "SECQTY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SECTION = "SECTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SECURITY = "SECURITY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SECURITYAUDIT = "SECURITYAUDIT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SEEK = "SEEK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SEL = "SEL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SELECT = "SELECT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SEMANTICKEYPHRASETABLE = "SEMANTICKEYPHRASETABLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SEMANTICSIMILARITYDETAILSTABLE = "SEMANTICSIMILARITYDETAILSTABLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SEMANTICSIMILARITYTABLE = "SEMANTICSIMILARITYTABLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SENSITIVE = "SENSITIVE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SEPARATOR = "SEPARATOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SEQUENCE = "SEQUENCE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SESSION = "SESSION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SESSION_USER = "SESSION_USER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SET = "SET";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SETRESRATE = "SETRESRATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SETS = "SETS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SETSESSRATE = "SETSESSRATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SETUSER = "SETUSER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SHARE = "SHARE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SHOW = "SHOW";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SHUTDOWN = "SHUTDOWN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SIGNAL = "SIGNAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SIMILAR = "SIMILAR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SIMPLE = "SIMPLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SIN = "SIN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SINH = "SINH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SIZE = "SIZE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SKEW = "SKEW";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SKIP = "SKIP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SMALLINT = "SMALLINT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SOME = "SOME";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SOUNDEX = "SOUNDEX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SOURCE = "SOURCE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SPACE = "SPACE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SPATIAL = "SPATIAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SPECIFIC = "SPECIFIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SPECIFICTYPE = "SPECIFICTYPE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SPOOL = "SPOOL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SQL = "SQL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SQLEXCEPTION = "SQLEXCEPTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SQLSTATE = "SQLSTATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SQLTEXT = "SQLTEXT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SQLWARNING = "SQLWARNING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SQL_BIG_RESULT = "SQL_BIG_RESULT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SQL_CALC_FOUND_ROWS = "SQL_CALC_FOUND_ROWS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SQL_SMALL_RESULT = "SQL_SMALL_RESULT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SQRT = "SQRT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SS = "SS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SSL = "SSL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STANDARD = "STANDARD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String START = "START";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STARTING = "STARTING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STARTUP = "STARTUP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STATE = "STATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STATEMENT = "STATEMENT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STATIC = "STATIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STATISTICS = "STATISTICS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STAY = "STAY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STDDEV_POP = "STDDEV_POP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STDDEV_SAMP = "STDDEV_SAMP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STEPINFO = "STEPINFO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STOGROUP = "STOGROUP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STORED = "STORED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STORES = "STORES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STRAIGHT_JOIN = "STRAIGHT_JOIN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STRING_CS = "STRING_CS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STRUCTURE = "STRUCTURE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String STYLE = "STYLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SUBMULTISET = "SUBMULTISET";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SUBSCRIBER = "SUBSCRIBER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SUBSET = "SUBSET";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SUBSTR = "SUBSTR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SUBSTRING = "SUBSTRING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SUBSTRING_REGEX = "SUBSTRING_REGEX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SUCCEEDS = "SUCCEEDS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SUCCESSFUL = "SUCCESSFUL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SUM = "SUM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SUMMARY = "SUMMARY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SUSPEND = "SUSPEND";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SYMMETRIC = "SYMMETRIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SYNONYM = "SYNONYM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SYSDATE = "SYSDATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SYSTEM = "SYSTEM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SYSTEM_TIME = "SYSTEM_TIME";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SYSTEM_USER = "SYSTEM_USER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String SYSTIMESTAMP = "SYSTIMESTAMP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TABLE = "TABLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TABLESAMPLE = "TABLESAMPLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TABLESPACE = "TABLESPACE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TAN = "TAN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TANH = "TANH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TBL_CS = "TBL_CS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TEMPORARY = "TEMPORARY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TERMINATE = "TERMINATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TERMINATED = "TERMINATED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TEXT = "TEXT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TEXTSIZE = "TEXTSIZE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String THAN = "THAN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String THEN = "THEN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String THRESHOLD = "THRESHOLD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TIME = "TIME";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TIMESTAMP = "TIMESTAMP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TIMEZONE_HOUR = "TIMEZONE_HOUR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TIMEZONE_MINUTE = "TIMEZONE_MINUTE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TINYBLOB = "TINYBLOB";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TINYINT = "TINYINT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TINYTEXT = "TINYTEXT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TITLE = "TITLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TO = "TO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TOP = "TOP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRACE = "TRACE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRAILING = "TRAILING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRAN = "TRAN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRANSACTION = "TRANSACTION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRANSLATE = "TRANSLATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRANSLATE_CHK = "TRANSLATE_CHK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRANSLATE_REGEX = "TRANSLATE_REGEX";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRANSLATION = "TRANSLATION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TREAT = "TREAT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRIGGER = "TRIGGER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRIM = "TRIM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRIM_ARRAY = "TRIM_ARRAY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRUE = "TRUE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRUNCATE = "TRUNCATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TRY_CONVERT = "TRY_CONVERT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TSEQUAL = "TSEQUAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String TYPE = "TYPE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UC = "UC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UESCAPE = "UESCAPE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UID = "UID";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UNDEFINED = "UNDEFINED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UNDER = "UNDER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UNDO = "UNDO";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UNION = "UNION";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UNIQUE = "UNIQUE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UNKNOWN = "UNKNOWN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UNLOCK = "UNLOCK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UNNEST = "UNNEST";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UNPIVOT = "UNPIVOT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UNSIGNED = "UNSIGNED";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UNTIL = "UNTIL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UPD = "UPD";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UPDATE = "UPDATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UPDATETEXT = "UPDATETEXT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UPPER = "UPPER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UPPERCASE = "UPPERCASE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UPSERT = "UPSERT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String USAGE = "USAGE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String USE = "USE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String USER = "USER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String USING = "USING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UTC_DATE = "UTC_DATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UTC_TIME = "UTC_TIME";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UTC_TIMESTAMP = "UTC_TIMESTAMP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UUID = "UUID";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VALIDATE = "VALIDATE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VALIDPROC = "VALIDPROC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VALUE = "VALUE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VALUES = "VALUES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VALUE_OF = "VALUE_OF";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VARBINARY = "VARBINARY";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VARBYTE = "VARBYTE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VARCHAR = "VARCHAR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VARCHAR2 = "VARCHAR2";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VARCHARACTER = "VARCHARACTER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VARGRAPHIC = "VARGRAPHIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VARIABLE = "VARIABLE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VARIADIC = "VARIADIC";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VARIANT = "VARIANT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VARYING = "VARYING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VAR_POP = "VAR_POP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VAR_SAMP = "VAR_SAMP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VCAT = "VCAT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VERBOSE = "VERBOSE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VERSIONING = "VERSIONING";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VIEW = "VIEW";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VIRTUAL = "VIRTUAL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VOLATILE = "VOLATILE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String VOLUMES = "VOLUMES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WAIT = "WAIT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WAITFOR = "WAITFOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WHEN = "WHEN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WHENEVER = "WHENEVER";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WHERE = "WHERE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WHILE = "WHILE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WIDTH_BUCKET = "WIDTH_BUCKET";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WINDOW = "WINDOW";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WITH = "WITH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WITHIN = "WITHIN";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WITHIN_GROUP = "WITHIN_GROUP";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WITHOUT = "WITHOUT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WLM = "WLM";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WORK = "WORK";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WRITE = "WRITE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WRITETEXT = "WRITETEXT";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String XML = "XML";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String XMLCAST = "XMLCAST";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String XMLEXISTS = "XMLEXISTS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String XMLNAMESPACES = "XMLNAMESPACES";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String XOR = "XOR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String YEAR = "YEAR";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String YEARS = "YEARS";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String YEAR_MONTH = "YEAR_MONTH";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ZEROFILL = "ZEROFILL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ZEROIFNULL = "ZEROIFNULL";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ZONE = "ZONE";
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ALTER_TABLE = ALTER + " " + TABLE;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CREATE_INDEX = CREATE + " " + INDEX;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CREATE_OR_REPLACE = CREATE + " " + OR + " " + REPLACE;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CREATE_SEQUENCE = CREATE + " " + SEQUENCE;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String CREATE_TABLE = CREATE + " " + TABLE;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DOUBLE_PRECISION = DOUBLE + " " + PRECISION;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DROP_INDEX = DROP + " " + INDEX;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DROP_SEQUENCE = DROP + " " + SEQUENCE;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String DROP_TABLE = DROP + " " + TABLE;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FOREIGN_KEY = FOREIGN + " " + KEY;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String FULL_OUTER_JOIN = FULL + " " + OUTER + " " + JOIN;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String GROUP_BY = GROUP + " " + BY;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IF_NOT_EXISTS = IF + " " + NOT + " " + EXISTS;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INCREMENT_BY = INCREMENT + " " + BY;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INITIALLY_DEFERRED = INITIALLY + " " + DEFERRED;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INITIALLY_IMMEDIATE = INITIALLY + " " + IMMEDIATE;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INNER_JOIN = INNER + " " + JOIN;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String INSERT_INTO = INSERT + " " + INTO;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IS_NOT_NULL = IS + " " + NOT + " " + NULL;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String IS_NULL = IS + " " + NULL;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String LEFT_JOIN = LEFT + " " + JOIN;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String MATERIALIZED_VIEW = MATERIALIZED + " " + VIEW;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NOT_DEFERRABLE = NOT + " " + DEFERRABLE;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String NOT_NULL = NOT + " " + NULL;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ON_CONFLICT = ON + " " + CONFLICT;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ON_CONFLICT_DO = ON + " " + CONFLICT + " " + DO;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ON_CONFLICT_DO_NOTHING = ON + " " + CONFLICT + " " + DO + " " + NOTHING;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ON_DELETE_CASCADE = ON + " " + DELETE + " " + CASCADE;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ON_DELETE_SET_NULL = ON + " " + DELETE + " " + SET + " " + NULL;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String ORDER_BY = ORDER + " " + BY;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String OUTER_JOIN = OUTER + " " + JOIN;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String PRIMARY_KEY = PRIMARY + " " + KEY;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String RIGHT_JOIN = RIGHT + " " + JOIN;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String START_WITH = START + " " + WITH;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String UNION_ALL = UNION + " " + ALL;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WITH_LOCAL_TIME_ZONE = WITH + " " + LOCAL + " " + TIME + " " + ZONE;
 
-  /** Keyword {@value}. */
+  /// Keyword {@value}.
   String WITH_TIME_ZONE = WITH + " " + TIME + " " + ZONE;
 
-  /** The {@link Set} of all keywords. */
+  /// The [Set] of all keywords.
   Set<String> ALL_KEYWORDS = Set.of(ABORT, ABORTSESSION, ABS, ABSENT, ABSOLUTE, ACCESS, ACCESS_LOCK, ACCESSIBLE,
       ACCOUNT, ACOS, ACOSH, ACTION, ADD, ADD_MONTHS, ADMIN, AFTER, AGGREGATE, ALIAS, ALL, ALLOCATE, ALLOW, ALTER,
       ALTERAND, AMP, ANALYSE, ANALYZE, AND, ANSIDATE, ANY, ANY_VALUE, ARE, ARRAY, ARRAY_AGG, ARRAY_EXISTS,

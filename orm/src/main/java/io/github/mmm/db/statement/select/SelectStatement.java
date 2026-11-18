@@ -12,12 +12,10 @@ import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.db.statement.DbStatementType;
 import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
 
-/**
- * {@link DbStatement} to query data from the database using a {@link SelectClause}.
- *
- * @param <R> type of the result of the selection.
- * @since 1.0.0
- */
+/// [DbStatement] to query data from the database using a [SelectClause].
+///
+/// @param <R> type of the result of the selection.
+/// @since 1.0.0
 public class SelectStatement<R> extends AbstractDbStatement<R> {
 
   private final SelectClause<R> select;
@@ -32,12 +30,10 @@ public class SelectStatement<R> extends AbstractDbStatement<R> {
 
   private final OrderByClause<R> orderBy;
 
-  /**
-   * The constructor.
-   *
-   * @param select the {@link #getSelect() starting} {@link SelectClause SELECT}.
-   * @param from the {@link #getFrom() FROM}.
-   */
+  /// The constructor.
+  ///
+  /// @param select the [starting][#getSelect()] [SELECT][SelectClause].
+  /// @param from the [FROM][#getFrom()].
   protected SelectStatement(SelectClause<R> select, SelectFromClause<R, ?> from) {
 
     super();
@@ -49,9 +45,7 @@ public class SelectStatement<R> extends AbstractDbStatement<R> {
     this.orderBy = new OrderByClause<>(this);
   }
 
-  /**
-   * @deprecated use {@link #getSelect()} to make it more explicit.
-   */
+  /// @deprecated use [#getSelect()] to make it more explicit.
   @Deprecated
   @Override
   public SelectClause<R> getStart() {
@@ -59,49 +53,37 @@ public class SelectStatement<R> extends AbstractDbStatement<R> {
     return this.select;
   }
 
-  /**
-   * @return the opening {@link SelectClause}.
-   */
+  /// @return the opening [SelectClause].
   public SelectClause<R> getSelect() {
 
     return this.select;
   }
 
-  /**
-   * @return the {@link SelectFromClause FROM} {@link DbClause}.
-   */
+  /// @return the [FROM][SelectFromClause] [DbClause].
   public SelectFromClause<R, ?> getFrom() {
 
     return this.from;
   }
 
-  /**
-   * @return the {@link SelectWhere Where}-{@link DbClause}.
-   */
+  /// @return the [Where][SelectWhere]-[DbClause].
   public SelectWhere<R> getWhere() {
 
     return this.where;
   }
 
-  /**
-   * @return the {@link GroupByClause}-{@link DbClause}.
-   */
+  /// @return the [GroupByClause]-[DbClause].
   public GroupByClause<R> getGroupBy() {
 
     return this.groupBy;
   }
 
-  /**
-   * @return the {@link HavingClause}-{@link DbClause}.
-   */
+  /// @return the [HavingClause]-[DbClause].
   public HavingClause<R> getHaving() {
 
     return this.having;
   }
 
-  /**
-   * @return the {@link OrderByClause}-{@link DbClause}.
-   */
+  /// @return the [OrderByClause]-[DbClause].
   public OrderByClause<R> getOrderBy() {
 
     return this.orderBy;

@@ -8,29 +8,23 @@ import io.github.mmm.db.statement.AbstractDbClause;
 import io.github.mmm.db.statement.AliasMap;
 import io.github.mmm.db.statement.DbStartClause;
 
-/**
- * {@link DropStatement} to {@link DropSequenceClause drop a sequence}.
- *
- * @since 1.0.0
- */
+/// [DropStatement] to [drop a sequence][DropSequenceClause].
+///
+/// @since 1.0.0
 public class DropSequenceStatement extends DropStatement<Void> {
 
   private final DropSequenceClause dropSequence;
 
-  /**
-   * The constructor.
-   *
-   * @param dropSequence the {@link #getDropSequence() drop sequence}.
-   */
+  /// The constructor.
+  ///
+  /// @param dropSequence the [drop sequence][#getDropSequence()].
   public DropSequenceStatement(DropSequenceClause dropSequence) {
 
     super();
     this.dropSequence = dropSequence;
   }
 
-  /**
-   * @deprecated use {@link #getDropSequence()} to make it more explicit.
-   */
+  /// @deprecated use [#getDropSequence()] to make it more explicit.
   @Deprecated
   @Override
   public DbStartClause getStart() {
@@ -38,9 +32,7 @@ public class DropSequenceStatement extends DropStatement<Void> {
     return this.dropSequence;
   }
 
-  /**
-   * @return the opening {@link DropSequenceClause}.
-   */
+  /// @return the opening [DropSequenceClause].
   public DropSequenceClause getDropSequence() {
 
     return this.dropSequence;

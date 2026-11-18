@@ -8,42 +8,34 @@ import io.github.mmm.db.name.DbEntityNameMapper;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Implementation of {@link DbTableReference}.
- *
- * @param <E> type of the referenced {@link EntityBean}.
- * @since 1.0.0
- */
+/// Implementation of [DbTableReference].
+///
+/// @param <E> type of the referenced [EntityBean].
+/// @since 1.0.0
 public class DbTableReferenceImpl<E extends EntityBean> extends AbstractDbObject implements DbTableReference<E> {
 
   private final E entity;
 
-  /**
-   * The constructor.
-   *
-   * @param tableName the {@link #getName() table name}.
-   */
+  /// The constructor.
+  ///
+  /// @param tableName the [table name][#getName()].
   public DbTableReferenceImpl(DbQualifiedName tableName) {
 
     this(tableName, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param entity the {@link #getEntity() entity}.
-   */
+  /// The constructor.
+  ///
+  /// @param entity the [entity][#getEntity()].
   public DbTableReferenceImpl(E entity) {
 
     this(null, entity);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param tableName the {@link #getName() table name}.
-   * @param entity the {@link #getEntity() entity}.
-   */
+  /// The constructor.
+  ///
+  /// @param tableName the [table name][#getName()].
+  /// @param entity the [entity][#getEntity()].
   public DbTableReferenceImpl(DbQualifiedName tableName, E entity) {
 
     if ((entity == null) && (tableName == null)) {

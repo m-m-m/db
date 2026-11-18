@@ -7,10 +7,7 @@ import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.db.statement.DbStatementType;
 import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
 
-/**
- * {@link DbStatement} to declare an object (table).
- *
- */
+/// [DbStatement] to declare an object (table).
 public abstract class DeclareStatement extends AbstractDbStatement<Void> {
 
   @Override

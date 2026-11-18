@@ -4,17 +4,15 @@ package io.github.mmm.db.ddl.constraint.state;
 
 import io.github.mmm.db.ddl.constraint.DbConstraint;
 
-/**
- * State of a {@link DbConstraint} as the combination of {@link DbConstraintDeferrable}, {@link DbConstraintInitially},
- * and {@link DbConstraintRely}.
- *
- * @since 1.0.0
- */
+/// State of a [DbConstraint] as the combination of [DbConstraintDeferrable], [DbConstraintInitially],
+/// and [DbConstraintRely].
+///
+/// @since 1.0.0
 public final class DbConstraintState {
 
   private static final DbConstraintState[] STATES = new DbConstraintState[27];
 
-  /** The default state. */
+  /// The default state.
   public static final DbConstraintState DEFAULT = of(DbConstraintDeferrable.DEFAULT, DbConstraintInitially.DEFAULT,
       DbConstraintRely.DEFAULT);
 
@@ -49,36 +47,28 @@ public final class DbConstraintState {
     this.syntax = sb.toString();
   }
 
-  /**
-   * @return the {@link DbConstraintDeferrable deferrable} status.
-   */
+  /// @return the [deferrable][DbConstraintDeferrable] status.
   public DbConstraintDeferrable getDeferrable() {
 
     return this.deferrable;
   }
 
-  /**
-   * @return the {@link DbConstraintInitially initially} status.
-   */
+  /// @return the [initially][DbConstraintInitially] status.
   public DbConstraintInitially getInitially() {
 
     return this.initially;
   }
 
-  /**
-   * @return the {@link DbConstraintRely rely} status.
-   */
+  /// @return the [rely][DbConstraintRely] status.
   public DbConstraintRely getRely() {
 
     return this.rely;
   }
 
-  /**
-   * @param deferrable the {@link #getDeferrable() deferrable} state.
-   * @param initially the {@link #getInitially() initially} state.
-   * @param rely the {@link #getRely() rely} state.
-   * @return the {@link DbConstraintState} composed out of the given parameters.
-   */
+  /// @param deferrable the [deferrable][#getDeferrable()] state.
+  /// @param initially the [initially][#getInitially()] state.
+  /// @param rely the [rely][#getRely()] state.
+  /// @return the [DbConstraintState] composed out of the given parameters.
   public static DbConstraintState of(DbConstraintDeferrable deferrable, DbConstraintInitially initially,
       DbConstraintRely rely) {
 

@@ -8,28 +8,22 @@ import io.github.mmm.db.statement.DbStartClause;
 import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link DbStartClause} to delete data from the database.
- *
- * @since 1.0.0
- */
+/// [DbStartClause] to delete data from the database.
+///
+/// @since 1.0.0
 public final class DeleteClause extends AbstractDbClause implements DbIncompleteStartClause {
 
   private DeleteStatement<?> statement;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public DeleteClause() {
 
     super();
   }
 
-  /**
-   * @param <E> type of the {@link EntityBean}.
-   * @param entity the {@link EntityBean entity} to delete from.
-   * @return the {@link DeleteFromClause} for fluent API calls.
-   */
+  /// @param <E> type of the [EntityBean].
+  /// @param entity the [entity][EntityBean] to delete from.
+  /// @return the [DeleteFromClause] for fluent API calls.
   public <E extends EntityBean> DeleteFromClause<E> from(E entity) {
 
     DeleteFromClause<E> deleteFrom = new DeleteFromClause<>(this, entity);

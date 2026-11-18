@@ -15,12 +15,10 @@ import io.github.mmm.validation.Validator;
 import io.github.mmm.value.PropertyPath;
 import io.github.mmm.value.ReadablePath;
 
-/**
- * Implementation of {@link PropertyPathParser} that resolves {@link PropertyPath paths} directly against a given
- * {@link EntityBean} without any alias.
- *
- * @since 1.0.0
- */
+/// Implementation of [PropertyPathParser] that resolves [paths][PropertyPath] directly against a given
+/// [EntityBean] without any alias.
+///
+/// @since 1.0.0
 class EntityPathParser implements PropertyPathParser {
 
   static ReadableProperty<?> PROPERTY_REVISION = new ObjectProperty<>(Id.COLUMN_REVISION, new Object(),

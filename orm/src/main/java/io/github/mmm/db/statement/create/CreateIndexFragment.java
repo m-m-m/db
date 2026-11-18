@@ -10,63 +10,47 @@ import io.github.mmm.db.statement.alter.AlterTableOperationsClause;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.ReadableProperty;
 
-/**
- * Interface for a fragment or clause to add {@link DbColumnReference columns}.
- *
- * @param <E> type of the {@link AlterTableClause#getEntity() entity}.
- */
+/// Interface for a fragment or clause to add [columns][DbColumnReference].
+///
+/// @param <E> type of the [entity][AlterTableClause#getEntity()].
 public interface CreateIndexFragment<E extends EntityBean> {
 
-  /**
-   * @param property the {@link ReadableProperty property} to to create an index on.
-   * @return this {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param property the [property][ReadableProperty] to to create an index on.
+  /// @return this [AlterTableOperationsClause] for fluent API calls.
   default CreateIndexColumnsClause<E> column(ReadableProperty<?> property) {
 
     return column(property, null);
   }
 
-  /**
-   * @param property the {@link ReadableProperty property} to to create an index on.
-   * @param order the preferred {@link SortOrder} for this column in the index.
-   * @return this {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param property the [property][ReadableProperty] to to create an index on.
+  /// @param order the preferred [SortOrder] for this column in the index.
+  /// @return this [AlterTableOperationsClause] for fluent API calls.
   default CreateIndexColumnsClause<E> column(ReadableProperty<?> property, SortOrder order) {
 
     return column(DbColumnReference.of(property).with(order));
   }
 
-  /**
-   * @param column the {@link DbColumnReference} to the column where to create an index on.
-   * @return this {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param column the [DbColumnReference] to the column where to create an index on.
+  /// @return this [AlterTableOperationsClause] for fluent API calls.
   default CreateIndexColumnsClause<E> column(DbColumnReference column) {
 
     return column(DbColumnReferenceWithSortOrder.of(column));
   }
 
-  /**
-   * @param column the {@link DbColumnReferenceWithSortOrder} to the column where to create an index on.
-   * @return this {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param column the [DbColumnReferenceWithSortOrder] to the column where to create an index on.
+  /// @return this [AlterTableOperationsClause] for fluent API calls.
   CreateIndexColumnsClause<E> column(DbColumnReferenceWithSortOrder column);
 
-  /**
-   * @param properties the {@link ReadableProperty}s of the columns to create an index on.
-   * @return the {@link CreateIndexColumnsClause} for fluent API calls.
-   */
+  /// @param properties the [ReadableProperty]s of the columns to create an index on.
+  /// @return the [CreateIndexColumnsClause] for fluent API calls.
   CreateIndexColumnsClause<E> columns(ReadableProperty<?>... properties);
 
-  /**
-   * @param columns the {@link DbColumnReference}s of the columns to create an index on.
-   * @return the {@link CreateIndexColumnsClause} for fluent API calls.
-   */
+  /// @param columns the [DbColumnReference]s of the columns to create an index on.
+  /// @return the [CreateIndexColumnsClause] for fluent API calls.
   CreateIndexColumnsClause<E> columns(DbColumnReference... columns);
 
-  /**
-   * @param columns the {@link DbColumnReferenceWithSortOrder}s of the columns to create an index on.
-   * @return this {@link AlterTableOperationsClause} for fluent API calls.
-   */
+  /// @param columns the [DbColumnReferenceWithSortOrder]s of the columns to create an index on.
+  /// @return this [AlterTableOperationsClause] for fluent API calls.
   CreateIndexColumnsClause<E> columns(DbColumnReferenceWithSortOrder... columns);
 
 }

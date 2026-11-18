@@ -7,14 +7,10 @@ import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.orm.Orm;
 import io.github.mmm.db.typemapping.DbTypeMapping;
 
-/**
- * Implementation of {@link AbstractDbDialect} for testing SQL database emulation.
- */
+/// Implementation of [AbstractDbDialect] for testing SQL database emulation.
 public class SqlDialect extends AbstractDbDialect<SqlDialect> {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public SqlDialect() {
 
     super(new DbTypeMapping());

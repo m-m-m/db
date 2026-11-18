@@ -8,12 +8,10 @@ import io.github.mmm.db.mapping.DbMapper;
 import io.github.mmm.db.result.DbResult;
 import io.github.mmm.db.result.DbResultValue;
 
-/**
- * Abstract base implementation of {@link DbMapper} that can be composed.
- *
- * @param <J> type of the Java object to map.
- * @since 1.0.0
- */
+/// Abstract base implementation of [DbMapper] that can be composed.
+///
+/// @param <J> type of the Java object to map.
+/// @since 1.0.0
 public abstract class ComposableDbMapper<J> implements DbMapper<J> {
 
   @Override
@@ -22,10 +20,8 @@ public abstract class ComposableDbMapper<J> implements DbMapper<J> {
     return db2java(dbValue.iterator());
   }
 
-  /**
-   * @param dbIterator the {@link Iterator} of {@link DbResultValue}s to map.
-   * @return the mapped Java object.
-   */
+  /// @param dbIterator the [Iterator] of [DbResultValue]s to map.
+  /// @return the mapped Java object.
   public abstract J db2java(Iterator<DbResultValue<?>> dbIterator);
 
 }

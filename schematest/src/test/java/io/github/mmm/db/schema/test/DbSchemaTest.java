@@ -22,9 +22,7 @@ import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.db.statement.select.SelectStatement;
 import io.github.mmm.db.tx.DbTransactionExecutor;
 
-/**
- * Test of {@link DbSchemaManager} with real world example.
- */
+/// Test of [DbSchemaManager] with real world example.
 public class DbSchemaTest extends Assertions {
 
   @Test

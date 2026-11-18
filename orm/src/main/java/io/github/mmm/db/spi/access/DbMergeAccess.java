@@ -5,17 +5,13 @@ package io.github.mmm.db.spi.access;
 import io.github.mmm.db.statement.merge.MergeStatement;
 import io.github.mmm.db.statement.upsert.UpsertStatement;
 
-/**
- * Interface providing support for {@link #execute(MergeStatement)}.
- *
- * @since 1.0.0
- */
+/// Interface providing support for [#execute(MergeStatement)].
+///
+/// @since 1.0.0
 public interface DbMergeAccess {
 
-  /**
-   * @param statement the {@link UpsertStatement} to execute.
-   * @return the number of records that have been deleted.
-   */
+  /// @param statement the [UpsertStatement] to execute.
+  /// @return the number of records that have been deleted.
   long execute(MergeStatement<?> statement);
 
 }

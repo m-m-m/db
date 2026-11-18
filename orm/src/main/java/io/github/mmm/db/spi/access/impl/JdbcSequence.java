@@ -18,9 +18,7 @@ import io.github.mmm.db.tx.spi.AbstractDbTransaction;
 import io.github.mmm.entity.id.Id;
 import io.github.mmm.entity.id.sequence.IdSequence;
 
-/**
- * Implementation of {@link IdSequence} backed by a database sequence using JDBC.
- */
+/// Implementation of [IdSequence] backed by a database sequence using JDBC.
 public class JdbcSequence implements IdSequence {
 
   private final DbQualifiedName sequenceName;
@@ -29,23 +27,19 @@ public class JdbcSequence implements IdSequence {
 
   private final DbSourceConfig sourceConfig;
 
-  /**
-   * The constructor.
-   *
-   * @param sequenceName the name of the sequence.
-   * @param sourceConfig the {@link DbSourceConfig}.
-   */
+  /// The constructor.
+  ///
+  /// @param sequenceName the name of the sequence.
+  /// @param sourceConfig the [DbSourceConfig].
   public JdbcSequence(String sequenceName, DbSourceConfig sourceConfig) {
 
     this(DbQualifiedName.ofParsed(sequenceName), sourceConfig);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param sequenceName the name of the sequence.
-   * @param sourceConfig the {@link DbSourceConfig}.
-   */
+  /// The constructor.
+  ///
+  /// @param sequenceName the name of the sequence.
+  /// @param sourceConfig the [DbSourceConfig].
   public JdbcSequence(DbQualifiedName sequenceName, DbSourceConfig sourceConfig) {
 
     super();

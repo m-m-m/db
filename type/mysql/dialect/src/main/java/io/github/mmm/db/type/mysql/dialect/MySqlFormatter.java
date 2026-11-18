@@ -7,30 +7,24 @@ import io.github.mmm.db.ddl.table.operation.TableOperationType;
 import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.param.CriteriaParametersFactory;
 
-/**
- * {@link DbDialectStatementFormatter} for MySQL Database.
- *
- * @since 1.0.0
- */
+/// [DbDialectStatementFormatter] for MySQL Database.
+///
+/// @since 1.0.0
 public class MySqlFormatter extends DbDialectStatementFormatter {
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link MySqlDialect}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [MySqlDialect].
   public MySqlFormatter(MySqlDialect dialect) {
 
     super(dialect);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link MySqlDialect}.
-   * @param parametersFactory the {@link CriteriaParametersFactory}.
-   * @param indentation the {@link #getIndentation() indentation}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [MySqlDialect].
+  /// @param parametersFactory the [CriteriaParametersFactory].
+  /// @param indentation the [indentation][#getIndentation()].
   public MySqlFormatter(MySqlDialect dialect, CriteriaParametersFactory parametersFactory, String indentation) {
 
     super(dialect, parametersFactory, indentation);

@@ -5,9 +5,7 @@ package io.github.mmm.db.type;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-/**
- * Implementation of {@link DbType} for a regular {@link LocalDateTime}.
- */
+/// Implementation of [DbType] for a regular [LocalDateTime].
 @SuppressWarnings("exports")
 public final class DbTypeLocalDateTime2Timestamp
     extends DbType2Timestamp<LocalDateTime, DbTypeLocalDateTime2Timestamp> {

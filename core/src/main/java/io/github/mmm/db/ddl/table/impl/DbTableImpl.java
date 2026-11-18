@@ -13,11 +13,9 @@ import io.github.mmm.db.ddl.table.DbTableData;
 import io.github.mmm.db.ddl.table.DbTableType;
 import io.github.mmm.db.name.DbQualifiedName;
 
-/**
- * Implementation of {@link DbTable}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbTable].
+///
+/// @since 1.0.0
 public class DbTableImpl extends DbTableDataImpl implements DbTable {
 
   private final List<DbColumn> columns;
@@ -30,32 +28,28 @@ public class DbTableImpl extends DbTableDataImpl implements DbTable {
 
   private List<DbIndexMetadata> indexes;
 
-  /**
-   * The constructor.
-   *
-   * @param data the {@link DbTableDataImpl}.
-   * @param columns the {@link #getColumns() columns}.
-   * @param primaryKey the {@link #getPrimaryKey() primary key}.
-   * @param foreignKeys the {@link #getForeignKeys() foreign keys}.
-   * @param indexes the {@link #getIndexes() indexes}.
-   */
+  /// The constructor.
+  ///
+  /// @param data the [DbTableDataImpl].
+  /// @param columns the [columns][#getColumns()].
+  /// @param primaryKey the [primary key][#getPrimaryKey()].
+  /// @param foreignKeys the [foreign keys][#getForeignKeys()].
+  /// @param indexes the [indexes][#getIndexes()].
   public DbTableImpl(DbTableData data, List<DbColumn> columns, DbPrimaryKeyConstraint primaryKey,
       List<DbForeignKeyConstraint> foreignKeys, List<DbIndexMetadata> indexes) {
 
     this(data.getName(), data.getComment(), data.getType(), columns, primaryKey, foreignKeys, indexes);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param tableName the {@link #getName() table name}.
-   * @param comment the {@link #getComment() comment}.
-   * @param type the {@link #getType() table type}.
-   * @param columns the {@link #getColumns() columns}.
-   * @param primaryKey the {@link #getPrimaryKey() primary key}.
-   * @param foreignKeys the {@link #getForeignKeys() foreign keys}.
-   * @param indexes the {@link #getIndexes() indexes}.
-   */
+  /// The constructor.
+  ///
+  /// @param tableName the [table name][#getName()].
+  /// @param comment the [comment][#getComment()].
+  /// @param type the [table type][#getType()].
+  /// @param columns the [columns][#getColumns()].
+  /// @param primaryKey the [primary key][#getPrimaryKey()].
+  /// @param foreignKeys the [foreign keys][#getForeignKeys()].
+  /// @param indexes the [indexes][#getIndexes()].
   public DbTableImpl(DbQualifiedName tableName, String comment, DbTableType type, List<DbColumn> columns,
       DbPrimaryKeyConstraint primaryKey, List<DbForeignKeyConstraint> foreignKeys, List<DbIndexMetadata> indexes) {
 
@@ -85,9 +79,7 @@ public class DbTableImpl extends DbTableDataImpl implements DbTable {
     return this.foreignKeys;
   }
 
-  /**
-   * @return the value of {@link #getForeignKeys()}.
-   */
+  /// @return the value of [#getForeignKeys()].
   protected List<DbForeignKeyConstraint> loadForeignKeys() {
 
     throw lazyLoadingNotImplemented();
@@ -107,9 +99,7 @@ public class DbTableImpl extends DbTableDataImpl implements DbTable {
     return this.primaryKey;
   }
 
-  /**
-   * @return the value of {@link #getPrimaryKey()}.
-   */
+  /// @return the value of [#getPrimaryKey()].
   protected DbPrimaryKeyConstraint loadPrimaryKey() {
 
     throw lazyLoadingNotImplemented();
@@ -124,9 +114,7 @@ public class DbTableImpl extends DbTableDataImpl implements DbTable {
     return this.indexes;
   }
 
-  /**
-   * @return the value of {@link #getForeignKeys()}.
-   */
+  /// @return the value of [#getForeignKeys()].
   protected List<DbIndexMetadata> loadIndexes() {
 
     throw lazyLoadingNotImplemented();

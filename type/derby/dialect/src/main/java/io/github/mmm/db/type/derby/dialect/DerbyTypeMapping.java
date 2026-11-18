@@ -4,12 +4,10 @@ package io.github.mmm.db.type.derby.dialect;
 
 import io.github.mmm.db.typemapping.DbTypeMapping;
 
-/**
- * {@link DbTypeMapping} for <a href="https://db.apache.org/derby/docs/10.13/ref/crefsqlj31068.html">Apache Derby
- * database</a>.
- *
- * @since 1.0.0
- */
+/// [DbTypeMapping] for <a href="https://db.apache.org/derby/docs/10.13/ref/crefsqlj31068.html">Apache Derby
+/// database</a>.
+///
+/// @since 1.0.0
 public class DerbyTypeMapping extends DbTypeMapping {
 
   @Override

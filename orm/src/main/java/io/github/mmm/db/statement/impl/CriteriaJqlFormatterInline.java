@@ -5,17 +5,13 @@ package io.github.mmm.db.statement.impl;
 import io.github.mmm.property.criteria.CriteriaFormatter;
 import io.github.mmm.property.criteria.CriteriaFormatterFactory;
 
-/**
- * Implementation of {@link CriteriaFormatter} for JQL.
- */
+/// Implementation of [CriteriaFormatter] for JQL.
 public class CriteriaJqlFormatterInline extends CriteriaFormatter {
 
-  /** The factory instance. */
+  /// The factory instance.
   public static final CriteriaFormatterFactory FACTORY = CriteriaJqlFormatterInline::new;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public CriteriaJqlFormatterInline() {
 
     super(CriteriaJqlParametersInline.get());

@@ -5,23 +5,19 @@ package io.github.mmm.db.ddl.constraint.state;
 import io.github.mmm.db.ddl.constraint.DbConstraint;
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * {@link DbConstraint} state for initially status.
- *
- * @since 1.0.0
- */
+/// [DbConstraint] state for initially status.
+///
+/// @since 1.0.0
 public enum DbConstraintInitially {
 
-  /** Unspecified, let the database decide (typically {@link #INITIALLY_IMMEDIATE initially immediate}). */
+  /// Unspecified, let the database decide (typically [initially immediate][#INITIALLY_IMMEDIATE]).
   DEFAULT(""),
 
-  /**
-   * Make the {@link DbConstraint} initially deferred. For database support see
-   * {@link DbConstraintDeferrable#DEFERRABLE}.
-   */
+  /// Make the [DbConstraint] initially deferred. For database support see
+  /// [DbConstraintDeferrable#DEFERRABLE].
   INITIALLY_DEFERRED(DbKeyword.INITIALLY_DEFERRED),
 
-  /** Explicitly make the {@link DbConstraint} initially immediate. */
+  /// Explicitly make the [DbConstraint] initially immediate.
   INITIALLY_IMMEDIATE(DbKeyword.INITIALLY_IMMEDIATE);
 
   private final String syntax;

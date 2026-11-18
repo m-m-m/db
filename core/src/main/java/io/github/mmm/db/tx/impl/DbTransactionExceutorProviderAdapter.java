@@ -13,23 +13,19 @@ import io.github.mmm.db.source.DbSourceConfig;
 import io.github.mmm.db.tx.DbTransactionExecutor;
 import io.github.mmm.db.tx.spi.DbTransactionExecutorProvider;
 
-/**
- * Adapter implementation of {@link DbTransactionExecutorProvider} that holds the {@link DbTransactionExecutor}s.
- *
- * @since 1.0.0
- */
+/// Adapter implementation of [DbTransactionExecutorProvider] that holds the [DbTransactionExecutor]s.
+///
+/// @since 1.0.0
 public final class DbTransactionExceutorProviderAdapter implements DbTransactionExecutorProvider {
 
-  /** The singleton instance. */
+  /// The singleton instance.
   public static final DbTransactionExceutorProviderAdapter INSTANCE = new DbTransactionExceutorProviderAdapter();
 
   private final List<DbTransactionExecutorProvider> providers;
 
   private final Map<String, DbTransactionExecutor> executors;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public DbTransactionExceutorProviderAdapter() {
 
     super();

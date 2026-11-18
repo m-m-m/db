@@ -16,21 +16,17 @@ import io.github.mmm.base.exception.ObjectNotFoundException;
 import io.github.mmm.db.pool.DbConnectionPoolProvider;
 import io.github.mmm.db.pool.DbConnectionPoolProviderManager;
 
-/**
- * Implementation of {@link DbConnectionPoolProviderManager}.
- */
+/// Implementation of [DbConnectionPoolProviderManager].
 public class DbConnectionPoolProviderManagerImpl implements DbConnectionPoolProviderManager {
 
   private static final Logger LOG = LoggerFactory.getLogger(DbConnectionPoolProviderManagerImpl.class);
 
-  /** The singleton instance. */
+  /// The singleton instance.
   public static final DbConnectionPoolProviderManagerImpl INSTANCE = new DbConnectionPoolProviderManagerImpl();
 
   private final Map<String, DbConnectionPoolProvider<?>> providers;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   @SuppressWarnings("rawtypes")
   public DbConnectionPoolProviderManagerImpl() {
 

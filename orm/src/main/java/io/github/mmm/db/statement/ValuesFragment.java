@@ -8,66 +8,52 @@ import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.criteria.PropertyAssignment;
 import io.github.mmm.value.PropertyPath;
 
-/**
- * Interface for a fragment or clause to {@link #values(PropertyAssignment...) add values}.
- *
- * @param <E> type of the {@link AlterTableClause#getEntity() entity}.
- * @param <C> type of {@link DbClause} to return for fluent API.
- * @since 1.0.0
- */
+/// Interface for a fragment or clause to [add values][#values(PropertyAssignment...)].
+///
+/// @param <E> type of the [entity][AlterTableClause#getEntity()].
+/// @param <C> type of [DbClause] to return for fluent API.
+/// @since 1.0.0
 public interface ValuesFragment<E extends EntityBean, C extends DbClause> {
 
-  /**
-   * @param assignment the {@link PropertyAssignment} to add.
-   * @return the {@link DbClause} for fluent API calls.
-   */
+  /// @param assignment the [PropertyAssignment] to add.
+  /// @return the [DbClause] for fluent API calls.
   C value(PropertyAssignment<?> assignment);
 
-  /**
-   * Convenience method for
-   * <code>{@link #value(PropertyAssignment) value}({@link PropertyAssignment}.{@link PropertyAssignment#ofValue(PropertyPath) ofValue}(property)).</code>
-   *
-   * @param <V> type of the {@link PropertyPath#get() value}.
-   * @param property the {@link PropertyPath property} to set.
-   * @return the {@link DbClause} for fluent API calls.
-   */
+  /// Convenience method for `[value][#value(PropertyAssignment)]([PropertyAssignment].[ofValue(property)][PropertyAssignment#ofValue(PropertyPath)]).`
+  ///
+  /// @param <V> type of the [value][PropertyPath#get()].
+  /// @param property the [property][PropertyPath] to set.
+  /// @return the [DbClause] for fluent API calls.
   default <V> C value(PropertyPath<V> property) {
 
     return value(PropertyAssignment.ofValue(property));
   }
 
-  /**
-   * Convenience method for
-   * <code>{@link #value(PropertyAssignment) value}({@link PropertyAssignment}.{@link PropertyAssignment#of(PropertyPath, Object) of}(property, value)).</code>
-   *
-   * @param <V> type of the {@link PropertyPath#get() value}.
-   * @param property the {@link PropertyPath property} to set.
-   * @param value the {@link io.github.mmm.property.criteria.Literal} value to insert (assign the {@code property} to).
-   * @return the {@link DbClause} for fluent API calls.
-   */
+  /// Convenience method for `[value][#value(PropertyAssignment)]([PropertyAssignment].[of(property, value)][PropertyAssignment#of(PropertyPath, Object)]).`
+  ///
+  /// @param <V> type of the [value][PropertyPath#get()].
+  /// @param property the [property][PropertyPath] to set.
+  /// @param value the [io.github.mmm.property.criteria.Literal] value to insert (assign the `property` to).
+  /// @return the [DbClause] for fluent API calls.
   default <V> C value(PropertyPath<V> property, V value) {
 
     return value(PropertyAssignment.of(property, value));
   }
 
-  /**
-   * Convenience method for
-   * <code>{@link #value(PropertyAssignment) value}({@link PropertyAssignment}.{@link PropertyAssignment#of(PropertyPath, PropertyPath) of}(property, valueProperty)).</code>
-   *
-   * @param <V> type of the {@link PropertyPath#get() value}.
-   * @param property the {@link PropertyPath property} to set.
-   * @param valueProperty the {@link PropertyPath property} from where to read the value to set.
-   * @return the {@link UpdateSetClause} for fluent API.
-   */
+  /// Convenience method for `[value][#value(PropertyAssignment)]([PropertyAssignment].[of(property, valueProperty)][PropertyAssignment#of(PropertyPath,
+  /// PropertyPath)]).`
+  ///
+  /// @param <V> type of the [value][PropertyPath#get()].
+  /// @param property the [property][PropertyPath] to set.
+  /// @param valueProperty the [property][PropertyPath] from where to read the value to set.
+  /// @return the [UpdateSetClause] for fluent API.
   default <V> C value(PropertyPath<V> property, PropertyPath<V> valueProperty) {
 
     return value(PropertyAssignment.of(property, valueProperty));
   }
 
-  /**
-   * @param assignments the {@link PropertyAssignment}s to add.
-   * @return the {@link DbClause} for fluent API calls.
-   */
+  /// @param assignments the [PropertyAssignment]s to add.
+  /// @return the [DbClause] for fluent API calls.
   C values(PropertyAssignment<?>... assignments);
 
 }

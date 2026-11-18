@@ -34,12 +34,10 @@ import io.github.mmm.entity.property.id.FkProperty;
 import io.github.mmm.entity.property.link.LinkProperty;
 import io.github.mmm.property.WritableProperty;
 
-/**
- * Abstract base implementation of {@link DbRepository}.
- *
- * @param <E> type of the managed {@link EntityBean}.
- * @since 1.0.0
- */
+/// Abstract base implementation of [DbRepository].
+///
+/// @param <E> type of the managed [EntityBean].
+/// @since 1.0.0
 public class DbRepositoryImpl<E extends EntityBean> extends AbstractEntityRepository<E>
     implements DbRepository<E>, EntityFindAllOperation<E>, DbDdlOperations<E> {
 
@@ -49,17 +47,15 @@ public class DbRepositoryImpl<E extends EntityBean> extends AbstractEntityReposi
 
   private final DbSourceConfig sourceConfig;
 
-  /** {@link IdGenerator} used to {@link IdGenerator#generate(Id) generate} new unique {@link Id}s. */
+  /// [IdGenerator] used to [generate][IdGenerator#generate(Id)] new unique [Id]s.
   private final IdGenerator idGenerator;
 
   private final String sequenceName;
 
-  /**
-   * The constructor.
-   *
-   * @param prototype the {@link #getPrototype() prototype}.
-   * @param proxy the dynamic proxy instance of the {@link DbRepository} acting as wrapper of this internal instance.
-   */
+  /// The constructor.
+  ///
+  /// @param prototype the [prototype][#getPrototype()].
+  /// @param proxy the dynamic proxy instance of the [DbRepository] acting as wrapper of this internal instance.
   public DbRepositoryImpl(E prototype, DbRepository<E> proxy) {
 
     super(prototype);
@@ -96,9 +92,7 @@ public class DbRepositoryImpl<E extends EntityBean> extends AbstractEntityReposi
     }
   }
 
-  /**
-   * @return the {@link DbSourceConfig} for convenient access.
-   */
+  /// @return the [DbSourceConfig] for convenient access.
   protected DbSourceConfig getSourceConfig() {
 
     return this.sourceConfig;
@@ -179,9 +173,7 @@ public class DbRepositoryImpl<E extends EntityBean> extends AbstractEntityReposi
     return this.dbAccess.update(statement);
   }
 
-  /**
-   * Create the table for the managed entity.
-   */
+  /// Create the table for the managed entity.
   @Override
   public void createTable() {
 

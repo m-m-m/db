@@ -2,9 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.type;
 
-/**
- * {@link DbType} for a regular {@link Short}.
- */
+/// [DbType] for a regular [Short].
 public final class DbTypeShort extends DbType2Short<Short, DbTypeShort> {
 
   static final DbTypeShort INSTANCE = new DbTypeShort(null, null, null, null, null, false, DbTypeRegistration.ALL);

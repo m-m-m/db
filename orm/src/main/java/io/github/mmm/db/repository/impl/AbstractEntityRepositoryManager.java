@@ -17,11 +17,9 @@ import io.github.mmm.db.repository.EntityRepository;
 import io.github.mmm.db.repository.EntityRepositoryManager;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Abstract base implementation of {@link EntityRepositoryManager}.
- *
- * @since 1.0.0
- */
+/// Abstract base implementation of [EntityRepositoryManager].
+///
+/// @since 1.0.0
 public abstract class AbstractEntityRepositoryManager implements EntityRepositoryManager {
 
   private static final Logger LOG = LoggerFactory.getLogger(AbstractEntityRepositoryManager.class);
@@ -30,9 +28,7 @@ public abstract class AbstractEntityRepositoryManager implements EntityRepositor
 
   private final Map<Class<?>, EntityRepository<?>> entityMap;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public AbstractEntityRepositoryManager() {
 
     super();
@@ -40,9 +36,7 @@ public abstract class AbstractEntityRepositoryManager implements EntityRepositor
     this.entityMap = new ConcurrentHashMap<>();
   }
 
-  /**
-   * Scans the classpath for {@link EntityRepository} interfaces and creates an instance of each.
-   */
+  /// Scans the classpath for [EntityRepository] interfaces and creates an instance of each.
   @SuppressWarnings({ "unchecked", "rawtypes" })
   protected void init() {
 
@@ -62,10 +56,8 @@ public abstract class AbstractEntityRepositoryManager implements EntityRepositor
     return (R) this.repositoryMap.computeIfAbsent(repositoryClass, this::create);
   }
 
-  /**
-   * @param repositoryClass the {@link EntityRepository} {@link Class} (interface).
-   * @return the instance of the given {@link EntityRepository}.
-   */
+  /// @param repositoryClass the [EntityRepository] [Class] (interface).
+  /// @return the instance of the given [EntityRepository].
   protected abstract EntityRepository<?> createRepository(Class<? extends EntityRepository<?>> repositoryClass);
 
   @SuppressWarnings({ "rawtypes", "unchecked" })

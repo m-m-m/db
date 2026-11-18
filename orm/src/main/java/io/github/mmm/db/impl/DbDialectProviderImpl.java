@@ -18,23 +18,19 @@ import io.github.mmm.db.dialect.AbstractDbDialect;
 import io.github.mmm.db.dialect.DbDialect;
 import io.github.mmm.db.dialect.DbDialectProvider;
 
-/**
- * Implementation of {@link DbDialectProvider}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbDialectProvider].
+///
+/// @since 1.0.0
 public class DbDialectProviderImpl implements DbDialectProvider {
 
-  /** The singleton instance. */
+  /// The singleton instance.
   public static final DbDialectProvider INSTANCE = new DbDialectProviderImpl();
 
   private static final Logger LOG = LoggerFactory.getLogger(DbDialectProviderImpl.class);
 
   private final Map<String, AbstractDbDialect<?>> dialects;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public DbDialectProviderImpl() {
 

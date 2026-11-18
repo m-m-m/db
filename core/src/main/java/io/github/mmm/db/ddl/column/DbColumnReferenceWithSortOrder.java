@@ -4,20 +4,14 @@ package io.github.mmm.db.ddl.column;
 
 import io.github.mmm.base.sort.SortOrder;
 
-/**
- * Qualified reference to a {@link DbColumn column}.
- */
+/// Qualified reference to a [column][DbColumn].
 public interface DbColumnReferenceWithSortOrder extends DbColumnReference {
 
-  /**
-   * @return the {@link SortOrder} or {@code null} if undefined (sequence is not supported or index is statistic).
-   */
+  /// @return the [SortOrder] or `null` if undefined (sequence is not supported or index is statistic).
   SortOrder getSortOrder();
 
-  /**
-   * @param columnReference the {@link DbColumnReference} to convert.
-   * @return the given {@link DbColumnReference} as {@link DbColumnReferenceWithSortOrder}.
-   */
+  /// @param columnReference the [DbColumnReference] to convert.
+  /// @return the given [DbColumnReference] as [DbColumnReferenceWithSortOrder].
   static DbColumnReferenceWithSortOrder of(DbColumnReference columnReference) {
 
     if (columnReference == null) {

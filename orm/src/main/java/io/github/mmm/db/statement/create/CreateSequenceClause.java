@@ -7,11 +7,9 @@ import io.github.mmm.db.statement.AbstractDbClause;
 import io.github.mmm.db.statement.DbMainClause;
 import io.github.mmm.db.statement.DbStartClause;
 
-/**
- * A {@link CreateSequenceClause} of a {@link CreateSequenceStatement}.
- *
- * @since 1.0.0
- */
+/// A [CreateSequenceClause] of a [CreateSequenceStatement].
+///
+/// @since 1.0.0
 public class CreateSequenceClause extends AbstractDbClause implements DbStartClause, DbMainClause<Void> {
 
   private final DbQualifiedName name;
@@ -28,21 +26,17 @@ public class CreateSequenceClause extends AbstractDbClause implements DbStartCla
 
   private Boolean cycle;
 
-  /**
-   * The constructor.
-   *
-   * @param sequenceName the {@link #getName()}.
-   */
+  /// The constructor.
+  ///
+  /// @param sequenceName the [#getName()].
   public CreateSequenceClause(String sequenceName) {
 
     this(new DbQualifiedName(sequenceName, null, null));
   }
 
-  /**
-   * The constructor.
-   *
-   * @param sequenceName the {@link #getName()}.
-   */
+  /// The constructor.
+  ///
+  /// @param sequenceName the [#getName()].
   public CreateSequenceClause(DbQualifiedName sequenceName) {
 
     super();
@@ -50,18 +44,14 @@ public class CreateSequenceClause extends AbstractDbClause implements DbStartCla
     this.statement = new CreateSequenceStatement(this);
   }
 
-  /**
-   * @return the {@link DbQualifiedName} of the sequence to create.
-   */
+  /// @return the [DbQualifiedName] of the sequence to create.
   public DbQualifiedName getName() {
 
     return this.name;
   }
 
-  /**
-   * @param start the {@link #getStartWith() start with} value.
-   * @return the {@link CreateSequenceClause} for fluent API calls.
-   */
+  /// @param start the [start with][#getStartWith()] value.
+  /// @return the [CreateSequenceClause] for fluent API calls.
   public CreateSequenceClause startWith(long start) {
 
     assert (this.startWith == null);
@@ -69,18 +59,14 @@ public class CreateSequenceClause extends AbstractDbClause implements DbStartCla
     return this;
   }
 
-  /**
-   * @return the {@link #startWith(long) start with} value of the sequence or {@code null} if undefined.
-   */
+  /// @return the [start with][#startWith(long)] value of the sequence or `null` if undefined.
   public Long getStartWith() {
 
     return this.startWith;
   }
 
-  /**
-   * @param increment the {@link #getIncrementBy() increment by} value.
-   * @return the {@link CreateSequenceClause} for fluent API calls.
-   */
+  /// @param increment the [increment by][#getIncrementBy()] value.
+  /// @return the [CreateSequenceClause] for fluent API calls.
   public CreateSequenceClause incrementBy(int increment) {
 
     assert (this.incrementBy == null);
@@ -88,18 +74,14 @@ public class CreateSequenceClause extends AbstractDbClause implements DbStartCla
     return this;
   }
 
-  /**
-   * @return the {@link #incrementBy(int) increment by} value of the sequence or {@code null} if undefined.
-   */
+  /// @return the [increment by][#incrementBy(int)] value of the sequence or `null` if undefined.
   public Integer getIncrementBy() {
 
     return this.incrementBy;
   }
 
-  /**
-   * @param min the {@link #getMinValue() minimum value}.
-   * @return the {@link CreateSequenceClause} for fluent API calls.
-   */
+  /// @param min the [minimum value][#getMinValue()].
+  /// @return the [CreateSequenceClause] for fluent API calls.
   public CreateSequenceClause minValue(long min) {
 
     assert (this.minValue == null);
@@ -107,18 +89,14 @@ public class CreateSequenceClause extends AbstractDbClause implements DbStartCla
     return this;
   }
 
-  /**
-   * @return the {@link #minValue(long) minimum value} of the sequence or {@code null} if undefined (NOMINVALUE).
-   */
+  /// @return the [minimum value][#minValue(long)] of the sequence or `null` if undefined (NOMINVALUE).
   public Long getMinValue() {
 
     return this.minValue;
   }
 
-  /**
-   * @param max the {@link #getMaxValue() maximum value}.
-   * @return the {@link CreateSequenceClause} for fluent API calls.
-   */
+  /// @param max the [maximum value][#getMaxValue()].
+  /// @return the [CreateSequenceClause] for fluent API calls.
   public CreateSequenceClause maxValue(long max) {
 
     assert (this.maxValue == null);
@@ -126,19 +104,15 @@ public class CreateSequenceClause extends AbstractDbClause implements DbStartCla
     return this;
   }
 
-  /**
-   * @return the {@link #maxValue(long) maximum value} of the sequence or {@code null} if undefined (NOMAXVALUE).
-   */
+  /// @return the [maximum value][#maxValue(long)] of the sequence or `null` if undefined (NOMAXVALUE).
   public Long getMaxValue() {
 
     return this.maxValue;
   }
 
-  /**
-   * Sets {@link #getCycle() cycle} to {@link Boolean#TRUE}.
-   *
-   * @return the {@link CreateSequenceClause} for fluent API calls.
-   */
+  /// Sets [cycle][#getCycle()] to [Boolean#TRUE].
+  ///
+  /// @return the [CreateSequenceClause] for fluent API calls.
   public CreateSequenceClause cycle() {
 
     assert (this.cycle == null);
@@ -146,11 +120,9 @@ public class CreateSequenceClause extends AbstractDbClause implements DbStartCla
     return this;
   }
 
-  /**
-   * Sets {@link #getCycle() cycle} to {@link Boolean#FALSE}.
-   *
-   * @return the {@link CreateSequenceClause} for fluent API calls.
-   */
+  /// Sets [cycle][#getCycle()] to [Boolean#FALSE].
+  ///
+  /// @return the [CreateSequenceClause] for fluent API calls.
   public CreateSequenceClause nocycle() {
 
     assert (this.cycle == null);
@@ -158,10 +130,7 @@ public class CreateSequenceClause extends AbstractDbClause implements DbStartCla
     return this;
   }
 
-  /**
-   * @return {@link Boolean#TRUE} for {@link #cycle()}, {@link Boolean#FALSE} for {@link #nocycle()} and {@code null} if
-   *         undefined.
-   */
+  /// @return a [Boolean#TRUE] for [#cycle()], [Boolean#FALSE] for [#nocycle()] and `null` if undefined.
   public Boolean getCycle() {
 
     return this.cycle;

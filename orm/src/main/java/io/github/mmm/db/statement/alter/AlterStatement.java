@@ -8,12 +8,10 @@ import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.db.statement.DbStatementType;
 import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
 
-/**
- * {@link DbStatement} to alter an object (table).
- *
- * @param <E> type of the {@link AbstractEntityClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// [DbStatement] to alter an object (table).
+///
+/// @param <E> type of the [entity][AbstractEntityClause#getEntity()].
+/// @since 1.0.0
 public abstract class AlterStatement<E> extends AbstractDbStatement<E> {
 
   @Override

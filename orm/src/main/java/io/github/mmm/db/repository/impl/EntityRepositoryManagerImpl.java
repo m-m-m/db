@@ -11,21 +11,17 @@ import io.github.mmm.db.repository.EntityRepository;
 import io.github.mmm.db.repository.EntityRepositoryManager;
 import io.github.mmm.db.repository.spi.EntityRepositoryFactory;
 
-/**
- * Implementation of {@link EntityRepositoryManager}.
- *
- * @since 1.0.0
- */
+/// Implementation of [EntityRepositoryManager].
+///
+/// @since 1.0.0
 public class EntityRepositoryManagerImpl extends AbstractEntityRepositoryManager {
 
-  /** The singleton instance. */
+  /// The singleton instance.
   public static final EntityRepositoryManagerImpl INSTANCE = new EntityRepositoryManagerImpl();
 
   private final List<EntityRepositoryFactory<?>> factories;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public EntityRepositoryManagerImpl() {
 

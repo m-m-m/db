@@ -10,40 +10,26 @@ import io.github.mmm.property.number.integers.IntegerProperty;
 import io.github.mmm.property.string.StringProperty;
 import io.github.mmm.property.time.DurationInSecondsProperty;
 
-/**
- * {@link EntityBean} for a musical song.
- */
+/// [EntityBean] for a musical song.
 public interface Song extends EntityBean {
 
-  /**
-   * @return title of the song.
-   */
+  /// @return title of the song.
   @Mandatory
   StringProperty Title();
 
-  /**
-   * @return the genre of the song (e.g. "pop" or "rock").
-   */
+  /// @return the genre of the song (e.g. "pop" or "rock").
   StringProperty Genre();
 
-  /**
-   * @return the track number of the song on the album.
-   */
+  /// @return the track number of the song on the album.
   IntegerProperty TrackNo();
 
-  /**
-   * @return the duration in seconds.
-   */
+  /// @return the duration in seconds.
   DurationInSecondsProperty Duration();
 
-  /**
-   * @return the composer of the song.
-   */
+  /// @return the composer of the song.
   LinkProperty<Person> Composer();
 
-  /**
-   * @return a new instance of {@link Song}.
-   */
+  /// @return a new instance of [Song].
   static Song of() {
 
     return BeanFactory.get().create(Song.class);

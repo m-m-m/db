@@ -2,7 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.schema.orm;
 
-/// {@link Enum} with the available options of the {@link DbSchemaChangeLog} {@link DbSchemaChangeLog#Status() status}.
+/// [Enum] with the available options of the [DbSchemaChangeLog] [status][DbSchemaChangeLog#Status()].
 public enum DbSchemaChangeLogStatus {
 
   /// The script was successfully applied.

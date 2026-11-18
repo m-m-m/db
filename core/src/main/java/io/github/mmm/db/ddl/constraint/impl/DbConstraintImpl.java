@@ -16,47 +16,39 @@ import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.db.name.DbObject;
 import io.github.mmm.db.name.DbQualifiedName;
 
-/**
- * Implementation of {@link DbConstraint}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbConstraint].
+///
+/// @since 1.0.0
 public abstract class DbConstraintImpl extends AbstractDbObject implements DbConstraint {
 
-  /** @see #getSourceColumns() */
+  /// @see #getSourceColumns()
   protected final List<DbColumnReference> sourceColumns;
 
-  /** @see #getSourceTable() */
+  /// @see #getSourceTable()
   protected final DbTableReference<?> sourceTable;
 
-  /** @see #getState() */
+  /// @see #getState()
   protected final DbConstraintState state;
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param state the {@link #getState state}.
-   */
-  public DbConstraintImpl(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
-      DbConstraintState state) {
+  /// The constructor.
+  ///
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param state the [state][#getState].
+  public DbConstraintImpl(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns, DbConstraintState state) {
 
     // constraint names are strictly tied to their parent table and can never be qualified
     this(DbQualifiedName.ofName(name), sourceTable, sourceColumns, state);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param state the {@link #getState state}.
-   */
-  public DbConstraintImpl(DbQualifiedName name, DbTableReference<?> sourceTable,
-      List<DbColumnReference> sourceColumns, DbConstraintState state) {
+  /// The constructor.
+  ///
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param state the [state][#getState].
+  public DbConstraintImpl(DbQualifiedName name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns, DbConstraintState state) {
 
     super(name);
     Objects.requireNonNull(state);
@@ -70,9 +62,7 @@ public abstract class DbConstraintImpl extends AbstractDbObject implements DbCon
     this.sourceColumns = sourceColumns;
   }
 
-  /**
-   * @return the {@link DbTableReference} to the source table this constraint is defined on.
-   */
+  /// @return the [DbTableReference] to the source table this constraint is defined on.
   @Override
   public DbTableReference<?> getSourceTable() {
 
@@ -85,41 +75,31 @@ public abstract class DbConstraintImpl extends AbstractDbObject implements DbCon
     return this.sourceColumns;
   }
 
-  /**
-   * @return the {@link DbTableReference} to the target table the {@link #getTargetColumns() target columns} are
-   *         pointing to. Typically the same as {@link #getSourceTable()} but will differ e.g. for
-   *         {@link DbForeignKeyConstraint}.
-   */
+  /// @return the [DbTableReference] to the target table the [target columns][#getTargetColumns()] are pointing to. Typically the same as
+  ///         [#getSourceTable()] but will differ e.g. for [DbForeignKeyConstraint].
   @Override
   public DbTableReference<?> getTargetTable() {
 
     return this.sourceTable;
   }
 
-  /**
-   * @return the {@link List} of {@link DbColumnReference}s to the target columns in the {@link #getTargetTable() target
-   *         table}. Typically the same as {@link #getSourceColumns()} but will differ e.g. for
-   *         {@link DbForeignKeyConstraint}.
-   */
+  /// @return the [List] of [DbColumnReference]s to the target columns in the [target table][#getTargetTable()]. Typically the same as [#getSourceColumns()] but
+  ///         will differ e.g. for [DbForeignKeyConstraint].
   @Override
   public List<DbColumnReference> getTargetColumns() {
 
     return this.sourceColumns;
   }
 
-  /**
-   * @return the {@link DbConstraintState} configuring e.g. if deferrable.
-   */
+  /// @return the [DbConstraintState] configuring e.g. if deferrable.
   @Override
   public DbConstraintState getState() {
 
     return this.state;
   }
 
-  /**
-   * @param newState the new {@link #getState() state}.
-   * @return a copy of this {@link DbConstraintImpl} with the given {@link #getState() state}.
-   */
+  /// @param newState the new [state][#getState()].
+  /// @return a copy of this [DbConstraintImpl] with the given [state][#getState()].
   @Override
   public abstract DbConstraintImpl withState(DbConstraintState newState);
 

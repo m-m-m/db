@@ -13,37 +13,31 @@ import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.entity.id.Id;
 import io.github.mmm.property.ReadableProperty;
 
-/**
- * Simple in-memory unique index for {@link MemoryRepository}. Will store {@link EntityBean}s using a unique key (e.g. a
- * "title" or "name" column if unique). Will ignore {@code null} values as keys.
- *
- * @param <K> type of the index key (e.g. {@link String}).
- * @param <E> type of the {@link EntityBean}.
- */
+/// Simple in-memory unique index for [MemoryRepository]. Will store [EntityBean]s using a unique key (e.g. a
+/// "title" or "name" column if unique). Will ignore `null` values as keys.
+///
+/// @param <K> type of the index key (e.g. [String]).
+/// @param <E> type of the [EntityBean].
 public class MemoryUniqueIndex<K, E extends EntityBean> extends MemoryIndex<K, E> {
 
   private final Map<K, Id<E>> map;
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() name} of this index.
-   * @param repository the owning {@link MemoryRepository}.
-   * @param properties the {@link ReadableProperty properties} to index also known as {@link #getColumns() columns}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [name][#getName()] of this index.
+  /// @param repository the owning [MemoryRepository].
+  /// @param properties the [properties][ReadableProperty] to index also known as [columns][#getColumns()].
   public MemoryUniqueIndex(DbQualifiedName name, MemoryRepository<E> repository, ReadableProperty<?>... properties) {
 
     this(name, repository, Function.identity(), properties);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() name} of this index.
-   * @param repository the owning {@link MemoryRepository}.
-   * @param normalizer the {@link #getNormalizer() normalizer}.
-   * @param properties the {@link ReadableProperty properties} to index also known as {@link #getColumns() columns}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [name][#getName()] of this index.
+  /// @param repository the owning [MemoryRepository].
+  /// @param normalizer the [normalizer][#getNormalizer()].
+  /// @param properties the [properties][ReadableProperty] to index also known as [columns][#getColumns()].
   public MemoryUniqueIndex(DbQualifiedName name, MemoryRepository<E> repository, Function<K, K> normalizer,
       ReadableProperty<?>... properties) {
 
@@ -77,10 +71,8 @@ public class MemoryUniqueIndex<K, E extends EntityBean> extends MemoryIndex<K, E
     }
   }
 
-  /**
-   * @param key the key of the {@link EntityBean} to find.
-   * @return the requested {@link EntityBean} or {@code null} if not indexed.
-   */
+  /// @param key the key of the [EntityBean] to find.
+  /// @return the requested [EntityBean] or `null` if not indexed.
   public E find(K key) {
 
     if (key == null) {

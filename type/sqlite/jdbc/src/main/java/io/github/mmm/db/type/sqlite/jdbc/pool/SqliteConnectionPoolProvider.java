@@ -9,11 +9,9 @@ import org.sqlite.SQLiteDataSource;
 import io.github.mmm.db.pool.spi.JdbcConnectionPoolProvider;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Implementation of {@link JdbcConnectionPoolProvider} for SQLite.
- *
- * @since 1.0.0
- */
+/// Implementation of [JdbcConnectionPoolProvider] for SQLite.
+///
+/// @since 1.0.0
 public class SqliteConnectionPoolProvider extends JdbcConnectionPoolProvider {
 
   @Override

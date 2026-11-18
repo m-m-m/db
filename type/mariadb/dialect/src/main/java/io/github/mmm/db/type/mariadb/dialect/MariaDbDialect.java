@@ -7,24 +7,18 @@ import io.github.mmm.db.dialect.DbDialect;
 import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.orm.Orm;
 
-/**
- * Implementation of {@link DbDialect} for MariaDB.
- */
+/// Implementation of [DbDialect] for MariaDB.
 public final class MariaDbDialect extends AbstractDbDialect<MariaDbDialect> {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public MariaDbDialect() {
 
     super(new MariaDbTypeMapping());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param orm the {@link Orm}.
-   */
+  /// The constructor.
+  ///
+  /// @param orm the [Orm].
   protected MariaDbDialect(Orm orm) {
 
     super(orm);

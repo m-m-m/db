@@ -8,11 +8,9 @@ import io.github.mmm.binary.BinaryStream;
 import io.github.mmm.binary.BlobAsBinaryStream;
 import io.github.mmm.binary.BlobFromBinaryStream;
 
-/**
- * {@link DbType} with {@link BinaryStream} as {@link #getSourceType() Java source type}.
- *
- * @since 1.0.0
- */
+/// [DbType] with [BinaryStream] as [Java source type][#getSourceType()].
+///
+/// @since 1.0.0
 @SuppressWarnings("exports")
 public final class DbTypeBinaryStream extends DbType2Blob<BinaryStream, DbTypeBinaryStream> {
 

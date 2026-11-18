@@ -12,11 +12,9 @@ import oracle.jdbc.pool.OracleDataSource;
 import oracle.ucp.jdbc.PoolDataSource;
 import oracle.ucp.jdbc.PoolDataSourceFactory;
 
-/**
- * Implementation of {@link JdbcConnectionPoolProvider} for Oracle UCP.
- *
- * @since 1.0.0
- */
+/// Implementation of [JdbcConnectionPoolProvider] for Oracle UCP.
+///
+/// @since 1.0.0
 public class OracleConnectionPoolProvider extends JdbcConnectionPoolProvider {
 
   @Override

@@ -8,12 +8,10 @@ import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.db.statement.DbStatementTest;
 import io.github.mmm.db.statement.Song;
 
-/**
- * Test of {@link CreateIndexClause} and {@link CreateIndexStatement}.
- */
+/// Test of [CreateIndexClause] and [CreateIndexStatement].
 class CreateIndexTest extends DbStatementTest {
 
-  /** Test of {@link CreateIndexClause} on a single column. */
+  /// Test of [CreateIndexClause] on a single column.
   @Test
   void testSingleColumn() {
 
@@ -26,7 +24,7 @@ class CreateIndexTest extends DbStatementTest {
     check(createIndexStatement, "CREATE INDEX IDX_GENRE ON Song(Genre)", true);
   }
 
-  /** Test of {@link CreateIndexClause} on multiple columns. */
+  /// Test of [CreateIndexClause] on multiple columns.
   @Test
   void testMultipleColumnsWithAlias() {
 

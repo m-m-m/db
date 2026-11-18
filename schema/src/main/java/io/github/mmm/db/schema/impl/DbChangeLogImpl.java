@@ -8,9 +8,7 @@ import io.github.mmm.db.schema.DbChangeLog;
 import io.github.mmm.db.schema.DbSchemaManager;
 import io.github.mmm.db.source.DbSource;
 
-/**
- * {@link DbChangeLogNodeParent} for the root of the change-log.
- */
+/// [DbChangeLogNodeParent] for the root of the change-log.
 public class DbChangeLogImpl extends DbChangeLogNodeParent<DbSource, DbChangeLogSourceImpl> implements DbChangeLog {
 
   DbChangeLogImpl() {

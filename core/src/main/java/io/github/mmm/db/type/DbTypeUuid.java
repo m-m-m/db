@@ -4,9 +4,7 @@ package io.github.mmm.db.type;
 
 import java.util.UUID;
 
-/**
- * {@link DbType} for a regular {@link UUID} if directly supported by DB.
- */
+/// [DbType] for a regular [UUID] if directly supported by DB.
 public final class DbTypeUuid extends DbType2Uuid<UUID, DbTypeUuid> {
 
   static final DbTypeUuid INSTANCE = new DbTypeUuid(null, null, null, null, null, true, DbTypeRegistration.TYPE_NAME);

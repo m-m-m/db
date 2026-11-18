@@ -8,24 +8,16 @@ import io.github.mmm.entity.link.Link;
 import io.github.mmm.property.container.list.ListProperty;
 import io.github.mmm.property.string.StringProperty;
 
-/**
- * {@link EntityBean} for a list of {@link TaskItem}s used for testing.
- */
+/// [EntityBean] for a list of [TaskItem]s used for testing.
 public interface TaskList extends EntityBean {
 
-  /**
-   * @return full name of the person including first and last name.
-   */
+  /// @return full name of the person including first and last name.
   StringProperty Name();
 
-  /**
-   * @return the list of {@link TaskItem}s owned by this task-list.
-   */
+  /// @return the list of [TaskItem]s owned by this task-list.
   ListProperty<Link<TaskItem>> Items();
 
-  /**
-   * @return a new instance of {@link TaskList}.
-   */
+  /// @return a new instance of [TaskList].
   static TaskList of() {
 
     return BeanFactory.get().create(TaskList.class);

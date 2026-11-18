@@ -5,25 +5,21 @@ package io.github.mmm.db.statement.select;
 import io.github.mmm.db.statement.DbClause;
 import io.github.mmm.db.statement.PropertyClause;
 
-/**
- * A {@link GroupByClause}-{@link DbClause} of an SQL {@link SelectStatement}.
- *
- * @param <R> type of the result of the selection.
- * @since 1.0.0
- */
+/// A [GroupByClause]-[DbClause] of an SQL [SelectStatement].
+///
+/// @param <R> type of the result of the selection.
+/// @since 1.0.0
 public class GroupByClause<R> extends PropertyClause<R, GroupByClause<R>> implements ClauseWithHaving<R>, ClauseWithOrderBy<R> {
 
-  /** Name of {@link GroupByClause} for marshaling. */
+  /// Name of [GroupByClause] for marshaling.
   public static final String NAME_GROUP_BY = "GROUP BY";
 
-  /** @see #get() */
+  /// @see #get()
   private final SelectStatement<R> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param statement the owning {@link SelectStatement}.
-   */
+  /// The constructor.
+  ///
+  /// @param statement the owning [SelectStatement].
   public GroupByClause(SelectStatement<R> statement) {
 
     super();

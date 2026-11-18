@@ -5,30 +5,24 @@ package io.github.mmm.db.type.oracle.dialect;
 import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.param.CriteriaParametersFactory;
 
-/**
- * {@link DbDialectStatementFormatter} for Oracle database.
- *
- * @since 1.0.0
- */
+/// [DbDialectStatementFormatter] for Oracle database.
+///
+/// @since 1.0.0
 public class OracleFormatter extends DbDialectStatementFormatter {
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link OracleDialect}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [OracleDialect].
   public OracleFormatter(OracleDialect dialect) {
 
     super(dialect);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link OracleDialect}.
-   * @param parametersFactory the {@link CriteriaParametersFactory}.
-   * @param indentation the {@link #getIndentation() indentation}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [OracleDialect].
+  /// @param parametersFactory the [CriteriaParametersFactory].
+  /// @param indentation the [indentation][#getIndentation()].
   public OracleFormatter(OracleDialect dialect, CriteriaParametersFactory parametersFactory, String indentation) {
 
     super(dialect, parametersFactory, indentation);

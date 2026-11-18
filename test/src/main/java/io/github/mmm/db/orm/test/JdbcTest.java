@@ -12,13 +12,11 @@ import io.github.mmm.db.tx.DbTransactionExecutor;
 import io.github.mmm.entity.id.Id;
 import io.github.mmm.entity.link.Link;
 
-/**
- * Abstract test for JDBC database support. Database specific modules extend this class to test that basic features of
- * the database are working properly.
- */
+/// Abstract test for JDBC database support. Database specific modules extend this class to test that basic features of
+/// the database are working properly.
 public abstract class JdbcTest extends Assertions {
 
-  /** Test that H2 integration works. */
+  /// Test that H2 integration works.
   @Test
   void testInsertAndUpdatePerson() {
 
@@ -59,7 +57,7 @@ public abstract class JdbcTest extends Assertions {
     return tx;
   }
 
-  /** Test that entity with relation can be persisted (inserted). */
+  /// Test that entity with relation can be persisted (inserted).
   @Test
   void testInsertEntityWithRelation() {
 

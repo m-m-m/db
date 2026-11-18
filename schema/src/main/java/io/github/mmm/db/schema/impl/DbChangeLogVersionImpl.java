@@ -5,9 +5,7 @@ package io.github.mmm.db.schema.impl;
 import io.github.mmm.base.version.VersionNumber;
 import io.github.mmm.db.schema.DbChangeLogVersion;
 
-/**
- * {@link DbChangeLogScriptsImpl} for a specific {@link #getVersion() release version}.
- */
+/// [DbChangeLogScriptsImpl] for a specific [release version][#getVersion()].
 public class DbChangeLogVersionImpl extends DbChangeLogScriptsImpl implements DbChangeLogVersion {
 
   private final VersionNumber version;
@@ -18,9 +16,7 @@ public class DbChangeLogVersionImpl extends DbChangeLogScriptsImpl implements Db
     this.version = version;
   }
 
-  /**
-   * @return version
-   */
+  /// @return version
   public VersionNumber getVersion() {
 
     return this.version;

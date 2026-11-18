@@ -8,9 +8,7 @@ import java.sql.SQLException;
 
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * {@link DbType} for a regular {@link Array}.
- */
+/// [DbType] for a regular [Array].
 @SuppressWarnings("exports")
 public final class DbTypeLongArray extends DbType2Array<Long[], DbTypeLongArray> {
 

@@ -5,23 +5,19 @@ package io.github.mmm.db.statement.select;
 import io.github.mmm.db.statement.DbClause;
 import io.github.mmm.db.statement.WhereClause;
 
-/**
- * A {@link WhereClause WHERE}-{@link DbClause clause} of an {@link SelectStatement}.
- *
- * @param <R> type of the result of the selection.
- * @since 1.0.0
- */
+/// A [WHERE][WhereClause]-[clause][DbClause] of an [SelectStatement].
+///
+/// @param <R> type of the result of the selection.
+/// @since 1.0.0
 public class SelectWhere<R> extends WhereClause<R, SelectWhere<R>>
     implements ClauseWithGroupBy<R>, ClauseWithOrderBy<R> {
 
-  /** @see #get() */
+  /// @see #get()
   private final SelectStatement<R> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param statement the owning {@link SelectStatement}.
-   */
+  /// The constructor.
+  ///
+  /// @param statement the owning [SelectStatement].
   public SelectWhere(SelectStatement<R> statement) {
 
     super();

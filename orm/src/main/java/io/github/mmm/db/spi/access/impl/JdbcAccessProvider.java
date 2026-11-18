@@ -6,11 +6,9 @@ import io.github.mmm.db.source.DbSourceConfig;
 import io.github.mmm.db.spi.access.DbAccess;
 import io.github.mmm.db.spi.access.DbAccessProvider;
 
-/**
- * Implementation of {@link DbAccessProvider} for JDBC.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbAccessProvider] for JDBC.
+///
+/// @since 1.0.0
 public class JdbcAccessProvider implements DbAccessProvider {
 
   @Override

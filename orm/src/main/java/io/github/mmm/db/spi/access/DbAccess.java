@@ -6,17 +6,13 @@ import io.github.mmm.db.source.DbSourceConfig;
 import io.github.mmm.db.spi.access.impl.DbAccessProviderAdapter;
 import io.github.mmm.db.tx.DbTransactionExecutor;
 
-/**
- * Interface providing generic database access with support for all kind of
- * {@link io.github.mmm.db.statement.DbStatement statements}.
- */
+/// Interface providing generic database access with support for all kind of
+/// [statements][io.github.mmm.db.statement.DbStatement].
 public interface DbAccess extends DbCreateAccess, DbDeleteAccess, DbInsertAccess, DbMergeAccess, DbSelectAccess,
     DbUpdateAccess, DbUpsertAccess {
 
-  /**
-   * @param config the {@link DbSourceConfig}.
-   * @return the corresponding {@link DbTransactionExecutor}.
-   */
+  /// @param config the [DbSourceConfig].
+  /// @return the corresponding [DbTransactionExecutor].
   static DbAccess get(DbSourceConfig config) {
 
     return DbAccessProviderAdapter.INSTANCE.create(config);

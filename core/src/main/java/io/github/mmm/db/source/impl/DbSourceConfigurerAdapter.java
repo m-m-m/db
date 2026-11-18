@@ -10,23 +10,19 @@ import java.util.ServiceLoader;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.spi.DbSourceConfigurer;
 
-/**
- * Adapter implementation of {@link DbSourceConfigurer} that holds the {@link DbSourceConfigurer}s.
- *
- * @since 1.0.0
- */
+/// Adapter implementation of [DbSourceConfigurer] that holds the [DbSourceConfigurer]s.
+///
+/// @since 1.0.0
 public final class DbSourceConfigurerAdapter implements DbSourceConfigurer {
 
-  /** The singleton instance. */
+  /// The singleton instance.
   public static final DbSourceConfigurerAdapter INSTANCE = new DbSourceConfigurerAdapter();
 
   private final DbSourceConfigurerFallback fallback;
 
   private final List<DbSourceConfigurer> configurers;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public DbSourceConfigurerAdapter() {
 
     super();

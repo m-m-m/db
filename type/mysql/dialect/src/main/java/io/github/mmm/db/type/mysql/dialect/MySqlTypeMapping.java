@@ -4,11 +4,9 @@ package io.github.mmm.db.type.mysql.dialect;
 
 import io.github.mmm.db.typemapping.DbTypeMapping;
 
-/**
- * {@link DbTypeMapping} for MySQL database.
- *
- * @since 1.0.0
- */
+/// [DbTypeMapping] for MySQL database.
+///
+/// @since 1.0.0
 public class MySqlTypeMapping extends DbTypeMapping {
 
   @Override

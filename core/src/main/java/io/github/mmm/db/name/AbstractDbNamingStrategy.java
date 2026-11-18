@@ -19,11 +19,9 @@ import io.github.mmm.value.ReadablePath;
 import io.github.mmm.value.ReadablePath.PathBuilder;
 import io.github.mmm.value.converter.TypeMapper;
 
-/**
- * Abstract base implementation of {@link DbNamingStrategy}.
- *
- * @since 1.0.0
- */
+/// Abstract base implementation of [DbNamingStrategy].
+///
+/// @since 1.0.0
 public abstract class AbstractDbNamingStrategy implements DbNamingStrategy {
 
   @Override
@@ -39,11 +37,9 @@ public abstract class AbstractDbNamingStrategy implements DbNamingStrategy {
     return getName(name, dbObject);
   }
 
-  /**
-   * @param dbObject the {@link DbObject} to generate the name of.
-   * @return the {@link DbQualifiedName} auto-generated for the given {@link DbObject}. It is not yet
-   *         {@link #getName(DbQualifiedName, DbObject) formatted} according to this naming strategy.
-   */
+  /// @param dbObject the [DbObject] to generate the name of.
+  /// @return the [DbQualifiedName] auto-generated for the given [DbObject]. It is not yet
+  ///         [formatted][#getName(DbQualifiedName, DbObject)] according to this naming strategy.
   protected DbQualifiedName generateName(DbObject dbObject) {
 
     if (dbObject instanceof DbConstraint constraint) {
@@ -58,10 +54,8 @@ public abstract class AbstractDbNamingStrategy implements DbNamingStrategy {
     return null;
   }
 
-  /**
-   * @param column the {@link DbColumnReference}.
-   * @return the {@link #generateName(DbObject) generated} {@link DbQualifiedName}.
-   */
+  /// @param column the [DbColumnReference].
+  /// @return the [generated][#generateName(DbObject)] [DbQualifiedName].
   protected DbQualifiedName generateColumnName(DbColumnReference column) {
 
     ReadableProperty<?> property = column.getProperty();
@@ -71,10 +65,8 @@ public abstract class AbstractDbNamingStrategy implements DbNamingStrategy {
     return getColumnName(property, column, true);
   }
 
-  /**
-   * @param table the {@link DbTableReference}.
-   * @return the {@link #generateName(DbObject) generated} {@link DbQualifiedName}.
-   */
+  /// @param table the [DbTableReference].
+  /// @return the [generated][#generateName(DbObject)] [DbQualifiedName].
   protected DbQualifiedName generateTableName(DbTableReference<?> table) {
 
     EntityBean entity = table.getEntity();
@@ -85,12 +77,10 @@ public abstract class AbstractDbNamingStrategy implements DbNamingStrategy {
     return nameInfo.getName();
   }
 
-  /**
-   * @param property the {@link ReadableProperty} to derive the column name from.
-   * @param raw {@code true} to get the raw name, {@code false} otherwise (get it
-   *        {@link #getName(DbQualifiedName, DbObject) formatted} according to this naming strategy).
-   * @return the column name for the given {@link ReadableProperty property}.
-   */
+  /// @param property the [ReadableProperty] to derive the column name from.
+  /// @param raw `true` to get the raw name, `false` otherwise (get it
+  ///        [formatted][#getName(DbQualifiedName, DbObject)] according to this naming strategy).
+  /// @return the column name for the given [property][ReadableProperty].
   protected DbQualifiedName getColumnName(ReadableProperty<?> property, boolean raw) {
 
     DbColumnReference column = DbEntityNameMapper.get().getColumn(property);
@@ -116,14 +106,12 @@ public abstract class AbstractDbNamingStrategy implements DbNamingStrategy {
     return result;
   }
 
-  /**
-   * @param property the {@link PropertyPath} to derive the column name from.
-   * @param column the {@link DbColumnReference} {@link DbColumnReference#getProperty() owning}the given
-   *        {@link PropertyPath}. May be {@code null} if not available.
-   * @param raw {@code true} to get the raw name, {@code false} otherwise (get it
-   *        {@link #getName(DbQualifiedName, DbObject) formatted} according to this naming strategy).
-   * @return the column name for the given {@link PropertyPath property}.
-   */
+  /// @param property the [PropertyPath] to derive the column name from.
+  /// @param column the [DbColumnReference] [owning][DbColumnReference#getProperty()]the given
+  ///        [PropertyPath]. May be `null` if not available.
+  /// @param raw `true` to get the raw name, `false` otherwise (get it
+  ///        [formatted][#getName(DbQualifiedName, DbObject)] according to this naming strategy).
+  /// @return the column name for the given [property][PropertyPath].
   public DbQualifiedName getColumnName(PropertyPath<?> property, DbColumnReference column, boolean raw) {
 
     if (property instanceof ReadableProperty<?> rp) {
@@ -138,23 +126,19 @@ public abstract class AbstractDbNamingStrategy implements DbNamingStrategy {
     }
   }
 
-  /**
-   * @param property the {@link PropertyPath} to derive the column name from.
-   * @param raw {@code true} to get the raw name, {@code false} otherwise (get it
-   *        {@link #getName(DbQualifiedName, DbObject) formatted} according to this naming strategy).
-   * @param typeMapper the explicit {@link TypeMapper}.
-   * @return the column name for the given {@link ReadableProperty property}.
-   */
+  /// @param property the [PropertyPath] to derive the column name from.
+  /// @param raw `true` to get the raw name, `false` otherwise (get it
+  ///        [formatted][#getName(DbQualifiedName, DbObject)] according to this naming strategy).
+  /// @param typeMapper the explicit [TypeMapper].
+  /// @return the column name for the given [property][ReadableProperty].
   public DbQualifiedName getColumnName(PropertyPath<?> property, boolean raw, TypeMapper<?, ?> typeMapper) {
 
     return getColumnName(getColumnName(property, null, raw), typeMapper);
   }
 
-  /**
-   * @param rawColumnName the raw column name to map.
-   * @param typeMapper the explicit {@link TypeMapper}.
-   * @return the column name for the given {@link ReadableProperty property}.
-   */
+  /// @param rawColumnName the raw column name to map.
+  /// @param typeMapper the explicit [TypeMapper].
+  /// @return the column name for the given [property][ReadableProperty].
   protected DbQualifiedName getColumnName(DbQualifiedName rawColumnName, TypeMapper<?, ?> typeMapper) {
 
     if (typeMapper == null) {
@@ -169,10 +153,8 @@ public abstract class AbstractDbNamingStrategy implements DbNamingStrategy {
     return rawColumnName.withName(columnName);
   }
 
-  /**
-   * @param constraint the {@link DbConstraint}.
-   * @return the auto-generated {@link DbConstraint#getName() constraint name}.
-   */
+  /// @param constraint the [DbConstraint].
+  /// @return the auto-generated [constraint name][DbConstraint#getName()].
   protected DbQualifiedName generateConstraintName(DbConstraint constraint) {
 
     StringBuilder sb = new StringBuilder();
@@ -193,10 +175,8 @@ public abstract class AbstractDbNamingStrategy implements DbNamingStrategy {
     return DbQualifiedName.ofName(sb.toString());
   }
 
-  /**
-   * @param index the {@link DbIndex}.
-   * @return the auto-generated index name.
-   */
+  /// @param index the [DbIndex].
+  /// @return the auto-generated index name.
   protected DbQualifiedName generateIndexName(DbIndex index) {
 
     List<DbColumnReferenceWithSortOrder> columns = index.getColumns();
@@ -223,10 +203,8 @@ public abstract class AbstractDbNamingStrategy implements DbNamingStrategy {
     return DbQualifiedName.ofName(clipName(indexName));
   }
 
-  /**
-   * @param indexKind the {@link DbIndexKind}.
-   * @return the static prefix for an {@link #generateIndexName(DbIndex) index name}.
-   */
+  /// @param indexKind the [DbIndexKind].
+  /// @return the static prefix for an [index name][#generateIndexName(DbIndex)].
   protected String getIndexNamePrefix(DbIndexKind indexKind) {
 
     if (indexKind.isUnique()) {
@@ -238,9 +216,7 @@ public abstract class AbstractDbNamingStrategy implements DbNamingStrategy {
     }
   }
 
-  /**
-   * @return the static infix for an {@link #generateIndexName(DbIndex) index name} used to separate the columns.
-   */
+  /// @return the static infix for an [index name][#generateIndexName(DbIndex)] used to separate the columns.
   protected String getIndexNameInfix() {
 
     return "_";

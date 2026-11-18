@@ -7,26 +7,20 @@ import io.github.mmm.db.dialect.DbDialect;
 import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.orm.Orm;
 
-/**
- * Implementation of {@link DbDialect} for <a href="https://docs.microsoft.com/en-us/sql/">MS SQL Server</a>.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbDialect] for <a href="https://docs.microsoft.com/en-us/sql/">MS SQL Server</a>.
+///
+/// @since 1.0.0
 public class SqlServerDialect extends AbstractDbDialect<SqlServerDialect> {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public SqlServerDialect() {
 
     super(new SqlServerTypeMapper());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param orm the {@link Orm}.
-   */
+  /// The constructor.
+  ///
+  /// @param orm the [Orm].
   protected SqlServerDialect(Orm orm) {
 
     super(orm);

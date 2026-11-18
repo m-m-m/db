@@ -4,22 +4,16 @@ package io.github.mmm.db.pool;
 
 import io.github.mmm.db.pool.impl.DbConnectionPoolProviderManagerImpl;
 
-/**
- * Internal interface to get access to the registered {@link DbConnectionPoolProvider}s.
- */
+/// Internal interface to get access to the registered [DbConnectionPoolProvider]s.
 public interface DbConnectionPoolProviderManager extends Iterable<DbConnectionPoolProvider<?>> {
 
-  /**
-   * @param <C> type of the database connection.
-   * @param id the {@link DbConnectionPoolProvider#getId() identifier} of the {@link DbConnectionPoolProvider}.
-   * @return the requested {@link DbConnectionPoolProvider}.
-   * @see io.github.mmm.db.source.DbSource#KEY_POOL_ID
-   */
+  /// @param <C> type of the database connection.
+  /// @param id the [identifier][DbConnectionPoolProvider#getId()] of the [DbConnectionPoolProvider].
+  /// @return the requested [DbConnectionPoolProvider].
+  /// @see io.github.mmm.db.source.DbSource#KEY_POOL_ID
   <C> DbConnectionPoolProvider<C> get(String id);
 
-  /**
-   * @return the instance of {@link DbConnectionPoolProviderManagerImpl}.
-   */
+  /// @return the instance of [DbConnectionPoolProviderManagerImpl].
   static DbConnectionPoolProviderManager get() {
 
     return DbConnectionPoolProviderManagerImpl.INSTANCE;

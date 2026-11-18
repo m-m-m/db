@@ -4,19 +4,15 @@ package io.github.mmm.db.statement;
 
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * A {@link WhereClause}-{@link DbClause} of an SQL {@link DbStartClause}.
- *
- * @param <E> type of the {@link EntityBean} to query.
- * @param <SELF> type of this class itself.
- * @since 1.0.0
- */
+/// A [WhereClause]-[DbClause] of an SQL [DbStartClause].
+///
+/// @param <E> type of the [EntityBean] to query.
+/// @param <SELF> type of this class itself.
+/// @since 1.0.0
 public abstract class WhereClause<E, SELF extends WhereClause<E, SELF>> extends PredicateClause<E, SELF>
     implements DbMainClause<E> {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public WhereClause() {
 
     super();

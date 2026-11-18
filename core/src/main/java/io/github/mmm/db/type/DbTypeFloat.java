@@ -2,9 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.type;
 
-/**
- * {@link DbType} for a regular {@link Float}.
- */
+/// [DbType] for a regular [Float].
 public final class DbTypeFloat extends DbType2Float<Float, DbTypeFloat> {
 
   static final DbTypeFloat INSTANCE = new DbTypeFloat(null, null, null, null, null, false, DbTypeRegistration.ALL);

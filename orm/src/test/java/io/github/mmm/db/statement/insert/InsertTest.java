@@ -7,12 +7,10 @@ import io.github.mmm.db.statement.Person;
 import io.github.mmm.entity.id.PkId;
 import io.github.mmm.entity.id.RevisionedIdVersion;
 
-/**
- * Test of {@link InsertClause} and {@link InsertStatement}.
- */
+/// Test of [InsertClause] and [InsertStatement].
 class InsertTest extends DbStatementTest {
 
-  /** Test {@link InsertClause} with simple literal values. */
+  /// Test [InsertClause] with simple literal values.
   @Test
   void testInsertValues() {
 
@@ -25,7 +23,7 @@ class InsertTest extends DbStatementTest {
     check(insertStatement, "INSERT INTO Person(Name, Single) VALUES ('John Doe', TRUE)", true);
   }
 
-  /** Test {@link InsertClause} with simple literal values. */
+  /// Test [InsertClause] with simple literal values.
   @Test
   void testInsertAllValues() {
 

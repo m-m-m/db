@@ -11,9 +11,7 @@ import io.github.mmm.db.pool.DbConnectionPool;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Implementation of {@link DbConnectionPool} for JDBC {@link Connection}s based on {@link DataSource}.
- */
+/// Implementation of [DbConnectionPool] for JDBC [Connection]s based on [DataSource].
 @SuppressWarnings("exports")
 public class JdbcConnectionPool extends AbstractDbConnectionPool<Connection> {
 
@@ -21,13 +19,11 @@ public class JdbcConnectionPool extends AbstractDbConnectionPool<Connection> {
 
   private final JdbcConnectionPoolProvider provider;
 
-  /**
-   * The constructor.
-   *
-   * @param config the {@link DbSource}.
-   * @param dataSource the {@link DataSource} pre-configured as connection pool.
-   * @param provider the {@link JdbcConnectionPoolProvider} who created this pool.
-   */
+  /// The constructor.
+  ///
+  /// @param config the [DbSource].
+  /// @param dataSource the [DataSource] pre-configured as connection pool.
+  /// @param provider the [JdbcConnectionPoolProvider] who created this pool.
   public JdbcConnectionPool(DbSourceConfig config, DataSource dataSource, JdbcConnectionPoolProvider provider) {
 
     super(config);

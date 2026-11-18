@@ -3,9 +3,7 @@ package io.github.mmm.db.result.impl;
 import io.github.mmm.db.result.DbResult;
 import io.github.mmm.db.result.DbResultValue;
 
-/**
- * Test of {@link DbResultPojo}.
- */
+/// Test of [DbResultPojo].
 class DbResultPojoTest extends AbstractDbResultTest {
 
   @Override

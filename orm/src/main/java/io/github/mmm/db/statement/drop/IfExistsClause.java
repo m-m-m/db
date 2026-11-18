@@ -2,10 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.statement.drop;
 
-/**
- * TODO joerg This type ...
- *
- */
+/// TODO joerg This type ...
 public class IfExistsClause {
 
 }

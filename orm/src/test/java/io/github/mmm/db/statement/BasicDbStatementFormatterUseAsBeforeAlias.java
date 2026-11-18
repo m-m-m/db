@@ -4,25 +4,19 @@ import io.github.mmm.db.dialect.AbstractDbDialect;
 import io.github.mmm.db.param.CriteriaParametersFactory;
 import io.github.mmm.property.criteria.CriteriaFormatterFactory;
 
-/**
- * {@link BasicDbStatementFormatter} {@link #isUseAsBeforeAlias() using AS before alias}.
- */
+/// [BasicDbStatementFormatter] [using AS before alias][#isUseAsBeforeAlias()].
 public class BasicDbStatementFormatterUseAsBeforeAlias extends BasicDbStatementFormatter {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public BasicDbStatementFormatterUseAsBeforeAlias() {
 
     super();
   }
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link AbstractDbDialect}.
-   * @param parametersFactory the {@link CriteriaFormatterFactory}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [AbstractDbDialect].
+  /// @param parametersFactory the [CriteriaFormatterFactory].
   public BasicDbStatementFormatterUseAsBeforeAlias(AbstractDbDialect<?> dialect,
       CriteriaParametersFactory parametersFactory) {
 

@@ -5,33 +5,25 @@ package io.github.mmm.db.statement;
 import io.github.mmm.db.dialect.DbContext;
 import io.github.mmm.db.impl.DbContextNone;
 
-/**
- * Interface of a formatter for {@link DbStatement}s.
- *
- * @see BasicDbStatementFormatter
- */
+/// Interface of a formatter for [DbStatement]s.
+///
+/// @see BasicDbStatementFormatter
 public interface DbStatementFormatter {
 
-  /**
-   * @param statement the {@link DbStatement} to format.
-   * @param context the {@link DbContext}.
-   * @return this {@link DbStatementFormatter} for fluent API calls.
-   */
+  /// @param statement the [DbStatement] to format.
+  /// @param context the [DbContext].
+  /// @return this [DbStatementFormatter] for fluent API calls.
   default DbNativeStatement formatStatement(DbStatement<?> statement) {
 
     return formatStatement(statement, DbContextNone.INSTANCE);
   }
 
-  /**
-   * @param statement the {@link DbStatement} to format.
-   * @param context the {@link DbContext}.
-   * @return this {@link DbStatementFormatter} for fluent API calls.
-   */
+  /// @param statement the [DbStatement] to format.
+  /// @param context the [DbContext].
+  /// @return this [DbStatementFormatter] for fluent API calls.
   DbNativeStatement formatStatement(DbStatement<?> statement, DbContext context);
 
-  /**
-   * @return the {@link #formatStatement(DbStatement, DbContext) formatted statement} as {@link String} (e.g. SQL).
-   */
+  /// @return the [formatted statement][#formatStatement(DbStatement, DbContext)] as [String] (e.g. SQL).
   @Override
   String toString();
 }

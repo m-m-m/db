@@ -6,18 +6,16 @@ import java.util.Objects;
 
 import io.github.mmm.base.lang.AbstractToString;
 
-/**
- * Implementation of {@link DbIndexKind} as immutable type.
- */
+/// Implementation of [DbIndexKind] as immutable type.
 public class DbIndexKindType extends AbstractToString implements DbIndexKind {
 
-  /** The default instance. */
+  /// The default instance.
   public static final DbIndexKindType DEFAULT = new DbIndexKindType(false, false, DbIndexType.NONE);
 
-  /** An instance with defaults but {@link #isUnique() unique}. */
+  /// An instance with defaults but [unique][#isUnique()].
   public static final DbIndexKindType DEFAULT_UNIQUE = new DbIndexKindType(true, false, DbIndexType.NONE);
 
-  /** An instance with defaults but {@link #isClustered() clustered}. */
+  /// An instance with defaults but [clustered][#isClustered()].
   public static final DbIndexKindType DEFAULT_CLUSTERED = new DbIndexKindType(false, true, DbIndexType.NONE);
 
   private final boolean unique;
@@ -26,13 +24,11 @@ public class DbIndexKindType extends AbstractToString implements DbIndexKind {
 
   private final DbIndexType type;
 
-  /**
-   * The constructor.
-   *
-   * @param unique the {@link #isUnique() unique} flag.
-   * @param clustered the {@link #isClustered() clustered} flag.
-   * @param type the {@link #getType() type}.
-   */
+  /// The constructor.
+  ///
+  /// @param unique the [unique][#isUnique()] flag.
+  /// @param clustered the [clustered][#isClustered()] flag.
+  /// @param type the [type][#getType()].
   public DbIndexKindType(boolean unique, boolean clustered, DbIndexType type) {
 
     super();

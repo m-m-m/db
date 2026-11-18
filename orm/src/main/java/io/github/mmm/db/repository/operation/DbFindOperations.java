@@ -6,26 +6,20 @@ import io.github.mmm.db.statement.NonUniqueResultException;
 import io.github.mmm.db.statement.select.SelectStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Extends {@link EntityFindOperations} with operations for {@link SelectStatement}s.
- *
- * @param <E> type of the managed {@link EntityBean}.
- * @since 1.0.0
- */
+/// Extends [EntityFindOperations] with operations for [SelectStatement]s.
+///
+/// @param <E> type of the managed [EntityBean].
+/// @since 1.0.0
 public interface DbFindOperations<E extends EntityBean> extends EntityFindOperations<E> {
 
-  /**
-   * @param statement the {@link SelectStatement} to query the requested entities.
-   * @return an {@link Iterable} with the matching {@link EntityBean entities}.
-   */
+  /// @param statement the [SelectStatement] to query the requested entities.
+  /// @return an [Iterable] with the matching [entities][EntityBean].
   Iterable<E> findByQuery(SelectStatement<E> statement);
 
-  /**
-   * @param statement the {@link SelectStatement} to query the requested entity. Should produce a single result or no
-   *        result.
-   * @return the matching {@link EntityBean entity} or {@code null} if not found.
-   * @throws NonUniqueResultException if the given {@code statement} produced more than one result.
-   */
+  /// @param statement the [SelectStatement] to query the requested entity. Should produce a single result or no
+  ///        result.
+  /// @return the matching [entity][EntityBean] or `null` if not found.
+  /// @throws NonUniqueResultException if the given `statement` produced more than one result.
   E findOneByQuery(SelectStatement<E> statement);
 
 }

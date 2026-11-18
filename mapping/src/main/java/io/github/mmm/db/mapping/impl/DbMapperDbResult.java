@@ -11,14 +11,12 @@ import io.github.mmm.db.result.impl.AbstractDbResult;
 import io.github.mmm.db.result.impl.DbResultObject;
 import io.github.mmm.db.result.impl.DbResultValueObject;
 
-/**
- * A node of the mapping tree for mapping from Java to database and vice versa.
- *
- * @since 1.0.0
- */
+/// A node of the mapping tree for mapping from Java to database and vice versa.
+///
+/// @since 1.0.0
 public final class DbMapperDbResult implements DbMapper<DbResult> {
 
-  /** The singleton instance. */
+  /// The singleton instance.
   public static final DbMapperDbResult INSTANCE = new DbMapperDbResult();
 
   @Override

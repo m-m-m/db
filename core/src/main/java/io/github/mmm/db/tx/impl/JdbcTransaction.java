@@ -8,9 +8,7 @@ import io.github.mmm.db.tx.DbTransaction;
 import io.github.mmm.db.tx.DbTransactionConfig;
 import io.github.mmm.db.tx.spi.AbstractDbTransaction;
 
-/**
- * Abstract base implementation of {@link DbTransaction} for JDBC.
- */
+/// Abstract base implementation of [DbTransaction] for JDBC.
 public abstract class JdbcTransaction extends AbstractDbTransaction {
 
   final Connection connection;
@@ -21,9 +19,7 @@ public abstract class JdbcTransaction extends AbstractDbTransaction {
     this.connection = connection;
   }
 
-  /**
-   * @return the raw JDBC {@link Connection}.
-   */
+  /// @return the raw JDBC [Connection].
   @Override
   @SuppressWarnings("unchecked")
   public Connection getConnection() {

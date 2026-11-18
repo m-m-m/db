@@ -8,23 +8,19 @@ import io.github.mmm.property.criteria.CriteriaExpression;
 import io.github.mmm.property.criteria.CriteriaParameters;
 import io.github.mmm.property.criteria.Literal;
 
-/**
- * {@link CriteriaParameters} using indexed parameters. It puts "{@code ?}" for each {@link Literal} into the output and
- * collects the parameters in order that can get accessed via {@link #iterator()} after the database statement has been
- * formatted and can be bound as parameters to the statement.
- *
- * @since 1.0.0
- */
+/// [CriteriaParameters] using indexed parameters. It puts "`?`" for each [Literal] into the output and
+/// collects the parameters in order that can get accessed via [#iterator()] after the database statement has been
+/// formatted and can be bound as parameters to the statement.
+///
+/// @since 1.0.0
 public class CriteriaParametersIndexed extends AbstractCriteriaParameters {
 
-  /** {@link CriteriaParametersFactory} for this implementation. */
+  /// [CriteriaParametersFactory] for this implementation.
   public static final CriteriaParametersFactory FACTORY = CriteriaParametersIndexed::new;
 
-  /**
-   * The constructor.
-   *
-   * @param typeMapping the {@link TypeMapping}.
-   */
+  /// The constructor.
+  ///
+  /// @param typeMapping the [TypeMapping].
   public CriteriaParametersIndexed(TypeMapping typeMapping) {
 
     super(typeMapping);

@@ -9,9 +9,7 @@ import io.github.mmm.db.schema.DbChangeLogSource;
 import io.github.mmm.db.schema.DbSchemaManager;
 import io.github.mmm.db.source.DbSource;
 
-/**
- * {@link DbChangeLogNodeParent} for a specific {@link DbSource}.
- */
+/// [DbChangeLogNodeParent] for a specific [DbSource].
 public class DbChangeLogSourceImpl extends DbChangeLogNodeParent<VersionNumber, DbChangeLogVersionImpl>
     implements DbChangeLogSource {
 
@@ -41,9 +39,7 @@ public class DbChangeLogSourceImpl extends DbChangeLogNodeParent<VersionNumber, 
     return this.keys.stream();
   }
 
-  /**
-   * @return the latest registered release {@link VersionNumber}.
-   */
+  /// @return the latest registered release [VersionNumber].
   @Override
   public VersionNumber getLastVersion() {
 
@@ -62,18 +58,14 @@ public class DbChangeLogSourceImpl extends DbChangeLogNodeParent<VersionNumber, 
     return new DbChangeLogVersionImpl(key);
   }
 
-  /**
-   * @return the {@link DbChangeLogScriptsImpl} to execute always before the regular scripts.
-   */
+  /// @return the [DbChangeLogScriptsImpl] to execute always before the regular scripts.
   @Override
   public DbChangeLogScriptsImpl getBeforeScripts() {
 
     return this.beforeScripts;
   }
 
-  /**
-   * @return the {@link DbChangeLogScriptsImpl} to execute always after the regular scripts.
-   */
+  /// @return the [DbChangeLogScriptsImpl] to execute always after the regular scripts.
   @Override
   public DbChangeLogScriptsImpl getAfterScripts() {
 

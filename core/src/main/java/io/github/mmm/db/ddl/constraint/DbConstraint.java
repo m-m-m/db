@@ -11,56 +11,36 @@ import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.db.name.DbObject;
 
-/**
- * Represents a database constraint on one or multiple columns.
- *
- * @since 1.0.0
- */
+/// Represents a database constraint on one or multiple columns.
+///
+/// @since 1.0.0
 public interface DbConstraint extends DbObject {
 
-  /**
-   * @return the name prefix (e.g. "FK_" for foreign key).
-   */
+  /// @return the name prefix (e.g. "FK_" for foreign key).
   String getNamePrefix();
 
-  /**
-   * @return the type of this {@link DbConstraint} (e.g. "CHECK" or "FOREIGN KEY").
-   */
+  /// @return the type of this [DbConstraint] (e.g. "CHECK" or "FOREIGN KEY").
   String getType();
 
-  /**
-   * @return the {@link DbTableReference} to the source table this constraint is defined on.
-   */
+  /// @return the [DbTableReference] to the source table this constraint is defined on.
   DbTableReference<?> getSourceTable();
 
-  /**
-   * @return the {@link List} of {@link DbColumnReference}s to the source columns this constraint is defined on.
-   */
+  /// @return the [List] of [DbColumnReference]s to the source columns this constraint is defined on.
   List<DbColumnReference> getSourceColumns();
 
-  /**
-   * @return the {@link DbTableReference} to the target table the {@link #getTargetColumns() target columns} are
-   *         pointing to. Typically the same as {@link #getSourceTable()} but will differ e.g. for
-   *         {@link DbForeignKeyConstraint}.
-   */
+  /// @return the [DbTableReference] to the target table the [target columns][#getTargetColumns()] are pointing to. Typically the same as
+  ///         [#getSourceTable()] but will differ e.g. for [DbForeignKeyConstraint].
   DbTableReference<?> getTargetTable();
 
-  /**
-   * @return the {@link List} of {@link DbColumnReference}s to the target columns in the {@link #getTargetTable() target
-   *         table}. Typically the same as {@link #getSourceColumns()} but will differ e.g. for
-   *         {@link DbForeignKeyConstraint}.
-   */
+  /// @return the [List] of [DbColumnReference]s to the target columns in the [target table][#getTargetTable()]. Typically the same as [#getSourceColumns()] but
+  ///         will differ e.g. for [DbForeignKeyConstraint].
   List<DbColumnReference> getTargetColumns();
 
-  /**
-   * @return the {@link DbConstraintState} configuring e.g. if deferrable.
-   */
+  /// @return the [DbConstraintState] configuring e.g. if deferrable.
   DbConstraintState getState();
 
-  /**
-   * @param newState the new {@link #getState() state}.
-   * @return a copy of this {@link DbConstraint} with the given {@link #getState() state}.
-   */
+  /// @param newState the new [state][#getState()].
+  /// @return a copy of this [DbConstraint] with the given [state][#getState()].
   DbConstraint withState(DbConstraintState newState);
 
   @Override

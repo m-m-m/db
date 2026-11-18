@@ -8,18 +8,14 @@ import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.ReadableProperty;
 
-/**
- * Contains information to map {@link EntityBean} name a database {@link DbTable table}.
- *
- * @since 1.0.0
- */
+/// Contains information to map [EntityBean] name a database [table][DbTable].
+///
+/// @since 1.0.0
 public interface DbEntityNameInfo extends DbTableReference<EntityBean> {
 
-  /**
-   * @param property the {@link ReadableProperty} to get the database name information for. Must be a property of the
-   *        {@link #getEntity() entity} of this {@link DbEntityNameInfo}.
-   * @return the {@link DbColumnReference} to map the column name.
-   */
+  /// @param property the [ReadableProperty] to get the database name information for. Must be a property of the
+  ///        [entity][#getEntity()] of this [DbEntityNameInfo].
+  /// @return the [DbColumnReference] to map the column name.
   DbColumnReference getColumnInfo(ReadableProperty<?> property);
 
 }

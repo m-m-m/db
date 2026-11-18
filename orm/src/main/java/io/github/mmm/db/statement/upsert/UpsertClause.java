@@ -6,27 +6,21 @@ import io.github.mmm.db.statement.AbstractDbClause;
 import io.github.mmm.db.statement.DbStartClause;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link DbStartClause} to insert or if already present update data in the database. Only supported by modern
- * databases.
- *
- * @since 1.0.0
- */
+/// [DbStartClause] to insert or if already present update data in the database. Only supported by modern
+/// databases.
+///
+/// @since 1.0.0
 public final class UpsertClause extends AbstractDbClause implements DbStartClause {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public UpsertClause() {
 
     super();
   }
 
-  /**
-   * @param <E> type of the {@link EntityBean}.
-   * @param entity the {@link EntityBean entity} to upsert into.
-   * @return the {@link UpsertInto} for fluent API calls.
-   */
+  /// @param <E> type of the [EntityBean].
+  /// @param entity the [entity][EntityBean] to upsert into.
+  /// @return the [UpsertInto] for fluent API calls.
   public <E extends EntityBean> UpsertInto<E> into(E entity) {
 
     return new UpsertInto<>(this, entity);

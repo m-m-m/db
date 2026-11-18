@@ -12,11 +12,9 @@ import io.github.mmm.db.statement.create.CreateSequenceClause;
 import io.github.mmm.db.statement.select.SelectSequenceNextValueClause;
 import io.github.mmm.db.statement.update.UpdateClause;
 
-/**
- * {@link DbDialectStatementFormatter} for SQLite Database.
- *
- * @since 1.0.0
- */
+/// [DbDialectStatementFormatter] for SQLite Database.
+///
+/// @since 1.0.0
 public class SqliteFormatter extends DbDialectStatementFormatter {
 
   private static final String TABLE_SEQUENCE = "SEQUENCE_TABLE";
@@ -27,23 +25,19 @@ public class SqliteFormatter extends DbDialectStatementFormatter {
 
   private static final String COLUMN_INCREMENT_VALUE = "INCREMENT_VALUE";
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link SqliteDialect}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [SqliteDialect].
   public SqliteFormatter(SqliteDialect dialect) {
 
     super(dialect);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link SqliteDialect}.
-   * @param parametersFactory the {@link CriteriaParametersFactory}.
-   * @param indentation the {@link #getIndentation() indentation}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [SqliteDialect].
+  /// @param parametersFactory the [CriteriaParametersFactory].
+  /// @param indentation the [indentation][#getIndentation()].
   public SqliteFormatter(SqliteDialect dialect, CriteriaParametersFactory parametersFactory, String indentation) {
 
     super(dialect, parametersFactory, indentation);

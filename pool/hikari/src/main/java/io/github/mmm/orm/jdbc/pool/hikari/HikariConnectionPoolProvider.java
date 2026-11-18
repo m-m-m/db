@@ -12,9 +12,7 @@ import io.github.mmm.db.pool.spi.JdbcConnectionPoolProvider;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Implementation of {@link JdbcConnectionPoolProvider} for {@link HikariDataSource hikari}.
- */
+/// Implementation of [JdbcConnectionPoolProvider] for [hikari][HikariDataSource].
 public final class HikariConnectionPoolProvider extends JdbcConnectionPoolProvider {
 
   @Override

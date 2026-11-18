@@ -15,7 +15,7 @@ import io.github.mmm.property.string.StringProperty;
 import io.github.mmm.property.time.duration.DurationProperty;
 import io.github.mmm.property.time.instant.InstantProperty;
 
-/// {@link EntityBean} for {value DbSchemaManager} table.
+/// [EntityBean] for {value DbSchemaManager} table.
 @MetaInfos({ "pk=string", "revision=none" })
 public interface DbSchemaChangeLog extends EntityBean {
 
@@ -38,10 +38,10 @@ public interface DbSchemaChangeLog extends EntityBean {
     pk.set(id.withPk(path));
   }
 
-  /// @return the {@link Instant} when the script was installed.
+  /// @return the [Instant] when the script was installed.
   InstantProperty Timestamp();
 
-  /// @return the {@link java.time.Duration} the script execution took.
+  /// @return the [java.time.Duration] the script execution took.
   DurationProperty Duration();
 
   /// @return the login of the database user running the script.
@@ -50,7 +50,7 @@ public interface DbSchemaChangeLog extends EntityBean {
   /// @return the checksum of the (normalised) script.
   StringProperty Checksum();
 
-  /// @return the {@link DbSchemaChangeLogStatus} summarising the state of the script execution.
+  /// @return the [DbSchemaChangeLogStatus] summarising the state of the script execution.
   EnumProperty<DbSchemaChangeLogStatus> Status();
 
   /// @return the details of the execution (e.g. error message).

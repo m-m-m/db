@@ -10,24 +10,18 @@ import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.orm.Orm;
 import io.github.mmm.db.source.DbSource;
 
-/**
- * Implementation of {@link DbDialect} for Oracle database.
- */
+/// Implementation of [DbDialect] for Oracle database.
 public class OracleDialect extends AbstractDbDialect<OracleDialect> {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public OracleDialect() {
 
     super(new OracleTypeMapping());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param orm the {@link Orm}.
-   */
+  /// The constructor.
+  ///
+  /// @param orm the [Orm].
   protected OracleDialect(Orm orm) {
 
     super(orm);

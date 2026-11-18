@@ -13,24 +13,20 @@ import io.github.mmm.db.spi.access.DbAccessProvider;
 import io.github.mmm.db.tx.DbTransactionExecutor;
 import io.github.mmm.db.tx.spi.DbTransactionExecutorProvider;
 
-/**
- * Adapter implementation of {@link DbTransactionExecutorProvider} that holds the {@link DbTransactionExecutor}s in
- * memory.
- *
- * @since 1.0.0
- */
+/// Adapter implementation of [DbTransactionExecutorProvider] that holds the [DbTransactionExecutor]s in
+/// memory.
+///
+/// @since 1.0.0
 public class DbAccessProviderAdapter implements DbAccessProvider {
 
-  /** The singleton instance. */
+  /// The singleton instance.
   public static final DbAccessProviderAdapter INSTANCE = new DbAccessProviderAdapter();
 
   private final List<DbAccessProvider> providers;
 
   private final Map<String, DbAccess> accesses;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public DbAccessProviderAdapter() {
 
     super();

@@ -6,18 +6,14 @@ import io.github.mmm.db.statement.select.SelectStatement;
 import io.github.mmm.db.statement.update.UpdateStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Extends {@link EntityFindOperations} with operations for {@link SelectStatement}s.
- *
- * @param <E> type of the managed {@link EntityBean}.
- * @since 1.0.0
- */
+/// Extends [EntityFindOperations] with operations for [SelectStatement]s.
+///
+/// @param <E> type of the managed [EntityBean].
+/// @since 1.0.0
 public interface DbUpdateOperations<E extends EntityBean> extends EntityFindOperations<E> {
 
-  /**
-   * @param statement the {@link UpdateStatement} to execute.
-   * @return the number of {@link EntityBean entities} that have been updated.
-   */
+  /// @param statement the [UpdateStatement] to execute.
+  /// @return the number of [entities][EntityBean] that have been updated.
   long update(UpdateStatement<E> statement);
 
 }

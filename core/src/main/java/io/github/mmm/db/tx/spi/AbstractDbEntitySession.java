@@ -13,24 +13,20 @@ import io.github.mmm.entity.Entity;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.entity.id.Id;
 
-/**
- * Abstract base implementation of {@link DbEntitySession}.
- *
- * @param <E> type of the managed {@link EntityBean}.
- * @since 1.0.0
- */
+/// Abstract base implementation of [DbEntitySession].
+///
+/// @param <E> type of the managed [EntityBean].
+/// @since 1.0.0
 public abstract class AbstractDbEntitySession<E extends EntityBean> implements DbEntitySession<E> {
 
-  /** @see #getEntityClass() */
+  /// @see #getEntityClass()
   protected final Class<E> entityClass;
 
   private final Map<Object, DbEntityHolder<E>> entityMap; // first-level cache
 
-  /**
-   * The constructor.
-   *
-   * @param entity the prototype of managed the {@link EntityBean}.
-   */
+  /// The constructor.
+ ///
+ /// @param entity the prototype of managed the [EntityBean].
   public AbstractDbEntitySession(E entity) {
 
     super();
@@ -92,15 +88,11 @@ public abstract class AbstractDbEntitySession<E extends EntityBean> implements D
     return this.entityMap.values().iterator();
   }
 
-  /**
-   * @param internal the {@link DbEntityHolder#getInternal() managed entity}.
-   * @return the new {@link DbEntityHolder} instance.
-   */
+  /// @param internal the [managed entity][DbEntityHolder#getInternal()].
+  /// @return the new [DbEntityHolder] instance.
   protected abstract DbEntityHolder<E> createHolder(E internal);
 
-  /**
-   * Closes this session and releases allocated resources.
-   */
+  /// Closes this session and releases allocated resources.
   protected void close() {
 
     this.entityMap.clear();

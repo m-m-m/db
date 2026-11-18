@@ -10,21 +10,17 @@ import io.github.mmm.db.ddl.constraint.state.DbConstraintState;
 import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.db.name.DbQualifiedName;
 
-/**
- * Implementation of {@link DbNotNullConstraint}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbNotNullConstraint].
+///
+/// @since 1.0.0
 public final class DbNotNullConstraintImpl extends DbConstraintImpl implements DbNotNullConstraint {
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param state the {@link #getState state}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param state the [state][#getState].
   public DbNotNullConstraintImpl(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       DbConstraintState state) {
 

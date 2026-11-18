@@ -9,11 +9,9 @@ import java.sql.SQLException;
 import io.github.mmm.db.type.DbType;
 import io.github.mmm.property.criteria.CriteriaParameter;
 
-/**
- * Implementation of {@link CriteriaParameter}.
- *
- * @param <V> type of the {@link #getValue() value}.
- */
+/// Implementation of [CriteriaParameter].
+///
+/// @param <V> type of the [value][#getValue()].
 public class CriteriaParameterImpl<V> implements CriteriaParameter<V> {
 
   private static final String PLACEHOLDER_INDEX = "?";
@@ -28,26 +26,22 @@ public class CriteriaParameterImpl<V> implements CriteriaParameter<V> {
 
   private CriteriaParameterImpl<?> next;
 
-  /**
-   * The constructor.
-   *
-   * @param index the {@link #getIndex() index}.
-   * @param value the {@link #getValue() value}.
-   * @param dbType the {@link #getDbType() database type}.
-   */
+  /// The constructor.
+  ///
+  /// @param index the [index][#getIndex()].
+  /// @param value the [value][#getValue()].
+  /// @param dbType the [database type][#getDbType()].
   public CriteriaParameterImpl(int index, V value, DbType<V, ?, ?> dbType) {
 
     this(index, value, dbType, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param index the {@link #getIndex() index}.
-   * @param value the {@link #getValue() value}.
-   * @param dbType the {@link #getDbType() database type}.
-   * @param name the {@link #getName() name}.
-   */
+  /// The constructor.
+  ///
+  /// @param index the [index][#getIndex()].
+  /// @param value the [value][#getValue()].
+  /// @param dbType the [database type][#getDbType()].
+  /// @param name the [name][#getName()].
   public CriteriaParameterImpl(int index, V value, DbType<V, ?, ?> dbType, String name) {
 
     super();
@@ -75,17 +69,13 @@ public class CriteriaParameterImpl<V> implements CriteriaParameter<V> {
     return this.value;
   }
 
-  /**
-   * @return the {@link DbType} of this parameter.
-   */
+  /// @return the [DbType] of this parameter.
   public DbType<V, ?, ?> getDbType() {
 
     return this.dbType;
   }
 
-  /**
-   * @return the placeholder for this parameter.
-   */
+  /// @return the placeholder for this parameter.
   public String getPlaceholder() {
 
     if (this.name == null) {
@@ -95,20 +85,16 @@ public class CriteriaParameterImpl<V> implements CriteriaParameter<V> {
     }
   }
 
-  /**
-   * @param statement the {@link PreparedStatement}.
-   * @param connection the JDBC {@link Connection}.
-   * @throws SQLException on error.
-   */
+  /// @param statement the [PreparedStatement].
+  /// @param connection the JDBC [Connection].
+  /// @throws SQLException on error.
   @SuppressWarnings("exports")
   public void apply(PreparedStatement statement, Connection connection) throws SQLException {
 
     this.dbType.setJavaValue(statement, this.index + 1, this.value);
   }
 
-  /**
-   * @return the next {@link CriteriaParameterImpl parameter} or {@code null} if this is the last one.
-   */
+  /// @return the next [parameter][CriteriaParameterImpl] or `null` if this is the last one.
   CriteriaParameterImpl<?> getNext() {
 
     return this.next;

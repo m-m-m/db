@@ -7,34 +7,28 @@ import io.github.mmm.db.statement.IntoClause;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.criteria.PropertyAssignment;
 
-/**
- * A {@link IntoClause} of an {@link MergeStatement}.
- *
- * @param <E> type of the {@link #getEntity() entity}.
- * @since 1.0.0
- */
+/// A [IntoClause] of an [MergeStatement].
+///
+/// @param <E> type of the [entity][#getEntity()].
+/// @since 1.0.0
 public class MergeIntoClause<E extends EntityBean> extends IntoClause<E, MergeValuesClause<E>, MergeIntoClause<E>> {
 
   private final MergeStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param merge the opening {@link MergeClause}.
-   * @param entity the {@link #getEntity() entity} to operate on.
-   */
+  /// The constructor.
+  ///
+  /// @param merge the opening [MergeClause].
+  /// @param entity the [entity][#getEntity()] to operate on.
   public MergeIntoClause(MergeClause merge, E entity) {
 
     this(merge, entity, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param merge the opening {@link MergeClause}.
-   * @param entity the {@link #getEntity() entity} to operate on.
-   * @param entityName the {@link #getName() entity name}.
-   */
+  /// The constructor.
+  ///
+  /// @param merge the opening [MergeClause].
+  /// @param entity the [entity][#getEntity()] to operate on.
+  /// @param entityName the [entity name][#getName()].
   public MergeIntoClause(MergeClause merge, E entity, String entityName) {
 
     super(new AliasMap(), entity, entityName);

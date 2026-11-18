@@ -15,12 +15,10 @@ import io.github.mmm.db.statement.upsert.UpsertInto;
 import io.github.mmm.db.statement.upsert.UpsertValues;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link DbStatement} to {@link MergeClause} data into the database.
- *
- * @param <E> type of the {@link UpsertInto#getEntity() entity}.
- * @since 1.0.0
- */
+/// [DbStatement] to [MergeClause] data into the database.
+///
+/// @param <E> type of the [entity][UpsertInto#getEntity()].
+/// @since 1.0.0
 public class MergeStatement<E extends EntityBean> extends IntoValuesStatement<E> {
 
   private final MergeClause merge;
@@ -29,12 +27,10 @@ public class MergeStatement<E extends EntityBean> extends IntoValuesStatement<E>
 
   private final MergeValuesClause<E> values;
 
-  /**
-   * The constructor.
-   *
-   * @param merge the {@link #getMerge() MERGE}.
-   * @param into the {@link #getInto() INTO}.
-   */
+  /// The constructor.
+  ///
+  /// @param merge the [MERGE][#getMerge()].
+  /// @param into the [INTO][#getInto()].
   public MergeStatement(MergeClause merge, MergeIntoClause<E> into) {
 
     super();
@@ -43,9 +39,7 @@ public class MergeStatement<E extends EntityBean> extends IntoValuesStatement<E>
     this.values = new MergeValuesClause<>(this);
   }
 
-  /**
-   * @deprecated use {@link #getMerge()} to make it more explicit.
-   */
+  /// @deprecated use [#getMerge()] to make it more explicit.
   @Deprecated
   @Override
   public MergeClause getStart() {
@@ -53,26 +47,20 @@ public class MergeStatement<E extends EntityBean> extends IntoValuesStatement<E>
     return this.merge;
   }
 
-  /**
-   * @return the opening {@link MergeClause}-{@link DbClause clause}.
-   */
+  /// @return the opening [MergeClause]-[clause][DbClause].
   public MergeClause getMerge() {
 
     return this.merge;
   }
 
-  /**
-   * @return the {@link MergeIntoClause INTO}-{@link DbClause clause}.
-   */
+  /// @return the [INTO][MergeIntoClause]-[clause][DbClause].
   @Override
   public MergeIntoClause<E> getInto() {
 
     return this.into;
   }
 
-  /**
-   * @return the {@link UpsertValues VALUES}-{@link DbClause clause} or {@code null} if none was added.
-   */
+  /// @return the [VALUES][UpsertValues]-[clause][DbClause] or `null` if none was added.
   @Override
   public MergeValuesClause<E> getValues() {
 

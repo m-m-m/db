@@ -11,33 +11,27 @@ import io.github.mmm.db.statement.DbIncompleteStartClause;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.ReadableProperty;
 
-/**
- * A {@link CreateTableClause} of a {@link CreateTableStatement}.
- *
- * @param <E> type of the {@link #getEntity() entity}.
- * @since 1.0.0
- */
+/// A [CreateTableClause] of a [CreateTableStatement].
+///
+/// @param <E> type of the [entity][#getEntity()].
+/// @since 1.0.0
 public class CreateTableClause<E extends EntityBean> extends AbstractEntityClause<E, E, CreateTableClause<E>>
     implements DbIncompleteStartClause, DbCreateTableClause<E> {
 
   private final CreateTableStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param entity the {@link #getEntity() entity} to operate on.
-   */
+  /// The constructor.
+  ///
+  /// @param entity the [entity][#getEntity()] to operate on.
   public CreateTableClause(E entity) {
 
     this(entity, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param entity the {@link #getEntity() entity} to operate on.
-   * @param entityName the {@link #getName() entity name}.
-   */
+  /// The constructor.
+  ///
+  /// @param entity the [entity][#getEntity()] to operate on.
+  /// @param entityName the [entity name][#getName()].
   public CreateTableClause(E entity, String entityName) {
 
     super(new AliasMap(), entity, entityName);
@@ -62,10 +56,8 @@ public class CreateTableClause<E extends EntityBean> extends AbstractEntityClaus
     return this.statement.getContents().constraint(constraint);
   }
 
-  /**
-   * @param columns the {@link DbColumnReference column}s.
-   * @return the {@link CreateTableContentsClause} for fluent API calls.
-   */
+  /// @param columns the [column][DbColumnReference]s.
+  /// @return the [CreateTableContentsClause] for fluent API calls.
   public CreateTableContentsClause<E> columns(DbColumnReference... columns) {
 
     CreateTableContentsClause<E> contents = this.statement.getContents();
@@ -75,12 +67,10 @@ public class CreateTableClause<E extends EntityBean> extends AbstractEntityClaus
     return contents;
   }
 
-  /**
-   * Creates {@link #column(ReadableProperty) columns} for all {@link EntityBean#getProperties() properties} of the
-   * {@link #getEntity() entity}.
-   *
-   * @return the {@link CreateTableContentsClause} for fluent API calls.
-   */
+  /// Creates [columns][#column(ReadableProperty)] for all [properties][EntityBean#getProperties()] of the
+  /// [entity][#getEntity()].
+  ///
+  /// @return the [CreateTableContentsClause] for fluent API calls.
   public CreateTableContentsClause<E> columns() {
 
     CreateTableContentsClause<E> columns = this.statement.getContents();

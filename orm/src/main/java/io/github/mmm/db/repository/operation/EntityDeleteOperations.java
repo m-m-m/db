@@ -11,36 +11,28 @@ import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.entity.id.Id;
 import io.github.mmm.entity.link.Link;
 
-/**
- * Interface for the delete operations of an {@link EntityRepository}.
- *
- * @param <E> type of the managed {@link EntityBean}.
- * @since 1.0.0
- */
+/// Interface for the delete operations of an [EntityRepository].
+///
+/// @param <E> type of the managed [EntityBean].
+/// @since 1.0.0
 public interface EntityDeleteOperations<E extends EntityBean> {
 
-  /**
-   * @param entity the {@link EntityBean} to remove from this repository.
-   * @return {@code true} if the given {@link EntityBean entity} has been successfully deleted from this repository,
-   *         {@code false} otherwise (was not {@link EntityRepository#save(EntityBean) saved} before).
-   */
+  /// @param entity the [EntityBean] to remove from this repository.
+  /// @return `true` if the given [entity][EntityBean] has been successfully deleted from this repository,
+  ///         `false` otherwise (was not [saved][EntityRepository#save(EntityBean)] before).
   default boolean delete(E entity) {
 
     return deleteById(Id.from(entity));
   }
 
-  /**
-   * @param id the {@link Id} (primary key) of the {@link EntityBean entity} to delete.
-   * @return {@code true} if the entity with the given {@link Id} has been successfully deleted from this repository,
-   *         {@code false} otherwise (no entity is persistent with this {@link Id}).
-   */
+  /// @param id the [Id] (primary key) of the [entity][EntityBean] to delete.
+  /// @return `true` if the entity with the given [Id] has been successfully deleted from this repository,
+  ///         `false` otherwise (no entity is persistent with this [Id]).
   boolean deleteById(Id<E> id);
 
-  /**
-   * @param link the {@link Link} to the {@link EntityBean entity} to delete.
-   * @return {@code true} if the entity for the given {@link Link} has been successfully deleted from this repository,
-   *         {@code false} otherwise (no entity is persistent with this {@link Id}).
-   */
+  /// @param link the [Link] to the [entity][EntityBean] to delete.
+  /// @return `true` if the entity for the given [Link] has been successfully deleted from this repository,
+  ///         `false` otherwise (no entity is persistent with this [Id]).
   default boolean deleteByLink(Link<E> link) {
 
     if (link == null) {
@@ -53,10 +45,8 @@ public interface EntityDeleteOperations<E extends EntityBean> {
     }
   }
 
-  /**
-   * @param entities the {@link Iterable} of {@link EntityBean entities} to {@link #delete(EntityBean) delete}.
-   * @return the number of entities that have been physically deleted.
-   */
+  /// @param entities the [Iterable] of [entities][EntityBean] to [delete][#delete(EntityBean)].
+  /// @return the number of entities that have been physically deleted.
   default int deleteAll(Iterable<E> entities) {
 
     int capacity = 12;
@@ -75,10 +65,8 @@ public interface EntityDeleteOperations<E extends EntityBean> {
     return deleteAllById(ids);
   }
 
-  /**
-   * @param ids the {@link Iterable} of {@link Id}s to {@link #deleteById(Id) delete}.
-   * @return the number of entities that have been physically deleted.
-   */
+  /// @param ids the [Iterable] of [Id]s to [delete][#deleteById(Id)].
+  /// @return the number of entities that have been physically deleted.
   default int deleteAllById(Iterable<Id<E>> ids) {
 
     // this is a naive default implementation. Real database backed implementations shall override with bulk operation.
@@ -92,10 +80,8 @@ public interface EntityDeleteOperations<E extends EntityBean> {
     return deletionCount;
   }
 
-  /**
-   * @param links the {@link Iterable} of {@link Link}s to {@link #deleteByLink(Link) delete by}.
-   * @return the number of entities that have been physically deleted.
-   */
+  /// @param links the [Iterable] of [Link]s to [delete by][#deleteByLink(Link)].
+  /// @return the number of entities that have been physically deleted.
   default int deleteAllByLink(Iterable<Link<E>> links) {
 
     int capacity = 12;

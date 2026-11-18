@@ -7,34 +7,28 @@ import io.github.mmm.db.statement.IntoClause;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.criteria.PropertyAssignment;
 
-/**
- * A {@link IntoClause} of an {@link UpsertStatement}.
- *
- * @param <E> type of the {@link #getEntity() entity}.
- * @since 1.0.0
- */
+/// A [IntoClause] of an [UpsertStatement].
+///
+/// @param <E> type of the [entity][#getEntity()].
+/// @since 1.0.0
 public class UpsertInto<E extends EntityBean> extends IntoClause<E, UpsertValues<E>, UpsertInto<E>> {
 
   private final UpsertStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param upset the opening {@link UpsertClause}.
-   * @param entity the {@link #getEntity() entity} to operate on.
-   */
+  /// The constructor.
+  ///
+  /// @param upset the opening [UpsertClause].
+  /// @param entity the [entity][#getEntity()] to operate on.
   public UpsertInto(UpsertClause upset, E entity) {
 
     this(upset, entity, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param upsert the opening {@link UpsertClause}.
-   * @param entity the {@link #getEntity() entity} to operate on.
-   * @param entityName the {@link #getName() entity name}.
-   */
+  /// The constructor.
+  ///
+  /// @param upsert the opening [UpsertClause].
+  /// @param entity the [entity][#getEntity()] to operate on.
+  /// @param entityName the [entity name][#getName()].
   public UpsertInto(UpsertClause upsert, E entity, String entityName) {
 
     super(new AliasMap(), entity, entityName);

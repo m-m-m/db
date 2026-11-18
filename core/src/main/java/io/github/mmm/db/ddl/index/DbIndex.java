@@ -13,20 +13,14 @@ import io.github.mmm.db.name.DbObject;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Index on a {@link DbTable table}.
- */
+/// Index on a [table][DbTable].
 public interface DbIndex extends DbIndexKind, DbObject {
 
-  /**
-   * @return the {@link DbTableReference table reference}.
-   */
+  /// @return the [table reference][DbTableReference].
   DbTableReference<? extends EntityBean> getTable();
 
-  /**
-   * @return the {@link List} of indexed {@link DbColumnReferenceWithSortOrder columns}. A simple index is only indexing
-   *         a single column. A composite index that indexes multiple columns.
-   */
+  /// @return the [List] of indexed [columns][DbColumnReferenceWithSortOrder]. A simple index is only indexing
+  ///         a single column. A composite index that indexes multiple columns.
   List<DbColumnReferenceWithSortOrder> getColumns();
 
   @Override

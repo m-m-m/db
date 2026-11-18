@@ -13,23 +13,19 @@ import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.db.name.DbObject;
 
-/**
- * Foreign key {@link DbConstraint} uniquely identifying a different {@link io.github.mmm.entity.bean.EntityBean entity}
- * (row from another table).
- *
- * @since 1.0.0
- */
+/// Foreign key [DbConstraint] uniquely identifying a different [entity][io.github.mmm.entity.bean.EntityBean]
+/// (row from another table).
+///
+/// @since 1.0.0
 public interface DbForeignKeyConstraint extends DbConstraint {
 
-  /** {@link #getType() Type} {@value}. */
+  /// [Type][#getType()] {@value}.
   String TYPE = DbKeyword.FOREIGN_KEY;
 
-  /** @see #getNamePrefix() */
+  /// @see #getNamePrefix()
   String PREFIX = "FK_";
 
-  /**
-   * @return the {@link DbConstraintOnDelete on delete} behaviour.
-   */
+  /// @return the [on delete][DbConstraintOnDelete] behaviour.
   DbConstraintOnDelete getOnDelete();
 
   @Override
@@ -67,122 +63,104 @@ public interface DbForeignKeyConstraint extends DbConstraint {
     }
   }
 
-  /**
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumn the {@link #getSourceColumns() source column}.
-   * @param targetTable the {@link #getTargetTable() target table} where the foreign key is pointing to.
-   * @param targetColumn the {@link #getTargetColumns() target column}.
-   * @return the new {@link DbForeignKeyConstraint}.
-   */
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumn the [source column][#getSourceColumns()].
+  /// @param targetTable the [target table][#getTargetTable()] where the foreign key is pointing to.
+  /// @param targetColumn the [target column][#getTargetColumns()].
+  /// @return the new [DbForeignKeyConstraint].
   static DbForeignKeyConstraint of(DbTableReference<?> sourceTable, DbColumnReference sourceColumn,
       DbTableReference<?> targetTable, DbColumnReference targetColumn) {
 
     return of(null, sourceTable, sourceColumn, targetTable, targetColumn);
   }
 
-  /**
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param targetTable the {@link #getTargetTable() target table} where the foreign key is pointing to.
-   * @param targetColumns the {@link #getTargetColumns() target columns}.
-   * @return the new {@link DbForeignKeyConstraint}.
-   */
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param targetTable the [target table][#getTargetTable()] where the foreign key is pointing to.
+  /// @param targetColumns the [target columns][#getTargetColumns()].
+  /// @return the new [DbForeignKeyConstraint].
   static DbForeignKeyConstraint of(DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       DbTableReference<?> targetTable, List<DbColumnReference> targetColumns) {
 
     return of(null, sourceTable, sourceColumns, targetTable, targetColumns);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceColumn the {@link #getSourceColumns() source column}.
-   * @param targetColumn the {@link #getTargetColumns() target column}.
-   * @return the new {@link DbForeignKeyConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceColumn the [source column][#getSourceColumns()].
+  /// @param targetColumn the [target column][#getTargetColumns()].
+  /// @return the new [DbForeignKeyConstraint].
   static DbForeignKeyConstraint of(String name, DbColumnReference sourceColumn, DbColumnReference targetColumn) {
 
     return of(name, sourceColumn, targetColumn, DbConstraintState.DEFAULT);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumn the {@link #getSourceColumns() source column}.
-   * @param targetTable the {@link #getTargetTable() target table} where the foreign key is pointing to.
-   * @param targetColumn the {@link #getTargetColumns() target column}.
-   * @return the new {@link DbForeignKeyConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumn the [source column][#getSourceColumns()].
+  /// @param targetTable the [target table][#getTargetTable()] where the foreign key is pointing to.
+  /// @param targetColumn the [target column][#getTargetColumns()].
+  /// @return the new [DbForeignKeyConstraint].
   static DbForeignKeyConstraint of(String name, DbTableReference<?> sourceTable, DbColumnReference sourceColumn,
       DbTableReference<?> targetTable, DbColumnReference targetColumn) {
 
     return of(name, sourceTable, sourceColumn, targetTable, targetColumn, DbConstraintState.DEFAULT);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param targetTable the {@link #getTargetTable() target table} where the foreign key is pointing to.
-   * @param targetColumns the {@link #getTargetColumns() target columns}.
-   * @return the new {@link DbForeignKeyConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param targetTable the [target table][#getTargetTable()] where the foreign key is pointing to.
+  /// @param targetColumns the [target columns][#getTargetColumns()].
+  /// @return the new [DbForeignKeyConstraint].
   static DbForeignKeyConstraint of(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       DbTableReference<?> targetTable, List<DbColumnReference> targetColumns) {
 
     return of(name, sourceTable, sourceColumns, targetTable, targetColumns, DbConstraintState.DEFAULT);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceColumn the {@link #getSourceColumns() source column}.
-   * @param targetColumn the {@link #getTargetColumns() target column}.
-   * @param state the {@link #getState state}.
-   * @return the new {@link DbForeignKeyConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceColumn the [source column][#getSourceColumns()].
+  /// @param targetColumn the [target column][#getTargetColumns()].
+  /// @param state the [state][#getState].
+  /// @return the new [DbForeignKeyConstraint].
   static DbForeignKeyConstraint of(String name, DbColumnReference sourceColumn, DbColumnReference targetColumn,
       DbConstraintState state) {
 
     return of(name, sourceColumn, targetColumn, state, DbConstraintOnDelete.DEFAULT);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumn the {@link #getSourceColumns() source column}.
-   * @param targetTable the {@link #getTargetTable() target table} where the foreign key is pointing to.
-   * @param targetColumn the {@link #getTargetColumns() target column}.
-   * @param state the {@link #getState state}.
-   * @return the new {@link DbForeignKeyConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumn the [source column][#getSourceColumns()].
+  /// @param targetTable the [target table][#getTargetTable()] where the foreign key is pointing to.
+  /// @param targetColumn the [target column][#getTargetColumns()].
+  /// @param state the [state][#getState].
+  /// @return the new [DbForeignKeyConstraint].
   static DbForeignKeyConstraint of(String name, DbTableReference<?> sourceTable, DbColumnReference sourceColumn,
       DbTableReference<?> targetTable, DbColumnReference targetColumn, DbConstraintState state) {
 
     return of(name, sourceTable, sourceColumn, targetTable, targetColumn, state, DbConstraintOnDelete.DEFAULT);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param targetTable the {@link #getTargetTable() target table} where the foreign key is pointing to.
-   * @param targetColumns the {@link #getTargetColumns() target columns}.
-   * @param state the {@link #getState state}.
-   * @return the new {@link DbForeignKeyConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param targetTable the [target table][#getTargetTable()] where the foreign key is pointing to.
+  /// @param targetColumns the [target columns][#getTargetColumns()].
+  /// @param state the [state][#getState].
+  /// @return the new [DbForeignKeyConstraint].
   static DbForeignKeyConstraint of(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       DbTableReference<?> targetTable, List<DbColumnReference> targetColumns, DbConstraintState state) {
 
     return of(name, sourceTable, sourceColumns, targetTable, targetColumns, state, DbConstraintOnDelete.DEFAULT);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceColumn the {@link #getSourceColumns() source column}.
-   * @param targetColumn the {@link #getTargetColumns() target column}.
-   * @param state the {@link #getState state}.
-   * @param onDelete the {@link #getOnDelete() on delete behaviour}.
-   * @return the new {@link DbForeignKeyConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceColumn the [source column][#getSourceColumns()].
+  /// @param targetColumn the [target column][#getTargetColumns()].
+  /// @param state the [state][#getState].
+  /// @param onDelete the [on delete behaviour][#getOnDelete()].
+  /// @return the new [DbForeignKeyConstraint].
   static DbForeignKeyConstraint of(String name, DbColumnReference sourceColumn, DbColumnReference targetColumn,
       DbConstraintState state, DbConstraintOnDelete onDelete) {
 
@@ -190,16 +168,14 @@ public interface DbForeignKeyConstraint extends DbConstraint {
         DbTableReference.of(targetColumn.getProperty()), targetColumn, state, onDelete);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumn the {@link #getSourceColumns() source column}.
-   * @param targetTable the {@link #getTargetTable() target table} where the foreign key is pointing to.
-   * @param targetColumn the {@link #getTargetColumns() target column}.
-   * @param state the {@link #getState state}.
-   * @param onDelete the {@link #getOnDelete() on delete behaviour}.
-   * @return the new {@link DbForeignKeyConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumn the [source column][#getSourceColumns()].
+  /// @param targetTable the [target table][#getTargetTable()] where the foreign key is pointing to.
+  /// @param targetColumn the [target column][#getTargetColumns()].
+  /// @param state the [state][#getState].
+  /// @param onDelete the [on delete behaviour][#getOnDelete()].
+  /// @return the new [DbForeignKeyConstraint].
   static DbForeignKeyConstraint of(String name, DbTableReference<?> sourceTable, DbColumnReference sourceColumn,
       DbTableReference<?> targetTable, DbColumnReference targetColumn, DbConstraintState state,
       DbConstraintOnDelete onDelete) {
@@ -207,16 +183,14 @@ public interface DbForeignKeyConstraint extends DbConstraint {
     return of(name, sourceTable, List.of(sourceColumn), targetTable, List.of(targetColumn), state, onDelete);
   }
 
-  /**
-   * @param name the {@link #getName() constraint name}.
-   * @param sourceTable the {@link #getSourceTable() source table}.
-   * @param sourceColumns the {@link #getSourceColumns() source columns}.
-   * @param targetTable the {@link #getTargetTable() target table} where the foreign key is pointing to.
-   * @param targetColumns the {@link #getTargetColumns() target columns}.
-   * @param state the {@link #getState state}.
-   * @param onDelete the {@link #getOnDelete() on delete behaviour}.
-   * @return the new {@link DbForeignKeyConstraint}.
-   */
+  /// @param name the [constraint name][#getName()].
+  /// @param sourceTable the [source table][#getSourceTable()].
+  /// @param sourceColumns the [source columns][#getSourceColumns()].
+  /// @param targetTable the [target table][#getTargetTable()] where the foreign key is pointing to.
+  /// @param targetColumns the [target columns][#getTargetColumns()].
+  /// @param state the [state][#getState].
+  /// @param onDelete the [on delete behaviour][#getOnDelete()].
+  /// @return the new [DbForeignKeyConstraint].
   static DbForeignKeyConstraint of(String name, DbTableReference<?> sourceTable, List<DbColumnReference> sourceColumns,
       DbTableReference<?> targetTable, List<DbColumnReference> targetColumns, DbConstraintState state,
       DbConstraintOnDelete onDelete) {

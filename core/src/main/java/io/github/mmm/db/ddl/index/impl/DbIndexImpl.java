@@ -14,11 +14,9 @@ import io.github.mmm.db.name.AbstractDbObject;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Implementation of {@link DbIndexMetadata}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbIndexMetadata].
+///
+/// @since 1.0.0
 public class DbIndexImpl extends AbstractDbObject implements DbIndex {
 
   private final DbTableReference<EntityBean> table;
@@ -27,14 +25,12 @@ public class DbIndexImpl extends AbstractDbObject implements DbIndex {
 
   private final List<DbColumnReferenceWithSortOrder> columns;
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() name} of the index.
-   * @param table the owning {@link #getTable() table}.
-   * @param kind the {@link DbIndexKind}.
-   * @param columns the {@link #getColumns() columns}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [name][#getName()] of the index.
+  /// @param table the owning [table][#getTable()].
+  /// @param kind the [DbIndexKind].
+  /// @param columns the [columns][#getColumns()].
   public DbIndexImpl(DbQualifiedName name, DbTableReference<EntityBean> table, DbIndexKind kind,
       List<DbColumnReferenceWithSortOrder> columns) {
 

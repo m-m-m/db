@@ -6,20 +6,16 @@ import io.github.mmm.db.criteria.SequenceNextValue;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link SelectClause} to get the next value of a database sequence.
- *
- * @since 1.0.0
- */
+/// [SelectClause] to get the next value of a database sequence.
+///
+/// @since 1.0.0
 public class SelectSequenceNextValueClause extends SelectClause<Long> {
 
   private final SequenceNextValue selection;
 
-  /**
-   * The constructor.
-   *
-   * @param sequenceName the {@link #getSequenceName() sequence name}.
-   */
+  /// The constructor.
+  ///
+  /// @param sequenceName the [sequence name][#getSequenceName()].
   public SelectSequenceNextValueClause(DbQualifiedName sequenceName) {
 
     super(null);
@@ -29,17 +25,13 @@ public class SelectSequenceNextValueClause extends SelectClause<Long> {
     this.statement = new SelectStatement<>(this, null);
   }
 
-  /**
-   * @return the single selection to select.
-   */
+  /// @return the single selection to select.
   public SequenceNextValue getSelection() {
 
     return this.selection;
   }
 
-  /**
-   * @return the {@link DbQualifiedName} of the sequence.
-   */
+  /// @return the [DbQualifiedName] of the sequence.
   public DbQualifiedName getSequenceName() {
 
     return this.selection.getSequenceName();

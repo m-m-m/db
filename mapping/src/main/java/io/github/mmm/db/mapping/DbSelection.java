@@ -7,24 +7,20 @@ import java.util.function.Supplier;
 import io.github.mmm.value.CriteriaObject;
 import io.github.mmm.value.converter.TypeMapper;
 
-/**
- * Container with information about the a single selected column.
- *
- * @param <V> type of the Java value to select and to map.
- * @since 1.0.0
- */
+/// Container with information about the a single selected column.
+///
+/// @param <V> type of the Java value to select and to map.
+/// @since 1.0.0
 public final class DbSelection<V> {
 
   private final CriteriaObject<V> selection;
 
   private final TypeMapper<V, ?> typeMapper;
 
-  /**
-   * The constructor.
-   *
-   * @param selection the {@link #getSelection() selection}.
-   * @param typeMapper the {@link #getTypeMapper() type mapper}.
-   */
+  /// The constructor.
+  ///
+  /// @param selection the [selection][#getSelection()].
+  /// @param typeMapper the [type mapper][#getTypeMapper()].
   public DbSelection(CriteriaObject<V> selection, TypeMapper<V, ?> typeMapper) {
 
     super();
@@ -32,17 +28,13 @@ public final class DbSelection<V> {
     this.typeMapper = typeMapper;
   }
 
-  /**
-   * @return the {@link Supplier} with the selection from the database statement.
-   */
+  /// @return the [Supplier] with the selection from the database statement.
   public CriteriaObject<V> getSelection() {
 
     return this.selection;
   }
 
-  /**
-   * @return the {@link TypeMapper} for the {@link #getSelection() selection}.
-   */
+  /// @return the [TypeMapper] for the [selection][#getSelection()].
   public TypeMapper<V, ?> getTypeMapper() {
 
     return this.typeMapper;

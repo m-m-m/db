@@ -8,34 +8,28 @@ import io.github.mmm.db.statement.FromClause;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.criteria.CriteriaPredicate;
 
-/**
- * A {@link FromClause}-{@link DbClause} of an SQL {@link DeleteStatement}.
- *
- * @param <E> type of the {@link #getEntity() entity}.
- * @since 1.0.0
- */
+/// A [FromClause]-[DbClause] of an SQL [DeleteStatement].
+///
+/// @param <E> type of the [entity][#getEntity()].
+/// @since 1.0.0
 public class DeleteFromClause<E extends EntityBean> extends FromClause<E, E, DeleteFromClause<E>> {
 
   private final DeleteStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param delete the opening {@link DeleteClause}.
-   * @param entity the {@link #getEntity() entity} to operate on.
-   */
+  /// The constructor.
+  ///
+  /// @param delete the opening [DeleteClause].
+  /// @param entity the [entity][#getEntity()] to operate on.
   public DeleteFromClause(DeleteClause delete, E entity) {
 
     this(delete, entity, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param delete the opening {@link DeleteClause}.
-   * @param entity the {@link #getEntity() entity} to operate on.
-   * @param entityName the {@link #getName() entity name}.
-   */
+  /// The constructor.
+  ///
+  /// @param delete the opening [DeleteClause].
+  /// @param entity the [entity][#getEntity()] to operate on.
+  /// @param entityName the [entity name][#getName()].
   public DeleteFromClause(DeleteClause delete, E entity, String entityName) {
 
     super(new AliasMap(), entity, entityName);

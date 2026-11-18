@@ -3,22 +3,18 @@ package io.github.mmm.db.tx.spi;
 import io.github.mmm.bean.BeanHelper;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Abstract base implementation of {@link DbEntityHolder}.
- *
- * @param <E> type of the managed {@link EntityBean}.
- * @since 1.0.0
- */
+/// Abstract base implementation of [DbEntityHolder].
+///
+/// @param <E> type of the managed [EntityBean].
+/// @since 1.0.0
 public abstract class AbstractDbEntityHolder<E extends EntityBean> implements DbEntityHolder<E> {
 
-  /** @see #getInternal() */
+  /// @see #getInternal()
   protected final E internal;
 
-  /**
-   * The constructor.
-   *
-   * @param internal the {@link #getInternal() internal entity}.
-   */
+  /// The constructor.
+  ///
+  /// @param internal the [internal entity][#getInternal()].
   public AbstractDbEntityHolder(E internal) {
 
     super();

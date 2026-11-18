@@ -7,9 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import io.github.mmm.db.source.DbSource;
 
-/**
- * Test of {@link DbSchemaManager}.
- */
+/// Test of [DbSchemaManager].
 class DbSchemaManagerTest extends Assertions {
 
   @Test

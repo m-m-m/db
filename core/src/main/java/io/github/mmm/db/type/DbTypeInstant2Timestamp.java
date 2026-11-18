@@ -5,9 +5,7 @@ package io.github.mmm.db.type;
 import java.sql.Timestamp;
 import java.time.Instant;
 
-/**
- * Implementation of {@link DbType} for a regular {@link Instant}.
- */
+/// Implementation of [DbType] for a regular [Instant].
 @SuppressWarnings("exports")
 public final class DbTypeInstant2Timestamp extends DbType2Timestamp<Instant, DbTypeInstant2Timestamp> {
 

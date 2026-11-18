@@ -10,27 +10,21 @@ import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.orm.Orm;
 import io.github.mmm.db.source.DbSource;
 
-/**
- * Implementation of {@link DbDialect} for SQLite database.
- */
+/// Implementation of [DbDialect] for SQLite database.
 public class SqliteDialect extends AbstractDbDialect<SqliteDialect> {
 
-  /** The filename of the default database. */
+  /// The filename of the default database.
   public static final String DEFAULT_DB = "test.db";
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public SqliteDialect() {
 
     super(new SqliteTypeMapper());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param orm the {@link Orm}.
-   */
+  /// The constructor.
+  ///
+  /// @param orm the [Orm].
   protected SqliteDialect(Orm orm) {
 
     super(orm);

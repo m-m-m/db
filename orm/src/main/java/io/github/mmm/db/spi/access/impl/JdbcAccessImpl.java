@@ -45,18 +45,14 @@ import io.github.mmm.property.criteria.PredicateOperator;
 import io.github.mmm.property.criteria.PropertyAssignment;
 import io.github.mmm.value.SimplePath;
 
-/**
- * Implementation of {@link DbAccess} for JDBC.
- */
+/// Implementation of [DbAccess] for JDBC.
 public class JdbcAccessImpl extends AbstractDbAccess {
 
   private static final Logger LOG = LoggerFactory.getLogger(JdbcAccessImpl.class);
 
-  /**
-   * The constructor.
-   *
-   * @param sourceConfig the {@link DbSourceConfig}.
-   */
+  /// The constructor.
+  ///
+  /// @param sourceConfig the [DbSourceConfig].
   public JdbcAccessImpl(DbSourceConfig sourceConfig) {
 
     super(sourceConfig);

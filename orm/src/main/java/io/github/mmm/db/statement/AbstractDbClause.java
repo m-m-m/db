@@ -4,16 +4,12 @@ package io.github.mmm.db.statement;
 
 import io.github.mmm.db.impl.DbContextNone;
 
-/**
- * Abstract base class implementing {@link DbClause}.
- *
- * @since 1.0.0
- */
+/// Abstract base class implementing [DbClause].
+///
+/// @since 1.0.0
 public abstract class AbstractDbClause implements DbClause {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public AbstractDbClause() {
 
     super();

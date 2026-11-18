@@ -10,11 +10,9 @@ import io.github.mmm.db.name.AbstractDbNamingStrategy;
 import io.github.mmm.db.name.DbNamingStrategy;
 import io.github.mmm.db.name.DbObject;
 
-/**
- * Implementation of {@link DbNamingStrategy} based on {@link CaseSyntax}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbNamingStrategy] based on [CaseSyntax].
+///
+/// @since 1.0.0
 public class DbNamingStrategyCaseSyntax extends AbstractDbNamingStrategy {
 
   private static final Map<CaseSyntax, DbNamingStrategyCaseSyntax> MAP = new HashMap<>();
@@ -33,10 +31,8 @@ public class DbNamingStrategyCaseSyntax extends AbstractDbNamingStrategy {
     return this.syntax.convert(name);
   }
 
-  /**
-   * @param caseSyntax the {@link CaseSyntax}.
-   * @return the new {@link DbNamingStrategyCaseSyntax}.
-   */
+  /// @param caseSyntax the [CaseSyntax].
+  /// @return the new [DbNamingStrategyCaseSyntax].
   public static DbNamingStrategyCaseSyntax of(CaseSyntax caseSyntax) {
 
     return MAP.computeIfAbsent(caseSyntax, s -> new DbNamingStrategyCaseSyntax(s));

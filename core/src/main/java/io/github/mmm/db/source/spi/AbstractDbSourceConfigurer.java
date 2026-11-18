@@ -12,12 +12,10 @@ import io.github.mmm.base.variable.VariableDefinition;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Abstract base implementation for {@link DbSourceConfigurer}.
- */
+/// Abstract base implementation for [DbSourceConfigurer].
 public abstract class AbstractDbSourceConfigurer implements DbSourceConfigurer {
 
-  /** The filename of the default database. */
+  /// The filename of the default database.
   public static final String DEFAULT_DB = "db";
 
   private static final Pattern HOST_PATTERN = Pattern
@@ -70,10 +68,8 @@ public abstract class AbstractDbSourceConfigurer implements DbSourceConfigurer {
     return (url != null) && (user != null) && (password != null);
   }
 
-  /**
-   * @param properties the {@link Properties}.
-   * @param url the {@link DbSource#KEY_URL URL}. Not {@code null}.
-   */
+  /// @param properties the [Properties].
+  /// @param url the [URL][DbSource#KEY_URL]. Not `null`.
   protected void autoConfigureFromUrl(Properties properties, String url) {
 
     String kind = null;
@@ -121,10 +117,8 @@ public abstract class AbstractDbSourceConfigurer implements DbSourceConfigurer {
     }
   }
 
-  /**
-   * @param properties the {@link Properties}.
-   * @param query the query part of the {@link DbSource#KEY_URL URL}. Not {@code null}.
-   */
+  /// @param properties the [Properties].
+  /// @param query the query part of the [URL][DbSource#KEY_URL]. Not `null`.
   protected void autoConfigureFromQuery(Properties properties, String query) {
 
     int schemaStart = indexAfter(query, "currentSchema=", "search_path=");
@@ -151,13 +145,11 @@ public abstract class AbstractDbSourceConfigurer implements DbSourceConfigurer {
 
   }
 
-  /**
-   * Retrieves host, port, user, password, and database if present in URL.
-   *
-   * @param properties the {@link Properties}.
-   * @param url the {@link DbSource#KEY_URL URL}. Not {@code null}.
-   * @param type the {@link DbSource#KEY_TYPE type}.
-   */
+  /// Retrieves host, port, user, password, and database if present in URL.
+  ///
+  /// @param properties the [Properties].
+  /// @param url the [URL][DbSource#KEY_URL]. Not `null`.
+  /// @param type the [type][DbSource#KEY_TYPE].
   protected void autoConfigureFromUrlAtHost(Properties properties, String url, String type) {
 
     Matcher matcher = HOST_PATTERN.matcher(url);
@@ -181,11 +173,9 @@ public abstract class AbstractDbSourceConfigurer implements DbSourceConfigurer {
     }
   }
 
-  /**
-   * @param properties the {@link Properties}.
-   * @param type the {@link DbSource#KEY_TYPE database type}. Not {@code null}.
-   * @return the default port for the given database {@code type}.
-   */
+  /// @param properties the [Properties].
+  /// @param type the [database type][DbSource#KEY_TYPE]. Not `null`.
+  /// @return the default port for the given database `type`.
   protected Integer autoConfigurePort(Properties properties, String type) {
 
     return switch (type) {
@@ -239,14 +229,12 @@ public abstract class AbstractDbSourceConfigurer implements DbSourceConfigurer {
     return type;
   }
 
-  /**
-   * @param properties the {@link Properties}.
-   * @param url the {@link DbSource#KEY_URL URL}. Not {@code null}.
-   * @param type the {@link DbSource#KEY_TYPE database type}. Not {@code null}.
-   * @param start the start index in {@code url} pointing to the first character after the {@code type} and colon. E.g.
-   *        for "jdbc:sqlite:/data/db" this will be 12 and pointing to the first slash.
-   * @return the auto-configured {@link DbSource#KEY_DATABASE database name} or {@code null} if not found.
-   */
+  /// @param properties the [Properties].
+  /// @param url the [URL][DbSource#KEY_URL]. Not `null`.
+  /// @param type the [database type][DbSource#KEY_TYPE]. Not `null`.
+  /// @param start the start index in `url` pointing to the first character after the `type` and colon. E.g.
+  ///        for "jdbc:sqlite:/data/db" this will be 12 and pointing to the first slash.
+  /// @return the auto-configured [database name][DbSource#KEY_DATABASE] or `null` if not found.
   protected String autoConfigureDatabase(Properties properties, String url, String type, int start) {
 
     String database = null;
@@ -276,27 +264,23 @@ public abstract class AbstractDbSourceConfigurer implements DbSourceConfigurer {
     return database;
   }
 
-  /**
-   * @param properties the {@link Properties}.
-   * @param type the {@link DbSource#KEY_TYPE type of database connection}.
-   * @param url the {@link DbSource#KEY_URL URL}. May be {@code null}.
-   * @return the auto-configured {@link DbSource#KEY_USER database user} or {@code null} if there is no meaningful
-   *         default.
-   */
+  /// @param properties the [Properties].
+  /// @param type the [type of database connection][DbSource#KEY_TYPE].
+  /// @param url the [URL][DbSource#KEY_URL]. May be `null`.
+  /// @return the auto-configured [database user][DbSource#KEY_USER] or `null` if there is no meaningful
+  ///         default.
   protected String autoConfigureUser(Properties properties, String type, String url) {
 
     return null;
   }
 
-  /**
-   * @param properties the {@link Properties} from {@link DbSource} to auto-configure for {@link DbSourceConfig}.
-   * @param kind the {@link DbSource#KEY_KIND kind of database connection}.
-   * @param type the {@link DbSource#KEY_TYPE type of database connection}.
-   * @param host the {@link DbSource#KEY_HOST host of the database connection}.
-   * @param source the {@link DbSource}.
-   * @return the auto-configured {@link DbSource#KEY_URL database connection URL} or {@code null} if there is no
-   *         meaningful default.
-   */
+  /// @param properties the [Properties] from [DbSource] to auto-configure for [DbSourceConfig].
+  /// @param kind the [kind of database connection][DbSource#KEY_KIND].
+  /// @param type the [type of database connection][DbSource#KEY_TYPE].
+  /// @param host the [host of the database connection][DbSource#KEY_HOST].
+  /// @param source the [DbSource].
+  /// @return the auto-configured [database connection URL][DbSource#KEY_URL] or `null` if there is no
+  ///         meaningful default.
   protected String autoConfigureUrl(Properties properties, String kind, String type, String host, DbSource source) {
 
     return null;

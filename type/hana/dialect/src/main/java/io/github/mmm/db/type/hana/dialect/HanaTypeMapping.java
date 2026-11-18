@@ -4,11 +4,9 @@ package io.github.mmm.db.type.hana.dialect;
 
 import io.github.mmm.db.typemapping.DbTypeMapping;
 
-/**
- * {@link DbTypeMapping} for SAP Hana database.
- *
- * @since 1.0.0
- */
+/// [DbTypeMapping] for SAP Hana database.
+///
+/// @since 1.0.0
 public class HanaTypeMapping extends DbTypeMapping {
 
 }

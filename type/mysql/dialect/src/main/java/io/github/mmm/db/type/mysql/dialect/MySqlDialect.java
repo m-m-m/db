@@ -7,24 +7,18 @@ import io.github.mmm.db.dialect.DbDialect;
 import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.orm.Orm;
 
-/**
- * Implementation of {@link DbDialect} for MySQL database.
- */
+/// Implementation of [DbDialect] for MySQL database.
 public final class MySqlDialect extends AbstractDbDialect<MySqlDialect> {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public MySqlDialect() {
 
     super(new MySqlTypeMapping());
   }
 
-  /**
-   * The constructor.
-   *
-   * @param orm the {@link Orm}.
-   */
+  /// The constructor.
+  ///
+  /// @param orm the [Orm].
   protected MySqlDialect(Orm orm) {
 
     super(orm);

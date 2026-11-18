@@ -9,9 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-/**
- * Test of {@link DbQualifiedName}.
- */
+/// Test of [DbQualifiedName].
 class DbQualifiedNameTest extends Assertions {
 
   @Test

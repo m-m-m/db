@@ -6,20 +6,16 @@ import io.github.mmm.db.tx.spi.AbstractDbEntitySession;
 import io.github.mmm.db.tx.spi.DbEntityHolder;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Default implementation of {@link io.github.mmm.db.tx.spi.DbEntitySession}.
- *
- * @param <E> type of the managed {@link EntityBean}.
- *
- * @since 1.0.0
- */
+/// Default implementation of [io.github.mmm.db.tx.spi.DbEntitySession].
+///
+/// @param <E> type of the managed [EntityBean].
+///
+/// @since 1.0.0
 public class DbEntitySessionDefault<E extends EntityBean> extends AbstractDbEntitySession<E> {
 
-  /**
-   * The constructor.
-   *
-   * @param entity the {@link EntityBean} prototype.
-   */
+  /// The constructor.
+  ///
+  /// @param entity the [EntityBean] prototype.
   public DbEntitySessionDefault(E entity) {
 
     super(entity);

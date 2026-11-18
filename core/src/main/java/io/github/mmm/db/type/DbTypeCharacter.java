@@ -4,9 +4,7 @@ package io.github.mmm.db.type;
 
 import java.util.Objects;
 
-/**
- * {@link DbType} for a regular {@link Character}.
- */
+/// [DbType] for a regular [Character].
 public final class DbTypeCharacter extends DbType2Character<Character, DbTypeCharacter> {
 
   static final DbTypeCharacter INSTANCE = new DbTypeCharacter(null, null, null, null, false, DbTypeRegistration.TYPE);

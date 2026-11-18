@@ -15,12 +15,10 @@ import io.github.mmm.db.statement.DbStartClause;
 import io.github.mmm.db.statement.impl.DbStatementTypeImpl;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link DbStatement} to {@link DeleteClause}
- *
- * @param <E> type of the {@link AbstractEntityClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// [DbStatement] to [DeleteClause]
+///
+/// @param <E> type of the [entity][AbstractEntityClause#getEntity()].
+/// @since 1.0.0
 public class DeleteStatement<E extends EntityBean> extends AbstractDbStatement<E> {
 
   private final DeleteClause delete;
@@ -29,12 +27,10 @@ public class DeleteStatement<E extends EntityBean> extends AbstractDbStatement<E
 
   private final DeleteWhere<E> where;
 
-  /**
-   * The constructor.
-   *
-   * @param delete the {@link #getDelete() delete}.
-   * @param from the #getFrom
-   */
+  /// The constructor.
+  ///
+  /// @param delete the [delete][#getDelete()].
+  /// @param from the #getFrom
   public DeleteStatement(DeleteClause delete, DeleteFromClause<E> from) {
 
     super();
@@ -43,9 +39,7 @@ public class DeleteStatement<E extends EntityBean> extends AbstractDbStatement<E
     this.where = new DeleteWhere<>(this);
   }
 
-  /**
-   * @deprecated use {@link #getDelete()} to make it more explicit.
-   */
+  /// @deprecated use [#getDelete()] to make it more explicit.
   @Deprecated
   @Override
   public DbStartClause getStart() {
@@ -53,25 +47,19 @@ public class DeleteStatement<E extends EntityBean> extends AbstractDbStatement<E
     return this.delete;
   }
 
-  /**
-   * @return the opening {@link DeleteClause}-{@link DbClause}.
-   */
+  /// @return the opening [DeleteClause]-[DbClause].
   public DeleteClause getDelete() {
 
     return this.delete;
   }
 
-  /**
-   * @return the {@link DeleteFromClause From}-{@link DbClause}.
-   */
+  /// @return the [From][DeleteFromClause]-[DbClause].
   public DeleteFromClause<E> getFrom() {
 
     return this.from;
   }
 
-  /**
-   * @return the {@link DeleteWhere Where}-{@link DbClause}.
-   */
+  /// @return the [Where][DeleteWhere]-[DbClause].
   public DeleteWhere<E> getWhere() {
 
     return this.where;

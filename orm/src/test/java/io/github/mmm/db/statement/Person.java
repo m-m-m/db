@@ -9,34 +9,22 @@ import io.github.mmm.property.number.integers.IntegerProperty;
 import io.github.mmm.property.string.StringProperty;
 import io.github.mmm.property.time.localdate.LocalDateProperty;
 
-/**
- * {@link EntityBean} for a human person used for testing.
- */
+/// [EntityBean] for a human person used for testing.
 public interface Person extends EntityBean {
 
-  /**
-   * @return full name of the person including first and last name.
-   */
+  /// @return full name of the person including first and last name.
   StringProperty Name();
 
-  /**
-   * @return date of birth.
-   */
+  /// @return date of birth.
   LocalDateProperty Birthday();
 
-  /**
-   * @return {@code true} if single, {@code false} if married. Not a good example - just for testing.
-   */
+  /// @return `true` if single, `false` if married. Not a good example - just for testing.
   BooleanProperty Single();
 
-  /**
-   * @return the current age of the person. Should be computed from {@link #Birthday()} but just for testing.
-   */
+  /// @return the current age of the person. Should be computed from [#Birthday()] but just for testing.
   IntegerProperty Age();
 
-  /**
-   * @return a new instance of {@link Person}.
-   */
+  /// @return a new instance of [Person].
   static Person of() {
 
     return BeanFactory.get().create(Person.class);

@@ -5,18 +5,14 @@ package io.github.mmm.db.result.impl;
 import io.github.mmm.db.result.DbResult;
 import io.github.mmm.db.result.DbResultValue;
 
-/**
- * Implementation of {@link DbResult} as mutable Java bean (POJO).
- *
- * @since 1.0.0
- */
+/// Implementation of [DbResult] as mutable Java bean (POJO).
+///
+/// @since 1.0.0
 public abstract class AbstractDbResult implements DbResult {
 
-  /**
-   * @param i the index of the requested {@link DbResultValue}. Has to be in the range from {@code 0} to
-   *        {@link #getSize() size-1}.
-   * @return the requested {@link DbResultValue}.
-   */
+  /// @param i the index of the requested [DbResultValue]. Has to be in the range from `0` to
+  ///        [size-1][#getSize()].
+  /// @return the requested [DbResultValue].
   protected abstract DbResultValue<?> get(int i);
 
   @SuppressWarnings("unchecked")

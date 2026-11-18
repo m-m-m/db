@@ -7,19 +7,15 @@ import java.util.Objects;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.criteria.PropertyAssignment;
 
-/**
- * {@link ValuesClause}-{@link DbClause} containing {@link #getAssignments() assignments} for values to insert.
- *
- * @param <E> type of the {@link EntityBean} to query.
- * @param <SELF> type of this class itself.
- * @since 1.0.0
- */
+/// [ValuesClause]-[DbClause] containing [assignments][#getAssignments()] for values to insert.
+///
+/// @param <E> type of the [EntityBean] to query.
+/// @param <SELF> type of this class itself.
+/// @since 1.0.0
 public abstract class ValuesClause<E extends EntityBean, SELF extends ValuesClause<E, SELF>>
     extends AssignmentClause<E, SELF> implements ValuesFragment<E, SELF>, DbMainClause<E> {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public ValuesClause() {
 
     super();

@@ -15,37 +15,35 @@ import io.github.mmm.property.criteria.CriteriaExpression;
 import io.github.mmm.value.CriteriaObject;
 import io.github.mmm.value.PropertyPath;
 
-/**
- * {@link DbStartClause} of a {@link SelectStatement} to query data from the database. As {@link SelectStatement}s are
- * rather complex, this class is abstract to allow property type-safety and guidance of fluent API and code completion
- * via derived sub-classes for different scenarios. For simplest usage you can use the static methods provided by
- * {@link SelectClause} to start your query (typing {@code Select.} and starting code completion). However, you are
- * still free to use regular instantiation like for other statements (typing {@code new Select} and starting code
- * completion).
- *
- * <b>ATTENTION:</b> Please note that after
- * {@link io.github.mmm.db.statement.DbStatementMarshalling#readObject(StructuredReader) unmarshalling} or
- * {@link io.github.mmm.db.statement.DbStatementParser#parse(String) parsing} a {@link SelectStatement} the
- * {@link SelectStatement#getSelect() select} clause may not be of any of the expected sub-classes such as
- * {@link SelectEntityClause}, {@link SelectSingleClause}, {@link SelectResultClause}, or
- * {@link SelectProjectionClause}. Use {@code isSelect*} methods like {@link #isSelectEntity()} to determine the actual
- * selection type.
- *
- * @param <R> type of the result of the selection.
- * @since 1.0.0
- */
+/// [DbStartClause] of a [SelectStatement] to query data from the database. As [SelectStatement]s are
+/// rather complex, this class is abstract to allow property type-safety and guidance of fluent API and code completion
+/// via derived sub-classes for different scenarios. For simplest usage you can use the static methods provided by
+/// [SelectClause] to start your query (typing `Select.` and starting code completion). However, you are
+/// still free to use regular instantiation like for other statements (typing `new Select` and starting code
+/// completion).
+///
+/// **ATTENTION:** Please note that after
+/// [unmarshalling][io.github.mmm.db.statement.DbStatementMarshalling#readObject(StructuredReader)] or
+/// [parsing][io.github.mmm.db.statement.DbStatementParser#parse(String)] a [SelectStatement] the
+/// [select][SelectStatement#getSelect()] clause may not be of any of the expected sub-classes such as
+/// [SelectEntityClause], [SelectSingleClause], [SelectResultClause], or
+/// [SelectProjectionClause]. Use `isSelect*` methods like [#isSelectEntity()] to determine the actual
+/// selection type.
+///
+/// @param <R> type of the result of the selection.
+/// @since 1.0.0
 public abstract class SelectClause<R> extends AbstractDbClause implements DbIncompleteStartClause {
 
-  /** {@link #getResultName() Result name} for {@link SelectEntityClause}. */
+  /// [Result name][#getResultName()] for [SelectEntityClause].
   public static final String VALUE_RESULT_ENTITY = "entity";
 
-  /** {@link #getResultName() Result name} for {@link SelectSingleClause}. */
+  /// [Result name][#getResultName()] for [SelectSingleClause].
   public static final String VALUE_RESULT_SINLGE = "1";
 
-  /** {@link #getResultName() Result name} for {@link SelectSequenceNextValueClause}. */
+  /// [Result name][#getResultName()] for [SelectSequenceNextValueClause].
   public static final String VALUE_RESULT_SEQ_NEXT_VAL = "seq.nextval";
 
-  /** {@link #getResultName() Result name} for {@link SelectResultClause}. */
+  /// [Result name][#getResultName()] for [SelectResultClause].
   public static final String VALUE_RESULT_RESULT = "result";
 
   SelectStatement<R> statement;
@@ -58,11 +56,9 @@ public abstract class SelectClause<R> extends AbstractDbClause implements DbInco
 
   private boolean distinct;
 
-  /**
-   * The constructor.
-   *
-   * @param resultBean the {@link #getResultBean() result bean}.
-   */
+  /// The constructor.
+  ///
+  /// @param resultBean the [result bean][#getResultBean()].
   protected SelectClause(R resultBean) {
 
     super();
@@ -70,17 +66,13 @@ public abstract class SelectClause<R> extends AbstractDbClause implements DbInco
     setResultBean(resultBean);
   }
 
-  /**
-   * @return {@code true} for {@code DISTINCT} selection (filter out duplicates), {@code false} otherwise.
-   */
+  /// @return `true` for `DISTINCT` selection (filter out duplicates), `false` otherwise.
   public boolean isDistinct() {
 
     return this.distinct;
   }
 
-  /**
-   * @return the {@link List} of selections. Only use for generic code. To build queries use fluent API methods.
-   */
+  /// @return the [List] of selections. Only use for generic code. To build queries use fluent API methods.
   public List<? extends CriteriaObject<?>> getSelections() {
 
     return this.selections;
@@ -92,18 +84,14 @@ public abstract class SelectClause<R> extends AbstractDbClause implements DbInco
     return this.statement;
   }
 
-  /**
-   * @return the result {@link io.github.mmm.bean.WritableBean bean} for {@link SelectProjectionClause} or
-   *         {@link SelectEntityClause}, otherwise {@code null}.
-   */
+  /// @return the result [bean][io.github.mmm.bean.WritableBean] for [SelectProjectionClause] or
+  ///         [SelectEntityClause], otherwise `null`.
   public R getResultBean() {
 
     return this.resultBean;
   }
 
-  /**
-   * @param resultBean the new value of {@link #getResultBean()}.
-   */
+  /// @param resultBean the new value of [#getResultBean()].
   protected void setResultBean(R resultBean) {
 
     if ((resultBean instanceof WritableBean) && (this.resultName == null)) {
@@ -112,62 +100,50 @@ public abstract class SelectClause<R> extends AbstractDbClause implements DbInco
     this.resultBean = resultBean;
   }
 
-  /**
-   * @return the optional result name. Will be {@link #VALUE_RESULT_ENTITY} for {@link SelectEntityClause},
-   *         {@link #VALUE_RESULT_SINLGE} for {@link SelectSingleClause}, and {@link #VALUE_RESULT_RESULT} for
-   *         {@link SelectResultClause}.
-   * @see #getResultBean()
-   * @see io.github.mmm.db.statement.AbstractEntityClause#getName()
-   */
+  /// @return the optional result name. Will be [#VALUE_RESULT_ENTITY] for [SelectEntityClause],
+  ///         [#VALUE_RESULT_SINLGE] for [SelectSingleClause], and [#VALUE_RESULT_RESULT] for
+  ///         [SelectResultClause].
+  /// @see #getResultBean()
+  /// @see io.github.mmm.db.statement.AbstractEntityClause#getName()
   public String getResultName() {
 
     return this.resultName;
   }
 
-  /**
-   * @param resultName new value of {@link #getResultName()}.
-   */
+  /// @param resultName new value of [#getResultName()].
   protected void setResultName(String resultName) {
 
     this.resultName = resultName;
   }
 
-  /**
-   * @return {@code true} if the {@link SelectFromClause#getEntity() primary entity} is selected, {@code false}
-   *         otherwise.
-   * @see SelectEntityClause
-   */
+  /// @return `true` if the [primary entity][SelectFromClause#getEntity()] is selected, `false`
+  ///         otherwise.
+  /// @see SelectEntityClause
   public boolean isSelectEntity() {
 
     return VALUE_RESULT_ENTITY.equals(this.resultName);
   }
 
-  /**
-   * @return {@code true} if only a {@link SelectSingleClause single} {@link #getSelections() selection} is selected as
-   *         raw value, {@code false} otherwise.
-   * @see SelectSingleClause
-   * @see SelectSequenceNextValueClause
-   */
+  /// @return `true` if only a [single][SelectSingleClause] [selection][#getSelections()] is selected as
+  ///         raw value, `false` otherwise.
+  /// @see SelectSingleClause
+  /// @see SelectSequenceNextValueClause
   public boolean isSelectSingle() {
 
     return VALUE_RESULT_SINLGE.equals(this.resultName);
   }
 
-  /**
-   * @return {@code true} if only if the {@link SelectFromClause#getEntity() main entity} is selected, {@code false}
-   *         otherwise.
-   * @see SelectEntityClause
-   */
+  /// @return `true` if only if the [main entity][SelectFromClause#getEntity()] is selected, `false`
+  ///         otherwise.
+  /// @see SelectEntityClause
   public boolean isSelectResult() {
 
     return VALUE_RESULT_SINLGE.equals(this.resultName);
   }
 
-  /**
-   * Sets {@link #isDistinct() DISTINCT} selection (filter out duplicates).
-   *
-   * @return this {@link SelectClause} for fluent API calls.
-   */
+  /// Sets [DISTINCT][#isDistinct()] selection (filter out duplicates).
+  ///
+  /// @return this [SelectClause] for fluent API calls.
   public SelectClause<R> distinct() {
 
     this.distinct = true;
@@ -180,20 +156,16 @@ public abstract class SelectClause<R> extends AbstractDbClause implements DbInco
     ((List) this.selections).add(selection);
   }
 
-  /**
-   * @param expression the {@link CriteriaExpression} to add to the selection.
-   * @return this {@link SelectClause} for fluent API calls.
-   */
+  /// @param expression the [CriteriaExpression] to add to the selection.
+  /// @return this [SelectClause] for fluent API calls.
   protected SelectClause<R> and(CriteriaExpression<?> expression) {
 
     add(expression);
     return this;
   }
 
-  /**
-   * @param expressions the {@link CriteriaExpression}s to add to the selection.
-   * @return this {@link SelectClause} for fluent API calls.
-   */
+  /// @param expressions the [CriteriaExpression]s to add to the selection.
+  /// @return this [SelectClause] for fluent API calls.
   protected SelectClause<R> and(CriteriaExpression<?>... expressions) {
 
     for (CriteriaExpression<?> aggregation : expressions) {
@@ -202,20 +174,16 @@ public abstract class SelectClause<R> extends AbstractDbClause implements DbInco
     return this;
   }
 
-  /**
-   * @param property the {@link PropertyPath property} to add to the selection.
-   * @return this {@link SelectClause} for fluent API calls.
-   */
+  /// @param property the [property][PropertyPath] to add to the selection.
+  /// @return this [SelectClause] for fluent API calls.
   protected SelectClause<R> and(PropertyPath<?> property) {
 
     add(property);
     return this;
   }
 
-  /**
-   * @param properties the {@link PropertyPath properties} to add to the selection.
-   * @return this {@link SelectClause} for fluent API calls.
-   */
+  /// @param properties the [properties][PropertyPath] to add to the selection.
+  /// @return this [SelectClause] for fluent API calls.
   protected SelectClause<R> and(PropertyPath<?>... properties) {
 
     for (PropertyPath<?> property : properties) {
@@ -224,21 +192,17 @@ public abstract class SelectClause<R> extends AbstractDbClause implements DbInco
     return this;
   }
 
-  /**
-   * @param <E> type of the {@link EntityBean}.
-   * @param entity the {@link EntityBean entity} to select from.
-   * @return the {@link SelectFromClause} for fluent API calls.
-   */
+  /// @param <E> type of the [EntityBean].
+  /// @param entity the [entity][EntityBean] to select from.
+  /// @return the [SelectFromClause] for fluent API calls.
   protected <E extends EntityBean> SelectFromClause<R, E> from(E entity) {
 
     return new SelectFromClause<>(this, entity);
   }
 
-  /**
-   * Alternative for {@code new SelectResult()}.
-   *
-   * @return the new {@link SelectResultClause} clause.
-   */
+  /// Alternative for `new SelectResult()`.
+  ///
+  /// @return the new [SelectResultClause] clause.
   public static SelectResultClause result() {
 
     return new SelectResultClause();

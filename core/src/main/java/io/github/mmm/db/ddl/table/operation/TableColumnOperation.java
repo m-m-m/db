@@ -2,29 +2,23 @@ package io.github.mmm.db.ddl.table.operation;
 
 import io.github.mmm.db.ddl.column.DbColumnReference;
 
-/**
- * {@link TableOperation} on a {@link DbColumnReference column}.
- *
- * @since 1.0.0
- */
+/// [TableOperation] on a [column][DbColumnReference].
+///
+/// @since 1.0.0
 public abstract class TableColumnOperation extends TableOperation {
 
   private final DbColumnReference column;
 
-  /**
-   * The constructor.
-   *
-   * @param column the {@link #getColumn() column} to alter.
-   */
+  /// The constructor.
+  ///
+  /// @param column the [column][#getColumn()] to alter.
   public TableColumnOperation(DbColumnReference column) {
 
     super();
     this.column = column;
   }
 
-  /**
-   * @return the {@link DbColumnReference column} to alter according to the {@link #getType() type}.
-   */
+  /// @return the [column][DbColumnReference] to alter according to the [type][#getType()].
   public DbColumnReference getColumn() {
 
     return this.column;

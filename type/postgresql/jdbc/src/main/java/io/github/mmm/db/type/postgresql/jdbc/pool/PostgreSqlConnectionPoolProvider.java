@@ -9,11 +9,9 @@ import org.postgresql.ds.PGSimpleDataSource;
 import io.github.mmm.db.pool.spi.JdbcConnectionPoolProvider;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Implementation of {@link JdbcConnectionPoolProvider} for PostGreSQL.
- *
- * @since 1.0.0
- */
+/// Implementation of [JdbcConnectionPoolProvider] for PostGreSQL.
+///
+/// @since 1.0.0
 public class PostgreSqlConnectionPoolProvider extends JdbcConnectionPoolProvider {
 
   @Override

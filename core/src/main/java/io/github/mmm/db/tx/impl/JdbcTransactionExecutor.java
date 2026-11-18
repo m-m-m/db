@@ -11,18 +11,14 @@ import io.github.mmm.db.tx.DbTransactionConfig;
 import io.github.mmm.db.tx.spi.AbstractDbTransaction;
 import io.github.mmm.db.tx.spi.AbstractDbTransactionExecutor;
 
-/**
- * Implementation of {@link AbstractDbTransactionExecutor} for JDBC.
- */
+/// Implementation of [AbstractDbTransactionExecutor] for JDBC.
 public class JdbcTransactionExecutor extends AbstractDbTransactionExecutor {
 
   private final DbSourceConfig config;
 
-  /**
-   * The constructor.
-   *
-   * @param config the {@link DbSourceConfig}.
-   */
+  /// The constructor.
+  ///
+  /// @param config the [DbSourceConfig].
   public JdbcTransactionExecutor(DbSourceConfig config) {
 
     super();

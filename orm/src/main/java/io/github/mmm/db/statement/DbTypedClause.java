@@ -4,12 +4,10 @@ package io.github.mmm.db.statement;
 
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * A {@link DbClause} that is typed by the {@link EntityBean}.
- *
- * @param <E> type of this {@link DbClause} (typically the {@link AbstractEntityClause#getEntity() entity}).
- * @since 1.0.0
- */
+/// A [DbClause] that is typed by the [EntityBean].
+///
+/// @param <E> type of this [DbClause] (typically the [entity][AbstractEntityClause#getEntity()]).
+/// @since 1.0.0
 public interface DbTypedClause<E> extends DbClause {
 
 }

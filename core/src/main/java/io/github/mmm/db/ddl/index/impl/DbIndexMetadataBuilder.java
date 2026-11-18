@@ -12,9 +12,7 @@ import io.github.mmm.db.ddl.table.DbTableReference;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link Builder} of {@link DbIndexMetadata}.
- */
+/// [Builder] of [DbIndexMetadata].
 public class DbIndexMetadataBuilder implements Builder<DbIndexMetadata> {
 
   private final String name;
@@ -33,26 +31,22 @@ public class DbIndexMetadataBuilder implements Builder<DbIndexMetadata> {
 
   private boolean populated;
 
-  /**
-   * JDBC type code that identifies table statistics that are returned in conjunction with a table's index descriptions.
-   */
+  /// JDBC type code that identifies table statistics that are returned in conjunction with a table's index descriptions.
   public static final int TYPE_STATISTIC = 0;
 
-  /** JDBC type code that identifies a clustered index. */
+  /// JDBC type code that identifies a clustered index.
   public static final int TYPE_CLUSTERED = 1;
 
-  /** JDBC type code that identifies a hashed index. */
+  /// JDBC type code that identifies a hashed index.
   public static final int TYPE_HASHED = 2;
 
-  /** JDBC type code that identifies some other style of index. */
+  /// JDBC type code that identifies some other style of index.
   public static final int TYPE_OTHER = 3;
 
-  /**
-   * The constructor.
-   *
-   * @param name the name of the {@link DbIndexMetadata index} to build.
-   * @param table the owning {@link DbIndexMetadata#getTable() table}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the name of the [index][DbIndexMetadata] to build.
+  /// @param table the owning [table][DbIndexMetadata#getTable()].
   public DbIndexMetadataBuilder(String name, DbTableReference<EntityBean> table) {
 
     super();
@@ -61,25 +55,19 @@ public class DbIndexMetadataBuilder implements Builder<DbIndexMetadata> {
     this.columnsBuilder = new ListBuilder<>();
   }
 
-  /**
-   * @return the {@link ListBuilder} for {@link DbIndexMetadata#getColumns()}.
-   */
+  /// @return the [ListBuilder] for [DbIndexMetadata#getColumns()].
   public ListBuilder<DbColumnReferenceWithSortOrder> getColumnsBuilder() {
 
     return this.columnsBuilder;
   }
 
-  /**
-   * @param typeCode the JDBC type code. See e.g. {@link #TYPE_CLUSTERED}.
-   */
+  /// @param typeCode the JDBC type code. See e.g. [#TYPE_CLUSTERED].
   public void setTypeCode(int typeCode) {
 
     this.typeCode = typeCode;
   }
 
-  /**
-   * @param unique new value of {@link DbIndexMetadata#isUnique()}.
-   */
+  /// @param unique new value of [DbIndexMetadata#isUnique()].
   public void setUnique(boolean unique) {
 
     if (this.populated) {
@@ -88,9 +76,7 @@ public class DbIndexMetadataBuilder implements Builder<DbIndexMetadata> {
     this.unique = unique;
   }
 
-  /**
-   * @param cardinality new value of {@link DbIndexMetadata#getCardinality()}.
-   */
+  /// @param cardinality new value of [DbIndexMetadata#getCardinality()].
   public void setCardinality(long cardinality) {
 
     if (this.populated) {
@@ -99,17 +85,13 @@ public class DbIndexMetadataBuilder implements Builder<DbIndexMetadata> {
     this.cardinality = cardinality;
   }
 
-  /**
-   * @param filterCondition new value of {@link DbIndexMetadata#getFilterCondition()}.
-   */
+  /// @param filterCondition new value of [DbIndexMetadata#getFilterCondition()].
   public void setFilterCondition(String filterCondition) {
 
     this.filterCondition = filterCondition;
   }
 
-  /**
-   * To be called if the regular values are populated from the first result.
-   */
+  /// To be called if the regular values are populated from the first result.
   public void setPopulated() {
 
     this.populated = true;

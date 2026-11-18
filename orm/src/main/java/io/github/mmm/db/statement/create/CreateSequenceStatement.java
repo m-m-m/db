@@ -9,29 +9,23 @@ import io.github.mmm.db.statement.AliasMap;
 import io.github.mmm.db.statement.DbStartClause;
 import io.github.mmm.db.statement.DbStatement;
 
-/**
- * {@link DbStatement} to {@link CreateSequenceClause create a sequence}.
- *
- * @since 1.0.0
- */
+/// [DbStatement] to [create a sequence][CreateSequenceClause].
+///
+/// @since 1.0.0
 public class CreateSequenceStatement extends CreateStatement<Void> {
 
   private final CreateSequenceClause createSequence;
 
-  /**
-   * The constructor.
-   *
-   * @param createSequence the {@link #getCreateSequence() create sequence}.
-   */
+  /// The constructor.
+  ///
+  /// @param createSequence the [create sequence][#getCreateSequence()].
   public CreateSequenceStatement(CreateSequenceClause createSequence) {
 
     super();
     this.createSequence = createSequence;
   }
 
-  /**
-   * @deprecated use {@link #getCreateSequence()} to make it more explicit.
-   */
+  /// @deprecated use [#getCreateSequence()] to make it more explicit.
   @Deprecated
   @Override
   public DbStartClause getStart() {
@@ -39,9 +33,7 @@ public class CreateSequenceStatement extends CreateStatement<Void> {
     return this.createSequence;
   }
 
-  /**
-   * @return the opening {@link CreateSequenceClause}.
-   */
+  /// @return the opening [CreateSequenceClause].
   public CreateSequenceClause getCreateSequence() {
 
     return this.createSequence;

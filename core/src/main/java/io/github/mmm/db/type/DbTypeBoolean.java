@@ -2,9 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.type;
 
-/**
- * {@link DbType} for a regular {@link Boolean}.
- */
+/// [DbType] for a regular [Boolean].
 public final class DbTypeBoolean extends DbTypeSimpleBoolean {
 
   static final DbTypeBoolean INSTANCE = new DbTypeBoolean(null, null, null, null, null, false, DbTypeRegistration.ALL);

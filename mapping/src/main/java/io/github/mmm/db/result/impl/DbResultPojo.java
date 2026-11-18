@@ -8,37 +8,29 @@ import java.util.List;
 import io.github.mmm.db.result.DbResult;
 import io.github.mmm.db.result.DbResultValue;
 
-/**
- * Implementation of {@link DbResult} as mutable Java bean (POJO).
- *
- * @since 1.0.0
- */
+/// Implementation of [DbResult] as mutable Java bean (POJO).
+///
+/// @since 1.0.0
 public class DbResultPojo extends AbstractDbResult {
 
   private final List<DbResultValue<?>> values;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public DbResultPojo() {
 
     this(16);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param capacity the initial capacity.
-   */
+  /// The constructor.
+  ///
+  /// @param capacity the initial capacity.
   public DbResultPojo(int capacity) {
 
     super();
     this.values = new ArrayList<>(capacity);
   }
 
-  /**
-   * @param cell the {@link DbResultValue} to add.
-   */
+  /// @param cell the [DbResultValue] to add.
   public void add(DbResultValue<?> cell) {
 
     this.values.add(cell);

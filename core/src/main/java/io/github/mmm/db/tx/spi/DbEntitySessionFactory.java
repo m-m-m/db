@@ -5,24 +5,18 @@ package io.github.mmm.db.tx.spi;
 import io.github.mmm.db.tx.impl.DbEntitySessionDefault;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Factory to {@link #create(EntityBean) create} instances of {@link DbEntitySession}.
- *
- * @since 1.0.0
- */
+/// Factory to [create][#create(EntityBean)] instances of [DbEntitySession].
+///
+/// @since 1.0.0
 @FunctionalInterface
 public interface DbEntitySessionFactory {
 
-  /**
-   * @param <E> type of the {@link EntityBean}.
-   * @param entity the {@link EntityBean} prototype.
-   * @return the new {@link DbEntitySession} instance.
-   */
+  /// @param <E> type of the [EntityBean].
+  /// @param entity the [EntityBean] prototype.
+  /// @return the new [DbEntitySession] instance.
   <E extends EntityBean> DbEntitySession<E> create(E entity);
 
-  /**
-   * @return the default instance of {@link DbEntitySessionFactory}.
-   */
+  /// @return the default instance of [DbEntitySessionFactory].
   static DbEntitySessionFactory get() {
 
     return DbEntitySessionDefault::new;

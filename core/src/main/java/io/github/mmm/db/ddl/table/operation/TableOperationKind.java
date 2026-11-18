@@ -2,17 +2,15 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.ddl.table.operation;
 
-/**
- * Enum with the available kinds of a {@link TableOperation}.
- *
- * @see TableOperation#getKind()
- */
+/// Enum with the available kinds of a [TableOperation].
+///
+/// @see TableOperation#getKind()
 public enum TableOperationKind {
 
-  /** Operation kind for {@link io.github.mmm.db.ddl.column.DbColumnReference column}. */
+  /// Operation kind for [column][io.github.mmm.db.ddl.column.DbColumnReference].
   COLUMN,
 
-  /** Operation kind for {@link io.github.mmm.db.ddl.constraint.DbConstraint constraint}. */
+  /// Operation kind for [constraint][io.github.mmm.db.ddl.constraint.DbConstraint].
   CONSTRAINT;
 
 }

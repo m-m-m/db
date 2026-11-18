@@ -16,39 +16,31 @@ import io.github.mmm.db.statement.select.SelectFromClause;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.criteria.CriteriaFormatterFactory;
 
-/**
- * {@link BasicDbStatementFormatter} for any real {@link DbDialect database dialect}.
- */
+/// [BasicDbStatementFormatter] for any real [database dialect][DbDialect].
 public class DbDialectStatementFormatter extends BasicDbStatementFormatter {
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the owning {@link AbstractDbDialect dialect}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the owning [dialect][AbstractDbDialect].
   public DbDialectStatementFormatter(AbstractDbDialect<?> dialect) {
 
     this(dialect, CriteriaParametersIndexed.FACTORY);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the owning {@link AbstractDbDialect dialect}.
-   * @param parametersFactory the {@link CriteriaFormatterFactory}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the owning [dialect][AbstractDbDialect].
+  /// @param parametersFactory the [CriteriaFormatterFactory].
   public DbDialectStatementFormatter(AbstractDbDialect<?> dialect, CriteriaParametersFactory parametersFactory) {
 
     this(dialect, parametersFactory, INDENTATION);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the owning {@link AbstractDbDialect dialect}.
-   * @param parametersFactory the {@link CriteriaFormatterFactory}.
-   * @param indentation the {@link #getIndentation() indentation}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the owning [dialect][AbstractDbDialect].
+  /// @param parametersFactory the [CriteriaFormatterFactory].
+  /// @param indentation the [indentation][#getIndentation()].
   public DbDialectStatementFormatter(AbstractDbDialect<?> dialect, CriteriaParametersFactory parametersFactory,
       String indentation) {
 

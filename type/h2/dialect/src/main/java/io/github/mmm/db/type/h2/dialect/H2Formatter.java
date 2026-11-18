@@ -6,30 +6,24 @@ import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.param.CriteriaParametersFactory;
 import io.github.mmm.db.statement.select.SelectSequenceNextValueClause;
 
-/**
- * {@link DbDialectStatementFormatter} for H2 Database.
- *
- * @since 1.0.0
- */
+/// [DbDialectStatementFormatter] for H2 Database.
+///
+/// @since 1.0.0
 public class H2Formatter extends DbDialectStatementFormatter {
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link H2Dialect}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [H2Dialect].
   public H2Formatter(H2Dialect dialect) {
 
     super(dialect);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link H2Dialect}.
-   * @param parametersFactory the {@link CriteriaParametersFactory}.
-   * @param indentation the {@link #getIndentation() indentation}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [H2Dialect].
+  /// @param parametersFactory the [CriteriaParametersFactory].
+  /// @param indentation the [indentation][#getIndentation()].
   public H2Formatter(H2Dialect dialect, CriteriaParametersFactory parametersFactory, String indentation) {
 
     super(dialect, parametersFactory, indentation);

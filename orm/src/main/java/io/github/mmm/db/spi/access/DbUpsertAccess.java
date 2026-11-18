@@ -4,15 +4,11 @@ package io.github.mmm.db.spi.access;
 
 import io.github.mmm.db.statement.upsert.UpsertStatement;
 
-/**
- * Interface providing support for {@link #execute(UpsertStatement)}.
- */
+/// Interface providing support for [#execute(UpsertStatement)].
 public interface DbUpsertAccess {
 
-  /**
-   * @param statement the {@link UpsertStatement} to execute.
-   * @return the number of records that have been deleted.
-   */
+  /// @param statement the [UpsertStatement] to execute.
+  /// @return the number of records that have been deleted.
   long execute(UpsertStatement<?> statement);
 
 }

@@ -6,9 +6,7 @@ import java.sql.Types;
 
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * {@link DbType} for a regular {@link Long}.
- */
+/// [DbType] for a regular [Long].
 public final class DbTypeRowId extends DbType2Long<Long, DbTypeRowId> {
 
   static final DbTypeRowId INSTANCE = new DbTypeRowId(null, null, null, null, null, false,

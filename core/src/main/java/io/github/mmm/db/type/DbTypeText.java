@@ -4,9 +4,7 @@ package io.github.mmm.db.type;
 
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * {@link DbType} for a regular {@link String}.
- */
+/// [DbType] for a regular [String].
 public final class DbTypeText extends DbTypeSimpleString {
 
   static final DbTypeText INSTANCE = new DbTypeText(null, null, null, null, null, false, DbTypeRegistration.NAME);

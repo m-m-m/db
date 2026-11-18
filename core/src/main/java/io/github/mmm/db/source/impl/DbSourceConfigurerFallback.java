@@ -7,9 +7,7 @@ import java.util.Properties;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.spi.AbstractDbSourceConfigurer;
 
-/**
- * Fallback implementation for {@link io.github.mmm.db.source.spi.DbSourceConfigurer}.
- */
+/// Fallback implementation for [io.github.mmm.db.source.spi.DbSourceConfigurer].
 public class DbSourceConfigurerFallback extends AbstractDbSourceConfigurer {
 
   @Override

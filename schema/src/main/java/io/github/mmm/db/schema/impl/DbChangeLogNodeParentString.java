@@ -2,11 +2,9 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.schema.impl;
 
-/**
- * {@link DbChangeLogNodeParent} using {@link String} as key.
- *
- * @param <C> type of the {@link #get(String) children}.
- */
+/// [DbChangeLogNodeParent] using [String] as key.
+///
+/// @param <C> type of the [children][#get(String)].
 public abstract class DbChangeLogNodeParentString<C> extends DbChangeLogNodeParent<String, C> {
 
   @Override

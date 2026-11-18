@@ -7,13 +7,11 @@ import java.util.Objects;
 import io.github.mmm.base.filter.CharFilter;
 import io.github.mmm.base.filter.ListCharFilter;
 
-/**
- * A potentially qualified identifier consisting of {@link #getCatalog() catalog}, {@link #getSchema() schema}, and
- * {@link #getName() name}. The {@link #getName() name} is always required, while the other attributes can be
- * {@code null}. In such case the default values of the database connection will apply.
- *
- * @since 1.0.0
- */
+/// A potentially qualified identifier consisting of [catalog][#getCatalog()], [schema][#getSchema()], and
+/// [name][#getName()]. The [name][#getName()] is always required, while the other attributes can be
+/// `null`. In such case the default values of the database connection will apply.
+///
+/// @since 1.0.0
 public final class DbQualifiedName {
 
   private static final CharFilter QUOTED_NAME = CharFilter.LATIN_LETTER_OR_DIGIT.compose(new ListCharFilter("_$ ."));
@@ -31,24 +29,20 @@ public final class DbQualifiedName {
     this(name, null, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() name}.
-   * @param schema the {@link #getSchema() schema}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [name][#getName()].
+  /// @param schema the [schema][#getSchema()].
   public DbQualifiedName(String name, String schema) {
 
     this(name, schema, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() name}.
-   * @param schema the {@link #getSchema() schema}.
-   * @param catalog the {@link #getCatalog() catalog}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [name][#getName()].
+  /// @param schema the [schema][#getSchema()].
+  /// @param catalog the [catalog][#getCatalog()].
   public DbQualifiedName(String name, String schema, String catalog) {
 
     this(name, schema, catalog, null);
@@ -131,34 +125,26 @@ public final class DbQualifiedName {
     return sb.toString();
   }
 
-  /**
-   * @return the name of the catalog (a database in the DB server aka cluster) or {@code null} for no catalog.
-   */
+  /// @return the name of the catalog (a database in the DB server aka cluster) or `null` for no catalog.
   public String getCatalog() {
 
     return this.catalog;
   }
 
-  /**
-   * @return the name of the schema (namespace containing tables) or {@code null} for no schema.
-   */
+  /// @return the name of the schema (namespace containing tables) or `null` for no schema.
   public String getSchema() {
 
     return this.schema;
   }
 
-  /**
-   * @return the local name of the database object. May not be {@code null}.
-   */
+  /// @return the local name of the database object. May not be `null`.
   public String getName() {
 
     return this.name;
   }
 
-  /**
-   * @param newName the new {@link #getName() name}.
-   * @return the new {@link DbQualifiedName} with the given {@link #getName() name}.
-   */
+  /// @param newName the new [name][#getName()].
+  /// @return the new [DbQualifiedName] with the given [name][#getName()].
   public DbQualifiedName withName(String newName) {
 
     if (Objects.equals(newName, this.name)) {
@@ -167,10 +153,8 @@ public final class DbQualifiedName {
     return new DbQualifiedName(newName, this.schema, this.catalog);
   }
 
-  /**
-   * @param newSchema the new {@link #getSchema() schema}.
-   * @return the new {@link DbQualifiedName} with the given {@link #getSchema() schema}.
-   */
+  /// @param newSchema the new [schema][#getSchema()].
+  /// @return the new [DbQualifiedName] with the given [schema][#getSchema()].
   public DbQualifiedName withSchema(String newSchema) {
 
     if (Objects.equals(newSchema, this.schema)) {
@@ -179,10 +163,8 @@ public final class DbQualifiedName {
     return new DbQualifiedName(this.name, newSchema, this.catalog);
   }
 
-  /**
-   * @param newCatalog the new {@link #getCatalog() catalog}.
-   * @return the new {@link DbQualifiedName} with the given {@link #getCatalog() catalog}.
-   */
+  /// @param newCatalog the new [catalog][#getCatalog()].
+  /// @return the new [DbQualifiedName] with the given [catalog][#getCatalog()].
   public DbQualifiedName withCatalog(String newCatalog) {
 
     if (Objects.equals(newCatalog, this.catalog)) {
@@ -191,10 +173,8 @@ public final class DbQualifiedName {
     return new DbQualifiedName(this.name, this.schema, newCatalog);
   }
 
-  /**
-   * @return {@code true} if this {@link DbQualifiedName} has a qualifier ({@link #getCatalog() catalog} or
-   *         {@link #getSchema() schema}), {@code false} otherwise (actually unqualified).
-   */
+  /// @return `true` if this [DbQualifiedName] has a qualifier ([catalog][#getCatalog()] or
+  ///         [schema][#getSchema()]), `false` otherwise (actually unqualified).
   public boolean hasQualifier() {
 
     return (this.catalog != null) || (this.schema != null);
@@ -225,10 +205,8 @@ public final class DbQualifiedName {
     return this.qName;
   }
 
-  /**
-   * @param string the {@link #getName() unqualified name}. May be {@code null}.
-   * @return the new {@link DbQualifiedName}. Will be {@code null} if {@code string} was {@code null}.
-   */
+  /// @param string the [unqualified name][#getName()]. May be `null`.
+  /// @return the new [DbQualifiedName]. Will be `null` if `string` was `null`.
   public static DbQualifiedName ofName(String string) {
 
     if (string == null) {
@@ -237,10 +215,8 @@ public final class DbQualifiedName {
     return new DbQualifiedName(string);
   }
 
-  /**
-   * @param string the {@link #toString() string representation} of the {@link DbQualifiedName}.
-   * @return the parsed {@link DbQualifiedName}. Will be {@code null} if {@code string} was {@code null}.
-   */
+  /// @param string the [string representation][#toString()] of the [DbQualifiedName].
+  /// @return the parsed [DbQualifiedName]. Will be `null` if `string` was `null`.
   public static DbQualifiedName ofParsed(String string) {
 
     if (string == null) {

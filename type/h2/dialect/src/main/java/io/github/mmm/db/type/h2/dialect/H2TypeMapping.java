@@ -4,16 +4,12 @@ package io.github.mmm.db.type.h2.dialect;
 
 import io.github.mmm.db.typemapping.DbTypeMapping;
 
-/**
- * {@link DbTypeMapping} for <a href="https://www.h2database.com/html/datatypes.html">H2 database</a>.
- *
- * @since 1.0.0
- */
+/// [DbTypeMapping] for <a href="https://www.h2database.com/html/datatypes.html">H2 database</a>.
+///
+/// @since 1.0.0
 public class H2TypeMapping extends DbTypeMapping {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public H2TypeMapping() {
 
     super();

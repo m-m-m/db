@@ -6,18 +6,14 @@ import io.github.mmm.db.statement.delete.DeleteStatement;
 import io.github.mmm.db.statement.select.SelectStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Extends {@link EntityDeleteOperations} with operations for {@link SelectStatement}s.
- *
- * @param <E> type of the managed {@link EntityBean}.
- * @since 1.0.0
- */
+/// Extends [EntityDeleteOperations] with operations for [SelectStatement]s.
+///
+/// @param <E> type of the managed [EntityBean].
+/// @since 1.0.0
 public interface DbDeleteOperations<E extends EntityBean> extends EntityDeleteOperations<E> {
 
-  /**
-   * @param statement the {@link DeleteStatement} to execute.
-   * @return the number of {@link EntityBean entities} that have been deleted.
-   */
+  /// @param statement the [DeleteStatement] to execute.
+  /// @return the number of [entities][EntityBean] that have been deleted.
   long delete(DeleteStatement<E> statement);
 
 }

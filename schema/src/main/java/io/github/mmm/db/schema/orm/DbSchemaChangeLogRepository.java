@@ -5,7 +5,7 @@ package io.github.mmm.db.schema.orm;
 import io.github.mmm.db.repository.DbRepository;
 import io.github.mmm.db.repository.operation.DbDdlOperations;
 
-/// {@link DbRepository} for {@link DbSchemaChangeLog}.
+/// [DbRepository] for [DbSchemaChangeLog].
 public interface DbSchemaChangeLogRepository
     extends DbRepository<DbSchemaChangeLog>, DbDdlOperations<DbSchemaChangeLog> {
 

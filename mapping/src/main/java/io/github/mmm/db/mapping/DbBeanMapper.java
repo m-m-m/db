@@ -4,12 +4,10 @@ package io.github.mmm.db.mapping;
 
 import io.github.mmm.bean.WritableBean;
 
-/**
- * {@link DbMapper} to map a {@link WritableBean} to the database and vice-versa.
- *
- * @param <B> type of the {@link WritableBean} to map.
- * @since 1.0.0
- */
+/// [DbMapper] to map a [WritableBean] to the database and vice-versa.
+///
+/// @param <B> type of the [WritableBean] to map.
+/// @since 1.0.0
 public interface DbBeanMapper<B extends WritableBean> extends DbMapper<B> {
 
 }

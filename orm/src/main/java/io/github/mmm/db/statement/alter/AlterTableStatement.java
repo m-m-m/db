@@ -12,23 +12,19 @@ import io.github.mmm.db.statement.DbStartClause;
 import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link DbStatement} to {@link AlterTableClause alter a table}.
- *
- * @param <E> type of the {@link AbstractEntityClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// [DbStatement] to [alter a table][AlterTableClause].
+///
+/// @param <E> type of the [entity][AbstractEntityClause#getEntity()].
+/// @since 1.0.0
 public class AlterTableStatement<E extends EntityBean> extends AlterStatement<E> {
 
   private final AlterTableClause<E> alterTable;
 
   private final AlterTableOperationsClause<E> operations;
 
-  /**
-   * The constructor.
-   *
-   * @param createTable the {@link #getAlterTable() alter table}.
-   */
+  /// The constructor.
+  ///
+  /// @param createTable the [alter table][#getAlterTable()].
   public AlterTableStatement(AlterTableClause<E> createTable) {
 
     super();
@@ -36,9 +32,7 @@ public class AlterTableStatement<E extends EntityBean> extends AlterStatement<E>
     this.operations = new AlterTableOperationsClause<>(this);
   }
 
-  /**
-   * @deprecated use {@link #getAlterTable()} to make it more explicit.
-   */
+  /// @deprecated use [#getAlterTable()] to make it more explicit.
   @Deprecated
   @Override
   public DbStartClause getStart() {
@@ -46,17 +40,13 @@ public class AlterTableStatement<E extends EntityBean> extends AlterStatement<E>
     return this.alterTable;
   }
 
-  /**
-   * @return the opening {@link AlterTableClause}-{@link DbClause}.
-   */
+  /// @return the opening [AlterTableClause]-[DbClause].
   public AlterTableClause<E> getAlterTable() {
 
     return this.alterTable;
   }
 
-  /**
-   * @return the {@link AlterTableOperationsClause} clause.
-   */
+  /// @return the [AlterTableOperationsClause] clause.
   public AlterTableOperationsClause<E> getOperations() {
 
     return this.operations;

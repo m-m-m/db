@@ -8,177 +8,132 @@ import io.github.mmm.base.metainfo.MetaInfo;
 import io.github.mmm.db.name.DbQualifiedName;
 import io.github.mmm.db.source.impl.DbSourceConfigManager;
 
-/**
- * Interface for the configuration to a {@link DbSource}.
- */
+/// Interface for the configuration to a [DbSource].
 public interface DbSourceConfig {
 
-  /**
-   * @return the original {@link DbSource} of this data.
-   */
+  /// @return the original [DbSource] of this data.
   DbSource getSource();
 
-  /**
-   * @return the configuration as {@link MetaInfo}.
-   */
+  /// @return the configuration as [MetaInfo].
   MetaInfo getMetaInfo();
 
-  /**
-   * @return the {@link DbSource#KEY_URL database connection URL}.
-   */
+  /// @return the [database connection URL][DbSource#KEY_URL].
   default String getUrl() {
 
     return getMetaInfo().getRequired(DbSource.KEY_URL);
   }
 
-  /**
-   * @return the {@link DbSource#KEY_USER database connection user/login}.
-   */
+  /// @return the [database connection user/login][DbSource#KEY_USER].
   default String getUser() {
 
     return getMetaInfo().getRequired(DbSource.KEY_USER);
   }
 
-  /**
-   * @return the {@link DbSource#KEY_USER database connection password}.
-   */
+  /// @return the [database connection password][DbSource#KEY_USER].
   default String getPassword() {
 
     return getMetaInfo().getRequired(DbSource.KEY_PASSWORD);
   }
 
-  /**
-   * @return the {@link DbSource#KEY_KIND kind of database connection} (e.g. {@link DbSource#VALUE_KIND_JDBC "jdbc"}).
-   *         Will be auto-configured if undefined.
-   */
+  /// @return the [kind of database connection][DbSource#KEY_KIND] (e.g. ["jdbc"][DbSource#VALUE_KIND_JDBC]).
+  ///         Will be auto-configured if undefined.
   default String getKind() {
 
     return getMetaInfo().get(DbSource.KEY_KIND);
   }
 
-  /**
-   * @return {@code true} if {@link #getKind() kind} is {@link DbSource#VALUE_KIND_JDBC jdbc}, {@code false} otherwise.
-   */
+  /// @return `true` if [kind][#getKind()] is [jdbc][DbSource#VALUE_KIND_JDBC], `false` otherwise.
   default boolean isKindJdbc() {
 
     return DbSource.VALUE_KIND_JDBC.equals(getKind());
   }
 
-  /**
-   * @return the {@link DbSource#KEY_TYPE type of database}. This is similar to the {@link #getDialect() dialect} but
-   *         for the same database type potentially different dialects may exist (e.g. due to different versions of the
-   *         database product). Will be auto-configured if undefined.
-   */
+  /// @return the [type of database][DbSource#KEY_TYPE]. This is similar to the [dialect][#getDialect()] but
+  ///         for the same database type potentially different dialects may exist (e.g. due to different versions of the
+  ///         database product). Will be auto-configured if undefined.
   default String getType() {
 
     return getMetaInfo().get(DbSource.KEY_TYPE);
   }
 
-  /**
-   * @return the {@link DbSource#KEY_DIALECT database dialect}. This is the ID of the {@code DbDialect}. Such dialect
-   *         translates to database specific syntax of statements (typically native SQL). This property will be
-   *         auto-configured if undefined and defaults to the same value as {@link #getType() type}.
-   */
+  /// @return the [database dialect][DbSource#KEY_DIALECT]. This is the ID of the `DbDialect`. Such dialect
+  ///         translates to database specific syntax of statements (typically native SQL). This property will be
+  ///         auto-configured if undefined and defaults to the same value as [type][#getType()].
   default String getDialect() {
 
     return getMetaInfo().get(DbSource.KEY_DIALECT);
   }
 
-  /**
-   * @return the {@link DbSource#KEY_DATABASE database name}. Typically configured as part of the {@link #getUrl() URL}.
-   */
+  /// @return the [database name][DbSource#KEY_DATABASE]. Typically configured as part of the [URL][#getUrl()].
   default String getDatabase() {
 
     return getMetaInfo().get(DbSource.KEY_SCHEMA);
   }
 
-  /**
-   * @return the {@link DbSource#KEY_SCHEMA schema} or {@code null} if not configured.
-   */
+  /// @return the [schema][DbSource#KEY_SCHEMA] or `null` if not configured.
   default String getSchema() {
 
     return getMetaInfo().get(DbSource.KEY_SCHEMA);
   }
 
-  /**
-   * @return the {@link DbSource#KEY_CATALOG catalog} or {@code null} if not configured.
-   */
+  /// @return the [catalog][DbSource#KEY_CATALOG] or `null` if not configured.
   default String getCatalog() {
 
     return getMetaInfo().get(DbSource.KEY_CATALOG);
   }
 
-  /**
-   * @return the {@link DbSource#KEY_DRIVER_CLASS_NAME driver class-name} or {@code null} if not explicitly configured.
-   */
+  /// @return the [driver class-name][DbSource#KEY_DRIVER_CLASS_NAME] or `null` if not explicitly configured.
   default String getDriverClassName() {
 
     return getMetaInfo().get(DbSource.KEY_DRIVER_CLASS_NAME);
   }
 
-  /**
-   * @return the {@link DbSource#KEY_POOL_ID pool ID}.
-   */
+  /// @return the [pool ID][DbSource#KEY_POOL_ID].
   default String getPoolId() {
 
     return getMetaInfo().get(DbSource.KEY_POOL_ID);
   }
 
-  /**
-   * @return the {@link DbSource#KEY_POOL_SIZE_MIN minimum size} of connections kept in the pool (even if idle).
-   */
+  /// @return the [minimum size][DbSource#KEY_POOL_SIZE_MIN] of connections kept in the pool (even if idle).
   default Integer getPoolSizeMin() {
 
     return getMetaInfo().get(DbSource.KEY_POOL_SIZE_MIN);
   }
 
-  /**
-   * @return the {@link DbSource#KEY_POOL_SIZE_MAX maximum size} of connections in the pool. May be {@code null} what
-   *         means unlimited connections (if supported by pool implementation).
-   */
+  /// @return the [maximum size][DbSource#KEY_POOL_SIZE_MAX] of connections in the pool. May be `null` what
+  ///         means unlimited connections (if supported by pool implementation).
   default Integer getPoolSizeMax() {
 
     return getMetaInfo().get(DbSource.KEY_POOL_SIZE_MAX);
   }
 
-  /**
-   * @return the {@link DbSource#KEY_POOL_CONNECTION_TIMEOUT connection timeout} of the pool.
-   */
+  /// @return the [connection timeout][DbSource#KEY_POOL_CONNECTION_TIMEOUT] of the pool.
   default Duration getPoolConnectionTimeout() {
 
     return getMetaInfo().get(DbSource.KEY_POOL_CONNECTION_TIMEOUT);
   }
 
-  /**
-   * @return the {@link DbQualifiedName} with {@link #getSchema() schema} and {@link #getCatalog() catalog} to use as
-   *         template.
-   * @see DbQualifiedName#withName(String)
-   */
+  /// @return the [DbQualifiedName] with [schema][#getSchema()] and [catalog][#getCatalog()] to use as
+  ///         template.
+  /// @see DbQualifiedName#withName(String)
   DbQualifiedName getQualifiedNameTemplate();
 
-  /**
-   * @return the {@link DbSource#KEY_SEQUENCE_INCREMENT sequence increment} value.
-   */
+  /// @return the [sequence increment][DbSource#KEY_SEQUENCE_INCREMENT] value.
   default int getSequenceIncrement() {
 
     return getMetaInfo().getRequired(DbSource.KEY_SEQUENCE_INCREMENT).intValue();
   }
 
-  /**
-   * @param source the {@link DbSource}.
-   * @return the {@link DbSourceConfig} for the given {@link DbSource}. Will be created on the first call with the same
-   *         {@link DbSource}.
-   */
+  /// @param source the [DbSource].
+  /// @return the [DbSourceConfig] for the given [DbSource]. Will be created on the first call with the same
+  ///         [DbSource].
   static DbSourceConfig of(DbSource source) {
 
     return DbSourceConfigManager.INSTANCE.getOrCreate(source);
   }
 
-  /**
-   * @param source the {@link DbSource}.
-   * @return the {@link DbSourceConfig} for the given {@link DbSource} or {@code null} if not yet {@link #of(DbSource)
-   *         created}.
-   */
+  /// @param source the [DbSource].
+  /// @return the [DbSourceConfig] for the given [DbSource] or `null` if not yet [created][#of(DbSource)].
   static DbSourceConfig get(DbSource source) {
 
     return DbSourceConfigManager.INSTANCE.get(source);

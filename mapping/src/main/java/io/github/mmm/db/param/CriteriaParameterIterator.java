@@ -4,18 +4,14 @@ package io.github.mmm.db.param;
 
 import java.util.Iterator;
 
-/**
- * Implementation of {@link Iterator} for {@link CriteriaParameterImpl}.
- */
+/// Implementation of [Iterator] for [CriteriaParameterImpl].
 public class CriteriaParameterIterator implements Iterator<CriteriaParameterImpl<?>> {
 
   private CriteriaParameterImpl<?> next;
 
-  /**
-   * The constructor.
-   *
-   * @param first the initial {@link CriteriaParameterImpl} to iterate.
-   */
+  /// The constructor.
+  ///
+  /// @param first the initial [CriteriaParameterImpl] to iterate.
   public CriteriaParameterIterator(CriteriaParameterImpl<?> first) {
 
     super();

@@ -18,12 +18,10 @@ import io.github.mmm.db.statement.DbClause;
 import io.github.mmm.db.statement.DbStartClause;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link CreateStatement} to {@link CreateIndexClause create an index}
- *
- * @param <E> type of the {@link AbstractEntityClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// [CreateStatement] to [create an index][CreateIndexClause]
+///
+/// @param <E> type of the [entity][AbstractEntityClause#getEntity()].
+/// @since 1.0.0
 public class CreateIndexStatement<E extends EntityBean> extends CreateStatement<E> {
 
   private final CreateIndexClause createIndex;
@@ -34,12 +32,10 @@ public class CreateIndexStatement<E extends EntityBean> extends CreateStatement<
 
   private final DbIndex index;
 
-  /**
-   * The constructor.
-   *
-   * @param createIndex the {@link #getCreateIndex() create index clause}.
-   * @param on the {@link #getOn() on clause}.
-   */
+  /// The constructor.
+  ///
+  /// @param createIndex the [create index clause][#getCreateIndex()].
+  /// @param on the [on clause][#getOn()].
   public CreateIndexStatement(CreateIndexClause createIndex, CreateIndexOnClause<E> on) {
 
     super();
@@ -49,9 +45,7 @@ public class CreateIndexStatement<E extends EntityBean> extends CreateStatement<
     this.index = new DbIndexAdapter();
   }
 
-  /**
-   * @deprecated use {@link #getCreateIndex()} to make it more explicit.
-   */
+  /// @deprecated use [#getCreateIndex()] to make it more explicit.
   @Deprecated
   @Override
   public DbStartClause getStart() {
@@ -59,25 +53,19 @@ public class CreateIndexStatement<E extends EntityBean> extends CreateStatement<
     return this.createIndex;
   }
 
-  /**
-   * @return the opening {@link CreateIndexClause}-{@link DbClause}.
-   */
+  /// @return the opening [CreateIndexClause]-[DbClause].
   public CreateIndexClause getCreateIndex() {
 
     return this.createIndex;
   }
 
-  /**
-   * @return the {@link CreateIndexOnClause}-{@link DbClause}.
-   */
+  /// @return the [CreateIndexOnClause]-[DbClause].
   public CreateIndexOnClause<E> getOn() {
 
     return this.on;
   }
 
-  /**
-   * @return the {@link CreateIndexColumnsClause}-{@link DbClause}.
-   */
+  /// @return the [CreateIndexColumnsClause]-[DbClause].
   public CreateIndexColumnsClause<E> getColumn() {
 
     return this.column;
@@ -97,9 +85,7 @@ public class CreateIndexStatement<E extends EntityBean> extends CreateStatement<
     return this.on.getAliasMap();
   }
 
-  /**
-   * @return this {@link CreateIndexStatement} as a {@link DbIndex} that would be created by executing it.
-   */
+  /// @return this [CreateIndexStatement] as a [DbIndex] that would be created by executing it.
   public DbIndex asIndex() {
 
     return this.index;

@@ -4,12 +4,10 @@ package io.github.mmm.db.type.sqlserver.dialect;
 
 import io.github.mmm.db.typemapping.DbTypeMapping;
 
-/**
- * {@link DbTypeMapping} for <a href="https://docs.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql">MS
- * SQL Server</a>.
- *
- * @since 1.0.0
- */
+/// [DbTypeMapping] for <a href="https://docs.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql">MS
+/// SQL Server</a>.
+///
+/// @since 1.0.0
 public class SqlServerTypeMapper extends DbTypeMapping {
 
   @Override

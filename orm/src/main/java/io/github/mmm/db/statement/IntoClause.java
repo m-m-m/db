@@ -7,37 +7,31 @@ import java.util.Objects;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.WritableProperty;
 
-/**
- * An {@code INTO}-{@link DbClause clause} of a {@link DbStatement} such as
- * {@link io.github.mmm.db.statement.insert.InsertStatement INSERT} or
- * {@link io.github.mmm.db.statement.upsert.UpsertStatement UPSERT}.
- *
- * @param <E> type of the {@link #getEntity() entity}.
- * @param <V> type of the {@link ValuesClause}.
- * @param <SELF> type of this class itself.
- * @since 1.0.0
- */
+/// An `INTO`-[clause][DbClause] of a [DbStatement] such as
+/// [INSERT][io.github.mmm.db.statement.insert.InsertStatement] or
+/// [UPSERT][io.github.mmm.db.statement.upsert.UpsertStatement].
+///
+/// @param <E> type of the [entity][#getEntity()].
+/// @param <V> type of the [ValuesClause].
+/// @param <SELF> type of this class itself.
+/// @since 1.0.0
 public abstract class IntoClause<E extends EntityBean, V extends ValuesClause<E, ?>, SELF extends IntoClause<E, V, SELF>>
     extends AbstractEntityClause<E, E, SELF> implements ValuesFragment<E, V> {
 
-  /**
-   * The constructor.
-   *
-   * @param aliasMap the {@link AliasMap}.
-   * @param entity the {@link #getEntity() entity} to operate on.
-   * @param entityName the {@link #getName() entity name}.
-   */
+  /// The constructor.
+  ///
+  /// @param aliasMap the [AliasMap].
+  /// @param entity the [entity][#getEntity()] to operate on.
+  /// @param entityName the [entity name][#getName()].
   protected IntoClause(AliasMap aliasMap, E entity, String entityName) {
 
     super(aliasMap, entity, entityName);
   }
 
-  /**
-   * Sets all {@link EntityBean#getProperties() properties} of the {@link #getEntity() entity} that are not
-   * {@code null}.
-   *
-   * @return the {@link ValuesClause} for fluent API.
-   */
+  /// Sets all [properties][EntityBean#getProperties()] of the [entity][#getEntity()] that are not
+  /// `null`.
+  ///
+  /// @return the [ValuesClause] for fluent API.
   public V valuesAll() {
 
     Objects.requireNonNull(this.entity);
@@ -68,9 +62,7 @@ public abstract class IntoClause<E extends EntityBean, V extends ValuesClause<E,
     return values;
   }
 
-  /**
-   * @return {@code true} to include {@code null} values, {@code false} otherwise (to ignore them).
-   */
+  /// @return `true` to include `null` values, `false` otherwise (to ignore them).
   protected boolean isIncludeNullValues() {
 
     return true;

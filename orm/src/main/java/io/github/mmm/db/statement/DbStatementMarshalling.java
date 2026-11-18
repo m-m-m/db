@@ -6,18 +6,14 @@ import io.github.mmm.marshall.Marshalling;
 import io.github.mmm.marshall.StructuredReader;
 import io.github.mmm.marshall.StructuredWriter;
 
-/**
- * {@link Marshalling} for {@link DbStatement}s.
- *
- * @since 1.0.0
- */
+/// [Marshalling] for [DbStatement]s.
+///
+/// @since 1.0.0
 public class DbStatementMarshalling implements Marshalling<DbStatement<?>> {
 
   private static final DbStatementMarshalling INSTANCE = new DbStatementMarshalling();
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   protected DbStatementMarshalling() {
 
     super();
@@ -46,9 +42,7 @@ public class DbStatementMarshalling implements Marshalling<DbStatement<?>> {
     return parser.parse(statementString);
   }
 
-  /**
-   * @return the singleton instance of this {@link DbStatementMarshalling}.
-   */
+  /// @return the singleton instance of this [DbStatementMarshalling].
   public static DbStatementMarshalling get() {
 
     return INSTANCE;

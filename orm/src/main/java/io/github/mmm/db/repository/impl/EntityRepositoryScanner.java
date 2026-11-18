@@ -12,9 +12,7 @@ import io.github.mmm.base.resource.ResourceTypeScannerService;
 import io.github.mmm.base.type.JavaType;
 import io.github.mmm.db.repository.EntityRepository;
 
-/**
- * Implementation of {@link ResourceTypeScannerService} to find all {@link EntityRepository}.
- */
+/// Implementation of [ResourceTypeScannerService] to find all [EntityRepository].
 public class EntityRepositoryScanner implements ResourceTypeScannerService {
 
   private static final Logger LOG = LoggerFactory.getLogger(EntityRepositoryScanner.class);

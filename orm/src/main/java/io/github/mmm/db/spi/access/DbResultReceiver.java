@@ -8,21 +8,17 @@ import io.github.mmm.db.mapping.DbMapper;
 import io.github.mmm.db.mapping.DbMapper2Java;
 import io.github.mmm.db.result.DbResult;
 
-/**
- * {@link Consumer} of {@link DbResult} building the mapped Java result object.
- *
- * @param <R> type of the Java result object.
- * @since 1.0.0
- */
+/// [Consumer] of [DbResult] building the mapped Java result object.
+///
+/// @param <R> type of the Java result object.
+/// @since 1.0.0
 public abstract class DbResultReceiver<R> implements Consumer<DbResult> {
 
   private final DbMapper2Java<R> mapper;
 
-  /**
-   * The constructor.
-   *
-   * @param mapper the {@link DbMapper}.
-   */
+  /// The constructor.
+  ///
+  /// @param mapper the [DbMapper].
   public DbResultReceiver(DbMapper2Java<R> mapper) {
 
     super();
@@ -36,9 +32,7 @@ public abstract class DbResultReceiver<R> implements Consumer<DbResult> {
     receive(result);
   }
 
-  /**
-   * @param result the converted Java result.
-   */
+  /// @param result the converted Java result.
   protected abstract void receive(R result);
 
 }

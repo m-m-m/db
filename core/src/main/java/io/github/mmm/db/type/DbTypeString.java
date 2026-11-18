@@ -2,9 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.type;
 
-/**
- * {@link DbType} for a regular {@link String}.
- */
+/// [DbType] for a regular [String].
 public final class DbTypeString extends DbTypeSimpleString {
 
   static final DbTypeString INSTANCE = new DbTypeString(null, null, null, null, null, false, DbTypeRegistration.ALL);

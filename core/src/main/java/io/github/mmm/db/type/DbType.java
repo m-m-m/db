@@ -25,15 +25,13 @@ import io.github.mmm.base.exception.DuplicateObjectException;
 import io.github.mmm.base.lang.ValueType;
 import io.github.mmm.value.converter.AtomicTypeMapper;
 
-/**
- * Datatype of the database.
- *
- * @param <J> type of {@link #getSourceType() Java source type}.
- * @param <D> type of the {@link #getTargetType() database target type}.
- * @param <SELF> type of this class itself for fluent API calls.
- *
- * @since 1.0.0
- */
+/// Datatype of the database.
+///
+/// @param <J> type of [Java source type][#getSourceType()].
+/// @param <D> type of the [database target type][#getTargetType()].
+/// @param <SELF> type of this class itself for fluent API calls.
+///
+/// @since 1.0.0
 @SuppressWarnings("exports")
 public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends AtomicTypeMapper<J, D> {
 
@@ -43,13 +41,13 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
 
   private static final Map<String, DbType<?, ?, ?>> NAME_MAP = new HashMap<>();
 
-  /** Array type. */
+  /// Array type.
   public static final DbTypeArray ARRAY = DbTypeArray.INSTANCE;
 
-  /** {@link BigDecimal} type with {@link #getSize() maximum number of digits}. */
+  /// [BigDecimal] type with [maximum number of digits][#getSize()].
   public static final DbTypeBigDecimal BIG_DECIMAL = DbTypeBigDecimal.INSTANCE;
 
-  /** {@link BigInteger} type with {@link #getSize() maximum number of digits}. */
+  /// [BigInteger] type with [maximum number of digits][#getSize()].
   public static final DbTypeBigInteger2BigDecimal BIG_INTEGER = DbTypeBigInteger2BigDecimal.INSTANCE;
 
   // /** Binary type for a fixed length {@code java.sql.Blob} as {@code byte[]}. */
@@ -58,87 +56,87 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
   // /** Bit type for a fixed number of bits with {@link #getSize() size} in the range of 1-64. */
   // public static final DbType<BitSet> BIT = new DbType<>(Types.BIT, BitSet.class, DbKeyword.BIT);
 
-  /** {@link java.sql.Blob} type with variable length and a maximum {@link #getSize() size} in the range of 1-65535. */
+  /// [java.sql.Blob] type with variable length and a maximum [size][#getSize()] in the range of 1-65535.
   public static final DbTypeBlob BLOB = DbTypeBlob.INSTANCE;
 
-  /** {@link Boolean} type. */
+  /// [Boolean] type.
   public static final DbTypeBoolean BOOLEAN = DbTypeBoolean.INSTANCE;
 
-  /** {@link Byte} type with {@link #getSize() maximum number of digits} in the range of 1-3. */
+  /// [Byte] type with [maximum number of digits][#getSize()] in the range of 1-3.
   public static final DbTypeByte BYTE = DbTypeByte.INSTANCE;
 
   // /** Char type for a fixed length {@link String}. */
   // public static final DbType<char[]> CHAR = new DbType<>(Types.CHAR, char[].class, DbKeyword.CHAR);
 
-  /** {@link java.sql.Clob} type with variable length and a maximum {@link #getSize() size}. */
+  /// [java.sql.Clob] type with variable length and a maximum [size][#getSize()].
   public static final DbTypeClob CLOB = DbTypeClob.INSTANCE;
 
-  /** {@link Double} type with {@link #getSize() maximum number of digits} in the range of 1-24. */
+  /// [Double] type with [maximum number of digits][#getSize()] in the range of 1-24.
   public static final DbTypeDouble DOUBLE = DbTypeDouble.INSTANCE;
 
-  /** {@link Duration} type. */
+  /// [Duration] type.
   public static final DbTypeDuration2LongMillis DURATION = DbTypeDuration2LongMillis.INSTANCE;
 
-  /** {@link Float} type with {@link #getSize() maximum number of digits} in the range of 1-24. */
+  /// [Float] type with [maximum number of digits][#getSize()] in the range of 1-24.
   public static final DbTypeFloat FLOAT = DbTypeFloat.INSTANCE;
 
-  /** {@link Instant} type. */
+  /// [Instant] type.
   public static final DbTypeInstant2Timestamp INSTANT = DbTypeInstant2Timestamp.INSTANCE;
 
-  /** {@link Integer} type with {@link #getSize() maximum number of digits} in the range of 1-10. */
+  /// [Integer] type with [maximum number of digits][#getSize()] in the range of 1-10.
   public static final DbTypeInteger INTEGER = DbTypeInteger.INSTANCE;
 
-  /** {@link LocalDate} type. */
+  /// [LocalDate] type.
   public static final DbTypeLocalDate2Date LOCAL_DATE = DbTypeLocalDate2Date.INSTANCE;
 
-  /** {@link LocalDateTime} type. */
+  /// [LocalDateTime] type.
   public static final DbTypeLocalDateTime2Timestamp LOCAL_DATE_TIME = DbTypeLocalDateTime2Timestamp.INSTANCE;
 
-  /** {@link LocalTime} type. */
+  /// [LocalTime] type.
   public static final DbTypeLocalTime2Time LOCAL_TIME = DbTypeLocalTime2Time.INSTANCE;
 
-  /** {@link Long} type with {@link #getSize() size} as the maximum number of digits in the range of 1-20. */
+  /// [Long] type with [size][#getSize()] as the maximum number of digits in the range of 1-20.
 
   public static final DbTypeLong LONG = DbTypeLong.INSTANCE;
 
-  /** Long[] type. */
+  /// Long[] type.
   public static final DbTypeLongArray LONG_ARRAY = DbTypeLongArray.INSTANCE;
 
   // /** {@link BigInteger} type with {@link #getSize() maximum number of digits}. */
   // public static final DbSimpleType<Number> NUMBER = new DbType<>(Types.NUMERIC, Number.class, DbKeyword.NUMBER);
 
-  /** {@link OffsetDateTime} type. */
+  /// [OffsetDateTime] type.
   public static final DbTypeOffsetDateTime2String OFFSET_DATE_TIME = DbTypeOffsetDateTime2String.INSTANCE;
 
-  /** {@link OffsetTime} type. */
+  /// [OffsetTime] type.
   public static final DbTypeOffsetTime2String OFFSET_TIME = DbTypeOffsetTime2String.INSTANCE;
 
-  /** {@link Double} type based on SQL {@link Types#REAL}. */
+  /// [Double] type based on SQL [Types#REAL].
   public static final DbTypeReal REAL = DbTypeReal.INSTANCE;
 
-  /** Row-ID type. */
+  /// Row-ID type.
   public static final DbTypeRowId ROWID = DbTypeRowId.INSTANCE;
 
-  /** {@link Short} type with {@link #getSize() maximum number of digits} in the range of 1-5. */
+  /// [Short] type with [maximum number of digits][#getSize()] in the range of 1-5.
   public static final DbTypeShort SHORT = DbTypeShort.INSTANCE;
 
-  /** {@link String} type with variable length and maximum {@link #getSize() size}. */
+  /// [String] type with variable length and maximum [size][#getSize()].
   public static final DbTypeString STRING = DbTypeString.INSTANCE;
 
   // /** {@link java.sql.Blob} type with variable length and a maximum {@link #getSize() size} in the range of 1-65535.
   // */
   // public static final DbType<Blob> VARBINARY = new DbType<>(Types.VARBINARY, Blob.class, DbKeyword.VARBINARY, false);
 
-  /** {@link java.sql.SQLXML} type. */
+  /// [java.sql.SQLXML] type.
   public static final DbTypeSqlXml SQL_XML = DbTypeSqlXml.INSTANCE;
 
-  /** {@link String} type with variable length and maximum {@link #getSize() size}. */
+  /// [String] type with variable length and maximum [size][#getSize()].
   public static final DbTypeText TEXT = DbTypeText.INSTANCE;
 
-  /** {@link java.util.UUID} type based on SQL {@link Types#REAL}. */
+  /// [java.util.UUID] type based on SQL [Types#REAL].
   public static final DbTypeUuid UUID = DbTypeUuid.INSTANCE;
 
-  /** {@link Year} type. */
+  /// [Year] type.
   public static final DbTypeYear2Integer YEAR = DbTypeYear2Integer.INSTANCE;
 
   // /** {@link ZonedDateTime} type. */
@@ -160,8 +158,7 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
 
   private String declaration;
 
-  DbType(String name, Integer size, Integer scale, String format, String suffix, boolean nativeTypeSupport,
-      DbTypeRegistration registration) {
+  DbType(String name, Integer size, Integer scale, String format, String suffix, boolean nativeTypeSupport, DbTypeRegistration registration) {
 
     super();
     if (name == null) {
@@ -201,47 +198,35 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     }
   }
 
-  /**
-   * @return this object itself for fluent API calls.
-   */
+  /// @return this object itself for fluent API calls.
   @SuppressWarnings("unchecked")
   protected SELF self() {
 
     return (SELF) this;
   }
 
-  /**
-   * @return the type of this column as {@link java.sql.Types SQL type constant}.
-   */
+  /// @return the type of this column as [SQL type constant][java.sql.Types].
   public abstract int getCode();
 
-  /**
-   * @return the type of this column as {@link String}.
-   */
+  /// @return the type of this column as [String].
   public String getName() {
 
     return this.name;
   }
 
-  /**
-   * @return the default value for {@link #getName() name}.
-   */
+  /// @return the default value for [name][#getName()].
   abstract String getDefaultName();
 
-  /**
-   * @return the default value for {@link #getSuffix suffix}.
-   */
+  /// @return the default value for [suffix][#getSuffix].
   String getDefaultSuffix() {
 
     return null;
   }
 
-  /**
-   * <b>ATTENTION</b>: This is an internal API that should only be used by dialects.
-   *
-   * @param newName the new {@link #getName() name}.
-   * @return the {@link DbType} with the given {@link #getName() name}.
-   */
+  /// **ATTENTION**: This is an internal API that should only be used by dialects.
+  ///
+  /// @param newName the new [name][#getName()].
+  /// @return the [DbType] with the given [name][#getName()].
   public SELF withName(String newName) {
 
     if (this.name.equals(newName)) {
@@ -250,18 +235,14 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     return create(newName, this.size, this.scale, this.format, this.suffix, this.nativeTypeSupport);
   }
 
-  /**
-   * @return the size or {@code null} if not defined.
-   */
+  /// @return the size or `null` if not defined.
   public Integer getSize() {
 
     return this.size;
   }
 
-  /**
-   * @param newSize the new {@link #getSize() size}.
-   * @return the {@link DbType} with the given {@link #getSize() size}.
-   */
+  /// @param newSize the new [size][#getSize()].
+  /// @return the [DbType] with the given [size][#getSize()].
   public SELF withSize(Integer newSize) {
 
     if (Objects.equals(this.size, newSize)) {
@@ -270,18 +251,14 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     return create(this.name, newSize, this.scale, this.format, this.suffix, this.nativeTypeSupport);
   }
 
-  /**
-   * @return the number of digits after the decimal point or {@code null} if not defined.
-   */
+  /// @return the number of digits after the decimal point or `null` if not defined.
   public Integer getScale() {
 
     return this.scale;
   }
 
-  /**
-   * @param newScale the new {@link #getScale() scale}.
-   * @return the {@link DbType} with the given {@link #getScale() scale}.
-   */
+  /// @param newScale the new [scale][#getScale()].
+  /// @return the [DbType] with the given [scale][#getScale()].
   public SELF withScale(Integer newScale) {
 
     if (Objects.equals(this.scale, newScale)) {
@@ -290,18 +267,14 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     return create(this.name, this.size, newScale, this.format, this.suffix, this.nativeTypeSupport);
   }
 
-  /**
-   * @return the number of digits after the decimal point or {@code null} if not defined.
-   */
+  /// @return the number of digits after the decimal point or `null` if not defined.
   public String getFormat() {
 
     return this.format;
   }
 
-  /**
-   * @param newFormat the new {@link #getFormat() format}.
-   * @return the {@link DbType} with the given {@link #getFormat() format}.
-   */
+  /// @param newFormat the new [format][#getFormat()].
+  /// @return the [DbType] with the given [format][#getFormat()].
   public SELF withFormat(String newFormat) {
 
     if (Objects.equals(this.format, newFormat)) {
@@ -310,21 +283,17 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     return create(this.name, this.size, this.scale, newFormat, this.suffix, this.nativeTypeSupport);
   }
 
-  /**
-   * @return the type suffix (e.g. "WITH TIME ZONE").
-   */
+  /// @return the type suffix (e.g. "WITH TIME ZONE").
   @Override
   public String getSuffix() {
 
     return this.suffix;
   }
 
-  /**
-   * <b>ATTENTION</b>: This is an internal API that should only be used by dialects.
-   *
-   * @param newSuffix the new {@link #getSuffix() suffix}.
-   * @return the {@link DbType} with the given {@link #getSuffix() suffix}..
-   */
+  /// **ATTENTION**: This is an internal API that should only be used by dialects.
+  ///
+  /// @param newSuffix the new [suffix][#getSuffix()].
+  /// @return the [DbType] with the given [suffix][#getSuffix()]..
   public SELF withSuffix(String newSuffix) {
 
     if (Objects.equals(this.suffix, newSuffix)) {
@@ -333,24 +302,18 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     return create(this.name, this.size, this.scale, this.format, newSuffix, this.nativeTypeSupport);
   }
 
-  /**
-   * @return {@code true} if the {@link #getSourceType() Java source type} is natively supported by your database,
-   *         {@code false} otherwise (default). If not supported, the Java source type will be {@link #toTarget(Object)
-   *         converted} to the {@link #getTargetType() DB target type}. For JDBC native support means that the
-   *         {@link #getSourceType() Java source type} can be directly set via
-   *         {@link PreparedStatement#setObject(int, Object)} (e.g. for {@link BigInteger} or {@link Instant}).
-   */
+  /// @return `true` if the [Java source type][#getSourceType()] is natively supported by your database, `false` otherwise (default). If not supported, the Java
+  ///         source type will be [converted][#toTarget(Object)] to the [DB target type][#getTargetType()]. For JDBC native support means that the [Java source
+  ///         type][#getSourceType()] can be directly set via [PreparedStatement#setObject(int, Object)] (e.g. for [BigInteger] or [Instant]).
   public boolean isNativeTypeSupport() {
 
     return this.nativeTypeSupport;
   }
 
-  /**
-   * <b>ATTENTION</b>: This is an internal API that should only be used by dialects.
-   *
-   * @param newNativeTypeSupport the new {@link #isNativeTypeSupport() native type support}.
-   * @return the {@link DbType} with the given {@link #isNativeTypeSupport() native type support}.
-   */
+  /// **ATTENTION**: This is an internal API that should only be used by dialects.
+  ///
+  /// @param newNativeTypeSupport the new [native type support][#isNativeTypeSupport()].
+  /// @return the [DbType] with the given [native type support][#isNativeTypeSupport()].
   public SELF withNativeTypeSupport(boolean newNativeTypeSupport) {
 
     if (this.nativeTypeSupport == newNativeTypeSupport) {
@@ -359,29 +322,22 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     return create(this.name, this.size, this.scale, this.format, this.suffix, newNativeTypeSupport);
   }
 
-  /**
-   * @param newName the new {@link #getName() name}.
-   * @param newSize the new {@link #getSize() size}.
-   * @param newScale the new {@link #getScale() scale}.
-   * @param newFormat the new {@link #getFormat() format}.
-   * @param newSuffix the new {@link #getSuffix() suffix}.
-   * @param newNativeTypeSupport TODO
-   * @return the new instance of this class.
-   */
-  protected abstract SELF create(String newName, Integer newSize, Integer newScale, String newFormat, String newSuffix,
-      boolean newNativeTypeSupport);
+  /// @param newName the new [name][#getName()].
+  /// @param newSize the new [size][#getSize()].
+  /// @param newScale the new [scale][#getScale()].
+  /// @param newFormat the new [format][#getFormat()].
+  /// @param newSuffix the new [suffix][#getSuffix()].
+  /// @param newNativeTypeSupport TODO
+  /// @return the new instance of this class.
+  protected abstract SELF create(String newName, Integer newSize, Integer newScale, String newFormat, String newSuffix, boolean newNativeTypeSupport);
 
-  /**
-   * @return {@code true} if this type is numeric, {@code false} otherwise.
-   */
+  /// @return `true` if this type is numeric, `false` otherwise.
   public final boolean isNumeric() {
 
     return isDecimal() || isInteger();
   }
 
-  /**
-   * @return {@code true} if this type is a numeric decimal type, {@code false} otherwise.
-   */
+  /// @return `true` if this type is a numeric decimal type, `false` otherwise.
   public final boolean isDecimal() {
 
     int code = getCode();
@@ -391,9 +347,7 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     };
   }
 
-  /**
-   * @return {@code true} if this type is a numeric integer type (not decimal), {@code false} otherwise.
-   */
+  /// @return `true` if this type is a numeric integer type (not decimal), `false` otherwise.
   public final boolean isInteger() {
 
     int code = getCode();
@@ -403,9 +357,7 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     };
   }
 
-  /**
-   * @return {@code true} if this type is technically temporal (date and time related), {@code false} otherwise.
-   */
+  /// @return `true` if this type is technically temporal (date and time related), `false` otherwise.
   public final boolean isTemporal() {
 
     int code = getCode();
@@ -415,9 +367,7 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     };
   }
 
-  /**
-   * @return {@code true} if this type is technically textual ({@link String}), {@code false} otherwise.
-   */
+  /// @return `true` if this type is technically textual ([String]), `false` otherwise.
   public final boolean isText() {
 
     int code = getCode();
@@ -427,24 +377,22 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     };
   }
 
-  /**
-   * This method sets the parameter at the given {@code index} to the given {@code value}. E.g. if this {@link DbType}
-   * is for a simple regular {@link String} this method would more or less be equivalent to:
-   *
-   * <pre>
-   * if (value == null) {
-   *   statement.{@link PreparedStatement#setNull(int, int) setNull}(index, {@link #getCode()});
-   * } else {
-   *   statement.{@link PreparedStatement#setString(int, String) setString}(index, value);
-   * }
-   * </pre>
-   *
-   * @param statement the {@link PreparedStatement} where to set the parameter.
-   * @param index the index position of the parameter to set. <b>ATTENTION</b>: JDBC index of parameters starts with
-   *        {@code 1} (and not with {@code 0}) what is often causing confusion for developers.
-   * @param value the value to bind to the parameter at the given {@code index}.
-   * @throws SQLException if JDBC failed.
-   */
+  /// This method sets the parameter at the given `index` to the given `value`. E.g. if this [DbType] is for a simple regular [String] this method would more or
+  /// less be equivalent to:
+  ///
+  /// ```
+  /// if (value == null) {
+  ///   statement.[setNull][PreparedStatement#setNull(int, int)](index, [#getCode()]);
+  /// } else {
+  ///   statement.[setString][PreparedStatement#setString(int, String)](index, value);
+  /// }
+  /// ```
+  ///
+  /// @param statement the [PreparedStatement] where to set the parameter.
+  /// @param index the index position of the parameter to set. **ATTENTION**: JDBC index of parameters starts with `1` (and not with `0`) what is often causing
+  ///        confusion for developers.
+  /// @param value the value to bind to the parameter at the given `index`.
+  /// @throws SQLException if JDBC failed.
   public void setJavaValue(PreparedStatement statement, int index, J value) throws SQLException {
 
     D target = null;
@@ -467,13 +415,11 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     }
   }
 
-  /**
-   * @param resultSet the JDBC {@link ResultSet}.
-   * @param columnIndex the column index. See {@link ResultSet#getObject(int)}. <b>ATTENTION</b>: JDBC index of
-   *        parameters starts with {@code 1} (and not with {@code 0}) what is often causing confusion for developers.
-   * @return the requested Java value.
-   * @throws SQLException if JDBC failed.
-   */
+  /// @param resultSet the JDBC [ResultSet].
+  /// @param columnIndex the column index. See [ResultSet#getObject(int)]. **ATTENTION**: JDBC index of parameters starts with `1` (and not with `0`) what is
+  ///        often causing confusion for developers.
+  /// @return the requested Java value.
+  /// @throws SQLException if JDBC failed.
   @SuppressWarnings("unchecked")
   public final J getJavaValue(ResultSet resultSet, int columnIndex) throws SQLException {
 
@@ -487,12 +433,10 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     return toSource(dbValue);
   }
 
-  /**
-   * @param resultSet the JDBC {@link ResultSet}.
-   * @param columnLabel the column label. See {@link ResultSet#getObject(String)}.
-   * @return the requested Java value.
-   * @throws SQLException if JDBC failed.
-   */
+  /// @param resultSet the JDBC [ResultSet].
+  /// @param columnLabel the column label. See [ResultSet#getObject(String)].
+  /// @return the requested Java value.
+  /// @throws SQLException if JDBC failed.
   @SuppressWarnings("unchecked")
   public final J getJavaValue(ResultSet resultSet, String columnLabel) throws SQLException {
 
@@ -506,18 +450,15 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     return toSource(dbValue);
   }
 
-  /**
-   * This method sets the parameter at the given {@code index} to the given {@code value}. It behaves like
-   * {@link #setJavaValue(PreparedStatement, int, Object)} but without potential {@link #toTarget(Object) conversion to
-   * native DB type}.
-   *
-   * @param statement the {@link PreparedStatement} where to set the parameter.
-   * @param index the index position of the parameter to set. <b>ATTENTION</b>: JDBC index of parameters starts with
-   *        {@code 1} (and not with {@code 0}) what is often causing confusion for developers.
-   * @param value the value to bind to the parameter at the given {@code index}.
-   * @throws SQLException if JDBC failed.
-   * @see #setJavaValue(PreparedStatement, int, Object)
-   */
+  /// This method sets the parameter at the given `index` to the given `value`. It behaves like [#setJavaValue(PreparedStatement, int, Object)] but without
+  /// potential [conversion to native DB type][#toTarget(Object)].
+  ///
+  /// @param statement the [PreparedStatement] where to set the parameter.
+  /// @param index the index position of the parameter to set. **ATTENTION**: JDBC index of parameters starts with `1` (and not with `0`) what is often causing
+  ///        confusion for developers.
+  /// @param value the value to bind to the parameter at the given `index`.
+  /// @throws SQLException if JDBC failed.
+  /// @see #setJavaValue(PreparedStatement, int, Object)
   public void setDbValue(PreparedStatement statement, int index, D value) throws SQLException {
 
     if (value == null) {
@@ -531,38 +472,32 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     }
   }
 
-  /**
-   * @param resultSet the JDBC {@link ResultSet}.
-   * @param columnIndex the column index. See {@link ResultSet#getObject(int)}. <b>ATTENTION</b>: JDBC index of
-   *        parameters starts with {@code 1} (and not with {@code 0}) what is often causing confusion for developers.
-   * @return the requested database value.
-   * @throws SQLException if JDBC failed.
-   */
+  /// @param resultSet the JDBC [ResultSet].
+  /// @param columnIndex the column index. See [ResultSet#getObject(int)]. **ATTENTION**: JDBC index of parameters starts with `1` (and not with `0`) what is
+  ///        often causing confusion for developers.
+  /// @return the requested database value.
+  /// @throws SQLException if JDBC failed.
   public abstract D getDbValue(ResultSet resultSet, int columnIndex) throws SQLException;
 
-  /**
-   * @param resultSet the JDBC {@link ResultSet}.
-   * @param columnLabel the column label. See {@link ResultSet#getObject(String)}.
-   * @return the requested database value.
-   * @throws SQLException if JDBC failed.
-   */
+  /// @param resultSet the JDBC [ResultSet].
+  /// @param columnLabel the column label. See [ResultSet#getObject(String)].
+  /// @return the requested database value.
+  /// @throws SQLException if JDBC failed.
   public abstract D getDbValue(ResultSet resultSet, String columnLabel) throws SQLException;
 
-  /**
-   * This method sets the parameter at the given {@code index} to the given {@code value} that is not {@code null}. E.g.
-   * for {@link #getTargetType() DB target type} of {@link String} this method needs to be implemented as:
-   *
-   * <pre>
-   * statement.{@link PreparedStatement#setString(int, String) setString}(index, value);
-   * </pre>
-   *
-   * @param statement the {@link PreparedStatement} where to set the parameter.
-   * @param index the index position of the parameter to set. <b>ATTENTION</b>: JDBC index of parameters starts with
-   *        {@code 1} (and not with {@code 0}) what is often causing confusion for developers.
-   * @param value the value to bind to the parameter at the given {@code index}.
-   * @throws SQLException if JDBC failed.
-   * @see #setJavaValue(PreparedStatement, int, Object)
-   */
+  /// This method sets the parameter at the given `index` to the given `value` that is not `null`. E.g. for [DB target type][#getTargetType()] of [String] this
+  /// method needs to be implemented as:
+  ///
+  /// ```
+  /// statement.[setString][PreparedStatement#setString(int, String)](index, value);
+  /// ```
+  ///
+  /// @param statement the [PreparedStatement] where to set the parameter.
+  /// @param index the index position of the parameter to set. **ATTENTION**: JDBC index of parameters starts with `1` (and not with `0`) what is often causing
+  ///        confusion for developers.
+  /// @param value the value to bind to the parameter at the given `index`.
+  /// @throws SQLException if JDBC failed.
+  /// @see #setJavaValue(PreparedStatement, int, Object)
   protected abstract void setDbValueNonNull(PreparedStatement statement, int index, D value) throws SQLException;
 
   @Override
@@ -622,38 +557,30 @@ public abstract class DbType<J, D, SELF extends DbType<J, D, SELF>> extends Atom
     return getDeclaration();
   }
 
-  /**
-   * @param code the {@link #getCode() code}.
-   * @return the requested {@link DbType} or {@code null} if not found.
-   */
+  /// @param code the [code][#getCode()].
+  /// @return the requested [DbType] or `null` if not found.
   public static DbType<?, ?, ?> get(int code) {
 
     return CODE_MAP.get(Integer.valueOf(code));
   }
 
-  /**
-   * @param <J> type of the {@link #getSourceType() Java source type}.
-   * @param sourceType the {@link #getSourceType() Java source type}.
-   * @return the requested {@link DbType} or {@code null} if not found.
-   */
+  /// @param <J> type of the [Java source type][#getSourceType()].
+  /// @param sourceType the [Java source type][#getSourceType()].
+  /// @return the requested [DbType] or `null` if not found.
   @SuppressWarnings("unchecked")
   public static <J> DbType<J, ?, ?> get(Class<J> sourceType) {
 
     return (DbType<J, ?, ?>) TYPE_MAP.get(ValueType.getNonPrimitiveType(sourceType));
   }
 
-  /**
-   * @param name the {@link #getName() name}.
-   * @return the requested {@link DbType} or {@code null} if not found.
-   */
+  /// @param name the [name][#getName()].
+  /// @return the requested [DbType] or `null` if not found.
   public static DbType<?, ?, ?> get(String name) {
 
     return NAME_MAP.get(name);
   }
 
-  /**
-   * @return a {@link Stream} of all {@link DbType}s registered by {@link #getSourceType() source type}.
-   */
+  /// @return a [Stream] of all [DbType]s registered by [source type][#getSourceType()].
   public static Stream<DbType<?, ?, ?>> getAll() {
 
     return TYPE_MAP.values().stream();

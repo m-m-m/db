@@ -35,9 +35,7 @@ import io.github.mmm.db.statement.DbNativeStatementParser;
 import io.github.mmm.db.tx.spi.AbstractDbTransaction;
 import io.github.mmm.scanner.CharReaderScanner;
 
-/**
- * Single transactional execution of a schema migration script.
- */
+/// Single transactional execution of a schema migration script.
 public class DbSchemaManagerExecution implements Runnable {
 
   private static final Logger LOG = LoggerFactory.getLogger(DbSchemaManagerExecution.class);

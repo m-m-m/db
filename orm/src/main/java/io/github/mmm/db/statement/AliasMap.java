@@ -16,58 +16,46 @@ import io.github.mmm.scanner.CharStreamScanner;
 import io.github.mmm.value.PropertyPath;
 import io.github.mmm.value.ReadablePath;
 
-/**
- * Class to {@link Map#get(Object) map} from {@link AbstractEntitiesClause#getAlias() alias} to
- * {@link AbstractEntitiesClause#getEntity() entity}. A single {@link AliasMap} instance is used per {@link DbStatement}
- * to ensure unique {@link AbstractEntitiesClause#getAlias() aliases}.
- *
- * @since 1.0.0
- */
+/// Class to [map][Map#get(Object)] from [alias][AbstractEntitiesClause#getAlias()] to
+/// [entity][AbstractEntitiesClause#getEntity()]. A single [AliasMap] instance is used per [DbStatement]
+/// to ensure unique [aliases][AbstractEntitiesClause#getAlias()].
+///
+/// @since 1.0.0
 public class AliasMap implements PropertyPathParser {
 
   private final Map<String, EntityBean> aliasMap;
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public AliasMap() {
 
     super();
     this.aliasMap = new HashMap<>();
   }
 
-  /**
-   * @param alias the {@link AbstractEntitiesClause#getAlias() alias} to remove.
-   * @return the removed {@link EntityBean} or {@code null} if none was present or mapped.
-   */
+  /// @param alias the [alias][AbstractEntitiesClause#getAlias()] to remove.
+  /// @return the removed [EntityBean] or `null` if none was present or mapped.
   public EntityBean remove(String alias) {
 
     return this.aliasMap.remove(alias);
   }
 
-  /**
-   * @param alias the {@link AbstractEntitiesClause#getAlias() alias} to check.
-   * @return {@code true} if the given {@code alias} is currently mapped, {@code false} otherwise.
-   */
+  /// @param alias the [alias][AbstractEntitiesClause#getAlias()] to check.
+  /// @return `true` if the given `alias` is currently mapped, `false` otherwise.
   public boolean contains(String alias) {
 
     return this.aliasMap.containsKey(alias);
   }
 
-  /**
-   * @param alias the {@link AbstractEntitiesClause#getAlias() alias} to get the mapping for.
-   * @return the mapped {@link EntityBean} that is associated with the given {@code alias}. May be {@code null}.
-   */
+  /// @param alias the [alias][AbstractEntitiesClause#getAlias()] to get the mapping for.
+  /// @return the mapped [EntityBean] that is associated with the given `alias`. May be `null`.
   public EntityBean getEntity(String alias) {
 
     return this.aliasMap.get(alias);
   }
 
-  /**
-   * @param alias the {@link AbstractEntitiesClause#getAlias() alias} to get the mapping for.
-   * @return the mapped {@link EntityBean} that is associated with the given {@code alias}.
-   * @throws IllegalArgumentException if no such {@link EntityBean} could be found.
-   */
+  /// @param alias the [alias][AbstractEntitiesClause#getAlias()] to get the mapping for.
+  /// @return the mapped [EntityBean] that is associated with the given `alias`.
+  /// @throws IllegalArgumentException if no such [EntityBean] could be found.
   public EntityBean getRequiredEntity(String alias) {
 
     EntityBean entity = getEntity(alias);
@@ -77,11 +65,9 @@ public class AliasMap implements PropertyPathParser {
     return entity;
   }
 
-  /**
-   * @param alias the {@link AbstractEntitiesClause#getAlias() alias} to bind.
-   * @param entity the {@link EntityBean} to bind to.
-   * @return the previously mapped {@link EntityBean} or {@code null}.
-   */
+  /// @param alias the [alias][AbstractEntitiesClause#getAlias()] to bind.
+  /// @param entity the [EntityBean] to bind to.
+  /// @return the previously mapped [EntityBean] or `null`.
   public EntityBean put(String alias, EntityBean entity) {
 
     if (this.aliasMap.containsKey(alias)) {
@@ -93,11 +79,9 @@ public class AliasMap implements PropertyPathParser {
     return this.aliasMap.put(alias, entity);
   }
 
-  /**
-   * @param entityClause the {@link AbstractEntityClause}.
-   * @return a unique {@link AbstractEntityClause#getAlias() alias} generated for the given
-   *         {@link AbstractEntityClause}.
-   */
+  /// @param entityClause the [AbstractEntityClause].
+  /// @return a unique [alias][AbstractEntityClause#getAlias()] generated for the given
+  ///         [AbstractEntityClause].
   public String createAlias(AbstractEntityClause<?, ?, ?> entityClause) {
 
     String entityName = CaseHelper.uncapitalize(entityClause.getName().getName());
@@ -143,11 +127,9 @@ public class AliasMap implements PropertyPathParser {
     return property;
   }
 
-  /**
-   * @param path the {@link ReadablePath} to resolve (e.g. "alias.Property.ChildProperty").
-   * @return the {@link WritableProperty} traversed from the given {@link ReadablePath path} from its root segment as
-   *         alias.
-   */
+  /// @param path the [ReadablePath] to resolve (e.g. "alias.Property.ChildProperty").
+  /// @return the [WritableProperty] traversed from the given [path][ReadablePath] from its root segment as
+  ///         alias.
   public ReadableProperty<?> resolvePath(ReadablePath path) {
 
     ReadablePath parent = path.parentPath();

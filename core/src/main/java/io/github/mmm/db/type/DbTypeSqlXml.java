@@ -4,9 +4,7 @@ package io.github.mmm.db.type;
 
 import java.sql.SQLXML;
 
-/**
- * {@link DbType} for a regular {@link Byte}.
- */
+/// [DbType] for a regular [Byte].
 @SuppressWarnings("exports")
 public final class DbTypeSqlXml extends DbType2SqlXml<SQLXML, DbTypeSqlXml> {
 

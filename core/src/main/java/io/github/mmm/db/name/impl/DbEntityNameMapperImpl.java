@@ -18,14 +18,12 @@ import io.github.mmm.db.name.DbEntityNameMapper;
 import io.github.mmm.entity.bean.EntityBean;
 import io.github.mmm.property.ReadableProperty;
 
-/**
- * Implementation of {@link DbEntityNameMapper}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbEntityNameMapper].
+///
+/// @since 1.0.0
 public class DbEntityNameMapperImpl implements DbEntityNameMapper {
 
-  /** The singleton instance. */
+  /// The singleton instance.
   public static final DbEntityNameMapperImpl INSTANCE = new DbEntityNameMapperImpl();
 
   private static final Logger LOG = LoggerFactory.getLogger(DbEntityNameMapperImpl.class);
@@ -38,10 +36,8 @@ public class DbEntityNameMapperImpl implements DbEntityNameMapper {
     this.entityNameMap = new ConcurrentHashMap<>();
   }
 
-  /**
-   * @param bean the {@link EntityBean}.
-   * @return the {@link DbEntityNameInfo} for the given {@link EntityBean}.
-   */
+  /// @param bean the [EntityBean].
+  /// @return the [DbEntityNameInfo] for the given [EntityBean].
   @Override
   public DbEntityNameInfoImpl getTable(EntityBean bean) {
 
@@ -90,9 +86,7 @@ public class DbEntityNameMapperImpl implements DbEntityNameMapper {
     return true;
   }
 
-  /**
-   * Implementation of {@link DbEntityNameInfo}.
-   */
+  /// Implementation of [DbEntityNameInfo].
   public static class DbEntityNameInfoImpl extends AbstractDbObject implements DbEntityNameInfo {
 
     private final EntityBean entity;
@@ -139,9 +133,7 @@ public class DbEntityNameMapperImpl implements DbEntityNameMapper {
     }
   }
 
-  /**
-   * Implementation of {@link DbColumnReference}.
-   */
+  /// Implementation of [DbColumnReference].
   public static class PropertyColumnReference extends AbstractDbObject implements DbColumnReference {
 
     private final ReadableProperty<?> property;

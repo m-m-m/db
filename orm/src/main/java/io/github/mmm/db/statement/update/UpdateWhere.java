@@ -7,22 +7,18 @@ import io.github.mmm.db.statement.WhereClause;
 import io.github.mmm.db.statement.select.SelectFromClause;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * A {@link WhereClause}-{@link DbClause} of an SQL {@link UpdateStatement}.
- *
- * @param <E> type of the {@link SelectFromClause#getEntity() entity}.
- * @since 1.0.0
- */
+/// A [WhereClause]-[DbClause] of an SQL [UpdateStatement].
+///
+/// @param <E> type of the [entity][SelectFromClause#getEntity()].
+/// @since 1.0.0
 public class UpdateWhere<E extends EntityBean> extends WhereClause<E, UpdateWhere<E>> {
 
-  /** @see #get() */
+  /// @see #get()
   private final UpdateStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param statement the owning {@link UpdateStatement}.
-   */
+  /// The constructor.
+  ///
+  /// @param statement the owning [UpdateStatement].
   public UpdateWhere(UpdateStatement<E> statement) {
 
     super();

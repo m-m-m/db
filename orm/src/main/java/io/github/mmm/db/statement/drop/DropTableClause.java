@@ -9,33 +9,27 @@ import io.github.mmm.db.statement.DbStartClause;
 import io.github.mmm.db.statement.DbStatement;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * A {@link DbStartClause} of a {@link DropTableStatement}.
- *
- * @param <E> type of the {@link #getEntity() entity}.
- * @since 1.0.0
- */
+/// A [DbStartClause] of a [DropTableStatement].
+///
+/// @param <E> type of the [entity][#getEntity()].
+/// @since 1.0.0
 public class DropTableClause<E extends EntityBean> extends AbstractEntityClause<E, E, DropTableClause<E>>
     implements DbStartClause, DbMainClause<E> {
 
   private final DropTableStatement<E> statement;
 
-  /**
-   * The constructor.
-   *
-   * @param entity the {@link #getEntity() entity} to operate on.
-   */
+  /// The constructor.
+  ///
+  /// @param entity the [entity][#getEntity()] to operate on.
   public DropTableClause(E entity) {
 
     this(entity, null);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param entity the {@link #getEntity() entity} to operate on.
-   * @param entityName the {@link #getName() entity name}.
-   */
+  /// The constructor.
+  ///
+  /// @param entity the [entity][#getEntity()] to operate on.
+  /// @param entityName the [entity name][#getName()].
   public DropTableClause(E entity, String entityName) {
 
     super(new AliasMap(), entity, entityName);

@@ -4,18 +4,14 @@ package io.github.mmm.db.mapping;
 
 import io.github.mmm.db.result.DbResult;
 
-/**
- * Interface to map a Java object to the database.
- *
- * @param <J> type of the Java object to map.
- * @since 1.0.0
- */
+/// Interface to map a Java object to the database.
+///
+/// @param <J> type of the Java object to map.
+/// @since 1.0.0
 public interface DbMapper2Db<J> {
 
-  /**
-   * @param javaValue the Java object to map.
-   * @return the mapped {@link DbResult}.
-   */
+  /// @param javaValue the Java object to map.
+  /// @return the mapped [DbResult].
   DbResult java2db(J javaValue);
 
 }

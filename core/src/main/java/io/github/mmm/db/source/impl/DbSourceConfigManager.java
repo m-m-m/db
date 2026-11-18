@@ -17,16 +17,14 @@ import io.github.mmm.db.pool.DbConnectionPoolProviderManager;
 import io.github.mmm.db.source.DbSource;
 import io.github.mmm.db.source.DbSourceConfig;
 
-/**
- * Manager of {@link DbSourceConfig}.
- *
- * @since 1.0.0
- */
+/// Manager of [DbSourceConfig].
+///
+/// @since 1.0.0
 public final class DbSourceConfigManager {
 
   private static final Logger LOG = LoggerFactory.getLogger(DbSourceConfigManager.class);
 
-  /** The singleton instance. */
+  /// The singleton instance.
   public static final DbSourceConfigManager INSTANCE = new DbSourceConfigManager();
 
   private final Map<String, DbSourceConfigImpl> data;
@@ -37,20 +35,16 @@ public final class DbSourceConfigManager {
     this.data = new ConcurrentHashMap<>();
   }
 
-  /**
-   * @param source the {@link DbSource}.
-   * @return the existing {@link DbSourceConfigImpl} or {@code null} if not {@link #getOrCreate(DbSource) created} before.
-   */
+  /// @param source the [DbSource].
+  /// @return the existing [DbSourceConfigImpl] or `null` if not [created][#getOrCreate(DbSource)] before.
   public DbSourceConfigImpl get(DbSource source) {
 
     return this.data.get(source.getId());
   }
 
-  /**
-   * @param source the {@link DbSource}.
-   * @return the corresponding {@link DbSourceConfigImpl}. Will be created if not yet exists.
-   * @see DbSourceConfig#of(DbSource)
-   */
+  /// @param source the [DbSource].
+  /// @return the corresponding [DbSourceConfigImpl]. Will be created if not yet exists.
+  /// @see DbSourceConfig#of(DbSource)
   public DbSourceConfigImpl getOrCreate(DbSource source) {
 
     return this.data.computeIfAbsent(source.getId(), _ -> create(source));

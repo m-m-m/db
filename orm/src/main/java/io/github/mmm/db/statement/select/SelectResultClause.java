@@ -3,17 +3,13 @@ package io.github.mmm.db.statement.select;
 import io.github.mmm.db.result.DbResult;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * {@link SelectClause} to query arbitrary {@link #getSelections() selections} as generic {@link DbResult}.
- *
- * @see SelectClause#result()
- * @since 1.0.0
- */
+/// [SelectClause] to query arbitrary [selections][#getSelections()] as generic [DbResult].
+///
+/// @see SelectClause#result()
+/// @since 1.0.0
 public class SelectResultClause extends SelectClause<DbResult> {
 
-  /**
-   * The constructor.
-   */
+  /// The constructor.
   public SelectResultClause() {
 
     super(null);

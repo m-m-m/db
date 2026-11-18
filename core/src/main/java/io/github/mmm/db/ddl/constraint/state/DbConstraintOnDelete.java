@@ -6,26 +6,20 @@ import io.github.mmm.db.ddl.constraint.DbConstraint;
 import io.github.mmm.db.ddl.constraint.DbForeignKeyConstraint;
 import io.github.mmm.db.name.DbKeyword;
 
-/**
- * {@link DbConstraint} state for behavior of {@link DbForeignKeyConstraint} in case of deletion.
- *
- * @since 1.0.0
- */
+/// [DbConstraint] state for behavior of [DbForeignKeyConstraint] in case of deletion.
+///
+/// @since 1.0.0
 public enum DbConstraintOnDelete {
 
-  /** Unspecified, let the database decide (typically fail on delete if still referenced). */
+  /// Unspecified, let the database decide (typically fail on delete if still referenced).
   DEFAULT(""),
 
-  /**
-   * Follow the {@link DbForeignKeyConstraint foreign key} and delete the referenced row automatically. This may be
-   * useful for relations to child objects that cannot live without their parent but it can also be dangerous to use.
-   */
+  /// Follow the [foreign key][DbForeignKeyConstraint] and delete the referenced row automatically. This may be
+  /// useful for relations to child objects that cannot live without their parent but it can also be dangerous to use.
   ON_DELETE_CASCASE(DbKeyword.ON_DELETE_CASCADE),
 
-  /**
-   * Set the {@link DbForeignKeyConstraint foreign key} to {@code null} automatically to be able to delete the
-   * referenced row.
-   */
+  /// Set the [foreign key][DbForeignKeyConstraint] to `null` automatically to be able to delete the
+  /// referenced row.
   ON_DELETE_SET_NULL(DbKeyword.ON_DELETE_SET_NULL);
 
   private final String syntax;

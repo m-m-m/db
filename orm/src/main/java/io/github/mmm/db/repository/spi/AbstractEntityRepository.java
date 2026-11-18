@@ -11,27 +11,23 @@ import io.github.mmm.entity.bean.listener.EntityListenerAdapter;
 import io.github.mmm.entity.id.Id;
 import io.github.mmm.entity.id.generator.IdGenerator;
 
-/**
- * Abstract base implementation of {@link EntityRepository}.
- *
- * @param <E> type of the managed {@link Entity}.
- * @since 1.0.0
- */
+/// Abstract base implementation of [EntityRepository].
+///
+/// @param <E> type of the managed [Entity].
+/// @since 1.0.0
 public abstract class AbstractEntityRepository<E extends EntityBean> implements EntityRepository<E> {
 
-  /** @see #getPrototype() */
+  /// @see #getPrototype()
   protected final E prototype;
 
-  /** @see #getEntityClass() */
+  /// @see #getEntityClass()
   protected final Class<E> entityClass;
 
   private EntityListenerAdapter<E> listenerAdapter;
 
-  /**
-   * The constructor.
-   *
-   * @param prototype the {@link #getPrototype() prototype}.
-   */
+  /// The constructor.
+  ///
+  /// @param prototype the [prototype][#getPrototype()].
   public AbstractEntityRepository(E prototype) {
 
     super();
@@ -40,42 +36,32 @@ public abstract class AbstractEntityRepository<E extends EntityBean> implements 
     this.listenerAdapter = EntityListenerAdapter.empty();
   }
 
-  /**
-   * Initialises this repository.
-   */
+  /// Initialises this repository.
   public void init() {
 
   }
 
-  /**
-   * @return the {@link IdGenerator} to use.
-   */
+  /// @return the [IdGenerator] to use.
   protected abstract IdGenerator getIdGenerator();
 
-  /**
-   * @return an instance of the managed {@link EntityBean entity} to be used as template. Please note that this is an internal method of the implementation that
-   *         should only be used by framework code. Mutations on the prototype by callers of this method are strictly forbidden and will lead to severe bugs.
-   */
+  /// @return an instance of the managed [entity][EntityBean] to be used as template. Please note that this is an internal method of the implementation that
+  ///         should only be used by framework code. Mutations on the prototype by callers of this method are strictly forbidden and will lead to severe bugs.
   @Override
   public E getPrototype() {
 
     return this.prototype;
   }
 
-  /**
-   * Verifies that an entity {@link Class} (e.g. from an {@link Id}) is valid for this repository.
-   *
-   * @param entityType the {@link Class} reflecting the {@link EntityBean} to process.
-   */
+  /// Verifies that an entity [Class] (e.g. from an [Id]) is valid for this repository.
+  ///
+  /// @param entityType the [Class] reflecting the [EntityBean] to process.
   protected void verifyEntityClass(Class<?> entityType) {
 
     // TODO support inheritance via isAssignableFrom
     assert (entityType == this.prototype.getJavaClass());
   }
 
-  /**
-   * @return the {@link Class} reflecting the managed {@link EntityBean}.
-   */
+  /// @return the [Class] reflecting the managed [EntityBean].
   @Override
   public Class<E> getEntityClass() {
 
@@ -93,11 +79,9 @@ public abstract class AbstractEntityRepository<E extends EntityBean> implements 
     return entity;
   }
 
-  /**
-   * @param id the {@link Id} of the requested {@link EntityBean entity}.
-   * @return the requested {@link EntityBean entity} or {@code null} if no such entity exists.
-   * @see #findById(Id)
-   */
+  /// @param id the [Id] of the requested [entity][EntityBean].
+  /// @return the requested [entity][EntityBean] or `null` if no such entity exists.
+  /// @see #findById(Id)
   protected abstract E doFindById(Id<E> id);
 
   @Override
@@ -127,20 +111,16 @@ public abstract class AbstractEntityRepository<E extends EntityBean> implements 
     }
   }
 
-  /**
-   * Internal method for the raw insert of an {@link EntityBean} to the underlying store.
-   *
-   * @param entity the {@link EntityBean} to insert.
-   * @return the saved {@link EntityBean} that has been inserted.
-   */
+  /// Internal method for the raw insert of an [EntityBean] to the underlying store.
+  ///
+  /// @param entity the [EntityBean] to insert.
+  /// @return the saved [EntityBean] that has been inserted.
   protected abstract E doInsert(E entity);
 
-  /**
-   * Internal method for the raw update of an {@link EntityBean} in the underlying store.
-   *
-   * @param entity the {@link EntityBean} to update.
-   * @return the saved {@link EntityBean} that has been updated.
-   */
+  /// Internal method for the raw update of an [EntityBean] in the underlying store.
+  ///
+  /// @param entity the [EntityBean] to update.
+  /// @return the saved [EntityBean] that has been updated.
   protected abstract E doUpdate(E entity);
 
   @Override
@@ -151,11 +131,9 @@ public abstract class AbstractEntityRepository<E extends EntityBean> implements 
     return doDeleteById(id);
   }
 
-  /**
-   * @param id the {@link Id} (primary key) of the {@link EntityBean entity} to delete.
-   * @return {@code true} on success, {@code false} otherwise.
-   * @see #deleteById(Id)
-   */
+  /// @param id the [Id] (primary key) of the [entity][EntityBean] to delete.
+  /// @return `true` on success, `false` otherwise.
+  /// @see #deleteById(Id)
   protected abstract boolean doDeleteById(Id<E> id);
 
   @Override
@@ -165,33 +143,25 @@ public abstract class AbstractEntityRepository<E extends EntityBean> implements 
     return doDeleteAllById(ids);
   }
 
-  /**
-   * @param ids the {@link Iterable} of {@link Id}s to {@link #deleteById(Id) delete}.
-   * @return the number of entities that have been physically deleted. * @param ids
-   * @see #deleteAllById(Iterable)
-   */
+  /// @param ids the [Iterable] of [Id]s to [delete][#deleteById(Id)].
+  /// @return the number of entities that have been physically deleted. * @param ids
+  /// @see #deleteAllById(Iterable)
   protected abstract int doDeleteAllById(Iterable<Id<E>> ids);
 
-  /**
-   * @return {@code true} to verify and update the {@link io.github.mmm.entity.id.Id#getRevision() revision} on {@link #save(EntityBean) save}.
-   */
+  /// @return `true` to verify and update the [revision][io.github.mmm.entity.id.Id#getRevision()] on [save][#save(EntityBean)].
   protected boolean isUseRevision() {
 
     return true;
   }
 
-  /**
-   * @param listener the {@link EntityListener} to add.
-   */
+  /// @param listener the [EntityListener] to add.
   protected void addListener(EntityListener<? super E> listener) {
 
     this.listenerAdapter = this.listenerAdapter.add(listener);
   }
 
-  /**
-   * @param listener the {@link EntityListener} to remove.
-   * @return {@code true} if successfully removed, {@code false} otherwise (was not {@link #addListener(EntityListener) added} before).
-   */
+  /// @param listener the [EntityListener] to remove.
+  /// @return `true` if successfully removed, `false` otherwise (was not [added][#addListener(EntityListener)] before).
   protected boolean removeListener(EntityListener<? super E> listener) {
 
     EntityListenerAdapter<E> removed = this.listenerAdapter.remove(listener);

@@ -5,30 +5,24 @@ package io.github.mmm.db.type.mariadb.dialect;
 import io.github.mmm.db.dialect.DbDialectStatementFormatter;
 import io.github.mmm.db.param.CriteriaParametersFactory;
 
-/**
- * {@link DbDialectStatementFormatter} for MariaDB.
- *
- * @since 1.0.0
- */
+/// [DbDialectStatementFormatter] for MariaDB.
+///
+/// @since 1.0.0
 public class MariaDbFormatter extends DbDialectStatementFormatter {
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link MariaDbDialect}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [MariaDbDialect].
   public MariaDbFormatter(MariaDbDialect dialect) {
 
     super(dialect);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param dialect the {@link MariaDbDialect}.
-   * @param parametersFactory the {@link CriteriaParametersFactory}.
-   * @param indentation the {@link #getIndentation() indentation}.
-   */
+  /// The constructor.
+  ///
+  /// @param dialect the [MariaDbDialect].
+  /// @param parametersFactory the [CriteriaParametersFactory].
+  /// @param indentation the [indentation][#getIndentation()].
   public MariaDbFormatter(MariaDbDialect dialect, CriteriaParametersFactory parametersFactory,
       String indentation) {
 

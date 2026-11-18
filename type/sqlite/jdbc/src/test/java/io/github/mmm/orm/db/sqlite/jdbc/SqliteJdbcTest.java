@@ -9,9 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import io.github.mmm.db.orm.test.JdbcTest;
 import io.github.mmm.db.type.sqlite.dialect.SqliteDialect;
 
-/**
- * Test of Sqlite database support.
- */
+/// Test of Sqlite database support.
 class SqliteJdbcTest extends JdbcTest {
 
   @BeforeAll

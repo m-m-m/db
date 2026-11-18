@@ -10,11 +10,9 @@ import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.db.type.DbType;
 import io.github.mmm.property.ReadableProperty;
 
-/**
- * Implementation of {@link DbColumn}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbColumn].
+///
+/// @since 1.0.0
 public class DbColumnImpl extends DbColumnReferenceImpl implements DbColumn {
 
   private final String comment;
@@ -23,28 +21,24 @@ public class DbColumnImpl extends DbColumnReferenceImpl implements DbColumn {
 
   private final DbType<?, ?, ?> type;
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() name}.
-   * @param comment the {@link #getComment() comment}.
-   * @param nullable the {@link #getNullable() nullable} flag.
-   * @param type the {@link #getType() type}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [name][#getName()].
+  /// @param comment the [comment][#getComment()].
+  /// @param nullable the [nullable][#getNullable()] flag.
+  /// @param type the [type][#getType()].
   public DbColumnImpl(String name, String comment, Boolean nullable, DbType<?, ?, ?> type) {
 
     this(name, null, comment, nullable, type);
   }
 
-  /**
-   * The constructor.
-   *
-   * @param name the {@link #getName() name}.
-   * @param property the {@link #getProperty() property}.
-   * @param comment the {@link #getComment() comment}.
-   * @param nullable the {@link #getNullable() nullable} flag.
-   * @param type the {@link #getType() type}.
-   */
+  /// The constructor.
+  ///
+  /// @param name the [name][#getName()].
+  /// @param property the [property][#getProperty()].
+  /// @param comment the [comment][#getComment()].
+  /// @param nullable the [nullable][#getNullable()] flag.
+  /// @param type the [type][#getType()].
   public DbColumnImpl(String name, ReadableProperty<?> property, String comment, Boolean nullable,
       DbType<?, ?, ?> type) {
 

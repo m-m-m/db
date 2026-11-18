@@ -2,14 +2,10 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.db.dialect;
 
-/**
- * Interface for database contextual data and operations.
- */
+/// Interface for database contextual data and operations.
 public interface DbContext {
 
-  /**
-   * @return the prefix to qualify database objects like tables, views, sequences, etc.
-   */
+  /// @return the prefix to qualify database objects like tables, views, sequences, etc.
   default String getQualifierPrefix() {
 
     return "";

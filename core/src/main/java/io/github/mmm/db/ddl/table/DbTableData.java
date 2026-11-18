@@ -6,16 +6,12 @@ import io.github.mmm.base.io.UncheckedAppendable;
 import io.github.mmm.db.ddl.AttributeReadComment;
 import io.github.mmm.entity.bean.EntityBean;
 
-/**
- * Meta-information about a database table (or view, materialized view, etc.).
- *
- * @since 1.0.0
- */
+/// Meta-information about a database table (or view, materialized view, etc.).
+///
+/// @since 1.0.0
 public interface DbTableData extends DbTableReference<EntityBean>, AttributeReadComment {
 
-  /**
-   * @return the {@link DbTableType} such as {@link DbTableType#TABLE}, {@link DbTableType#VIEW}, etc.
-   */
+  /// @return the [DbTableType] such as [DbTableType#TABLE], [DbTableType#VIEW], etc.
   DbTableType getType();
 
   @Override

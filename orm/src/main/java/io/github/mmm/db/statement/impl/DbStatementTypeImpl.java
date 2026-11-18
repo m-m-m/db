@@ -5,44 +5,42 @@ package io.github.mmm.db.statement.impl;
 import io.github.mmm.db.name.DbKeyword;
 import io.github.mmm.db.statement.DbStatementType;
 
-/**
- * Implementation of {@link DbStatementType}.
- *
- * @since 1.0.0
- */
+/// Implementation of [DbStatementType].
+///
+/// @since 1.0.0
 public enum DbStatementTypeImpl implements DbStatementType {
 
-  /** {@link DbStatementType} of {@link io.github.mmm.db.statement.select.SelectStatement}. */
+  /// [DbStatementType] of [io.github.mmm.db.statement.select.SelectStatement].
   SELECT(DbKeyword.SELECT, false),
 
-  /** {@link DbStatementType} of {@link io.github.mmm.db.statement.insert.InsertStatement}. */
+  /// [DbStatementType] of [io.github.mmm.db.statement.insert.InsertStatement].
   INSERT(DbKeyword.INSERT, false),
 
-  /** {@link DbStatementType} of {@link io.github.mmm.db.statement.update.UpdateStatement}. */
+  /// [DbStatementType] of [io.github.mmm.db.statement.update.UpdateStatement].
   UPDATE(DbKeyword.UPDATE, false),
 
-  /** {@link DbStatementType} of {@link io.github.mmm.db.statement.delete.DeleteStatement}. */
+  /// [DbStatementType] of [io.github.mmm.db.statement.delete.DeleteStatement].
   DELETE(DbKeyword.DELETE, false),
 
-  /** {@link DbStatementType} of {@link io.github.mmm.db.statement.merge.MergeStatement}. */
+  /// [DbStatementType] of [io.github.mmm.db.statement.merge.MergeStatement].
   MERGE(DbKeyword.MERGE, false),
 
-  /** {@link DbStatementType} of {@link io.github.mmm.db.statement.upsert.UpsertStatement}. */
+  /// [DbStatementType] of [io.github.mmm.db.statement.upsert.UpsertStatement].
   UPSERT(DbKeyword.UPSERT, false),
 
-  /** {@link DbStatementType} of {@link io.github.mmm.db.statement.create.CreateStatement}. */
+  /// [DbStatementType] of [io.github.mmm.db.statement.create.CreateStatement].
   CREATE(DbKeyword.CREATE_TABLE, true),
 
-  /** {@link DbStatementType} of {@link io.github.mmm.db.statement.alter.AlterStatement}. */
+  /// [DbStatementType] of [io.github.mmm.db.statement.alter.AlterStatement].
   ALTER(DbKeyword.ALTER, true),
 
-  /** {@link DbStatementType} of {@link io.github.mmm.db.statement.drop.DropStatement}. */
+  /// [DbStatementType] of [io.github.mmm.db.statement.drop.DropStatement].
   DROP(DbKeyword.DROP, true),
 
-  /** {@link DbStatementType} of {@link io.github.mmm.db.statement.declare.DeclareStatement}. */
+  /// [DbStatementType] of [io.github.mmm.db.statement.declare.DeclareStatement].
   DECLARE(DbKeyword.DECLARE, true),
 
-  /** {@link DbStatementType} of BeginStatement (PL/SQL like DECLARE). */
+  /// [DbStatementType] of BeginStatement (PL/SQL like DECLARE).
   BEGIN(DbKeyword.BEGIN, true),
 
   ;

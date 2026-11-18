@@ -10,18 +10,14 @@ import io.github.mmm.marshall.MarshallingConfig;
 import io.github.mmm.marshall.StandardFormat;
 import io.github.mmm.marshall.StructuredTextFormat;
 
-/**
- * Abstract base class for tests of {@link DbStatement}s.
- */
+/// Abstract base class for tests of [DbStatement]s.
 public abstract class DbStatementTest extends Assertions {
 
-  /**
-   * Formats the given {@link DbStatement} to SQL and compares with the given SQL.
-   *
-   * @param statement the {@link DbStatement} to check.
-   * @param jql the expected JQL corresponding to the {@link DbStatement}.
-   * @param checkJson {@code true} to also check the JSON of the {@link DbStatement}, {@code false} otherwise.
-   */
+  /// Formats the given [DbStatement] to SQL and compares with the given SQL.
+  ///
+  /// @param statement the [DbStatement] to check.
+  /// @param jql the expected JQL corresponding to the [DbStatement].
+  /// @param checkJson `true` to also check the JSON of the [DbStatement], `false` otherwise.
   protected void check(DbStatement<?> statement, String jql, boolean checkJson) {
 
     assertThat(statement).isNotNull().hasToString(jql);
@@ -39,13 +35,11 @@ public abstract class DbStatementTest extends Assertions {
     }
   }
 
-  /**
-   * Formats the given {@link DbStatement} to SQL and compares with the given SQL.
-   *
-   * @param statement the {@link DbStatement} to check.
-   * @param jql the expected JQL corresponding to the {@link DbStatement}.
-   * @param sql the expected SQL corresponding to the {@link DbStatement}.
-   */
+  /// Formats the given [DbStatement] to SQL and compares with the given SQL.
+  ///
+  /// @param statement the [DbStatement] to check.
+  /// @param jql the expected JQL corresponding to the [DbStatement].
+  /// @param sql the expected SQL corresponding to the [DbStatement].
   protected void check(DbStatement<?> statement, String jql, String sql) {
 
     AbstractDbDialect<?> sqlDialect = new SqlDialect();
